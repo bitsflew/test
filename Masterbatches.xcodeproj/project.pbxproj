@@ -15,6 +15,12 @@
 		443366AE1A923349002DD5F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 443366AD1A923349002DD5F5 /* Images.xcassets */; };
 		443366B11A923349002DD5F5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 443366AF1A923349002DD5F5 /* LaunchScreen.xib */; };
 		443366BD1A923349002DD5F5 /* MasterbatchesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 443366BC1A923349002DD5F5 /* MasterbatchesTests.m */; };
+		443366CD1A9239CE002DD5F5 /* CMGuidedSearchMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 443366CB1A9239CE002DD5F5 /* CMGuidedSearchMainViewController.m */; };
+		443366CE1A9239CE002DD5F5 /* CMGuidedSearchMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 443366CC1A9239CE002DD5F5 /* CMGuidedSearchMainViewController.xib */; };
+		443366D21A923BE0002DD5F5 /* CMProductSpecification.m in Sources */ = {isa = PBXBuildFile; fileRef = 443366D11A923BE0002DD5F5 /* CMProductSpecification.m */; };
+		443366D61A923C38002DD5F5 /* CMGuidedSearchSolutionTypeQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 443366D41A923C38002DD5F5 /* CMGuidedSearchSolutionTypeQuestionViewController.m */; };
+		443366D71A923C38002DD5F5 /* CMGuidedSearchSolutionTypeQuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 443366D51A923C38002DD5F5 /* CMGuidedSearchSolutionTypeQuestionViewController.xib */; };
+		443366DA1A923DE9002DD5F5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 443366DC1A923DE9002DD5F5 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +48,16 @@
 		443366B61A923349002DD5F5 /* MasterbatchesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MasterbatchesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		443366BB1A923349002DD5F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		443366BC1A923349002DD5F5 /* MasterbatchesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterbatchesTests.m; sourceTree = "<group>"; };
+		443366C91A92398B002DD5F5 /* CMGuidedSearchQuestionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchQuestionViewController.h; sourceTree = "<group>"; };
+		443366CA1A9239CE002DD5F5 /* CMGuidedSearchMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchMainViewController.h; sourceTree = "<group>"; };
+		443366CB1A9239CE002DD5F5 /* CMGuidedSearchMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchMainViewController.m; sourceTree = "<group>"; };
+		443366CC1A9239CE002DD5F5 /* CMGuidedSearchMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMGuidedSearchMainViewController.xib; sourceTree = "<group>"; };
+		443366D01A923BE0002DD5F5 /* CMProductSpecification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMProductSpecification.h; sourceTree = "<group>"; };
+		443366D11A923BE0002DD5F5 /* CMProductSpecification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMProductSpecification.m; sourceTree = "<group>"; };
+		443366D31A923C38002DD5F5 /* CMGuidedSearchSolutionTypeQuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchSolutionTypeQuestionViewController.h; sourceTree = "<group>"; };
+		443366D41A923C38002DD5F5 /* CMGuidedSearchSolutionTypeQuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchSolutionTypeQuestionViewController.m; sourceTree = "<group>"; };
+		443366D51A923C38002DD5F5 /* CMGuidedSearchSolutionTypeQuestionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMGuidedSearchSolutionTypeQuestionViewController.xib; sourceTree = "<group>"; };
+		443366DB1A923DE9002DD5F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +99,7 @@
 		4433669C1A923349002DD5F5 /* Masterbatches */ = {
 			isa = PBXGroup;
 			children = (
+				443366C81A92395E002DD5F5 /* Guided Search */,
 				443366A11A923349002DD5F5 /* AppDelegate.h */,
 				443366A21A923349002DD5F5 /* AppDelegate.m */,
 				443366A71A923349002DD5F5 /* ViewController.h */,
@@ -92,6 +109,8 @@
 				443366AF1A923349002DD5F5 /* LaunchScreen.xib */,
 				443366A41A923349002DD5F5 /* Masterbatches.xcdatamodeld */,
 				4433669D1A923349002DD5F5 /* Supporting Files */,
+				443366D01A923BE0002DD5F5 /* CMProductSpecification.h */,
+				443366D11A923BE0002DD5F5 /* CMProductSpecification.m */,
 			);
 			path = Masterbatches;
 			sourceTree = "<group>";
@@ -101,6 +120,7 @@
 			children = (
 				4433669E1A923349002DD5F5 /* Info.plist */,
 				4433669F1A923349002DD5F5 /* main.m */,
+				443366DC1A923DE9002DD5F5 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -120,6 +140,28 @@
 				443366BB1A923349002DD5F5 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		443366C81A92395E002DD5F5 /* Guided Search */ = {
+			isa = PBXGroup;
+			children = (
+				443366CF1A923B58002DD5F5 /* Questions */,
+				443366C91A92398B002DD5F5 /* CMGuidedSearchQuestionViewController.h */,
+				443366CA1A9239CE002DD5F5 /* CMGuidedSearchMainViewController.h */,
+				443366CB1A9239CE002DD5F5 /* CMGuidedSearchMainViewController.m */,
+				443366CC1A9239CE002DD5F5 /* CMGuidedSearchMainViewController.xib */,
+			);
+			path = "Guided Search";
+			sourceTree = "<group>";
+		};
+		443366CF1A923B58002DD5F5 /* Questions */ = {
+			isa = PBXGroup;
+			children = (
+				443366D31A923C38002DD5F5 /* CMGuidedSearchSolutionTypeQuestionViewController.h */,
+				443366D41A923C38002DD5F5 /* CMGuidedSearchSolutionTypeQuestionViewController.m */,
+				443366D51A923C38002DD5F5 /* CMGuidedSearchSolutionTypeQuestionViewController.xib */,
+			);
+			name = Questions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,7 +245,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				443366AC1A923349002DD5F5 /* Main.storyboard in Resources */,
+				443366DA1A923DE9002DD5F5 /* Localizable.strings in Resources */,
+				443366CE1A9239CE002DD5F5 /* CMGuidedSearchMainViewController.xib in Resources */,
 				443366B11A923349002DD5F5 /* LaunchScreen.xib in Resources */,
+				443366D71A923C38002DD5F5 /* CMGuidedSearchSolutionTypeQuestionViewController.xib in Resources */,
 				443366AE1A923349002DD5F5 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,10 +267,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				443366CD1A9239CE002DD5F5 /* CMGuidedSearchMainViewController.m in Sources */,
 				443366A31A923349002DD5F5 /* AppDelegate.m in Sources */,
 				443366A01A923349002DD5F5 /* main.m in Sources */,
 				443366A91A923349002DD5F5 /* ViewController.m in Sources */,
+				443366D61A923C38002DD5F5 /* CMGuidedSearchSolutionTypeQuestionViewController.m in Sources */,
 				443366A61A923349002DD5F5 /* Masterbatches.xcdatamodeld in Sources */,
+				443366D21A923BE0002DD5F5 /* CMProductSpecification.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +310,14 @@
 				443366B01A923349002DD5F5 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		443366DC1A923DE9002DD5F5 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				443366DB1A923DE9002DD5F5 /* Base */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
