@@ -10,6 +10,8 @@
 
 #import "CMGuidedSearchQuestionViewController.h"
 
-@interface CMGuidedSearchSolutionTypeQuestionViewController : UIViewController <CMGuidedSearchQuestionViewController>
+@interface CMGuidedSearchSolutionTypeViewController : UIViewController <CMGuidedSearchQuestionViewController>
+
+@property (nonatomic, weak) id<CMGuidedSearchQuestionViewControllerDelegate> questionViewControllerDelegate;
 
 @end

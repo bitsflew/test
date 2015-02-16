@@ -8,9 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CMGuidedSearchMainViewController : UIViewController
+#import "CMGuidedSearchSolutionTypeViewController.h"
+#import "CMProductSpecification.h"
+
+@interface CMGuidedSearchMainViewController : UIViewController <CMGuidedSearchQuestionViewControllerDelegate, UITableViewDataSource>
 
 @property (nonatomic, weak) IBOutlet UIView *questionViewControllerContainerView;
 @property (nonatomic, weak) IBOutlet UILabel *questionViewControllerTitleLabel;
+
+@property (nonatomic, weak) IBOutlet UITableView *futureQuestionsTableView;
+
+@property (nonatomic, strong) CMProductSpecification *productSpecification;
 
 @end

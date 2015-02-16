@@ -1,37 +1,40 @@
 //
-//  CMGuidedSearchSolutionTypeQuestionViewController.m
+//  CMGuidedSearchColorViewController.m
 //  Masterbatches
 //
 //  Created by Craig on 16/02/2015.
 //  Copyright (c) 2015 Clariant. All rights reserved.
 //
 
-#import "CMGuidedSearchSolutionTypeQuestionViewController.h"
+#import "CMGuidedSearchColorViewController.h"
 
-@interface CMGuidedSearchSolutionTypeQuestionViewController ()
+#import "CMGuidedSearchSolutionTypeViewController.h"
+
+@interface CMGuidedSearchColorViewController ()
 
 @end
 
-@implementation CMGuidedSearchSolutionTypeQuestionViewController
+@implementation CMGuidedSearchColorViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     if (!(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
         return nil;
     }
-    self.title = NSLocalizedString(@"GuidedSearch", "");
+    self.title = NSLocalizedString(@"Color", "");
     return self;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
++ (NSString*)questionMenuTitle
+{
+    return NSLocalizedString(@"Color", "");
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
++ (Class)defaultNextQuestionViewControllerClass
+{
+    return nil;
 }
+
 
 /*
 #pragma mark - Navigation

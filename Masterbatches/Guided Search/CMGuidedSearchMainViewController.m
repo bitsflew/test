@@ -9,11 +9,13 @@
 #import "CMGuidedSearchMainViewController.h"
 #import "CMGuidedSearchQuestionViewController.h"
 
-#import "CMGuidedSearchSolutionTypeQuestionViewController.h"
+static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
 
 @interface CMGuidedSearchMainViewController ()
 
 @property (nonatomic, weak) UIViewController<CMGuidedSearchQuestionViewController> *questionViewController;
+
+@property (nonatomic, retain) NSMutableArray *questionViewControllers;
 
 @end
 
@@ -25,15 +27,22 @@
         return nil;
     }
     
+    self.productSpecification = [CMProductSpecification new];
+    
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    self.questionViewControllers = [NSMutableArray new];
     
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.futureQuestionsTableView registerClass:[UITableViewCell class]
+                          forCellReuseIdentifier:CMGuidedSearchMainViewControllerCellIdentifier];
 
-    [self presentQuestionViewController:[CMGuidedSearchSolutionTypeQuestionViewController new]]; // TODO! REMOVE!
+    [self presentQuestionViewController:[CMGuidedSearchSolutionTypeViewController new]]; // TODO! REMOVE!
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,6 +52,24 @@
 
 #pragma mark -
 
+- (NSArray*)futureQuestionViewControllerClasses
+{
+    NSMutableArray *classes = [NSMutableArray new];
+
+    Class nextClass = [self.questionViewController.class defaultNextQuestionViewControllerClass];
+
+    if (!nextClass) {
+        nextClass = [self.questionViewController nextQuestionViewControllerClass];
+    }
+
+    while (nextClass) {
+        [classes addObject:nextClass];
+        nextClass = [nextClass defaultNextQuestionViewControllerClass];
+    }
+
+    return classes;
+}
+
 - (void)presentQuestionViewController:(UIViewController<CMGuidedSearchQuestionViewController>*)viewController
 {
     if (self.questionViewController) {
@@ -51,22 +78,73 @@
             [self.questionViewController.view removeFromSuperview];
         }
     }
+    
+    self.questionViewController = viewController;
+    
+    if ([viewController respondsToSelector:@selector(setProductSpecification:)]) {
+        [viewController setProductSpecification:self.productSpecification];
+    }
+    
+    NSLog(@"%@: %@", viewController, [viewController conformsToProtocol:@protocol(CMGuidedSearchQuestionViewController)] ? @"YES":@"NO");
+    
+    [viewController setQuestionViewControllerDelegate:self];
 
     [self addChildViewController:viewController];
     [self.questionViewControllerContainerView addSubview:viewController.view];
     viewController.view.frame = self.questionViewControllerContainerView.bounds;
     
     self.questionViewControllerTitleLabel.text = viewController.title;
+
+    [self.questionViewControllers addObject:viewController];
+    
+    [self.futureQuestionsTableView reloadData];
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - Question view controller delegate
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)questionViewControllerDidCompleteQuestion:(UIViewController<CMGuidedSearchQuestionViewController>*)questionViewController
+{
+    Class nextQuestionViewControllerClass = questionViewController.nextQuestionViewControllerClass;
+    
+    if (!nextQuestionViewControllerClass) {
+        nextQuestionViewControllerClass = [[questionViewController class] defaultNextQuestionViewControllerClass];
+    }
+    
+    NSAssert(nextQuestionViewControllerClass, @"I know which question is next");
+    
+    CMGuidedSearchSolutionTypeViewController *viewController =
+      (CMGuidedSearchSolutionTypeViewController*)[[questionViewController.nextQuestionViewControllerClass alloc] init];
+
+    [self presentQuestionViewController:viewController];
 }
-*/
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return (section == 0) ? self.questionViewControllers.count : [self futureQuestionViewControllerClasses].count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CMGuidedSearchMainViewControllerCellIdentifier
+                                                            forIndexPath:indexPath];
+
+    if (indexPath.section == 0) {
+        cell.textLabel.text = [[self.questionViewControllers[indexPath.row] class] questionMenuTitle];
+        cell.textLabel.textColor = [UIColor blackColor];
+    } else {
+        cell.textLabel.text = [[self futureQuestionViewControllerClasses][indexPath.row] questionMenuTitle];
+        cell.textLabel.textColor = [UIColor grayColor];
+    }
+
+    return cell;
+}
+
 
 @end

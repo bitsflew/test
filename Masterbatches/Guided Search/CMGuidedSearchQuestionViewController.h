@@ -8,9 +8,24 @@
 
 #import "CMProductSpecification.h"
 
+@protocol CMGuidedSearchQuestionViewController;
+
+@protocol CMGuidedSearchQuestionViewControllerDelegate <NSObject>
+
+- (void)questionViewControllerDidCompleteQuestion:(UIViewController<CMGuidedSearchQuestionViewController>*)questionViewController;
+
+@end
+
 @protocol CMGuidedSearchQuestionViewController <NSObject>
 
 @optional
++ (NSString*)questionMenuTitle;
 - (void)setProductSpecification:(CMProductSpecification*)productSpecification;
+
+@required
++ (Class)defaultNextQuestionViewControllerClass;
+- (Class)nextQuestionViewControllerClass;
+
+- (void)setQuestionViewControllerDelegate:(id<CMGuidedSearchQuestionViewControllerDelegate>)delegate;
 
 @end
