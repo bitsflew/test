@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4433665D1A91F48C002DD5F5"
+               BlueprintIdentifier = "443366991A923349002DD5F5"
                BuildableName = "Masterbatches.app"
                BlueprintName = "Masterbatches"
                ReferencedContainer = "container:Masterbatches.xcodeproj">
@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "443366791A91F48C002DD5F5"
+               BlueprintIdentifier = "443366B51A923349002DD5F5"
                BuildableName = "MasterbatchesTests.xctest"
                BlueprintName = "MasterbatchesTests"
                ReferencedContainer = "container:Masterbatches.xcodeproj">
@@ -46,7 +46,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "443366791A91F48C002DD5F5"
+               BlueprintIdentifier = "443366B51A923349002DD5F5"
                BuildableName = "MasterbatchesTests.xctest"
                BlueprintName = "MasterbatchesTests"
                ReferencedContainer = "container:Masterbatches.xcodeproj">
@@ -56,7 +56,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4433665D1A91F48C002DD5F5"
+            BlueprintIdentifier = "443366991A923349002DD5F5"
             BuildableName = "Masterbatches.app"
             BlueprintName = "Masterbatches"
             ReferencedContainer = "container:Masterbatches.xcodeproj">
@@ -75,7 +75,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4433665D1A91F48C002DD5F5"
+            BlueprintIdentifier = "443366991A923349002DD5F5"
             BuildableName = "Masterbatches.app"
             BlueprintName = "Masterbatches"
             ReferencedContainer = "container:Masterbatches.xcodeproj">
@@ -93,7 +93,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4433665D1A91F48C002DD5F5"
+            BlueprintIdentifier = "443366991A923349002DD5F5"
             BuildableName = "Masterbatches.app"
             BlueprintName = "Masterbatches"
             ReferencedContainer = "container:Masterbatches.xcodeproj">
