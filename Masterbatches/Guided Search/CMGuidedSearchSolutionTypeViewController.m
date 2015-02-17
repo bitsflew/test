@@ -39,8 +39,8 @@
 
 - (IBAction)tappedColor:(id)sender
 {
-//    self.nextQuestionViewControllerClass = [CMGuidedSearchColorViewController class];
-//    [self.questionViewControllerDelegate questionViewControllerDidCompleteQuestion:self];
+    self.nextQuestionViewControllerClass = [CMGuidedSearchColorViewController class];
+    [self.questionViewControllerDelegate questionViewControllerDidCompleteQuestion:self];
 }
 
 - (IBAction)tappedAdditive:(id)sender
