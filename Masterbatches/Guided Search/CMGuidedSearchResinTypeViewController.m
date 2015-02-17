@@ -41,6 +41,8 @@
 {
     [super viewDidLoad];
     
+    self.gridSelectionView.allowsMultipleSelection = YES;
+    
     self.gridSelectionView.items =
     @[ [CMProductSpecificationResin resinWithName:@"PP"],
        [CMProductSpecificationResin resinWithName:@"PE"],
@@ -82,7 +84,5 @@
 
     return YES;
 }
-
-
 
 @end

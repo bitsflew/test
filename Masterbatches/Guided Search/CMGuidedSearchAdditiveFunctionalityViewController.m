@@ -42,6 +42,7 @@
     [super viewDidLoad];
     
     self.gridSelectionView.allowsMultipleSelection = YES;
+    self.gridSelectionView.contentInset = UIEdgeInsetsMake(48.f, 0.f, 0.f, 0.f);
 
     self.gridSelectionView.items =
     @[ [CMProductSpecificationAdditive additiveWithName:@"Absorbents"],
@@ -88,5 +89,16 @@
 {
     return nil;
 }
+
+- (BOOL)isQuestionCompleteValidationError:(NSString *__autoreleasing *)validationError
+{
+    if (self.gridSelectionView.selectedItems.count == 0) {
+        *validationError = NSLocalizedString(@"MustSpecifyAdditive", nil);
+        return NO;
+    }
+    
+    return YES;
+}
+
 
 @end
