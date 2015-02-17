@@ -11,6 +11,8 @@
 		441470AF1A93465200131077 /* CMGuidedSearchResinTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 441470AD1A93465200131077 /* CMGuidedSearchResinTypeViewController.xib */; };
 		441470B31A9346FC00131077 /* CMGuidedSearchProductTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 441470B11A9346FC00131077 /* CMGuidedSearchProductTypeViewController.m */; };
 		441470B41A9346FC00131077 /* CMGuidedSearchProductTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 441470B21A9346FC00131077 /* CMGuidedSearchProductTypeViewController.xib */; };
+		441470B81A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 441470B61A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.m */; };
+		441470B91A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 441470B71A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.xib */; };
 		443366A01A923349002DD5F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4433669F1A923349002DD5F5 /* main.m */; };
 		443366A31A923349002DD5F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 443366A21A923349002DD5F5 /* AppDelegate.m */; };
 		443366A61A923349002DD5F5 /* Masterbatches.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 443366A41A923349002DD5F5 /* Masterbatches.xcdatamodeld */; };
@@ -48,6 +50,9 @@
 		441470B01A9346FC00131077 /* CMGuidedSearchProductTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchProductTypeViewController.h; sourceTree = "<group>"; };
 		441470B11A9346FC00131077 /* CMGuidedSearchProductTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchProductTypeViewController.m; sourceTree = "<group>"; };
 		441470B21A9346FC00131077 /* CMGuidedSearchProductTypeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMGuidedSearchProductTypeViewController.xib; sourceTree = "<group>"; };
+		441470B51A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchTemperatureThicknessViewController.h; sourceTree = "<group>"; };
+		441470B61A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchTemperatureThicknessViewController.m; sourceTree = "<group>"; };
+		441470B71A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMGuidedSearchTemperatureThicknessViewController.xib; sourceTree = "<group>"; };
 		4433669A1A923349002DD5F5 /* Masterbatches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Masterbatches.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4433669E1A923349002DD5F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4433669F1A923349002DD5F5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -192,6 +197,9 @@
 				441470B01A9346FC00131077 /* CMGuidedSearchProductTypeViewController.h */,
 				441470B11A9346FC00131077 /* CMGuidedSearchProductTypeViewController.m */,
 				441470B21A9346FC00131077 /* CMGuidedSearchProductTypeViewController.xib */,
+				441470B51A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.h */,
+				441470B61A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.m */,
+				441470B71A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.xib */,
 			);
 			name = Questions;
 			sourceTree = "<group>";
@@ -283,6 +291,7 @@
 				443366DA1A923DE9002DD5F5 /* Localizable.strings in Resources */,
 				443366CE1A9239CE002DD5F5 /* CMGuidedSearchMainViewController.xib in Resources */,
 				443366B11A923349002DD5F5 /* LaunchScreen.xib in Resources */,
+				441470B91A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.xib in Resources */,
 				441470AF1A93465200131077 /* CMGuidedSearchResinTypeViewController.xib in Resources */,
 				443366D71A923C38002DD5F5 /* CMGuidedSearchSolutionTypeViewController.xib in Resources */,
 				443366AE1A923349002DD5F5 /* Images.xcassets in Resources */,
@@ -305,6 +314,7 @@
 			files = (
 				441470AE1A93465200131077 /* CMGuidedSearchResinTypeViewController.m in Sources */,
 				443366CD1A9239CE002DD5F5 /* CMGuidedSearchMainViewController.m in Sources */,
+				441470B81A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.m in Sources */,
 				443366A31A923349002DD5F5 /* AppDelegate.m in Sources */,
 				443366A01A923349002DD5F5 /* main.m in Sources */,
 				443366A91A923349002DD5F5 /* ViewController.m in Sources */,
@@ -448,6 +458,7 @@
 				INFOPLIST_FILE = Masterbatches/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -458,6 +469,7 @@
 				INFOPLIST_FILE = Masterbatches/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
