@@ -7,7 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CMGuidedSearchMainViewController">
             <connections>
                 <outlet property="backButton" destination="B4N-V8-SJB" id="bYk-tO-GtT"/>
-                <outlet property="futureQuestionsTableView" destination="Roe-Pg-746" id="H3B-t9-dLO"/>
+                <outlet property="questionClassesTableView" destination="Roe-Pg-746" id="QhV-cB-nrh"/>
                 <outlet property="questionViewControllerContainerView" destination="VWH-Un-ZpZ" id="rDX-DH-aD2"/>
                 <outlet property="questionViewControllerTitleLabel" destination="wRK-Kl-oOk" id="mfw-pR-E1s"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

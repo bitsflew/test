@@ -16,7 +16,7 @@
 @property (nonatomic, weak) IBOutlet UIView *questionViewControllerContainerView;
 @property (nonatomic, weak) IBOutlet UILabel *questionViewControllerTitleLabel;
 @property (nonatomic, weak) IBOutlet UIButton *backButton;
-@property (nonatomic, weak) IBOutlet UITableView *futureQuestionsTableView;
+@property (nonatomic, weak) IBOutlet UITableView *questionClassesTableView;
 
 @property (nonatomic, strong) CMProductSpecification *productSpecification;
 

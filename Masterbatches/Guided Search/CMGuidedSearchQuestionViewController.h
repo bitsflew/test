@@ -14,6 +14,7 @@
 @protocol CMGuidedSearchQuestionViewControllerDelegate <NSObject>
 
 - (void)questionViewControllerDidCompleteQuestion:(UIViewController<CMGuidedSearchQuestionViewController>*)questionViewController;
+- (void)questionViewControllerDidChangeNextQuestion:(UIViewController<CMGuidedSearchQuestionViewController>*)questionViewController;
 
 @end
 

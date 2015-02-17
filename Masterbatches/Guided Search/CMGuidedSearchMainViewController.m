@@ -39,7 +39,7 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.futureQuestionsTableView registerClass:[UITableViewCell class]
+    [self.questionClassesTableView registerClass:[UITableViewCell class]
                           forCellReuseIdentifier:CMGuidedSearchMainViewControllerCellIdentifier];
 
     [self presentQuestionViewController:[CMGuidedSearchSolutionTypeViewController new]]; // TODO! REMOVE!
@@ -100,7 +100,7 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
 
     [self.questionViewControllers addObject:viewController];
     
-    [self.futureQuestionsTableView reloadData];
+    [self.questionClassesTableView reloadData];
 
     self.backButton.hidden = self.questionViewControllers.count < 2;
 }
@@ -117,6 +117,11 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
 
 #pragma mark - Question view controller delegate
 
+- (void)questionViewControllerDidChangeNextQuestion:(UIViewController<CMGuidedSearchQuestionViewController> *)questionViewController
+{
+    [self.questionClassesTableView reloadData];
+}
+
 - (void)questionViewControllerDidCompleteQuestion:(UIViewController<CMGuidedSearchQuestionViewController>*)questionViewController
 {
     Class nextQuestionViewControllerClass = questionViewController.nextQuestionViewControllerClass;
@@ -124,8 +129,6 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
     if (!nextQuestionViewControllerClass) {
         nextQuestionViewControllerClass = [[questionViewController class] defaultNextQuestionViewControllerClass];
     }
-    
-    NSAssert(nextQuestionViewControllerClass, @"I know which question is next");
     
     CMGuidedSearchSolutionTypeViewController *viewController =
       (CMGuidedSearchSolutionTypeViewController*)[[questionViewController.nextQuestionViewControllerClass alloc] init];
