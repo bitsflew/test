@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CMGuidedSearchMainViewController">
             <connections>
+                <outlet property="backButton" destination="B4N-V8-SJB" id="bYk-tO-GtT"/>
                 <outlet property="futureQuestionsTableView" destination="Roe-Pg-746" id="H3B-t9-dLO"/>
                 <outlet property="questionViewControllerContainerView" destination="VWH-Un-ZpZ" id="rDX-DH-aD2"/>
                 <outlet property="questionViewControllerTitleLabel" destination="wRK-Kl-oOk" id="mfw-pR-E1s"/>
@@ -39,7 +40,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4N-V8-SJB">
-                    <rect key="frame" x="408" y="75" width="35" height="30"/>
+                    <rect key="frame" x="423" y="75" width="35" height="30"/>
                     <state key="normal" title="Back">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -52,7 +53,6 @@
             <constraints>
                 <constraint firstItem="wRK-Kl-oOk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="35" id="20G-rq-Kaf"/>
                 <constraint firstAttribute="trailing" secondItem="Roe-Pg-746" secondAttribute="trailing" constant="8" id="64Z-J1-dwe"/>
-                <constraint firstItem="B4N-V8-SJB" firstAttribute="leading" secondItem="Roe-Pg-746" secondAttribute="leading" id="FOu-FT-hdf"/>
                 <constraint firstAttribute="trailing" secondItem="VWH-Un-ZpZ" secondAttribute="trailing" constant="200" id="GaP-UE-Ohb"/>
                 <constraint firstItem="Roe-Pg-746" firstAttribute="top" secondItem="VWH-Un-ZpZ" secondAttribute="top" id="Gar-xb-dHZ"/>
                 <constraint firstItem="wRK-Kl-oOk" firstAttribute="leading" secondItem="VWH-Un-ZpZ" secondAttribute="leading" id="Mv7-UJ-H7e"/>
@@ -60,6 +60,7 @@
                 <constraint firstItem="VWH-Un-ZpZ" firstAttribute="top" secondItem="wRK-Kl-oOk" secondAttribute="bottom" constant="8" id="YVj-h1-lYt"/>
                 <constraint firstAttribute="bottom" secondItem="VWH-Un-ZpZ" secondAttribute="bottom" constant="8" id="cQq-hG-7M8"/>
                 <constraint firstItem="B4N-V8-SJB" firstAttribute="bottom" secondItem="wRK-Kl-oOk" secondAttribute="bottom" constant="0.5" id="euZ-Xi-KDM"/>
+                <constraint firstItem="B4N-V8-SJB" firstAttribute="leading" secondItem="Roe-Pg-746" secondAttribute="leading" constant="15" id="m0F-JH-xQI"/>
                 <constraint firstItem="wRK-Kl-oOk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="60" id="twF-c8-lBQ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

@@ -101,13 +101,15 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
     [self.questionViewControllers addObject:viewController];
     
     [self.futureQuestionsTableView reloadData];
+
+    self.backButton.hidden = self.questionViewControllers.count < 2;
 }
 
 #pragma mark -
 
 - (IBAction)tappedBack:(id)sender
 {
-    if (self.questionViewControllers.count > 0) {
+    if (self.questionViewControllers.count > 1) {
         [self.questionViewControllers removeLastObject];
         [self presentQuestionViewController:self.questionViewControllers.lastObject];
     }
