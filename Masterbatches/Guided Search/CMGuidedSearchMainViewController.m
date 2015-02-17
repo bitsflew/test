@@ -70,6 +70,17 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
     return classes;
 }
 
+- (Class)defaultOrDeterminedNextQuestionViewControllerClassFrom:(id<CMGuidedSearchQuestionViewController>)viewController
+{
+    Class nextQuestionViewControllerClass = viewController.nextQuestionViewControllerClass;
+    
+    if (!nextQuestionViewControllerClass) {
+        nextQuestionViewControllerClass = [[viewController class] defaultNextQuestionViewControllerClass];
+    }
+
+    return nextQuestionViewControllerClass;
+}
+
 - (void)presentQuestionViewController:(UIViewController<CMGuidedSearchQuestionViewController>*)viewController
 {
     if (self.questionViewController) {
@@ -118,7 +129,17 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
 
 - (IBAction)tappedNext:(id)sender
 {
-    
+    if ([self.questionViewController respondsToSelector:@selector(isQuestionComplete)]
+        && ![self.questionViewController isQuestionComplete]) {
+        return;
+    }
+
+    Class nextQuestionViewControllerClass
+      = [self defaultOrDeterminedNextQuestionViewControllerClassFrom:self.questionViewController];
+
+    NSAssert(nextQuestionViewControllerClass, @"Next question view controller class known");
+
+    [self presentQuestionViewController:[nextQuestionViewControllerClass new]];
 }
 
 #pragma mark - Question view controller delegate
@@ -130,16 +151,11 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
 
 - (void)questionViewControllerDidCompleteQuestion:(UIViewController<CMGuidedSearchQuestionViewController>*)questionViewController
 {
-    Class nextQuestionViewControllerClass = questionViewController.nextQuestionViewControllerClass;
+    Class nextQuestionViewControllerClass = [self defaultOrDeterminedNextQuestionViewControllerClassFrom:questionViewController];
     
-    if (!nextQuestionViewControllerClass) {
-        nextQuestionViewControllerClass = [[questionViewController class] defaultNextQuestionViewControllerClass];
-    }
-    
-    CMGuidedSearchSolutionTypeViewController *viewController =
-      (CMGuidedSearchSolutionTypeViewController*)[[questionViewController.nextQuestionViewControllerClass alloc] init];
+    NSAssert(nextQuestionViewControllerClass, @"Next question view controller class known");
 
-    [self presentQuestionViewController:viewController];
+    [self presentQuestionViewController:[nextQuestionViewControllerClass new]];
 }
 
 #pragma mark - Table view data source
