@@ -207,32 +207,32 @@
         CGFloat topRadius = CGRectGetWidth(parentFrame)/4.f;
 
         // Simple line connector
-            CGPathMoveToPoint(path, &transform, 0.f, 0.f);
-            CGPathAddLineToPoint(path, &transform, 0.f, distance);
-//        
-//        // "Squeezy" base
-//        CGPathMoveToPoint(path, &transform, -baseRadius, 0.f);
-//        CGPathAddLineToPoint(path, &transform, baseRadius, 0.f);
-//
-//        // "Right" side
-//        for (int i=0; i<=steps; i++) {
-//            CGFloat fraction = (CGFloat)i / (CGFloat)steps;
-//            CGFloat y = fraction * distance;
-//            CGFloat x = baseRadius + (topRadius - baseRadius) * fraction;
-//            CGFloat squeeze = (sinf(fraction * M_PI) / squeezeFactor) * baseRadius;
-//            x = fmaxf(x - squeeze, minimumConnectorRadius);
-//            CGPathAddLineToPoint(path, &transform, x, y);
-//        }
-//        
-//        for (int i=0; i<=steps; i++) {
-//            CGFloat fraction = (CGFloat)i / (CGFloat)steps;
-//            CGFloat y = (1.f - fraction) * distance;
-//            CGFloat x = -topRadius - (baseRadius - topRadius) * fraction;
-//            CGFloat squeeze = (sinf(fraction * M_PI) / squeezeFactor) * baseRadius;
-//            x = fminf(x + squeeze, -minimumConnectorRadius);
-//            CGPathAddLineToPoint(path, &transform, x, y);
-//        }
-//        
+//            CGPathMoveToPoint(path, &transform, 0.f, 0.f);
+//            CGPathAddLineToPoint(path, &transform, 0.f, distance);
+        
+        // "Squeezy" base
+        CGPathMoveToPoint(path, &transform, -baseRadius, 0.f);
+        CGPathAddLineToPoint(path, &transform, baseRadius, 0.f);
+
+        // "Right" side
+        for (int i=0; i<=steps; i++) {
+            CGFloat fraction = (CGFloat)i / (CGFloat)steps;
+            CGFloat y = fraction * distance;
+            CGFloat x = baseRadius + (topRadius - baseRadius) * fraction;
+            CGFloat squeeze = (sinf(fraction * M_PI) / squeezeFactor) * baseRadius;
+            x = fmaxf(x - squeeze, minimumConnectorRadius);
+            CGPathAddLineToPoint(path, &transform, x, y);
+        }
+        
+        for (int i=0; i<=steps; i++) {
+            CGFloat fraction = (CGFloat)i / (CGFloat)steps;
+            CGFloat y = (1.f - fraction) * distance;
+            CGFloat x = -topRadius - (baseRadius - topRadius) * fraction;
+            CGFloat squeeze = (sinf(fraction * M_PI) / squeezeFactor) * baseRadius;
+            x = fminf(x + squeeze, -minimumConnectorRadius);
+            CGPathAddLineToPoint(path, &transform, x, y);
+        }
+        
         UIBezierPath *connectorPath = [UIBezierPath bezierPathWithCGPath:path];
 
         if (animated && item.connectorPath) {
