@@ -29,7 +29,7 @@
 
 + (NSString*)questionMenuTitle
 {
-    return NSLocalizedString(@"GuidedSearch", "");
+    return nil; // hide from question menu
 }
 
 + (Class)defaultNextQuestionViewControllerClass

@@ -7,7 +7,7 @@
 //
 
 #import "CMGuidedSearchResinTypeViewController.h"
-#import "CMGuidedSearchRegulatoryIndustryViewController.h"
+#import "CMGuidedSearchProductTypeViewController.h"
 
 @interface CMGuidedSearchResinTypeViewController ()
 
@@ -31,7 +31,7 @@
 
 + (Class)defaultNextQuestionViewControllerClass
 {
-    return [CMGuidedSearchRegulatoryIndustryViewController class];
+    return [CMGuidedSearchProductTypeViewController class];
 }
 
 - (Class)nextQuestionViewControllerClass

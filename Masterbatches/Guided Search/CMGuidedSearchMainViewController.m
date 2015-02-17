@@ -11,7 +11,7 @@
 
 static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
 
-@interface CMGuidedSearchMainViewController ()
+@interface CMGuidedSearchMainViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) UIViewController<CMGuidedSearchQuestionViewController> *questionViewController;
 
@@ -144,6 +144,17 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
     }
 
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        if (![[self.questionViewControllers[indexPath.row] class] questionMenuTitle]) {
+            return 0.f;
+        }
+    }
+
+    return 40.f;
 }
 
 

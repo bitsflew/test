@@ -31,6 +31,7 @@
                     </constraints>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="0PG-n9-Rrs"/>
+                        <outlet property="delegate" destination="-1" id="Xm8-Sg-4VI"/>
                     </connections>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VWH-Un-ZpZ">

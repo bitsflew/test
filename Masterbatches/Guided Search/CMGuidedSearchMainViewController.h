@@ -11,7 +11,7 @@
 #import "CMGuidedSearchSolutionTypeViewController.h"
 #import "CMProductSpecification.h"
 
-@interface CMGuidedSearchMainViewController : UIViewController <CMGuidedSearchQuestionViewControllerDelegate, UITableViewDataSource>
+@interface CMGuidedSearchMainViewController : UIViewController <CMGuidedSearchQuestionViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UIView *questionViewControllerContainerView;
 @property (nonatomic, weak) IBOutlet UILabel *questionViewControllerTitleLabel;

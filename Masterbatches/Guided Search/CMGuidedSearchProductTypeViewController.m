@@ -6,26 +6,26 @@
 //  Copyright (c) 2015 Clariant. All rights reserved.
 //
 
-#import "CMGuidedSearchRegulatoryIndustryViewController.h"
+#import "CMGuidedSearchProductTypeViewController.h"
 
-@interface CMGuidedSearchRegulatoryIndustryViewController ()
+@interface CMGuidedSearchProductTypeViewController ()
 
 @end
 
-@implementation CMGuidedSearchRegulatoryIndustryViewController
+@implementation CMGuidedSearchProductTypeViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     if (!(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
         return nil;
     }
-    self.title = NSLocalizedString(@"RegulatoryIndustry", "");
+    self.title = NSLocalizedString(@"ProductType", "");
     return self;
 }
 
 + (NSString*)questionMenuTitle
 {
-    return NSLocalizedString(@"RegulatoryIndustry", "");
+    return NSLocalizedString(@"ProductType", "");
 }
 
 + (Class)defaultNextQuestionViewControllerClass
