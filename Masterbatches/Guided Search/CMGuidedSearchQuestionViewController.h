@@ -23,7 +23,7 @@
 @optional
 + (NSString*)questionMenuTitle;
 - (void)setProductSpecification:(CMProductSpecification*)productSpecification;
-- (BOOL)isQuestionComplete;
+- (BOOL)isQuestionCompleteValidationError:(NSString**)validationError;
 
 @required
 + (Class)defaultNextQuestionViewControllerClass;

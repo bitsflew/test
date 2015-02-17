@@ -129,8 +129,19 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
 
 - (IBAction)tappedNext:(id)sender
 {
-    if ([self.questionViewController respondsToSelector:@selector(isQuestionComplete)]
-        && ![self.questionViewController isQuestionComplete]) {
+    NSString *validationError = nil;
+
+    if ([self.questionViewController respondsToSelector:@selector(isQuestionCompleteValidationError:)]
+        && ![self.questionViewController isQuestionCompleteValidationError:&validationError]) {
+        
+        if (validationError) {
+            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"GuidedSearch", nil)
+                                       message:validationError
+                                      delegate:nil
+                             cancelButtonTitle:NSLocalizedString(@"Close", nil)
+                              otherButtonTitles:nil] show];
+        }
+
         return;
     }
 

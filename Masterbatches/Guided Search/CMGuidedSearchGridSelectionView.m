@@ -11,6 +11,43 @@
 static NSString *CMGuidedSearchGridSelectionItemRoundedCellIdentifier = @"CMGuidedSearchGridSelectionItemRoundedCell";
 static NSUInteger CMGuidedSearchGridSelectionItemCellTitleTag = 100;
 
+@interface CMGuidedSearchGridCollectionViewCell : UICollectionViewCell
+
+@end
+
+@implementation CMGuidedSearchGridCollectionViewCell
+
+- (void)applyLayoutAttributes:(UICollectionViewLayoutAttributes *)layoutAttributes
+{
+    [super applyLayoutAttributes:layoutAttributes];
+    [self updateAlpha];
+}
+
+- (void)prepareForReuse
+{
+    [super prepareForReuse];
+    [self updateAlpha];
+}
+
+- (void)setSelected:(BOOL)selected
+{
+    [super setSelected:selected];
+    [self updateAlpha];
+}
+
+- (void)setHighlighted:(BOOL)highlighted
+{
+    [super setHighlighted:highlighted];
+    [self updateAlpha];
+}
+
+- (void)updateAlpha
+{
+    self.alpha = (self.isHighlighted || self.isSelected) ? 1.f : 0.3f;
+}
+
+@end
+
 @interface CMGuidedSearchGridCollectionViewLayout : UICollectionViewFlowLayout
 
 @end
@@ -28,7 +65,7 @@ static NSUInteger CMGuidedSearchGridSelectionItemCellTitleTag = 100;
 
 @end
 
-@interface CMGuidedSearchGridSelectionView () <UICollectionViewDataSource>
+@interface CMGuidedSearchGridSelectionView () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @end
 
@@ -47,6 +84,7 @@ static NSUInteger CMGuidedSearchGridSelectionItemCellTitleTag = 100;
     self.collectionViewLayout = [CMGuidedSearchGridCollectionViewLayout new];
     
     self.dataSource = self;
+    self.delegate = self;
     self.clipsToBounds = YES;
     
     [self registerNib:[UINib nibWithNibName:CMGuidedSearchGridSelectionItemRoundedCellIdentifier
@@ -66,6 +104,46 @@ static NSUInteger CMGuidedSearchGridSelectionItemCellTitleTag = 100;
     [self reloadData];
 }
 
+- (NSArray*)selectedItems
+{
+    if (self.items.count == 0) {
+        return @[];
+    }
+
+    NSArray *indexPathsForSelectedItems = [self indexPathsForSelectedItems];
+    if (!indexPathsForSelectedItems) {
+        return @[];
+    }
+    
+    NSMutableIndexSet *indexes = [NSMutableIndexSet new];
+    
+    for (NSIndexPath *indexPath in indexPathsForSelectedItems) {
+        [indexes addIndex:indexPath.row];
+    }
+
+    return [self.items objectsAtIndexes:indexes];
+}
+
+- (void)selectItems:(NSArray *)items animated:(BOOL)animated
+{
+    NSArray *indexPathsForSelectedItems = [self indexPathsForSelectedItems];
+    if (indexPathsForSelectedItems) {
+        for (NSIndexPath *indexPath in indexPathsForSelectedItems) {
+            [self deselectItemAtIndexPath:indexPath animated:NO];
+        }
+    }
+    
+    for (id item in items) {
+        NSUInteger index = [self.items indexOfObject:item];
+        if (index == NSNotFound) {
+            continue;
+        }
+        [self selectItemAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]
+                           animated:NO
+                     scrollPosition:UICollectionViewScrollPositionNone];
+    }
+}
+
 #pragma mark -
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -83,7 +161,10 @@ static NSUInteger CMGuidedSearchGridSelectionItemCellTitleTag = 100;
 
     ((UILabel*)[cell viewWithTag:CMGuidedSearchGridSelectionItemCellTitleTag]).text = [item title];
     
+//    cell.alpha = (cell.isSelected || cell.isHighlighted) ? 1.f : 0.3f;
+    
     return cell;
 }
+
 
 @end

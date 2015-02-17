@@ -40,6 +40,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.gridSelectionView.allowsMultipleSelection = YES;
 
     self.gridSelectionView.items =
     @[ [CMProductSpecificationAdditive additiveWithName:@"Absorbents"],
@@ -85,6 +87,16 @@
 - (Class)nextQuestionViewControllerClass
 {
     return nil;
+}
+
+- (BOOL)isQuestionCompleteValidationError:(NSString *__autoreleasing *)validationError
+{
+    if (self.gridSelectionView.selectedItems.count == 0) {
+        *validationError = @"Choose one or more additives";
+        return NO;
+    }
+
+    return YES;
 }
 
 @end
