@@ -23,11 +23,11 @@
 @optional
 + (NSString*)questionMenuTitle;
 - (void)setProductSpecification:(CMProductSpecification*)productSpecification;
+- (BOOL)questionIsComplete;
 
 @required
 + (Class)defaultNextQuestionViewControllerClass;
 - (Class)nextQuestionViewControllerClass;
-
 - (void)setQuestionViewControllerDelegate:(id<CMGuidedSearchQuestionViewControllerDelegate>)delegate;
 
 @end

@@ -103,6 +103,7 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
     [self.questionClassesTableView reloadData];
 
     self.backButton.hidden = self.questionViewControllers.count < 2;
+    self.nextButton.hidden = [self futureQuestionViewControllerClasses].count == 0;
 }
 
 #pragma mark -
@@ -113,6 +114,11 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
         [self.questionViewControllers removeLastObject];
         [self presentQuestionViewController:self.questionViewControllers.lastObject];
     }
+}
+
+- (IBAction)tappedNext:(id)sender
+{
+    
 }
 
 #pragma mark - Question view controller delegate

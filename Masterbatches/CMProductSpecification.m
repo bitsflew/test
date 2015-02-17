@@ -8,6 +8,17 @@
 
 #import "CMProductSpecification.h"
 
+@implementation CMProductSpecificationAdditive
+
++ (instancetype)additiveWithName:(NSString*)name
+{
+    CMProductSpecificationAdditive *additive = [CMProductSpecificationAdditive new];
+    additive.name = name;
+    return additive;
+}
+
+@end
+
 @implementation CMProductSpecification
 
 @end

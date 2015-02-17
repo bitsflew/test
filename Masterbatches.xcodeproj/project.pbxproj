@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44107DAD1A9361AA004053A2 /* rounded-cell-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 44107DAB1A9361AA004053A2 /* rounded-cell-background.png */; };
+		44107DAE1A9361AA004053A2 /* rounded-cell-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44107DAC1A9361AA004053A2 /* rounded-cell-background@2x.png */; };
 		441470AE1A93465200131077 /* CMGuidedSearchResinTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 441470AC1A93465200131077 /* CMGuidedSearchResinTypeViewController.m */; };
 		441470AF1A93465200131077 /* CMGuidedSearchResinTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 441470AD1A93465200131077 /* CMGuidedSearchResinTypeViewController.xib */; };
 		441470B31A9346FC00131077 /* CMGuidedSearchProductTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 441470B11A9346FC00131077 /* CMGuidedSearchProductTypeViewController.m */; };
 		441470B41A9346FC00131077 /* CMGuidedSearchProductTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 441470B21A9346FC00131077 /* CMGuidedSearchProductTypeViewController.xib */; };
 		441470B81A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 441470B61A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.m */; };
 		441470B91A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 441470B71A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.xib */; };
+		441470BD1A93588000131077 /* CMGuidedSearchGridSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 441470BC1A93588000131077 /* CMGuidedSearchGridSelectionView.m */; };
+		441470BF1A93599100131077 /* CMGuidedSearchGridSelectionItemRoundedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 441470BE1A93599100131077 /* CMGuidedSearchGridSelectionItemRoundedCell.xib */; };
 		443366A01A923349002DD5F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4433669F1A923349002DD5F5 /* main.m */; };
 		443366A31A923349002DD5F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 443366A21A923349002DD5F5 /* AppDelegate.m */; };
 		443366A61A923349002DD5F5 /* Masterbatches.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 443366A41A923349002DD5F5 /* Masterbatches.xcdatamodeld */; };
@@ -44,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		44107DAB1A9361AA004053A2 /* rounded-cell-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rounded-cell-background.png"; sourceTree = "<group>"; };
+		44107DAC1A9361AA004053A2 /* rounded-cell-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rounded-cell-background@2x.png"; sourceTree = "<group>"; };
 		441470AB1A93465200131077 /* CMGuidedSearchResinTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchResinTypeViewController.h; sourceTree = "<group>"; };
 		441470AC1A93465200131077 /* CMGuidedSearchResinTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchResinTypeViewController.m; sourceTree = "<group>"; };
 		441470AD1A93465200131077 /* CMGuidedSearchResinTypeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMGuidedSearchResinTypeViewController.xib; sourceTree = "<group>"; };
@@ -53,6 +59,9 @@
 		441470B51A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchTemperatureThicknessViewController.h; sourceTree = "<group>"; };
 		441470B61A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchTemperatureThicknessViewController.m; sourceTree = "<group>"; };
 		441470B71A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMGuidedSearchTemperatureThicknessViewController.xib; sourceTree = "<group>"; };
+		441470BB1A93588000131077 /* CMGuidedSearchGridSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchGridSelectionView.h; sourceTree = "<group>"; };
+		441470BC1A93588000131077 /* CMGuidedSearchGridSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchGridSelectionView.m; sourceTree = "<group>"; };
+		441470BE1A93599100131077 /* CMGuidedSearchGridSelectionItemRoundedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMGuidedSearchGridSelectionItemRoundedCell.xib; sourceTree = "<group>"; };
 		4433669A1A923349002DD5F5 /* Masterbatches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Masterbatches.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4433669E1A923349002DD5F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4433669F1A923349002DD5F5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -103,6 +112,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		44107DA91A9361AA004053A2 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				44107DAA1A9361AA004053A2 /* Images */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		44107DAA1A9361AA004053A2 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				44107DAB1A9361AA004053A2 /* rounded-cell-background.png */,
+				44107DAC1A9361AA004053A2 /* rounded-cell-background@2x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		441470BA1A9357F000131077 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				441470BB1A93588000131077 /* CMGuidedSearchGridSelectionView.h */,
+				441470BC1A93588000131077 /* CMGuidedSearchGridSelectionView.m */,
+				441470BE1A93599100131077 /* CMGuidedSearchGridSelectionItemRoundedCell.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		443366911A923349002DD5F5 = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +160,9 @@
 		4433669C1A923349002DD5F5 /* Masterbatches */ = {
 			isa = PBXGroup;
 			children = (
+				44107DA91A9361AA004053A2 /* Assets */,
+				443366D01A923BE0002DD5F5 /* CMProductSpecification.h */,
+				443366D11A923BE0002DD5F5 /* CMProductSpecification.m */,
 				443366C81A92395E002DD5F5 /* Guided Search */,
 				443366A11A923349002DD5F5 /* AppDelegate.h */,
 				443366A21A923349002DD5F5 /* AppDelegate.m */,
@@ -134,8 +173,6 @@
 				443366AF1A923349002DD5F5 /* LaunchScreen.xib */,
 				443366A41A923349002DD5F5 /* Masterbatches.xcdatamodeld */,
 				4433669D1A923349002DD5F5 /* Supporting Files */,
-				443366D01A923BE0002DD5F5 /* CMProductSpecification.h */,
-				443366D11A923BE0002DD5F5 /* CMProductSpecification.m */,
 			);
 			path = Masterbatches;
 			sourceTree = "<group>";
@@ -182,6 +219,7 @@
 		443366CF1A923B58002DD5F5 /* Questions */ = {
 			isa = PBXGroup;
 			children = (
+				441470BA1A9357F000131077 /* Views */,
 				443366D31A923C38002DD5F5 /* CMGuidedSearchSolutionTypeViewController.h */,
 				443366D41A923C38002DD5F5 /* CMGuidedSearchSolutionTypeViewController.m */,
 				443366D51A923C38002DD5F5 /* CMGuidedSearchSolutionTypeViewController.xib */,
@@ -287,10 +325,13 @@
 				443366EB1A92513A002DD5F5 /* CMGuidedSearchAdditiveFunctionalityViewController.xib in Resources */,
 				443366AC1A923349002DD5F5 /* Main.storyboard in Resources */,
 				441470B41A9346FC00131077 /* CMGuidedSearchProductTypeViewController.xib in Resources */,
+				441470BF1A93599100131077 /* CMGuidedSearchGridSelectionItemRoundedCell.xib in Resources */,
 				443366E61A92499C002DD5F5 /* CMGuidedSearchColorViewController.xib in Resources */,
 				443366DA1A923DE9002DD5F5 /* Localizable.strings in Resources */,
+				44107DAE1A9361AA004053A2 /* rounded-cell-background@2x.png in Resources */,
 				443366CE1A9239CE002DD5F5 /* CMGuidedSearchMainViewController.xib in Resources */,
 				443366B11A923349002DD5F5 /* LaunchScreen.xib in Resources */,
+				44107DAD1A9361AA004053A2 /* rounded-cell-background.png in Resources */,
 				441470B91A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.xib in Resources */,
 				441470AF1A93465200131077 /* CMGuidedSearchResinTypeViewController.xib in Resources */,
 				443366D71A923C38002DD5F5 /* CMGuidedSearchSolutionTypeViewController.xib in Resources */,
@@ -319,6 +360,7 @@
 				443366A01A923349002DD5F5 /* main.m in Sources */,
 				443366A91A923349002DD5F5 /* ViewController.m in Sources */,
 				443366EA1A92513A002DD5F5 /* CMGuidedSearchAdditiveFunctionalityViewController.m in Sources */,
+				441470BD1A93588000131077 /* CMGuidedSearchGridSelectionView.m in Sources */,
 				443366E51A92499C002DD5F5 /* CMGuidedSearchColorViewController.m in Sources */,
 				443366D61A923C38002DD5F5 /* CMGuidedSearchSolutionTypeViewController.m in Sources */,
 				441470B31A9346FC00131077 /* CMGuidedSearchProductTypeViewController.m in Sources */,

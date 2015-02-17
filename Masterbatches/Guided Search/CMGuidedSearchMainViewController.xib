@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CMGuidedSearchMainViewController">
             <connections>
                 <outlet property="backButton" destination="B4N-V8-SJB" id="bYk-tO-GtT"/>
+                <outlet property="nextButton" destination="0s3-dU-3c6" id="ine-cL-lzY"/>
                 <outlet property="questionClassesTableView" destination="Roe-Pg-746" id="QhV-cB-nrh"/>
                 <outlet property="questionViewControllerContainerView" destination="VWH-Un-ZpZ" id="rDX-DH-aD2"/>
                 <outlet property="questionViewControllerTitleLabel" destination="wRK-Kl-oOk" id="mfw-pR-E1s"/>
@@ -37,6 +38,15 @@
                         <action selector="tappedBack:" destination="-1" eventType="touchUpInside" id="EkB-qY-7Mh"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0s3-dU-3c6">
+                    <rect key="frame" x="428" y="74" width="32" height="30"/>
+                    <state key="normal" title="Next">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tappedNext:" destination="-1" eventType="touchUpInside" id="BgM-sW-jfT"/>
+                    </connections>
+                </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Roe-Pg-746">
                     <rect key="frame" x="358" y="113" width="234" height="479"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -53,23 +63,40 @@
                         <outlet property="delegate" destination="-1" id="Xm8-Sg-4VI"/>
                     </connections>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="|" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yl0-5s-dsd">
+                    <rect key="frame" x="416" y="79" width="4" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="B4N-V8-SJB" firstAttribute="top" secondItem="Yl0-5s-dsd" secondAttribute="top" constant="-4" id="0As-83-VDh"/>
                 <constraint firstItem="wRK-Kl-oOk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="35" id="20G-rq-Kaf"/>
+                <constraint firstItem="Yl0-5s-dsd" firstAttribute="leading" secondItem="B4N-V8-SJB" secondAttribute="trailing" constant="8" id="21G-Gi-kXO"/>
                 <constraint firstAttribute="trailing" secondItem="Roe-Pg-746" secondAttribute="trailing" constant="8" id="64Z-J1-dwe"/>
+                <constraint firstItem="B4N-V8-SJB" firstAttribute="bottom" secondItem="Yl0-5s-dsd" secondAttribute="bottom" constant="5.5" id="FSc-08-bVT"/>
                 <constraint firstAttribute="trailing" secondItem="VWH-Un-ZpZ" secondAttribute="trailing" constant="250" id="GaP-UE-Ohb"/>
                 <constraint firstItem="Roe-Pg-746" firstAttribute="top" secondItem="VWH-Un-ZpZ" secondAttribute="top" id="Gar-xb-dHZ"/>
                 <constraint firstItem="wRK-Kl-oOk" firstAttribute="leading" secondItem="VWH-Un-ZpZ" secondAttribute="leading" id="Mv7-UJ-H7e"/>
+                <constraint firstItem="B4N-V8-SJB" firstAttribute="centerY" secondItem="Yl0-5s-dsd" secondAttribute="centerY" constant="0.5" id="NxQ-cE-x88"/>
+                <constraint firstItem="0s3-dU-3c6" firstAttribute="leading" secondItem="B4N-V8-SJB" secondAttribute="trailing" constant="20" id="O1f-60-T3s"/>
                 <constraint firstAttribute="bottom" secondItem="Roe-Pg-746" secondAttribute="bottom" constant="8" id="ToF-2T-cnO"/>
                 <constraint firstItem="VWH-Un-ZpZ" firstAttribute="top" secondItem="wRK-Kl-oOk" secondAttribute="bottom" constant="8" id="YVj-h1-lYt"/>
                 <constraint firstAttribute="bottom" secondItem="VWH-Un-ZpZ" secondAttribute="bottom" constant="8" id="cQq-hG-7M8"/>
                 <constraint firstItem="B4N-V8-SJB" firstAttribute="bottom" secondItem="wRK-Kl-oOk" secondAttribute="bottom" constant="0.5" id="euZ-Xi-KDM"/>
                 <constraint firstItem="Roe-Pg-746" firstAttribute="leading" secondItem="VWH-Un-ZpZ" secondAttribute="trailing" constant="8" id="h57-st-Gom"/>
+                <constraint firstItem="0s3-dU-3c6" firstAttribute="bottom" secondItem="B4N-V8-SJB" secondAttribute="bottom" constant="-1" id="jcl-mz-Ae0"/>
                 <constraint firstItem="B4N-V8-SJB" firstAttribute="leading" secondItem="Roe-Pg-746" secondAttribute="leading" constant="15" id="m0F-JH-xQI"/>
                 <constraint firstItem="wRK-Kl-oOk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="60" id="twF-c8-lBQ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="NxQ-cE-x88"/>
+                </mask>
+            </variation>
         </view>
     </objects>
 </document>
