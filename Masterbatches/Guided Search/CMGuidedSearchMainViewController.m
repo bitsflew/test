@@ -85,8 +85,6 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
         [viewController setProductSpecification:self.productSpecification];
     }
     
-    NSLog(@"%@: %@", viewController, [viewController conformsToProtocol:@protocol(CMGuidedSearchQuestionViewController)] ? @"YES":@"NO");
-    
     [viewController setQuestionViewControllerDelegate:self];
 
     [self addChildViewController:viewController];
