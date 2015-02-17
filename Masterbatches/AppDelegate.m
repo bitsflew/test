@@ -22,6 +22,14 @@
     UINavigationController *navigationController
       = [[UINavigationController alloc] initWithRootViewController:[CMGuidedSearchMainViewController new]];
     
+    navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
+
+    [navigationController.navigationBar setBackgroundImage:[UIImage new]
+                       forBarPosition:UIBarPositionAny
+                           barMetrics:UIBarMetricsDefault];
+
+    navigationController.navigationBar.shadowImage = [UIImage new];
+    
     self.window.rootViewController = navigationController;    
     
     return YES;

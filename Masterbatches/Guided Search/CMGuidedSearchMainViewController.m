@@ -29,7 +29,7 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
     
     self.productSpecification = [CMProductSpecification new];
     
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+//    self.edgesForExtendedLayout = UIRectEdgeNone;
     
     self.questionViewControllers = [NSMutableArray new];
     
@@ -78,7 +78,12 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
             [self.questionViewController.view removeFromSuperview];
         }
     }
-    
+
+    NSUInteger currentIndex = [self.questionViewControllers indexOfObjectIdenticalTo:viewController];
+    if (currentIndex != NSNotFound) {
+        [self.questionViewControllers removeObjectAtIndex:currentIndex];
+    }
+
     self.questionViewController = viewController;
     
     if ([viewController respondsToSelector:@selector(setProductSpecification:)]) {
@@ -96,6 +101,16 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
     [self.questionViewControllers addObject:viewController];
     
     [self.futureQuestionsTableView reloadData];
+}
+
+#pragma mark -
+
+- (IBAction)tappedBack:(id)sender
+{
+    if (self.questionViewControllers.count > 0) {
+        [self.questionViewControllers removeLastObject];
+        [self presentQuestionViewController:self.questionViewControllers.lastObject];
+    }
 }
 
 #pragma mark - Question view controller delegate
