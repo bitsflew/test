@@ -19,6 +19,17 @@
 
 @end
 
+@implementation CMProductSpecificationResin
+
++ (instancetype)resinWithName:(NSString*)name
+{
+    CMProductSpecificationResin *resin = [CMProductSpecificationResin new];
+    resin.name = name;
+    return resin;
+}
+
+@end
+
 @implementation CMProductSpecification
 
 @end

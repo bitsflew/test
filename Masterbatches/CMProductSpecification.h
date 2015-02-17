@@ -16,6 +16,14 @@
 
 @end
 
+@interface CMProductSpecificationResin : NSObject
+
+@property (nonatomic, copy) NSString *name;
+
++ (instancetype)resinWithName:(NSString*)name;
+
+@end
+
 @interface CMProductSpecification : NSObject
 
 @property (nonatomic, retain) NSArray *additives; // <CMProductSpecificationAdditive>

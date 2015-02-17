@@ -7,9 +7,12 @@
 //
 
 #import "CMGuidedSearchQuestionViewController.h"
+#import "CMGuidedSearchGridSelectionView.h"
 
 @interface CMGuidedSearchResinTypeViewController : UIViewController <CMGuidedSearchQuestionViewController>
 
 @property (nonatomic, weak) id<CMGuidedSearchQuestionViewControllerDelegate> questionViewControllerDelegate;
+
+@property (nonatomic, weak) IBOutlet CMGuidedSearchGridSelectionView *gridSelectionView;
 
 @end

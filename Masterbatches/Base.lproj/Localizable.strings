@@ -10,6 +10,7 @@
 "Color"        = "Color";
 "AdditiveFunctionality" = "Additive functionality";
 "ResinType" = "Resin type";
+"MustSpecifyResin" = "Before moving to the next step choose a resin from the grid.";
 "ProductType" = "Product type";
 "TemperatureThickness" = "Temperature and thickness";
 "Close" = "Close";

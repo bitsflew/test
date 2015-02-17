@@ -89,14 +89,4 @@
     return nil;
 }
 
-- (BOOL)isQuestionCompleteValidationError:(NSString *__autoreleasing *)validationError
-{
-    if (self.gridSelectionView.selectedItems.count == 0) {
-        *validationError = @"Choose one or more additives";
-        return NO;
-    }
-
-    return YES;
-}
-
 @end
