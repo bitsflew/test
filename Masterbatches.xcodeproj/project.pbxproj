@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		441470AE1A93465200131077 /* CMGuidedSearchResinTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 441470AC1A93465200131077 /* CMGuidedSearchResinTypeViewController.m */; };
+		441470AF1A93465200131077 /* CMGuidedSearchResinTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 441470AD1A93465200131077 /* CMGuidedSearchResinTypeViewController.xib */; };
+		441470B31A9346FC00131077 /* CMGuidedSearchRegulatoryIndustryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 441470B11A9346FC00131077 /* CMGuidedSearchRegulatoryIndustryViewController.m */; };
+		441470B41A9346FC00131077 /* CMGuidedSearchRegulatoryIndustryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 441470B21A9346FC00131077 /* CMGuidedSearchRegulatoryIndustryViewController.xib */; };
 		443366A01A923349002DD5F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4433669F1A923349002DD5F5 /* main.m */; };
 		443366A31A923349002DD5F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 443366A21A923349002DD5F5 /* AppDelegate.m */; };
 		443366A61A923349002DD5F5 /* Masterbatches.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 443366A41A923349002DD5F5 /* Masterbatches.xcdatamodeld */; };
@@ -38,6 +42,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		441470AB1A93465200131077 /* CMGuidedSearchResinTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchResinTypeViewController.h; sourceTree = "<group>"; };
+		441470AC1A93465200131077 /* CMGuidedSearchResinTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchResinTypeViewController.m; sourceTree = "<group>"; };
+		441470AD1A93465200131077 /* CMGuidedSearchResinTypeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMGuidedSearchResinTypeViewController.xib; sourceTree = "<group>"; };
+		441470B01A9346FC00131077 /* CMGuidedSearchRegulatoryIndustryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchRegulatoryIndustryViewController.h; sourceTree = "<group>"; };
+		441470B11A9346FC00131077 /* CMGuidedSearchRegulatoryIndustryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchRegulatoryIndustryViewController.m; sourceTree = "<group>"; };
+		441470B21A9346FC00131077 /* CMGuidedSearchRegulatoryIndustryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMGuidedSearchRegulatoryIndustryViewController.xib; sourceTree = "<group>"; };
 		4433669A1A923349002DD5F5 /* Masterbatches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Masterbatches.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4433669E1A923349002DD5F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4433669F1A923349002DD5F5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -176,6 +186,12 @@
 				443366E71A92513A002DD5F5 /* CMGuidedSearchAdditiveFunctionalityViewController.h */,
 				443366E81A92513A002DD5F5 /* CMGuidedSearchAdditiveFunctionalityViewController.m */,
 				443366E91A92513A002DD5F5 /* CMGuidedSearchAdditiveFunctionalityViewController.xib */,
+				441470AB1A93465200131077 /* CMGuidedSearchResinTypeViewController.h */,
+				441470AC1A93465200131077 /* CMGuidedSearchResinTypeViewController.m */,
+				441470AD1A93465200131077 /* CMGuidedSearchResinTypeViewController.xib */,
+				441470B01A9346FC00131077 /* CMGuidedSearchRegulatoryIndustryViewController.h */,
+				441470B11A9346FC00131077 /* CMGuidedSearchRegulatoryIndustryViewController.m */,
+				441470B21A9346FC00131077 /* CMGuidedSearchRegulatoryIndustryViewController.xib */,
 			);
 			name = Questions;
 			sourceTree = "<group>";
@@ -262,10 +278,12 @@
 			files = (
 				443366EB1A92513A002DD5F5 /* CMGuidedSearchAdditiveFunctionalityViewController.xib in Resources */,
 				443366AC1A923349002DD5F5 /* Main.storyboard in Resources */,
+				441470B41A9346FC00131077 /* CMGuidedSearchRegulatoryIndustryViewController.xib in Resources */,
 				443366E61A92499C002DD5F5 /* CMGuidedSearchColorViewController.xib in Resources */,
 				443366DA1A923DE9002DD5F5 /* Localizable.strings in Resources */,
 				443366CE1A9239CE002DD5F5 /* CMGuidedSearchMainViewController.xib in Resources */,
 				443366B11A923349002DD5F5 /* LaunchScreen.xib in Resources */,
+				441470AF1A93465200131077 /* CMGuidedSearchResinTypeViewController.xib in Resources */,
 				443366D71A923C38002DD5F5 /* CMGuidedSearchSolutionTypeViewController.xib in Resources */,
 				443366AE1A923349002DD5F5 /* Images.xcassets in Resources */,
 			);
@@ -285,6 +303,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				441470AE1A93465200131077 /* CMGuidedSearchResinTypeViewController.m in Sources */,
 				443366CD1A9239CE002DD5F5 /* CMGuidedSearchMainViewController.m in Sources */,
 				443366A31A923349002DD5F5 /* AppDelegate.m in Sources */,
 				443366A01A923349002DD5F5 /* main.m in Sources */,
@@ -292,6 +311,7 @@
 				443366EA1A92513A002DD5F5 /* CMGuidedSearchAdditiveFunctionalityViewController.m in Sources */,
 				443366E51A92499C002DD5F5 /* CMGuidedSearchColorViewController.m in Sources */,
 				443366D61A923C38002DD5F5 /* CMGuidedSearchSolutionTypeViewController.m in Sources */,
+				441470B31A9346FC00131077 /* CMGuidedSearchRegulatoryIndustryViewController.m in Sources */,
 				443366A61A923349002DD5F5 /* Masterbatches.xcdatamodeld in Sources */,
 				443366D21A923BE0002DD5F5 /* CMProductSpecification.m in Sources */,
 			);

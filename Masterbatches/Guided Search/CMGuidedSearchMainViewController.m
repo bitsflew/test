@@ -132,6 +132,8 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CMGuidedSearchMainViewControllerCellIdentifier
                                                             forIndexPath:indexPath];
+    
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:14.f];
 
     if (indexPath.section == 0) {
         cell.textLabel.text = [[self.questionViewControllers[indexPath.row] class] questionMenuTitle];

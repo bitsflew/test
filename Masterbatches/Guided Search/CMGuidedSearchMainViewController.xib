@@ -23,18 +23,18 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Roe-Pg-746">
-                    <rect key="frame" x="454" y="71" width="138" height="521"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Roe-Pg-746">
+                    <rect key="frame" x="408" y="71" width="184" height="521"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="138" id="Jk0-wq-QOJ"/>
+                        <constraint firstAttribute="width" constant="184" id="Jk0-wq-QOJ"/>
                     </constraints>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="0PG-n9-Rrs"/>
                     </connections>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VWH-Un-ZpZ">
-                    <rect key="frame" x="8" y="71" width="438" height="521"/>
+                    <rect key="frame" x="8" y="71" width="392" height="521"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
@@ -43,7 +43,7 @@
                 <constraint firstItem="VWH-Un-ZpZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="09p-vh-m7H"/>
                 <constraint firstItem="wRK-Kl-oOk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="20G-rq-Kaf"/>
                 <constraint firstAttribute="trailing" secondItem="Roe-Pg-746" secondAttribute="trailing" constant="8" id="64Z-J1-dwe"/>
-                <constraint firstAttribute="trailing" secondItem="VWH-Un-ZpZ" secondAttribute="trailing" constant="154" id="GaP-UE-Ohb"/>
+                <constraint firstAttribute="trailing" secondItem="VWH-Un-ZpZ" secondAttribute="trailing" constant="200" id="GaP-UE-Ohb"/>
                 <constraint firstAttribute="bottom" secondItem="Roe-Pg-746" secondAttribute="bottom" constant="8" id="ToF-2T-cnO"/>
                 <constraint firstItem="VWH-Un-ZpZ" firstAttribute="top" secondItem="wRK-Kl-oOk" secondAttribute="bottom" constant="8" id="YVj-h1-lYt"/>
                 <constraint firstAttribute="bottom" secondItem="VWH-Un-ZpZ" secondAttribute="bottom" constant="8" id="cQq-hG-7M8"/>

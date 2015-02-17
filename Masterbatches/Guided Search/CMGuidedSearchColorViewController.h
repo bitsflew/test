@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Clariant. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 #import "CMGuidedSearchQuestionViewController.h"
 
 @interface CMGuidedSearchColorViewController : UIViewController <CMGuidedSearchQuestionViewController>

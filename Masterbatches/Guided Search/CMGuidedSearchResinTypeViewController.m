@@ -1,44 +1,43 @@
 //
-//  CMGuidedSearchAdditiveFunctionalityViewController.m
+//  CMGuidedSearchResinTypeViewController.m
 //  Masterbatches
 //
-//  Created by Craig on 16/02/2015.
+//  Created by Craig on 17/02/2015.
 //  Copyright (c) 2015 Clariant. All rights reserved.
 //
 
-#import "CMGuidedSearchAdditiveFunctionalityViewController.h"
-
 #import "CMGuidedSearchResinTypeViewController.h"
+#import "CMGuidedSearchRegulatoryIndustryViewController.h"
 
-@interface CMGuidedSearchAdditiveFunctionalityViewController ()
+@interface CMGuidedSearchResinTypeViewController ()
 
 @end
 
-@implementation CMGuidedSearchAdditiveFunctionalityViewController
-
+@implementation CMGuidedSearchResinTypeViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     if (!(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
         return nil;
     }
-    self.title = NSLocalizedString(@"AdditiveFunctionality", "");
+    self.title = NSLocalizedString(@"ResinType", "");
     return self;
 }
 
 + (NSString*)questionMenuTitle
 {
-    return NSLocalizedString(@"AdditiveFunctionality", "");
+    return NSLocalizedString(@"ResinType", "");
 }
 
 + (Class)defaultNextQuestionViewControllerClass
 {
-    return [CMGuidedSearchResinTypeViewController class];
+    return [CMGuidedSearchRegulatoryIndustryViewController class];
 }
 
 - (Class)nextQuestionViewControllerClass
 {
     return nil;
 }
+
 
 @end
