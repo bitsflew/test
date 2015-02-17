@@ -24,23 +24,12 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Roe-Pg-746">
-                    <rect key="frame" x="408" y="113" width="184" height="479"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="184" id="Jk0-wq-QOJ"/>
-                    </constraints>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="0PG-n9-Rrs"/>
-                        <outlet property="delegate" destination="-1" id="Xm8-Sg-4VI"/>
-                    </connections>
-                </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VWH-Un-ZpZ">
-                    <rect key="frame" x="35" y="113" width="365" height="478.5"/>
+                    <rect key="frame" x="35" y="113" width="315" height="478.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4N-V8-SJB">
-                    <rect key="frame" x="423" y="75" width="35" height="30"/>
+                    <rect key="frame" x="373" y="75" width="35" height="30"/>
                     <state key="normal" title="Back">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -48,18 +37,35 @@
                         <action selector="tappedBack:" destination="-1" eventType="touchUpInside" id="EkB-qY-7Mh"/>
                     </connections>
                 </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Roe-Pg-746">
+                    <rect key="frame" x="358" y="113" width="234" height="479"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="184" id="Jk0-wq-QOJ"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Jk0-wq-QOJ"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="0PG-n9-Rrs"/>
+                        <outlet property="delegate" destination="-1" id="Xm8-Sg-4VI"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="wRK-Kl-oOk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="35" id="20G-rq-Kaf"/>
                 <constraint firstAttribute="trailing" secondItem="Roe-Pg-746" secondAttribute="trailing" constant="8" id="64Z-J1-dwe"/>
-                <constraint firstAttribute="trailing" secondItem="VWH-Un-ZpZ" secondAttribute="trailing" constant="200" id="GaP-UE-Ohb"/>
+                <constraint firstAttribute="trailing" secondItem="VWH-Un-ZpZ" secondAttribute="trailing" constant="250" id="GaP-UE-Ohb"/>
                 <constraint firstItem="Roe-Pg-746" firstAttribute="top" secondItem="VWH-Un-ZpZ" secondAttribute="top" id="Gar-xb-dHZ"/>
                 <constraint firstItem="wRK-Kl-oOk" firstAttribute="leading" secondItem="VWH-Un-ZpZ" secondAttribute="leading" id="Mv7-UJ-H7e"/>
                 <constraint firstAttribute="bottom" secondItem="Roe-Pg-746" secondAttribute="bottom" constant="8" id="ToF-2T-cnO"/>
                 <constraint firstItem="VWH-Un-ZpZ" firstAttribute="top" secondItem="wRK-Kl-oOk" secondAttribute="bottom" constant="8" id="YVj-h1-lYt"/>
                 <constraint firstAttribute="bottom" secondItem="VWH-Un-ZpZ" secondAttribute="bottom" constant="8" id="cQq-hG-7M8"/>
                 <constraint firstItem="B4N-V8-SJB" firstAttribute="bottom" secondItem="wRK-Kl-oOk" secondAttribute="bottom" constant="0.5" id="euZ-Xi-KDM"/>
+                <constraint firstItem="Roe-Pg-746" firstAttribute="leading" secondItem="VWH-Un-ZpZ" secondAttribute="trailing" constant="8" id="h57-st-Gom"/>
                 <constraint firstItem="B4N-V8-SJB" firstAttribute="leading" secondItem="Roe-Pg-746" secondAttribute="leading" constant="15" id="m0F-JH-xQI"/>
                 <constraint firstItem="wRK-Kl-oOk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="60" id="twF-c8-lBQ"/>
             </constraints>

@@ -1,42 +1,42 @@
 //
-//  CMGuidedSearchRegulatoryIndustryViewController.m
+//  CMGuidedSearchTemperatureThicknessViewController.m
 //  Masterbatches
 //
 //  Created by Craig on 17/02/2015.
 //  Copyright (c) 2015 Clariant. All rights reserved.
 //
 
-#import "CMGuidedSearchProductTypeViewController.h"
 #import "CMGuidedSearchTemperatureThicknessViewController.h"
 
-@interface CMGuidedSearchProductTypeViewController ()
+@interface CMGuidedSearchTemperatureThicknessViewController ()
 
 @end
 
-@implementation CMGuidedSearchProductTypeViewController
+@implementation CMGuidedSearchTemperatureThicknessViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     if (!(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
         return nil;
     }
-    self.title = NSLocalizedString(@"ProductType", "");
+    self.title = NSLocalizedString(@"TemperatureThickness", "");
     return self;
 }
 
 + (NSString*)questionMenuTitle
 {
-    return NSLocalizedString(@"ProductType", "");
+    return NSLocalizedString(@"TemperatureThickness", "");
 }
 
 + (Class)defaultNextQuestionViewControllerClass
 {
-    return [CMGuidedSearchTemperatureThicknessViewController class];
+    return nil;
 }
 
 - (Class)nextQuestionViewControllerClass
 {
     return nil;
 }
+
 
 @end
