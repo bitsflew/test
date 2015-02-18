@@ -45,6 +45,11 @@
 		4457F4801A94A744002FF4F5 /* ic_pagination_checkmark_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 4457F47F1A94A744002FF4F5 /* ic_pagination_checkmark_light.png */; };
 		4457F4881A94A963002FF4F5 /* NSString+Morphing.m in Sources */ = {isa = PBXBuildFile; fileRef = 4457F4851A94A963002FF4F5 /* NSString+Morphing.m */; };
 		4457F4891A94A963002FF4F5 /* TOMSMorphingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4457F4871A94A963002FF4F5 /* TOMSMorphingLabel.m */; };
+		4B2EDFA81A93994F007E0493 /* MenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2EDFA71A93994F007E0493 /* MenuModel.m */; };
+		4B2EDFAB1A939FAB007E0493 /* MenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2EDFAA1A939FAB007E0493 /* MenuView.m */; };
+		4B2EDFAF1A93A9B7007E0493 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2EDFAD1A93A9B7007E0493 /* MenuViewController.m */; };
+		4B2EDFB01A93A9B7007E0493 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B2EDFAE1A93A9B7007E0493 /* MenuViewController.xib */; };
+		4B2EDFB21A93A9F0007E0493 /* Menu.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B2EDFB11A93A9F0007E0493 /* Menu.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +121,14 @@
 		4457F4851A94A963002FF4F5 /* NSString+Morphing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Morphing.m"; sourceTree = "<group>"; };
 		4457F4861A94A963002FF4F5 /* TOMSMorphingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOMSMorphingLabel.h; sourceTree = "<group>"; };
 		4457F4871A94A963002FF4F5 /* TOMSMorphingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOMSMorphingLabel.m; sourceTree = "<group>"; };
+		4B2EDFA61A93994F007E0493 /* MenuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuModel.h; sourceTree = "<group>"; };
+		4B2EDFA71A93994F007E0493 /* MenuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuModel.m; sourceTree = "<group>"; };
+		4B2EDFA91A939FAB007E0493 /* MenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuView.h; sourceTree = "<group>"; };
+		4B2EDFAA1A939FAB007E0493 /* MenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuView.m; sourceTree = "<group>"; };
+		4B2EDFAC1A93A9B7007E0493 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		4B2EDFAD1A93A9B7007E0493 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		4B2EDFAE1A93A9B7007E0493 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
+		4B2EDFB11A93A9F0007E0493 /* Menu.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Menu.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				4457F4811A94A963002FF4F5 /* Dependencies */,
+				4B2EDF9F1A939896007E0493 /* Menu */,
 				44107DA91A9361AA004053A2 /* Assets */,
 				443366D01A923BE0002DD5F5 /* CMProductSpecification.h */,
 				443366D11A923BE0002DD5F5 /* CMProductSpecification.m */,
@@ -291,6 +305,21 @@
 				441470B71A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.xib */,
 			);
 			name = Questions;
+			sourceTree = "<group>";
+		};
+		4B2EDF9F1A939896007E0493 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				4B2EDFB11A93A9F0007E0493 /* Menu.plist */,
+				4B2EDFA61A93994F007E0493 /* MenuModel.h */,
+				4B2EDFA71A93994F007E0493 /* MenuModel.m */,
+				4B2EDFA91A939FAB007E0493 /* MenuView.h */,
+				4B2EDFAA1A939FAB007E0493 /* MenuView.m */,
+				4B2EDFAC1A93A9B7007E0493 /* MenuViewController.h */,
+				4B2EDFAD1A93A9B7007E0493 /* MenuViewController.m */,
+				4B2EDFAE1A93A9B7007E0493 /* MenuViewController.xib */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		4457F4811A94A963002FF4F5 /* Dependencies */ = {
@@ -402,11 +431,13 @@
 			files = (
 				443366EB1A92513A002DD5F5 /* CMGuidedSearchAdditiveFunctionalityViewController.xib in Resources */,
 				44107DB11A937488004053A2 /* Mercury_Text_G1_Roman.ttf in Resources */,
+				4B2EDFB21A93A9F0007E0493 /* Menu.plist in Resources */,
 				443366AC1A923349002DD5F5 /* Main.storyboard in Resources */,
 				441470B41A9346FC00131077 /* CMGuidedSearchProductTypeViewController.xib in Resources */,
 				44107DB31A937719004053A2 /* Gotham-Bold.otf in Resources */,
 				441470BF1A93599100131077 /* CMGuidedSearchGridSelectionItemRoundedCell.xib in Resources */,
 				443366E61A92499C002DD5F5 /* CMGuidedSearchColorViewController.xib in Resources */,
+				4B2EDFB01A93A9B7007E0493 /* MenuViewController.xib in Resources */,
 				443366DA1A923DE9002DD5F5 /* Localizable.strings in Resources */,
 				44107DB81A937946004053A2 /* img_logo_actionbar.png in Resources */,
 				44107DAE1A9361AA004053A2 /* rounded-cell-background@2x.png in Resources */,
@@ -443,10 +474,13 @@
 				443366CD1A9239CE002DD5F5 /* CMGuidedSearchMainViewController.m in Sources */,
 				441470B81A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.m in Sources */,
 				4457F4881A94A963002FF4F5 /* NSString+Morphing.m in Sources */,
+				4B2EDFAF1A93A9B7007E0493 /* MenuViewController.m in Sources */,
 				443366A31A923349002DD5F5 /* AppDelegate.m in Sources */,
 				443366A01A923349002DD5F5 /* main.m in Sources */,
+				4B2EDFAB1A939FAB007E0493 /* MenuView.m in Sources */,
 				443366A91A923349002DD5F5 /* ViewController.m in Sources */,
 				443366EA1A92513A002DD5F5 /* CMGuidedSearchAdditiveFunctionalityViewController.m in Sources */,
+				4B2EDFA81A93994F007E0493 /* MenuModel.m in Sources */,
 				441470BD1A93588000131077 /* CMGuidedSearchGridSelectionView.m in Sources */,
 				443366E51A92499C002DD5F5 /* CMGuidedSearchColorViewController.m in Sources */,
 				443366D61A923C38002DD5F5 /* CMGuidedSearchSolutionTypeViewController.m in Sources */,

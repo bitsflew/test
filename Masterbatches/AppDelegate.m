@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 #import "CMGuidedSearchMainViewController.h"
+#import "MenuViewController.h"
 
 @interface AppDelegate ()
 
@@ -20,7 +21,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     UINavigationController *navigationController
-      = [[UINavigationController alloc] initWithRootViewController:[CMGuidedSearchMainViewController new]];
+      = [[UINavigationController alloc] initWithRootViewController:[MenuViewController new]];
     
     navigationController.navigationBar.backgroundColor = [UIColor clearColor];
 

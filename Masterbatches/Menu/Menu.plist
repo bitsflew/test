@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Name</key>
+	<string>Start</string>
+	<key>Items</key>
+	<array>
+		<dict>
+			<key>Angle</key>
+			<real>3.14</real>
+			<key>Distance</key>
+			<integer>200</integer>
+			<key>Name</key>
+			<string>Doc Finder</string>
+			<key>Items</key>
+			<array/>
+		</dict>
+		<dict>
+			<key>Angle</key>
+			<real>1.56</real>
+			<key>Distance</key>
+			<integer>300</integer>
+			<key>Name</key>
+			<string>Masterbatch SF</string>
+			<key>Items</key>
+			<array>
+				<dict>
+					<key>Name</key>
+					<string>Guided Search</string>
+				</dict>
+				<dict>
+					<key>Name</key>
+					<string>Color</string>
+				</dict>
+				<dict>
+					<key>Name</key>
+					<string>Additives</string>
+				</dict>
+				<dict>
+					<key>Name</key>
+					<string>Industries</string>
+				</dict>
+				<dict>
+					<key>Name</key>
+					<string>GS Expert Mode</string>
+				</dict>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>
