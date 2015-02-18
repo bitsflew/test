@@ -25,8 +25,8 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wRK-Kl-oOk">
-                    <rect key="frame" x="35" y="100" width="81" height="80"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wRK-Kl-oOk">
+                    <rect key="frame" x="35" y="90" width="530" height="80"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="80" id="Hn8-bq-7V0"/>
                     </constraints>
@@ -35,11 +35,11 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VWH-Un-ZpZ">
-                    <rect key="frame" x="35" y="180" width="530" height="411.5"/>
+                    <rect key="frame" x="35" y="210" width="530" height="381.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4N-V8-SJB">
-                    <rect key="frame" x="35" y="150" width="35" height="30"/>
+                    <rect key="frame" x="35" y="180" width="35" height="30"/>
                     <state key="normal" title="Back">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -55,7 +55,7 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0s3-dU-3c6">
-                    <rect key="frame" x="533" y="150" width="32" height="30"/>
+                    <rect key="frame" x="533" y="180" width="32" height="30"/>
                     <state key="normal" title="Next">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -64,11 +64,11 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1d-J0-WaX" customClass="CMGuidedSearchStepView">
-                    <rect key="frame" x="150" y="60" width="300" height="30"/>
+                    <rect key="frame" x="50" y="153" width="500" height="28"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="300" id="hyq-J4-pJj"/>
-                        <constraint firstAttribute="height" constant="30" id="kOG-8Z-Ofe"/>
+                        <constraint firstAttribute="width" constant="500" id="hyq-J4-pJj"/>
+                        <constraint firstAttribute="height" constant="28" id="kOG-8Z-Ofe"/>
                     </constraints>
                 </view>
             </subviews>
@@ -81,12 +81,13 @@
                 <constraint firstAttribute="trailing" secondItem="VWH-Un-ZpZ" secondAttribute="trailing" constant="35" id="GaP-UE-Ohb"/>
                 <constraint firstItem="wRK-Kl-oOk" firstAttribute="leading" secondItem="VWH-Un-ZpZ" secondAttribute="leading" id="Mv7-UJ-H7e"/>
                 <constraint firstItem="Uiy-dh-BtW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="PxV-he-kSc"/>
-                <constraint firstItem="VWH-Un-ZpZ" firstAttribute="top" secondItem="wRK-Kl-oOk" secondAttribute="bottom" id="QTr-N6-MgV"/>
-                <constraint firstItem="Q1d-J0-WaX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="60" id="Rm4-kx-BlI"/>
+                <constraint firstItem="VWH-Un-ZpZ" firstAttribute="top" secondItem="wRK-Kl-oOk" secondAttribute="bottom" constant="40" id="QTr-N6-MgV"/>
                 <constraint firstItem="B4N-V8-SJB" firstAttribute="top" secondItem="VWH-Un-ZpZ" secondAttribute="top" constant="-30" id="a8q-yK-XJu"/>
                 <constraint firstAttribute="bottom" secondItem="VWH-Un-ZpZ" secondAttribute="bottom" constant="8" id="cQq-hG-7M8"/>
+                <constraint firstAttribute="trailing" secondItem="wRK-Kl-oOk" secondAttribute="trailing" constant="35" id="coo-HD-Fzd"/>
                 <constraint firstAttribute="centerX" secondItem="Q1d-J0-WaX" secondAttribute="centerX" id="iu2-v6-mfq"/>
-                <constraint firstItem="wRK-Kl-oOk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="uVt-Cw-P9e"/>
+                <constraint firstItem="VWH-Un-ZpZ" firstAttribute="top" secondItem="Q1d-J0-WaX" secondAttribute="bottom" constant="29" id="uF9-Fv-tCu"/>
+                <constraint firstItem="wRK-Kl-oOk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="90" id="uVt-Cw-P9e"/>
                 <constraint firstItem="B4N-V8-SJB" firstAttribute="leading" secondItem="VWH-Un-ZpZ" secondAttribute="leading" id="wm5-hp-wGf"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
