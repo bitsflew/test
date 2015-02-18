@@ -14,7 +14,6 @@
 @property (nonatomic, assign) CGFloat value;
 @property (nonatomic, strong) UILabel *label;
 @property (nonatomic, strong) MenuModel *menuItem;
-@property (nonatomic, strong) UIView *line;
 @end
 
 @implementation MenuItemView
@@ -73,6 +72,7 @@
 @interface MenuView()
 @property (nonatomic, strong) MenuItemView *centerItem;
 @property (nonatomic, strong) NSMutableArray *subItems;
+@property (nonatomic, strong) CADisplayLink *displayLink;
 @end
 
 @implementation MenuView
@@ -92,9 +92,8 @@
 - (void)setup {
     [self createSubviews];
     
-    static CADisplayLink *displayLink = nil;
-    displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(update)];
-    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+    self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(setNeedsDisplay)];
+    [self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
 }
 
 - (void)createSubviews {
@@ -111,11 +110,6 @@
         itemView.value = 0.2;
         [self.subItems addObject:itemView];
         [self insertSubview:itemView belowSubview:self.centerItem];
-        
-        UIView *line = [[UIView alloc] initWithFrame:CGRectZero];
-        line.backgroundColor = [UIColor blackColor];
-        itemView.line = line;
-        [self insertSubview:line atIndex:0];
     }
     
     CGFloat interval = 1;
@@ -153,24 +147,23 @@
     CGFloat yOffset = sin(-M_PI / 2 + itemView.menuItem.angle) * itemView.menuItem.distance;
     
     itemView.center = CGPointMake(self.center.x + xOffset, self.center.y + yOffset);
-    
-    if (itemView.line) {
-        if (CGRectIsEmpty(itemView.line.frame)) {
-            itemView.line.frame = CGRectMake(self.center.x + itemView.borderWidth / 2,
-                                             self.center.y,
-                                             itemView.borderWidth,
-                                             itemView.menuItem.distance);
-        }
-        
-        CGPoint offset = CGPointMake(itemView.line.frame.size.width / 2, itemView.line.frame.size.height / 2);
-        CGAffineTransform transform = CGAffineTransformIdentity;
-//        transform = CGAffineTransformTranslate(transform, -offset.x, -offset.y);
-        transform = CGAffineTransformRotate(transform, -M_PI + itemView.menuItem.angle);
-//        transform = CGAffineTransformTranslate(transform, offset.x, offset.y);
-        
-        
-        itemView.line.transform = transform;
-    }
 }
+
+- (void)drawRect:(CGRect)rect {
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    [[UIColor blackColor] set];
+    
+    CGContextSetLineWidth(context, 2);
+    for (MenuItemView *item in self.subItems) {
+        CGPoint pos = [(CALayer *)item.layer.presentationLayer position];
+        CGContextMoveToPoint(context, self.center.x, self.center.y);
+        CGContextAddLineToPoint(context, pos.x, pos.y);
+    }
+    
+    CGContextStrokePath(context);
+}
+
+
 
 @end
