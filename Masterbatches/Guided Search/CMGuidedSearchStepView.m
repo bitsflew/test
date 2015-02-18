@@ -71,7 +71,10 @@
         self.trackLayer.opacity = 0.f;
         return;
     }
-    
+
+    [CATransaction begin];
+    [CATransaction setValue:@(.3f) forKey:kCATransactionAnimationDuration];
+
     CGRect bounds = self.bounds;
     
     if (self.stepCount == 1) {
@@ -114,6 +117,7 @@
         CMStepLayer *stepLayer = nil;
         if (i < self.stepsLayer.sublayers.count) {
             stepLayer = self.stepsLayer.sublayers[i];
+            [stepLayer addSublayer:stepLayer.completeLayer];
         } else {
             newStepLayer = YES;
             stepLayer = [CMStepLayer layer];
@@ -122,26 +126,25 @@
             stepLayer.completeLayer = [CALayer layer];
             stepLayer.completeLayer.contents = (__bridge id)([UIImage imageNamed:@"ic_pagination_checkmark_light.png"].CGImage);
             stepLayer.completeLayer.transform = CATransform3DMakeScale(stepIncompleteContentScale, stepIncompleteContentScale, stepIncompleteContentScale);
-            [stepLayer addSublayer:stepLayer.completeLayer];
             [self.stepsLayer addSublayer:stepLayer];
         }
         
         BOOL stepCompleted = (self.completedCount > i);
 
         stepLayer.backgroundColor = stepCompleted ? stepLayer.borderColor : [UIColor whiteColor].CGColor;
-        stepLayer.completeLayer.bounds = CGRectInset(stepLayer.bounds, borderWidth, borderWidth);
-        stepLayer.completeLayer.position = CGPointMake(CGRectGetMidX(stepLayer.bounds), CGRectGetMidY(stepLayer.bounds));
-        
-        CGFloat contentScale = stepCompleted ? 1.f : stepIncompleteContentScale;
-        stepLayer.completeLayer.transform = CATransform3DMakeScale(contentScale, contentScale, contentScale);
-        
         stepLayer.bounds = CGRectMake(0.f, 0.f, CGRectGetHeight(bounds), CGRectGetHeight(bounds));
-
         stepLayer.position = CGPointMake(
                                 CGRectGetMinX(bounds) + stepWidth*i + stepWidth/2.f,
                                 CGRectGetHeight(bounds)/2.f);
         stepLayer.cornerRadius = CGRectGetHeight(bounds)/2.f;
+        
+        stepLayer.completeLayer.bounds = CGRectInset(stepLayer.bounds, borderWidth, borderWidth);
+        stepLayer.completeLayer.position = CGPointMake(CGRectGetMidX(stepLayer.bounds), CGRectGetMidY(stepLayer.bounds));
+        CGFloat contentScale = stepCompleted ? 1.f : stepIncompleteContentScale;
+        stepLayer.completeLayer.transform = CATransform3DMakeScale(contentScale, contentScale, contentScale);
     }
+    
+    [CATransaction commit];
 }
 
 @end
