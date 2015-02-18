@@ -10,7 +10,7 @@
 
 @interface CMStepLayer : CALayer
 
-@property (nonatomic) BOOL completed;
+@property (nonatomic, retain) CALayer *completeLayer;
 
 @end
 
@@ -63,6 +63,9 @@
 
 - (void)updateLayers
 {
+    static const CGFloat borderWidth = 2.f;
+    static const CGFloat stepIncompleteContentScale = 0.1f;
+
     if (self.stepCount == 0) {
         self.stepsLayer.opacity = 0.f;
         self.trackLayer.opacity = 0.f;
@@ -114,20 +117,23 @@
         } else {
             newStepLayer = YES;
             stepLayer = [CMStepLayer layer];
-            stepLayer.contents = CFBridgingRelease([UIImage imageNamed:@"ic_pagination_checkmark_light.png"].CGImage);
             stepLayer.borderColor = [UIColor colorWithRed:0.38 green:0.803 blue:0.909 alpha:1].CGColor;
-            stepLayer.borderWidth = 2.f;
+            stepLayer.borderWidth = borderWidth;
+            stepLayer.completeLayer = [CALayer layer];
+            stepLayer.completeLayer.contents = CFBridgingRelease([UIImage imageNamed:@"ic_pagination_checkmark_light.png"].CGImage);
+            stepLayer.completeLayer.transform = CATransform3DMakeScale(stepIncompleteContentScale, stepIncompleteContentScale, stepIncompleteContentScale);
+            [stepLayer addSublayer:stepLayer.completeLayer];
             [self.stepsLayer addSublayer:stepLayer];
         }
         
         BOOL stepCompleted = (self.completedCount > i);
-        
-        if (newStepLayer || (stepCompleted != stepLayer.completed)) {
-            // TODO: Nice animation
-            stepLayer.backgroundColor = stepCompleted ? stepLayer.borderColor : [UIColor whiteColor].CGColor;
 
-            stepLayer.completed = stepCompleted;
-        }
+        stepLayer.backgroundColor = stepCompleted ? stepLayer.borderColor : [UIColor whiteColor].CGColor;
+        stepLayer.completeLayer.bounds = CGRectInset(stepLayer.bounds, borderWidth, borderWidth);
+        stepLayer.completeLayer.position = CGPointMake(CGRectGetMidX(stepLayer.bounds), CGRectGetMidY(stepLayer.bounds));
+        
+        CGFloat contentScale = stepCompleted ? 1.f : stepIncompleteContentScale;
+        stepLayer.completeLayer.transform = CATransform3DMakeScale(contentScale, contentScale, contentScale);
         
         stepLayer.bounds = CGRectMake(0.f, 0.f, CGRectGetHeight(bounds), CGRectGetHeight(bounds));
 
