@@ -11,7 +11,7 @@
 
 static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
 
-@interface CMGuidedSearchMainViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface CMGuidedSearchMainViewController ()
 
 @property (nonatomic, weak) UIViewController<CMGuidedSearchQuestionViewController> *questionViewController;
 
@@ -39,9 +39,6 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.questionClassesTableView registerClass:[UITableViewCell class]
-                          forCellReuseIdentifier:CMGuidedSearchMainViewControllerCellIdentifier];
-
     [self presentQuestionViewController:[CMGuidedSearchSolutionTypeViewController new]]; // TODO! REMOVE!
 }
 
@@ -111,10 +108,13 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
 
     [self.questionViewControllers addObject:viewController];
     
-    [self.questionClassesTableView reloadData];
+    NSUInteger futureQuestionCount = [self futureQuestionViewControllerClasses].count;
 
     self.backButton.hidden = self.questionViewControllers.count < 2;
-    self.nextButton.hidden = [self futureQuestionViewControllerClasses].count == 0;
+    self.nextButton.hidden = futureQuestionCount == 0;
+    
+    self.stepView.stepCount = self.questionViewControllers.count + futureQuestionCount;
+    self.stepView.completedCount = self.questionViewControllers.count - 1;
 }
 
 #pragma mark -
@@ -157,7 +157,7 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
 
 - (void)questionViewControllerDidChangeNextQuestion:(UIViewController<CMGuidedSearchQuestionViewController> *)questionViewController
 {
-    [self.questionClassesTableView reloadData];
+
 }
 
 - (void)questionViewControllerDidCompleteQuestion:(UIViewController<CMGuidedSearchQuestionViewController>*)questionViewController
@@ -167,47 +167,6 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
     NSAssert(nextQuestionViewControllerClass, @"Next question view controller class known");
 
     [self presentQuestionViewController:[nextQuestionViewControllerClass new]];
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 2;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return (section == 0) ? self.questionViewControllers.count : [self futureQuestionViewControllerClasses].count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CMGuidedSearchMainViewControllerCellIdentifier
-                                                            forIndexPath:indexPath];
-    
-    cell.textLabel.font = [UIFont boldSystemFontOfSize:14.f];
-
-    if (indexPath.section == 0) {
-        cell.textLabel.text = [[self.questionViewControllers[indexPath.row] class] questionMenuTitle];
-        cell.textLabel.textColor = [UIColor blackColor];
-    } else {
-        cell.textLabel.text = [[self futureQuestionViewControllerClasses][indexPath.row] questionMenuTitle];
-        cell.textLabel.textColor = [UIColor grayColor];
-    }
-
-    return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section == 0) {
-        if (![[self.questionViewControllers[indexPath.row] class] questionMenuTitle]) {
-            return 0.f;
-        }
-    }
-
-    return 40.f;
 }
 
 

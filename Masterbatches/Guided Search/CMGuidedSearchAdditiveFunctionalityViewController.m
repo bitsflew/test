@@ -41,8 +41,8 @@
 {
     [super viewDidLoad];
     
-    self.gridSelectionView.allowsMultipleSelection = YES;
     self.gridSelectionView.contentInset = UIEdgeInsetsMake(48.f, 0.f, 0.f, 0.f);
+    self.gridSelectionView.scrollIndicatorInsets = self.gridSelectionView.contentInset;
 
     self.gridSelectionView.items =
     @[ [CMProductSpecificationAdditive additiveWithName:@"Absorbents"],

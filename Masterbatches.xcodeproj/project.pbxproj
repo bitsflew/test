@@ -40,6 +40,8 @@
 		443366E61A92499C002DD5F5 /* CMGuidedSearchColorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 443366E41A92499C002DD5F5 /* CMGuidedSearchColorViewController.xib */; };
 		443366EA1A92513A002DD5F5 /* CMGuidedSearchAdditiveFunctionalityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 443366E81A92513A002DD5F5 /* CMGuidedSearchAdditiveFunctionalityViewController.m */; };
 		443366EB1A92513A002DD5F5 /* CMGuidedSearchAdditiveFunctionalityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 443366E91A92513A002DD5F5 /* CMGuidedSearchAdditiveFunctionalityViewController.xib */; };
+		4457F47C1A949CC6002FF4F5 /* CMGuidedSearchStepView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4457F47B1A949CC6002FF4F5 /* CMGuidedSearchStepView.m */; };
+		4457F47E1A94A05E002FF4F5 /* CMGuidedSearchQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4457F47D1A94A05E002FF4F5 /* CMGuidedSearchQuestion.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,7 @@
 		44107DB41A9377FF004053A2 /* white-fade-tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white-fade-tile.png"; sourceTree = "<group>"; };
 		44107DB61A937946004053A2 /* img_logo_actionbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_logo_actionbar.png; sourceTree = "<group>"; };
 		44107DB71A937946004053A2 /* img_logo_actionbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_logo_actionbar@2x.png"; sourceTree = "<group>"; };
+		44107DBB1A9388D5004053A2 /* CMGuidedSearchQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMGuidedSearchQuestion.h; path = Questions/Models/CMGuidedSearchQuestion.h; sourceTree = "<group>"; };
 		441470AB1A93465200131077 /* CMGuidedSearchResinTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchResinTypeViewController.h; sourceTree = "<group>"; };
 		441470AC1A93465200131077 /* CMGuidedSearchResinTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchResinTypeViewController.m; sourceTree = "<group>"; };
 		441470AD1A93465200131077 /* CMGuidedSearchResinTypeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMGuidedSearchResinTypeViewController.xib; sourceTree = "<group>"; };
@@ -102,6 +105,9 @@
 		443366E71A92513A002DD5F5 /* CMGuidedSearchAdditiveFunctionalityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchAdditiveFunctionalityViewController.h; sourceTree = "<group>"; };
 		443366E81A92513A002DD5F5 /* CMGuidedSearchAdditiveFunctionalityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchAdditiveFunctionalityViewController.m; sourceTree = "<group>"; };
 		443366E91A92513A002DD5F5 /* CMGuidedSearchAdditiveFunctionalityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMGuidedSearchAdditiveFunctionalityViewController.xib; sourceTree = "<group>"; };
+		4457F47A1A949CC6002FF4F5 /* CMGuidedSearchStepView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchStepView.h; sourceTree = "<group>"; };
+		4457F47B1A949CC6002FF4F5 /* CMGuidedSearchStepView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchStepView.m; sourceTree = "<group>"; };
+		4457F47D1A94A05E002FF4F5 /* CMGuidedSearchQuestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMGuidedSearchQuestion.m; path = Questions/Models/CMGuidedSearchQuestion.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,12 +158,23 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		44107DBA1A9388B6004053A2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				44107DBB1A9388D5004053A2 /* CMGuidedSearchQuestion.h */,
+				4457F47D1A94A05E002FF4F5 /* CMGuidedSearchQuestion.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		441470BA1A9357F000131077 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				441470BB1A93588000131077 /* CMGuidedSearchGridSelectionView.h */,
 				441470BC1A93588000131077 /* CMGuidedSearchGridSelectionView.m */,
 				441470BE1A93599100131077 /* CMGuidedSearchGridSelectionItemRoundedCell.xib */,
+				4457F47A1A949CC6002FF4F5 /* CMGuidedSearchStepView.h */,
+				4457F47B1A949CC6002FF4F5 /* CMGuidedSearchStepView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -242,6 +259,7 @@
 		443366CF1A923B58002DD5F5 /* Questions */ = {
 			isa = PBXGroup;
 			children = (
+				44107DBA1A9388B6004053A2 /* Models */,
 				441470BA1A9357F000131077 /* Views */,
 				443366D31A923C38002DD5F5 /* CMGuidedSearchSolutionTypeViewController.h */,
 				443366D41A923C38002DD5F5 /* CMGuidedSearchSolutionTypeViewController.m */,
@@ -381,7 +399,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4457F47E1A94A05E002FF4F5 /* CMGuidedSearchQuestion.m in Sources */,
 				441470AE1A93465200131077 /* CMGuidedSearchResinTypeViewController.m in Sources */,
+				4457F47C1A949CC6002FF4F5 /* CMGuidedSearchStepView.m in Sources */,
 				443366CD1A9239CE002DD5F5 /* CMGuidedSearchMainViewController.m in Sources */,
 				441470B81A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.m in Sources */,
 				443366A31A923349002DD5F5 /* AppDelegate.m in Sources */,
