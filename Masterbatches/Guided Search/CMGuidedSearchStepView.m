@@ -114,6 +114,7 @@
         } else {
             newStepLayer = YES;
             stepLayer = [CMStepLayer layer];
+            stepLayer.contents = CFBridgingRelease([UIImage imageNamed:@"ic_pagination_checkmark_light.png"].CGImage);
             stepLayer.borderColor = [UIColor colorWithRed:0.38 green:0.803 blue:0.909 alpha:1].CGColor;
             stepLayer.borderWidth = 2.f;
             [self.stepsLayer addSublayer:stepLayer];

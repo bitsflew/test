@@ -42,6 +42,9 @@
 		443366EB1A92513A002DD5F5 /* CMGuidedSearchAdditiveFunctionalityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 443366E91A92513A002DD5F5 /* CMGuidedSearchAdditiveFunctionalityViewController.xib */; };
 		4457F47C1A949CC6002FF4F5 /* CMGuidedSearchStepView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4457F47B1A949CC6002FF4F5 /* CMGuidedSearchStepView.m */; };
 		4457F47E1A94A05E002FF4F5 /* CMGuidedSearchQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4457F47D1A94A05E002FF4F5 /* CMGuidedSearchQuestion.m */; };
+		4457F4801A94A744002FF4F5 /* ic_pagination_checkmark_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 4457F47F1A94A744002FF4F5 /* ic_pagination_checkmark_light.png */; };
+		4457F4881A94A963002FF4F5 /* NSString+Morphing.m in Sources */ = {isa = PBXBuildFile; fileRef = 4457F4851A94A963002FF4F5 /* NSString+Morphing.m */; };
+		4457F4891A94A963002FF4F5 /* TOMSMorphingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4457F4871A94A963002FF4F5 /* TOMSMorphingLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +111,11 @@
 		4457F47A1A949CC6002FF4F5 /* CMGuidedSearchStepView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchStepView.h; sourceTree = "<group>"; };
 		4457F47B1A949CC6002FF4F5 /* CMGuidedSearchStepView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchStepView.m; sourceTree = "<group>"; };
 		4457F47D1A94A05E002FF4F5 /* CMGuidedSearchQuestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMGuidedSearchQuestion.m; path = Questions/Models/CMGuidedSearchQuestion.m; sourceTree = "<group>"; };
+		4457F47F1A94A744002FF4F5 /* ic_pagination_checkmark_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_pagination_checkmark_light.png; sourceTree = "<group>"; };
+		4457F4841A94A963002FF4F5 /* NSString+Morphing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Morphing.h"; sourceTree = "<group>"; };
+		4457F4851A94A963002FF4F5 /* NSString+Morphing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Morphing.m"; sourceTree = "<group>"; };
+		4457F4861A94A963002FF4F5 /* TOMSMorphingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOMSMorphingLabel.h; sourceTree = "<group>"; };
+		4457F4871A94A963002FF4F5 /* TOMSMorphingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOMSMorphingLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +148,7 @@
 		44107DAA1A9361AA004053A2 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4457F47F1A94A744002FF4F5 /* ic_pagination_checkmark_light.png */,
 				44107DB41A9377FF004053A2 /* white-fade-tile.png */,
 				44107DB61A937946004053A2 /* img_logo_actionbar.png */,
 				44107DB71A937946004053A2 /* img_logo_actionbar@2x.png */,
@@ -200,6 +209,7 @@
 		4433669C1A923349002DD5F5 /* Masterbatches */ = {
 			isa = PBXGroup;
 			children = (
+				4457F4811A94A963002FF4F5 /* Dependencies */,
 				44107DA91A9361AA004053A2 /* Assets */,
 				443366D01A923BE0002DD5F5 /* CMProductSpecification.h */,
 				443366D11A923BE0002DD5F5 /* CMProductSpecification.m */,
@@ -281,6 +291,33 @@
 				441470B71A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.xib */,
 			);
 			name = Questions;
+			sourceTree = "<group>";
+		};
+		4457F4811A94A963002FF4F5 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				4457F4821A94A963002FF4F5 /* github */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
+		4457F4821A94A963002FF4F5 /* github */ = {
+			isa = PBXGroup;
+			children = (
+				4457F4831A94A963002FF4F5 /* TOMSMorphingLabel */,
+			);
+			path = github;
+			sourceTree = "<group>";
+		};
+		4457F4831A94A963002FF4F5 /* TOMSMorphingLabel */ = {
+			isa = PBXGroup;
+			children = (
+				4457F4841A94A963002FF4F5 /* NSString+Morphing.h */,
+				4457F4851A94A963002FF4F5 /* NSString+Morphing.m */,
+				4457F4861A94A963002FF4F5 /* TOMSMorphingLabel.h */,
+				4457F4871A94A963002FF4F5 /* TOMSMorphingLabel.m */,
+			);
+			path = TOMSMorphingLabel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,6 +412,7 @@
 				44107DAE1A9361AA004053A2 /* rounded-cell-background@2x.png in Resources */,
 				443366CE1A9239CE002DD5F5 /* CMGuidedSearchMainViewController.xib in Resources */,
 				443366B11A923349002DD5F5 /* LaunchScreen.xib in Resources */,
+				4457F4801A94A744002FF4F5 /* ic_pagination_checkmark_light.png in Resources */,
 				44107DAD1A9361AA004053A2 /* rounded-cell-background.png in Resources */,
 				441470B91A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.xib in Resources */,
 				44107DB51A9377FF004053A2 /* white-fade-tile.png in Resources */,
@@ -404,6 +442,7 @@
 				4457F47C1A949CC6002FF4F5 /* CMGuidedSearchStepView.m in Sources */,
 				443366CD1A9239CE002DD5F5 /* CMGuidedSearchMainViewController.m in Sources */,
 				441470B81A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.m in Sources */,
+				4457F4881A94A963002FF4F5 /* NSString+Morphing.m in Sources */,
 				443366A31A923349002DD5F5 /* AppDelegate.m in Sources */,
 				443366A01A923349002DD5F5 /* main.m in Sources */,
 				443366A91A923349002DD5F5 /* ViewController.m in Sources */,
@@ -412,6 +451,7 @@
 				443366E51A92499C002DD5F5 /* CMGuidedSearchColorViewController.m in Sources */,
 				443366D61A923C38002DD5F5 /* CMGuidedSearchSolutionTypeViewController.m in Sources */,
 				441470B31A9346FC00131077 /* CMGuidedSearchProductTypeViewController.m in Sources */,
+				4457F4891A94A963002FF4F5 /* TOMSMorphingLabel.m in Sources */,
 				443366A61A923349002DD5F5 /* Masterbatches.xcdatamodeld in Sources */,
 				443366D21A923BE0002DD5F5 /* CMProductSpecification.m in Sources */,
 			);
