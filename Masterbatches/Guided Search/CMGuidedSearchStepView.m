@@ -120,7 +120,7 @@
             stepLayer.borderColor = [UIColor colorWithRed:0.38 green:0.803 blue:0.909 alpha:1].CGColor;
             stepLayer.borderWidth = borderWidth;
             stepLayer.completeLayer = [CALayer layer];
-            stepLayer.completeLayer.contents = CFBridgingRelease([UIImage imageNamed:@"ic_pagination_checkmark_light.png"].CGImage);
+            stepLayer.completeLayer.contents = (__bridge id)([UIImage imageNamed:@"ic_pagination_checkmark_light.png"].CGImage);
             stepLayer.completeLayer.transform = CATransform3DMakeScale(stepIncompleteContentScale, stepIncompleteContentScale, stepIncompleteContentScale);
             [stepLayer addSublayer:stepLayer.completeLayer];
             [self.stepsLayer addSublayer:stepLayer];
