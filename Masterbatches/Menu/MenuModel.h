@@ -19,5 +19,6 @@
 @property (nonatomic, assign) CGFloat distance;
 @property (nonatomic, assign) CGFloat radius;
 @property (nonatomic, strong) NSString *action;
+@property (nonatomic, assign) NSUInteger identifier;
 
 @end

@@ -125,13 +125,19 @@ PolarCoordinate PolarCoordinateMake(CGFloat radius, CGFloat angle) {
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, width, width);
 }
 
+- (BOOL)isEqual:(id)object {
+    if (![object isKindOfClass:[self class]]) return NO;
+    MenuItemView *other = (MenuItemView *)object;
+    return [other.menuItem isEqual:self.menuItem];
+}
+
 @end
 
 
 @interface MenuView()
 @property (nonatomic, strong) MenuItemView *centerItem;
 @property (nonatomic, strong) MenuItemView *parentItem;
-@property (nonatomic, strong) NSMutableArray *subItems;
+@property (nonatomic, strong) NSMutableDictionary *subItems;
 @property (nonatomic, strong) CADisplayLink *displayLink;
 @end
 
@@ -167,13 +173,19 @@ PolarCoordinate PolarCoordinateMake(CGFloat radius, CGFloat angle) {
     
     self.centerItem.value = 0.3;
     
-    self.subItems = [NSMutableArray arrayWithCapacity:self.menu.subMenuItems.count];
+    self.subItems = [NSMutableDictionary dictionaryWithCapacity:self.menu.subMenuItems.count];
     
     for (MenuModel *item in self.menu.subMenuItems) {
-        MenuItemView *itemView = [self createViewForMenuItem:item];
+        
+        MenuItemView *itemView = self.subItems[@(item.identifier)];
+        if (itemView == nil) {
+            itemView = [self createViewForMenuItem:item];
+            self.subItems[@(item.identifier)] = itemView;
+        }
+        
+        [self createViewForMenuItem:item];
         [itemView setPolarCoordinate:PolarCoordinateZero withCenter:self.centerItem.center];
         itemView.value = 0.2;
-        [self.subItems addObject:itemView];
         [self insertSubview:itemView belowSubview:self.centerItem];
     }
     
@@ -208,25 +220,30 @@ PolarCoordinate PolarCoordinateMake(CGFloat radius, CGFloat angle) {
         if (self.menuActionHandler) self.menuActionHandler(itemView.menuItem.action);
         return;
     }
+    
+    if (itemView.menuItem.subMenuItems.count == 0) {
+        // Skip empty items
+        return;
+    }
 
     if ([itemView isEqual:self.centerItem]) {
         return;
     }
     
+    BOOL isSubItem = self.subItems[@(itemView.menuItem.identifier)] != nil;
+    
     if ([itemView isEqual:self.parentItem]) {
         self.parentItem = nil; // Help!
-        
-        
-    } else if ([self.subItems containsObject:itemView]) {
+        self.subItems[@(self.centerItem.menuItem.identifier)] = self.centerItem;
+    } else if (isSubItem) {
         self.parentItem = self.centerItem;
-        
-        [self.subItems removeObject:itemView];
+        [self.subItems removeObjectForKey:@(itemView.menuItem.identifier)];
     }
     
     self.menu = itemView.menuItem;
     self.centerItem = itemView;
     
-    NSArray *subItems = self.subItems;
+    NSArray *subItems = self.subItems.allValues;
     
     [self createSubviews];
     [UIView animateWithDuration:0.5 animations:^{
@@ -235,7 +252,8 @@ PolarCoordinate PolarCoordinateMake(CGFloat radius, CGFloat angle) {
     
     [UIView animateWithDuration:0.5 animations:^{
         for (MenuItemView *item in subItems) {
-            [item setPolarCoordinate:PolarCoordinateZero withCenter:self.parentItem.center];
+            CGPoint center = self.parentItem ? self.parentItem.center : self.center;
+            [item setPolarCoordinate:PolarCoordinateZero withCenter:center];
             item.alpha = 0;
         }
     } completion:^(BOOL finished) {
@@ -252,7 +270,7 @@ PolarCoordinate PolarCoordinateMake(CGFloat radius, CGFloat angle) {
         [self.parentItem setPolarCoordinate:PolarCoordinateMake(350, M_PI * 1.7) withCenter:self.center];
     }
     
-    for (MenuItemView *subMenuItem in self.subItems) {
+    for (MenuItemView *subMenuItem in self.subItems.allValues) {
         [subMenuItem sizeToFit];
         MenuModel *menuItem = subMenuItem.menuItem;
         [subMenuItem setPolarCoordinate:PolarCoordinateMake(menuItem.distance, menuItem.angle) withCenter:self.center];
@@ -268,7 +286,7 @@ PolarCoordinate PolarCoordinateMake(CGFloat radius, CGFloat angle) {
     [[UIColor blackColor] set];
     
     CGContextSetLineWidth(context, 2);
-    NSArray *items = self.subItems;
+    NSArray *items = self.subItems.allValues;
     if (self.parentItem) {
         items = [items arrayByAddingObject:self.parentItem];
     }

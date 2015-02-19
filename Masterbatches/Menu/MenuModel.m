@@ -8,6 +8,8 @@
 
 #import "MenuModel.h"
 
+static NSUInteger idCounter = 0;
+
 @implementation MenuModel
 
 + (instancetype)readMenuFromFile {
@@ -22,6 +24,7 @@
     menu.angle = [menuDict[@"Angle"] doubleValue];
     menu.distance = [menuDict[@"Distance"] doubleValue];
     menu.action = menuDict[@"Action"];
+    menu.identifier = idCounter++;
     
     NSMutableArray *subMenuItems = [NSMutableArray arrayWithCapacity:[menuDict[@"Items"] count]];
     for (NSDictionary *item in menuDict[@"Items"]) {
