@@ -26,14 +26,15 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
     if (!(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
         return nil;
     }
-    
-    self.productSpecification = [CMProductSpecification new];
-    
-//    self.edgesForExtendedLayout = UIRectEdgeNone;
-    
+
     self.questionViewControllers = [NSMutableArray new];
-    
+
     return self;
+}
+
+- (void)setFlow:(CMGuidedSearchFlow*)flow
+{
+    _flow = flow;
 }
 
 - (void)viewDidLoad {
@@ -93,10 +94,6 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
     }
 
     self.questionViewController = viewController;
-    
-    if ([viewController respondsToSelector:@selector(setProductSpecification:)]) {
-        [viewController setProductSpecification:self.productSpecification];
-    }
     
     [viewController setQuestionViewControllerDelegate:self];
 

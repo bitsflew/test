@@ -11,6 +11,7 @@
 #import "CMGuidedSearchSolutionTypeViewController.h"
 #import "CMProductSpecification.h"
 #import "CMGuidedSearchStepView.h"
+#import "CMGuidedSearchFlow.h"
 
 @interface CMGuidedSearchFlowViewController : UIViewController <CMGuidedSearchQuestionViewControllerDelegate>
 
@@ -20,6 +21,6 @@
 @property (nonatomic, weak) IBOutlet UIButton *nextButton;
 @property (nonatomic, weak) IBOutlet CMGuidedSearchStepView * stepView;
 
-@property (nonatomic, strong) CMProductSpecification *productSpecification;
+@property (nonatomic, strong) CMGuidedSearchFlow *flow;
 
 @end

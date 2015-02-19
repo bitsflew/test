@@ -204,8 +204,6 @@
 				441470BB1A93588000131077 /* CMGuidedSearchGridSelectionView.h */,
 				441470BC1A93588000131077 /* CMGuidedSearchGridSelectionView.m */,
 				441470BE1A93599100131077 /* CMGuidedSearchGridSelectionItemRoundedCell.xib */,
-				4457F47A1A949CC6002FF4F5 /* CMGuidedSearchStepView.h */,
-				4457F47B1A949CC6002FF4F5 /* CMGuidedSearchStepView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -287,6 +285,8 @@
 				443366CA1A9239CE002DD5F5 /* CMGuidedSearchFlowViewController.h */,
 				443366CB1A9239CE002DD5F5 /* CMGuidedSearchFlowViewController.m */,
 				443366CC1A9239CE002DD5F5 /* CMGuidedSearchFlowViewController.xib */,
+				4457F47A1A949CC6002FF4F5 /* CMGuidedSearchStepView.h */,
+				4457F47B1A949CC6002FF4F5 /* CMGuidedSearchStepView.m */,
 				443366C91A92398B002DD5F5 /* CMGuidedSearchQuestionViewController.h */,
 				443366CF1A923B58002DD5F5 /* Questions */,
 			);
