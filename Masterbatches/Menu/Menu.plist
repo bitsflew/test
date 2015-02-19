@@ -33,7 +33,7 @@
 					<key>Distance</key>
 					<integer>200</integer>
 					<key>Action</key>
-					<string>CMGuidedSearchMainViewController</string>
+					<string>CMGuidedSearchFlowViewController</string>
 				</dict>
 				<dict>
 					<key>Name</key>

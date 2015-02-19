@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 
-#import "CMGuidedSearchMainViewController.h"
+#import "CMGuidedSearchFlowViewController.h"
 #import "MenuViewController.h"
 
 @interface AppDelegate ()

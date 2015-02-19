@@ -12,7 +12,7 @@
 #import "CMProductSpecification.h"
 #import "CMGuidedSearchStepView.h"
 
-@interface CMGuidedSearchMainViewController : UIViewController <CMGuidedSearchQuestionViewControllerDelegate>
+@interface CMGuidedSearchFlowViewController : UIViewController <CMGuidedSearchQuestionViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UIView *questionViewControllerContainerView;
 @property (nonatomic, weak) IBOutlet UILabel *questionViewControllerTitleLabel;

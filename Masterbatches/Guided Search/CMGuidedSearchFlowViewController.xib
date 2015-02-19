@@ -10,7 +10,7 @@
         </mutableArray>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CMGuidedSearchMainViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CMGuidedSearchFlowViewController">
             <connections>
                 <outlet property="backButton" destination="B4N-V8-SJB" id="bYk-tO-GtT"/>
                 <outlet property="nextButton" destination="0s3-dU-3c6" id="ine-cL-lzY"/>

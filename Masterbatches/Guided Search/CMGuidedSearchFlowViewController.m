@@ -6,12 +6,12 @@
 //  Copyright (c) 2015 Clariant. All rights reserved.
 //
 
-#import "CMGuidedSearchMainViewController.h"
+#import "CMGuidedSearchFlowViewController.h"
 #import "CMGuidedSearchQuestionViewController.h"
 
 static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
 
-@interface CMGuidedSearchMainViewController ()
+@interface CMGuidedSearchFlowViewController ()
 
 @property (nonatomic, weak) UIViewController<CMGuidedSearchQuestionViewController> *questionViewController;
 
@@ -19,7 +19,7 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
 
 @end
 
-@implementation CMGuidedSearchMainViewController
+@implementation CMGuidedSearchFlowViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
