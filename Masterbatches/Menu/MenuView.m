@@ -20,6 +20,10 @@ typedef struct {
 
 PolarCoordinate PolarCoordinateZero = (PolarCoordinate){0, 0};
 
+PolarCoordinate PolarCoordinateMake(CGFloat radius, CGFloat angle) {
+    return (PolarCoordinate){radius, angle};
+}
+
 @interface UIView (Polar)
 - (void)setPolarCoordinate:(PolarCoordinate)polar withCenter:(CGPoint)center;
 - (PolarCoordinate)polarCoordinateWithCenter:(CGPoint)center;
@@ -27,19 +31,21 @@ PolarCoordinate PolarCoordinateZero = (PolarCoordinate){0, 0};
 
 @implementation UIView (Polar)
 
+#define RotateToTop (-M_PI / 2)
+
 - (PolarCoordinate)polarCoordinateWithCenter:(CGPoint)center {
     CGFloat dx = self.center.x - center.x;
     CGFloat dy = self.center.y - center.y;
 
     return (PolarCoordinate){
         sqrt(dx * dx + dy * dy),
-        atan2(dy, dx)
+        atan2(dy, dx) - RotateToTop
     };
 }
 
 - (void)setPolarCoordinate:(PolarCoordinate)polar withCenter:(CGPoint)center {
-    CGFloat dx = cos(polar.angle) * polar.radius;
-    CGFloat dy = sin(polar.angle) * polar.radius;
+    CGFloat dx = cos(polar.angle + RotateToTop) * polar.radius;
+    CGFloat dy = sin(polar.angle + RotateToTop) * polar.radius;
 
     self.center = (CGPoint){
         center.x + dx,
@@ -237,29 +243,20 @@ PolarCoordinate PolarCoordinateZero = (PolarCoordinate){0, 0};
     }];
 }
 
-
 - (void)layoutSubviews {
     [super layoutSubviews];
 
     self.centerItem.center = self.center;
     
     if (self.parentItem) {
-        [self layoutMenuItemView:self.parentItem atDistance:400 withAngle:M_PI * 1.7];
+        [self.parentItem setPolarCoordinate:PolarCoordinateMake(350, M_PI * 1.7) withCenter:self.center];
     }
     
     for (MenuItemView *subMenuItem in self.subItems) {
         [subMenuItem sizeToFit];
-        [self layoutMenuItemView:subMenuItem
-                      atDistance:subMenuItem.menuItem.distance
-                       withAngle:subMenuItem.menuItem.angle];
+        MenuModel *menuItem = subMenuItem.menuItem;
+        [subMenuItem setPolarCoordinate:PolarCoordinateMake(menuItem.distance, menuItem.angle) withCenter:self.center];
     }
-}
-
-- (void)layoutMenuItemView:(MenuItemView *)itemView atDistance:(CGFloat)distance withAngle:(CGFloat)angle {
-    CGFloat xOffset = cos(-M_PI / 2 + angle) * distance;
-    CGFloat yOffset = sin(-M_PI / 2 + angle) * distance;
-    
-    itemView.center = CGPointMake(self.center.x + xOffset, self.center.y + yOffset);
 }
 
 - (void)drawRect:(CGRect)rect {
