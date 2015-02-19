@@ -64,6 +64,7 @@
 - (void)updateLayers
 {
     static const CGFloat borderWidth = 2.f;
+    static const CGFloat stepIncompleteScale = 0.8f;
     static const CGFloat stepIncompleteContentScale = 0.1f;
 
     if (self.stepCount == 0) {
@@ -121,22 +122,24 @@
         } else {
             newStepLayer = YES;
             stepLayer = [CMStepLayer layer];
-            stepLayer.borderColor = [UIColor colorWithRed:0.38 green:0.803 blue:0.909 alpha:1].CGColor;
-            stepLayer.borderWidth = borderWidth;
             stepLayer.completeLayer = [CALayer layer];
             stepLayer.completeLayer.contents = (__bridge id)([UIImage imageNamed:@"ic_pagination_checkmark_light.png"].CGImage);
             stepLayer.completeLayer.transform = CATransform3DMakeScale(stepIncompleteContentScale, stepIncompleteContentScale, stepIncompleteContentScale);
             [self.stepsLayer addSublayer:stepLayer];
         }
-        
-        BOOL stepCompleted = (self.completedCount > i);
 
-        stepLayer.backgroundColor = stepCompleted ? stepLayer.borderColor : [UIColor whiteColor].CGColor;
-        stepLayer.bounds = CGRectMake(0.f, 0.f, CGRectGetHeight(bounds), CGRectGetHeight(bounds));
+        BOOL stepCompleted = (self.completedCount > i);
+        BOOL stepActive = (i == self.completedCount);
+        CGFloat stepSize = CGRectGetHeight(bounds) * ((stepCompleted || stepActive) ? 1.f : stepIncompleteScale);
+
+        stepLayer.backgroundColor = (stepCompleted ? [UIColor colorWithRed:0.38 green:0.803 blue:0.909 alpha:1] : [UIColor whiteColor]).CGColor;\
+        stepLayer.borderWidth = (stepCompleted || stepActive) ? borderWidth : (borderWidth/2.f);
+        stepLayer.borderColor = ((stepCompleted || stepActive) ? [UIColor colorWithRed:0.38 green:0.803 blue:0.909 alpha:1] : [UIColor lightGrayColor]).CGColor;
+        stepLayer.bounds = CGRectMake(0.f, 0.f, stepSize, stepSize);
         stepLayer.position = CGPointMake(
                                 CGRectGetMinX(bounds) + stepWidth*i + stepWidth/2.f,
                                 CGRectGetHeight(bounds)/2.f);
-        stepLayer.cornerRadius = CGRectGetHeight(bounds)/2.f;
+        stepLayer.cornerRadius = stepSize/2.f;
         
         stepLayer.completeLayer.bounds = CGRectInset(stepLayer.bounds, borderWidth, borderWidth);
         stepLayer.completeLayer.position = CGPointMake(CGRectGetMidX(stepLayer.bounds), CGRectGetMidY(stepLayer.bounds));
