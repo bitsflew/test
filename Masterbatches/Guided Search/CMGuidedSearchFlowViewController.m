@@ -7,15 +7,12 @@
 //
 
 #import "CMGuidedSearchFlowViewController.h"
-#import "CMGuidedSearchQuestionViewController.h"
 
 static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
 
 @interface CMGuidedSearchFlowViewController ()
 
-@property (nonatomic, weak) UIViewController<CMGuidedSearchQuestionViewController> *questionViewController;
-
-@property (nonatomic, retain) NSMutableArray *questionViewControllers;
+@property (nonatomic, strong) UIViewController<CMGuidedSearchStepViewController> *stepViewController;
 
 @end
 
@@ -27,143 +24,94 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
         return nil;
     }
 
-    self.questionViewControllers = [NSMutableArray new];
+    [self setFlow:[CMGuidedSearchFlow flowNamed:@"Additive"]];
 
     return self;
-}
-
-- (void)setFlow:(CMGuidedSearchFlow*)flow
-{
-    _flow = flow;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self presentQuestionViewController:[CMGuidedSearchSolutionTypeViewController new]]; // TODO! REMOVE!
+    if (self.flow) {
+        [self presentStep:self.flow.firstStep];
+    }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setFlow:(CMGuidedSearchFlow*)flow
+{
+    _flow = flow;
+
+    if (self.isViewLoaded) {
+        [self presentStep:flow.firstStep];
+    }
 }
 
 #pragma mark -
 
-- (NSArray*)futureQuestionViewControllerClasses
+- (void)presentStep:(CMGuidedSearchFlowStep*)step
 {
-    NSMutableArray *classes = [NSMutableArray new];
-
-    Class nextClass = [self.questionViewController.class defaultNextQuestionViewControllerClass];
-
-    if (!nextClass) {
-        nextClass = [self.questionViewController nextQuestionViewControllerClass];
-    }
-
-    while (nextClass) {
-        [classes addObject:nextClass];
-        nextClass = [nextClass defaultNextQuestionViewControllerClass];
-    }
-
-    return classes;
-}
-
-- (Class)defaultOrDeterminedNextQuestionViewControllerClassFrom:(id<CMGuidedSearchQuestionViewController>)viewController
-{
-    Class nextQuestionViewControllerClass = viewController.nextQuestionViewControllerClass;
-    
-    if (!nextQuestionViewControllerClass) {
-        nextQuestionViewControllerClass = [[viewController class] defaultNextQuestionViewControllerClass];
-    }
-
-    return nextQuestionViewControllerClass;
-}
-
-- (void)presentQuestionViewController:(UIViewController<CMGuidedSearchQuestionViewController>*)viewController
-{
-    if (self.questionViewController) {
-        [self.questionViewController removeFromParentViewController];
-        if (self.questionViewController.isViewLoaded) {
-            [self.questionViewController.view removeFromSuperview];
+    if (self.stepViewController) {
+        [self.stepViewController removeFromParentViewController];
+        if (self.stepViewController.isViewLoaded) {
+            [self.stepViewController.view removeFromSuperview];
         }
     }
-
-    NSUInteger currentIndex = [self.questionViewControllers indexOfObjectIdenticalTo:viewController];
-    if (currentIndex != NSNotFound) {
-        [self.questionViewControllers removeObjectAtIndex:currentIndex];
-    }
-
-    self.questionViewController = viewController;
     
-    [viewController setQuestionViewControllerDelegate:self];
+    self.flowProgressView.stepCount = self.flow.stepCount;
+    self.flowProgressView.completedCount = [self.flow numberOfStepsBefore:step];
 
-    [self addChildViewController:viewController];
-    [self.questionViewControllerContainerView addSubview:viewController.view];
-    viewController.view.frame = self.questionViewControllerContainerView.bounds;
-    
-    self.questionViewControllerTitleLabel.text = viewController.title;
+    self.stepViewController = [step.class new];
 
-    [self.questionViewControllers addObject:viewController];
-    
-    NSUInteger futureQuestionCount = [self futureQuestionViewControllerClasses].count;
+    [self.stepViewController setStep:step];
+    [self.stepViewController setStepDelegate:self];
 
-    self.backButton.hidden = self.questionViewControllers.count < 2;
-    self.nextButton.hidden = futureQuestionCount == 0;
+    [self addChildViewController:self.stepViewController];
+    [self.questionViewControllerContainerView addSubview:self.stepViewController.view];
+    self.stepViewController.view.frame = self.questionViewControllerContainerView.bounds;
     
-    self.stepView.stepCount = self.questionViewControllers.count + futureQuestionCount;
-    self.stepView.completedCount = self.questionViewControllers.count - 1;
+    self.questionViewControllerTitleLabel.text = step.title;
+
+//    self.backButton.hidden = self.stepViewControllers.count < 2;
+//    self.nextButton.hidden = futureQuestionCount == 0;
+//    
+//    self.stepView.stepCount = self.stepViewControllers.count + futureQuestionCount;
+//    self.stepView.completedCount = self.stepViewControllers.count - 1;
 }
 
 #pragma mark -
 
 - (IBAction)tappedBack:(id)sender
 {
-    if (self.questionViewControllers.count > 1) {
-        [self.questionViewControllers removeLastObject];
-        [self presentQuestionViewController:self.questionViewControllers.lastObject];
-    }
+//    if (self.stepViewControllers.count > 1) {
+//        [self.stepViewControllers removeLastObject];
+//        [self presentQuestionViewController:self.stepViewControllers.lastObject];
+//    }
 }
 
 - (IBAction)tappedNext:(id)sender
 {
-    NSString *validationError = nil;
-
-    if ([self.questionViewController respondsToSelector:@selector(isQuestionCompleteValidationError:)]
-        && ![self.questionViewController isQuestionCompleteValidationError:&validationError]) {
-        
-        if (validationError) {
-            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"GuidedSearch", nil)
-                                       message:validationError
-                                      delegate:nil
-                             cancelButtonTitle:NSLocalizedString(@"Close", nil)
-                              otherButtonTitles:nil] show];
-        }
-
-        return;
-    }
-
-    Class nextQuestionViewControllerClass
-      = [self defaultOrDeterminedNextQuestionViewControllerClassFrom:self.questionViewController];
-
-    NSAssert(nextQuestionViewControllerClass, @"Next question view controller class known");
-
-    [self presentQuestionViewController:[nextQuestionViewControllerClass new]];
-}
-
-#pragma mark - Question view controller delegate
-
-- (void)questionViewControllerDidChangeNextQuestion:(UIViewController<CMGuidedSearchQuestionViewController> *)questionViewController
-{
-
-}
-
-- (void)questionViewControllerDidCompleteQuestion:(UIViewController<CMGuidedSearchQuestionViewController>*)questionViewController
-{
-    Class nextQuestionViewControllerClass = [self defaultOrDeterminedNextQuestionViewControllerClassFrom:questionViewController];
-    
-    NSAssert(nextQuestionViewControllerClass, @"Next question view controller class known");
-
-    [self presentQuestionViewController:[nextQuestionViewControllerClass new]];
+//    NSString *validationError = nil;
+//
+//    if ([self.questionViewController respondsToSelector:@selector(isQuestionCompleteValidationError:)]
+//        && ![self.questionViewController isQuestionCompleteValidationError:&validationError]) {
+//        
+//        if (validationError) {
+//            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"GuidedSearch", nil)
+//                                       message:validationError
+//                                      delegate:nil
+//                             cancelButtonTitle:NSLocalizedString(@"Close", nil)
+//                              otherButtonTitles:nil] show];
+//        }
+//
+//        return;
+//    }
+//
+//    Class nextQuestionViewControllerClass
+//      = [self defaultOrDeterminedNextQuestionViewControllerClassFrom:self.questionViewController];
+//
+//    NSAssert(nextQuestionViewControllerClass, @"Next question view controller class known");
+//
+//    [self presentQuestionViewController:[nextQuestionViewControllerClass new]];
 }
 
 

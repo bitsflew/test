@@ -74,6 +74,29 @@
     return self;
 }
 
+- (NSUInteger)stepCount
+{
+    return self.steps.count;
+}
+
+- (NSUInteger)numberOfStepsBefore:(CMGuidedSearchFlowStep*)finishStep
+{
+    return [self numberOfStepsBetween:nil and:finishStep];
+}
+
+- (NSUInteger)numberOfStepsBetween:(CMGuidedSearchFlowStep*)firstStep and:(CMGuidedSearchFlowStep*)finishStep
+{
+    CMGuidedSearchFlowStep *step = firstStep ?: self.firstStep;
+    NSUInteger count = 0;
+    while ((step = [self nextStepAfter:step])) {
+        if (step == finishStep) {
+            return count;
+        }
+        count += 1;
+    }
+    return 0; // step not found
+}
+
 - (CMGuidedSearchFlowStep*)firstStep
 {
     return self.steps.firstObject;

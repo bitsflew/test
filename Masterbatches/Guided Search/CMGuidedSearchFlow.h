@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CMProductSpecification.h"
 
-@interface CMGuidedSearchFlowStep: NSObject
+@interface CMGuidedSearchFlowStep : NSObject
 
 @property (nonatomic, retain) Class viewControllerClass;
 @property (nonatomic, copy) NSString *title;
@@ -20,10 +20,14 @@
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, retain) CMProductSpecification* productSpecification;
+@property (nonatomic, readonly) NSUInteger stepCount;
 
 + (CMGuidedSearchFlow*)flowNamed:(NSString*)name;
 
 - (id)initWithContentsOfFile:(NSString*)path;
+
+- (NSUInteger)numberOfStepsBefore:(CMGuidedSearchFlowStep*)finishStep;
+- (NSUInteger)numberOfStepsBetween:(CMGuidedSearchFlowStep*)firstStep and:(CMGuidedSearchFlowStep*)finishStep;
 
 - (CMGuidedSearchFlowStep*)firstStep;
 - (CMGuidedSearchFlowStep*)nextStepAfter:(CMGuidedSearchFlowStep*)step;
