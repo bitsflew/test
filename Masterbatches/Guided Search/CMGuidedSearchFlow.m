@@ -17,7 +17,7 @@
 
 @implementation CMGuidedSearchFlowStep
 
-- (id)initWithDictionary:(NSDictionary*)dictionary
+- (id)initWithDictionary:(NSDictionary*)dictionary productSpecification:(CMProductSpecification*)productSpecification
 {
     if (!(self = [super init])) {
         return nil;
@@ -31,6 +31,8 @@
 
     self.viewControllerClass = NSClassFromString(className);
 
+    self.productSpecification = productSpecification;
+
     return self;
 }
 
@@ -39,6 +41,7 @@
 @interface CMGuidedSearchFlow ()
 
 @property (nonatomic, retain) NSArray *steps;
+@property (nonatomic, readwrite, retain) CMProductSpecification* productSpecification;
 
 - (id)initWithDictionary:(NSDictionary*)dictionary;
 
@@ -69,7 +72,8 @@
     self.title = dictionary[@"Title"];
     self.steps = [NSMutableArray new];
     for (NSDictionary *stepDictionary in dictionary[@"Steps"]) {
-        [((NSMutableArray*)self.steps) addObject:[[CMGuidedSearchFlowStep alloc] initWithDictionary:stepDictionary]];
+        [((NSMutableArray*)self.steps) addObject:[[CMGuidedSearchFlowStep alloc] initWithDictionary:stepDictionary
+                                                                               productSpecification:self.productSpecification]];
     }
     return self;
 }

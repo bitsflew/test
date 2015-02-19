@@ -8,13 +8,42 @@
 
 #import "CMProductSpecification.h"
 
+@implementation CMProductSpecificationSimpleNamedAttribute
+
+- (id)initWithName:(NSString *)name
+{
+    if (!(self = [super init])) {
+        return nil;
+    }
+    self.name = name;
+    return self;
+}
+
+- (BOOL)isEqual:(id)object
+{
+    if (self == object) {
+        return YES;
+    }
+
+    if (![object isKindOfClass:[self class]]) {
+        return NO;
+    }
+
+    return [self hash] == [object hash];
+}
+
+- (NSUInteger)hash
+{
+    return self.name.hash;
+}
+
+@end
+
 @implementation CMProductSpecificationAdditive
 
 + (instancetype)additiveWithName:(NSString*)name
 {
-    CMProductSpecificationAdditive *additive = [CMProductSpecificationAdditive new];
-    additive.name = name;
-    return additive;
+    return [[CMProductSpecificationAdditive alloc] initWithName:name];
 }
 
 @end
@@ -23,9 +52,7 @@
 
 + (instancetype)resinWithName:(NSString*)name
 {
-    CMProductSpecificationResin *resin = [CMProductSpecificationResin new];
-    resin.name = name;
-    return resin;
+    return [[CMProductSpecificationResin alloc] initWithName:name];
 }
 
 @end

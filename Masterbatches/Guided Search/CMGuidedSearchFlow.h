@@ -13,13 +13,14 @@
 
 @property (nonatomic, retain) Class viewControllerClass;
 @property (nonatomic, copy) NSString *title;
+@property (nonatomic, retain) CMProductSpecification* productSpecification;
 
 @end
 
 @interface CMGuidedSearchFlow : NSObject
 
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, retain) CMProductSpecification* productSpecification;
+@property (nonatomic, readonly, retain) CMProductSpecification* productSpecification;
 @property (nonatomic, readonly) NSUInteger stepCount;
 
 + (CMGuidedSearchFlow*)flowNamed:(NSString*)name;

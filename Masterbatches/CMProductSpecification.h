@@ -8,15 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CMProductSpecificationAdditive : NSObject
+@interface CMProductSpecificationSimpleNamedAttribute : NSObject // provides hash and equals: implementations
 
 @property (nonatomic, copy) NSString *name;
+
+- (id)initWithName:(NSString*)name;
+
+@end
+
+@interface CMProductSpecificationAdditive : CMProductSpecificationSimpleNamedAttribute
 
 + (instancetype)additiveWithName:(NSString*)name;
 
 @end
 
-@interface CMProductSpecificationResin : NSObject
+@interface CMProductSpecificationResin : CMProductSpecificationSimpleNamedAttribute
 
 @property (nonatomic, copy) NSString *name;
 
@@ -27,5 +33,6 @@
 @interface CMProductSpecification : NSObject
 
 @property (nonatomic, retain) NSArray *additives; // <CMProductSpecificationAdditive>
+@property (nonatomic, retain) NSArray *resins;    // <CMProductSpecificationResin>
 
 @end

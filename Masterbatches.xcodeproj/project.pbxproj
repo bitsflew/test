@@ -40,7 +40,6 @@
 		4457F4881A94A963002FF4F5 /* NSString+Morphing.m in Sources */ = {isa = PBXBuildFile; fileRef = 4457F4851A94A963002FF4F5 /* NSString+Morphing.m */; };
 		4457F4891A94A963002FF4F5 /* TOMSMorphingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4457F4871A94A963002FF4F5 /* TOMSMorphingLabel.m */; };
 		44E9E53F1A95E58F0028B01F /* CMGuidedSearchFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E9E53E1A95E58F0028B01F /* CMGuidedSearchFlow.m */; };
-		44E9E5451A95EED70028B01F /* CMGuidedSearchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E9E5441A95EED70028B01F /* CMGuidedSearchRequest.m */; };
 		44E9E5491A96231E0028B01F /* Additive.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44E9E5481A96231E0028B01F /* Additive.plist */; };
 		44E9E54B1A9623790028B01F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 443366AF1A923349002DD5F5 /* LaunchScreen.xib */; };
 		44E9E54C1A9623920028B01F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 443366DC1A923DE9002DD5F5 /* Localizable.strings */; };
@@ -117,8 +116,6 @@
 		4457F4871A94A963002FF4F5 /* TOMSMorphingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOMSMorphingLabel.m; sourceTree = "<group>"; };
 		44E9E53D1A95E58F0028B01F /* CMGuidedSearchFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchFlow.h; sourceTree = "<group>"; };
 		44E9E53E1A95E58F0028B01F /* CMGuidedSearchFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchFlow.m; sourceTree = "<group>"; };
-		44E9E5431A95EED70028B01F /* CMGuidedSearchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchRequest.h; sourceTree = "<group>"; };
-		44E9E5441A95EED70028B01F /* CMGuidedSearchRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchRequest.m; sourceTree = "<group>"; };
 		44E9E5461A9616880028B01F /* CMGuidedSearchStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchStepViewController.h; sourceTree = "<group>"; };
 		44E9E5481A96231E0028B01F /* Additive.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Additive.plist; sourceTree = "<group>"; };
 		4B2EDFA61A93994F007E0493 /* MenuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuModel.h; sourceTree = "<group>"; };
@@ -251,8 +248,6 @@
 		443366C81A92395E002DD5F5 /* Guided Search */ = {
 			isa = PBXGroup;
 			children = (
-				44E9E5431A95EED70028B01F /* CMGuidedSearchRequest.h */,
-				44E9E5441A95EED70028B01F /* CMGuidedSearchRequest.m */,
 				44E9E53D1A95E58F0028B01F /* CMGuidedSearchFlow.h */,
 				44E9E53E1A95E58F0028B01F /* CMGuidedSearchFlow.m */,
 				443366CA1A9239CE002DD5F5 /* CMGuidedSearchFlowViewController.h */,
@@ -462,7 +457,6 @@
 			files = (
 				441470AE1A93465200131077 /* CMGuidedSearchResinTypeViewController.m in Sources */,
 				4457F47C1A949CC6002FF4F5 /* CMGuidedSearchFlowProgressView.m in Sources */,
-				44E9E5451A95EED70028B01F /* CMGuidedSearchRequest.m in Sources */,
 				443366CD1A9239CE002DD5F5 /* CMGuidedSearchFlowViewController.m in Sources */,
 				441470B81A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.m in Sources */,
 				4457F4881A94A963002FF4F5 /* NSString+Morphing.m in Sources */,

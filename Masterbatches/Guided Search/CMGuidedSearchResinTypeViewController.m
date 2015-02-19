@@ -49,6 +49,8 @@
        [CMProductSpecificationResin resinWithName:@"PEEK"],
        [CMProductSpecificationResin resinWithName:@"TPO"],
        [CMProductSpecificationResin resinWithName:@"PLA"] ];
+
+    [self.gridSelectionView selectItems:self.step.productSpecification.resins animated:YES];
 }
 
 - (BOOL)completeStepWithValidationError:(NSString *__autoreleasing *)errorDescription
@@ -57,6 +59,8 @@
         *errorDescription = NSLocalizedString(@"MustSpecifyResin", nil);
         return NO;
     }
+    
+    self.step.productSpecification.resins = self.gridSelectionView.selectedItems;
 
     return YES;
 }

@@ -64,6 +64,8 @@
        [CMProductSpecificationAdditive additiveWithName:@"Photo degradable"],
        [CMProductSpecificationAdditive additiveWithName:@"Process support"],
        [CMProductSpecificationAdditive additiveWithName:@"PV-stabilizer"] ];
+    
+    [self.gridSelectionView selectItems:self.step.productSpecification.additives animated:YES];
 }
 
 - (BOOL)completeStepWithValidationError:(NSString**)errorDescription
@@ -72,6 +74,8 @@
         *errorDescription = NSLocalizedString(@"MustSpecifyAdditive", nil);
         return NO;
     }
+
+    self.step.productSpecification.additives = self.gridSelectionView.selectedItems;
 
     return YES;
 }
