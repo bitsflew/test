@@ -13,6 +13,42 @@
 
 typedef void (^MenuItemSelectHandler)(MenuItemView *);
 
+typedef struct {
+    CGFloat radius;
+    CGFloat angle;
+} PolarCoordinate;
+
+PolarCoordinate PolarCoordinateZero = (PolarCoordinate){0, 0};
+
+@interface UIView (Polar)
+- (void)setPolarCoordinate:(PolarCoordinate)polar withCenter:(CGPoint)center;
+- (PolarCoordinate)polarCoordinateWithCenter:(CGPoint)center;
+@end
+
+@implementation UIView (Polar)
+
+- (PolarCoordinate)polarCoordinateWithCenter:(CGPoint)center {
+    CGFloat dx = self.center.x - center.x;
+    CGFloat dy = self.center.y - center.y;
+
+    return (PolarCoordinate){
+        sqrt(dx * dx + dy * dy),
+        atan2(dy, dx)
+    };
+}
+
+- (void)setPolarCoordinate:(PolarCoordinate)polar withCenter:(CGPoint)center {
+    CGFloat dx = cos(polar.angle) * polar.radius;
+    CGFloat dy = sin(polar.angle) * polar.radius;
+
+    self.center = (CGPoint){
+        center.x + dx,
+        center.y + dy
+    };
+}
+
+@end
+
 @interface MenuItemView : UIView
 + (instancetype)viewForMenuItem:(MenuModel *)item;
 @property (nonatomic, assign) CGFloat value;
@@ -118,7 +154,8 @@ typedef void (^MenuItemSelectHandler)(MenuItemView *);
     if (self.menu == nil) self.menu = [MenuModel readMenuFromFile];
 
     if (self.centerItem == nil) {
-        self.centerItem = [MenuItemView viewForMenuItem:self.menu];
+        self.centerItem = [self createViewForMenuItem:self.menu];
+        [self.centerItem setPolarCoordinate:PolarCoordinateZero withCenter:self.center];
         [self addSubview:self.centerItem];
     }
     
@@ -127,41 +164,11 @@ typedef void (^MenuItemSelectHandler)(MenuItemView *);
     self.subItems = [NSMutableArray arrayWithCapacity:self.menu.subMenuItems.count];
     
     for (MenuModel *item in self.menu.subMenuItems) {
-        MenuItemView *itemView = [MenuItemView viewForMenuItem:item];
+        MenuItemView *itemView = [self createViewForMenuItem:item];
+        [itemView setPolarCoordinate:PolarCoordinateZero withCenter:self.centerItem.center];
         itemView.value = 0.2;
         [self.subItems addObject:itemView];
         [self insertSubview:itemView belowSubview:self.centerItem];
-        
-        itemView.menuItemSelectHandler = ^(MenuItemView *itemView) {
-            if (itemView.menuItem.action.length) {
-                if (self.menuActionHandler) self.menuActionHandler(itemView.menuItem.action);
-            }
-            
-            self.menu = itemView.menuItem;
-            self.parentItem = self.centerItem;
-            self.centerItem = itemView;
-            
-            [self createSubviews];
-//            
-//            [self.subItems removeObject:self.centerItem];
-//            [self.subItems makeObjectsPerformSelector:@selector(removeFromSuperview)];
-//            [self.subItems removeAllObjects];
-//            
-//            for (MenuModel *item in self.menu.subMenuItems) {
-//                MenuItemView *itemView = [MenuItemView viewForMenuItem:item];
-//                itemView.value = 0.2;
-//                [self.subItems addObject:itemView];
-//                [self insertSubview:itemView belowSubview:self.centerItem];
-//            }
-//            
-//            self.parentItem.value = 0.2;
-//            self.centerItem.value = 0.2;
-//            
-//            [UIView animateWithDuration:0.5 animations:^{
-//                [self layoutSubviews];
-//            }];
-            
-        };
     }
     
     CGFloat interval = 1;
@@ -181,6 +188,55 @@ typedef void (^MenuItemSelectHandler)(MenuItemView *);
 //    dispatch_resume(timer);
 
 }
+
+- (MenuItemView *)createViewForMenuItem:(MenuModel *)menuItem {
+    MenuItemView *itemView = [MenuItemView viewForMenuItem:menuItem];
+    itemView.menuItemSelectHandler = ^(MenuItemView *itemView) {
+        [self selectMenuItem:itemView];
+    };
+    return itemView;
+}
+
+- (void)selectMenuItem:(MenuItemView *)itemView {
+    if (itemView.menuItem.action.length) {
+        if (self.menuActionHandler) self.menuActionHandler(itemView.menuItem.action);
+        return;
+    }
+
+    if ([itemView isEqual:self.centerItem]) {
+        return;
+    }
+    
+    if ([itemView isEqual:self.parentItem]) {
+        self.parentItem = nil; // Help!
+        
+        
+    } else if ([self.subItems containsObject:itemView]) {
+        self.parentItem = self.centerItem;
+        
+        [self.subItems removeObject:itemView];
+    }
+    
+    self.menu = itemView.menuItem;
+    self.centerItem = itemView;
+    
+    NSArray *subItems = self.subItems;
+    
+    [self createSubviews];
+    [UIView animateWithDuration:0.5 animations:^{
+        [self layoutSubviews];
+    }];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        for (MenuItemView *item in subItems) {
+            [item setPolarCoordinate:PolarCoordinateZero withCenter:self.parentItem.center];
+            item.alpha = 0;
+        }
+    } completion:^(BOOL finished) {
+        [subItems makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    }];
+}
+
 
 - (void)layoutSubviews {
     [super layoutSubviews];
@@ -221,9 +277,11 @@ typedef void (^MenuItemSelectHandler)(MenuItemView *);
     }
     
     for (MenuItemView *item in items) {
-        CGPoint pos = [(CALayer *)item.layer.presentationLayer position];
-        CGContextMoveToPoint(context, self.center.x, self.center.y);
-        CGContextAddLineToPoint(context, pos.x, pos.y);
+        CALayer *itemLayer = (CALayer *)item.layer.presentationLayer;
+        CALayer *centerItemLayer = (CALayer *)self.centerItem.layer.presentationLayer;
+        
+        CGContextMoveToPoint(context, centerItemLayer.position.x, centerItemLayer.position.y);
+        CGContextAddLineToPoint(context, itemLayer.position.x, itemLayer.position.y);
     }
     
     CGContextStrokePath(context);
