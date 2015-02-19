@@ -15,28 +15,4 @@
 
 @implementation CMGuidedSearchProductTypeViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    if (!(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
-        return nil;
-    }
-    self.title = NSLocalizedString(@"ProductType", "");
-    return self;
-}
-
-+ (NSString*)questionMenuTitle
-{
-    return NSLocalizedString(@"ProductType", "");
-}
-
-+ (Class)defaultNextQuestionViewControllerClass
-{
-    return [CMGuidedSearchTemperatureThicknessViewController class];
-}
-
-- (Class)nextQuestionViewControllerClass
-{
-    return nil;
-}
-
 @end

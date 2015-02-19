@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CMGuidedSearchStepView : UIView
+@interface CMGuidedSearchFlowProgressView : UIView
 
 @property (nonatomic) NSUInteger stepCount;
 @property (nonatomic) NSUInteger completedCount;

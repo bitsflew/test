@@ -28,15 +28,6 @@
 
 @implementation CMGuidedSearchAdditiveFunctionalityViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    if (!(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
-        return nil;
-    }
-    self.title = NSLocalizedString(@"AdditiveFunctionality", "");
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -75,28 +66,13 @@
        [CMProductSpecificationAdditive additiveWithName:@"PV-stabilizer"] ];
 }
 
-+ (NSString*)questionMenuTitle
-{
-    return NSLocalizedString(@"AdditiveFunctionality", "");
-}
-
-+ (Class)defaultNextQuestionViewControllerClass
-{
-    return [CMGuidedSearchResinTypeViewController class];
-}
-
-- (Class)nextQuestionViewControllerClass
-{
-    return nil;
-}
-
-- (BOOL)isQuestionCompleteValidationError:(NSString *__autoreleasing *)validationError
+- (BOOL)completeStepWithValidationError:(NSString**)errorDescription
 {
     if (self.gridSelectionView.selectedItems.count == 0) {
-        *validationError = NSLocalizedString(@"MustSpecifyAdditive", nil);
+        *errorDescription = NSLocalizedString(@"MustSpecifyAdditive", nil);
         return NO;
     }
-    
+
     return YES;
 }
 

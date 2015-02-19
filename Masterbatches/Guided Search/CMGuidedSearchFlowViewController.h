@@ -8,18 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-#import "CMGuidedSearchSolutionTypeViewController.h"
+#import "CMGuidedSearchStepViewController.h"
 #import "CMProductSpecification.h"
-#import "CMGuidedSearchStepView.h"
+#import "CMGuidedSearchFlowProgressView.h"
+#import "CMGuidedSearchFlow.h"
 
-@interface CMGuidedSearchMainViewController : UIViewController <CMGuidedSearchQuestionViewControllerDelegate>
+@interface CMGuidedSearchFlowViewController : UIViewController <CMGuidedSearchStepViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UIView *questionViewControllerContainerView;
 @property (nonatomic, weak) IBOutlet UILabel *questionViewControllerTitleLabel;
 @property (nonatomic, weak) IBOutlet UIButton *backButton;
 @property (nonatomic, weak) IBOutlet UIButton *nextButton;
-@property (nonatomic, weak) IBOutlet CMGuidedSearchStepView * stepView;
+@property (nonatomic, weak) IBOutlet CMGuidedSearchFlowProgressView *flowProgressView;
 
-@property (nonatomic, strong) CMProductSpecification *productSpecification;
+@property (nonatomic, strong) CMGuidedSearchFlow *flow;
 
 @end

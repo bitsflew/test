@@ -6,10 +6,11 @@
 //  Copyright (c) 2015 Clariant. All rights reserved.
 //
 
-#import "CMGuidedSearchQuestionViewController.h"
+#import "CMGuidedSearchStepViewController.h"
 
-@interface CMGuidedSearchTemperatureThicknessViewController : UIViewController <CMGuidedSearchQuestionViewController>
+@interface CMGuidedSearchTemperatureThicknessViewController : UIViewController <CMGuidedSearchStepViewController>
 
-@property (nonatomic, weak) id<CMGuidedSearchQuestionViewControllerDelegate> questionViewControllerDelegate;
+@property (nonatomic, strong) CMGuidedSearchFlowStep *step;
+@property (nonatomic, weak) id<CMGuidedSearchStepViewControllerDelegate> stepDelegate;
 
 @end

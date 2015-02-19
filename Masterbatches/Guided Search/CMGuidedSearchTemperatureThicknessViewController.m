@@ -14,29 +14,4 @@
 
 @implementation CMGuidedSearchTemperatureThicknessViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    if (!(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
-        return nil;
-    }
-    self.title = NSLocalizedString(@"TemperatureThickness", "");
-    return self;
-}
-
-+ (NSString*)questionMenuTitle
-{
-    return NSLocalizedString(@"TemperatureThickness", "");
-}
-
-+ (Class)defaultNextQuestionViewControllerClass
-{
-    return nil;
-}
-
-- (Class)nextQuestionViewControllerClass
-{
-    return nil;
-}
-
-
 @end

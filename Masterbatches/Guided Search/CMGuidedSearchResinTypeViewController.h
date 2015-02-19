@@ -6,13 +6,14 @@
 //  Copyright (c) 2015 Clariant. All rights reserved.
 //
 
-#import "CMGuidedSearchQuestionViewController.h"
+#import "CMGuidedSearchStepViewController.h"
 #import "CMGuidedSearchGridSelectionView.h"
 
-@interface CMGuidedSearchResinTypeViewController : UIViewController <CMGuidedSearchQuestionViewController>
-
-@property (nonatomic, weak) id<CMGuidedSearchQuestionViewControllerDelegate> questionViewControllerDelegate;
+@interface CMGuidedSearchResinTypeViewController : UIViewController <CMGuidedSearchStepViewController>
 
 @property (nonatomic, weak) IBOutlet CMGuidedSearchGridSelectionView *gridSelectionView;
+
+@property (nonatomic, strong) CMGuidedSearchFlowStep *step;
+@property (nonatomic, weak) id<CMGuidedSearchStepViewControllerDelegate> stepDelegate;
 
 @end
