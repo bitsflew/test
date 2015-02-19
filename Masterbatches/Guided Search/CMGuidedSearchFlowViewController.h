@@ -20,6 +20,7 @@
 @property (nonatomic, weak) IBOutlet UIButton *backButton;
 @property (nonatomic, weak) IBOutlet UIButton *nextButton;
 @property (nonatomic, weak) IBOutlet CMGuidedSearchFlowProgressView *flowProgressView;
+@property (weak, nonatomic) IBOutlet UIButton *menuButton;
 
 @property (nonatomic, strong) CMGuidedSearchFlow *flow;
 

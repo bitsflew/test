@@ -120,6 +120,10 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
     [self presentNextStep];
 }
 
+- (IBAction)showMenu:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark -
 
 - (void)stepViewControllerDidCompleteStep:(id<CMGuidedSearchStepViewController>)stepViewController
