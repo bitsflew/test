@@ -31,5 +31,6 @@
 
 - (CMGuidedSearchFlowStep*)firstStep;
 - (CMGuidedSearchFlowStep*)nextStepAfter:(CMGuidedSearchFlowStep*)step;
+- (CMGuidedSearchFlowStep*)previousStepBefore:(CMGuidedSearchFlowStep*)step;
 
 @end

@@ -13,10 +13,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CMGuidedSearchFlowViewController">
             <connections>
                 <outlet property="backButton" destination="B4N-V8-SJB" id="bYk-tO-GtT"/>
+                <outlet property="flowProgressView" destination="Q1d-J0-WaX" id="PYZ-SB-feA"/>
                 <outlet property="nextButton" destination="0s3-dU-3c6" id="ine-cL-lzY"/>
                 <outlet property="questionViewControllerContainerView" destination="VWH-Un-ZpZ" id="rDX-DH-aD2"/>
                 <outlet property="questionViewControllerTitleLabel" destination="wRK-Kl-oOk" id="mfw-pR-E1s"/>
-                <outlet property="stepView" destination="Q1d-J0-WaX" id="Yxc-kN-jO1"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

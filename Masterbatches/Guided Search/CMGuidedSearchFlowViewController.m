@@ -57,10 +57,7 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
         }
     }
     
-    self.flowProgressView.stepCount = self.flow.stepCount;
-    self.flowProgressView.completedCount = [self.flow numberOfStepsBefore:step];
-
-    self.stepViewController = [step.class new];
+    self.stepViewController = [step.viewControllerClass new];
 
     [self.stepViewController setStep:step];
     [self.stepViewController setStepDelegate:self];
@@ -68,50 +65,66 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
     [self addChildViewController:self.stepViewController];
     [self.questionViewControllerContainerView addSubview:self.stepViewController.view];
     self.stepViewController.view.frame = self.questionViewControllerContainerView.bounds;
+    self.stepViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     
     self.questionViewControllerTitleLabel.text = step.title;
+    
+    self.flowProgressView.stepCount = self.flow.stepCount;
+    self.flowProgressView.completedCount = [self.flow numberOfStepsBefore:step];
 
-//    self.backButton.hidden = self.stepViewControllers.count < 2;
-//    self.nextButton.hidden = futureQuestionCount == 0;
-//    
-//    self.stepView.stepCount = self.stepViewControllers.count + futureQuestionCount;
-//    self.stepView.completedCount = self.stepViewControllers.count - 1;
+    self.backButton.hidden = self.flowProgressView.completedCount == 0;
+    self.nextButton.hidden = self.flowProgressView.completedCount >= self.flowProgressView.stepCount;
+}
+
+- (void)presentPreviousStep
+{
+    CMGuidedSearchFlowStep *previousStep = [self.flow previousStepBefore:[self.stepViewController step]];
+    if (!previousStep) {
+        return;
+    }
+    [self presentStep:previousStep];
+}
+
+- (void)presentNextStep
+{
+    CMGuidedSearchFlowStep *nextStep = [self.flow nextStepAfter:[self.stepViewController step]];
+    if (!nextStep) {
+        return;
+    }
+    [self presentStep:nextStep];
 }
 
 #pragma mark -
 
 - (IBAction)tappedBack:(id)sender
 {
-//    if (self.stepViewControllers.count > 1) {
-//        [self.stepViewControllers removeLastObject];
-//        [self presentQuestionViewController:self.stepViewControllers.lastObject];
-//    }
+    [self presentPreviousStep];
 }
 
 - (IBAction)tappedNext:(id)sender
 {
-//    NSString *validationError = nil;
-//
-//    if ([self.questionViewController respondsToSelector:@selector(isQuestionCompleteValidationError:)]
-//        && ![self.questionViewController isQuestionCompleteValidationError:&validationError]) {
-//        
-//        if (validationError) {
-//            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"GuidedSearch", nil)
-//                                       message:validationError
-//                                      delegate:nil
-//                             cancelButtonTitle:NSLocalizedString(@"Close", nil)
-//                              otherButtonTitles:nil] show];
-//        }
-//
-//        return;
-//    }
-//
-//    Class nextQuestionViewControllerClass
-//      = [self defaultOrDeterminedNextQuestionViewControllerClassFrom:self.questionViewController];
-//
-//    NSAssert(nextQuestionViewControllerClass, @"Next question view controller class known");
-//
-//    [self presentQuestionViewController:[nextQuestionViewControllerClass new]];
+    NSString *validationError = nil;
+
+    if ([self.stepViewController respondsToSelector:@selector(completeStepWithValidationError:)]
+        && ![self.stepViewController completeStepWithValidationError:&validationError]) {
+        if (validationError) {
+            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"GuidedSearch", nil)
+                                       message:validationError
+                                      delegate:nil
+                             cancelButtonTitle:NSLocalizedString(@"Close", nil)
+                              otherButtonTitles:nil] show];
+        }
+        return;
+    }
+
+    [self presentNextStep];
+}
+
+#pragma mark -
+
+- (void)stepViewControllerDidCompleteStep:(id<CMGuidedSearchStepViewController>)stepViewController
+{
+    [self presentNextStep];
 }
 
 

@@ -28,15 +28,6 @@
 
 @implementation CMGuidedSearchResinTypeViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    if (!(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
-        return nil;
-    }
-    self.title = NSLocalizedString(@"ResinType", "");
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -60,25 +51,10 @@
        [CMProductSpecificationResin resinWithName:@"PLA"] ];
 }
 
-+ (NSString*)questionMenuTitle
-{
-    return NSLocalizedString(@"ResinType", "");
-}
-
-+ (Class)defaultNextQuestionViewControllerClass
-{
-    return [CMGuidedSearchProductTypeViewController class];
-}
-
-- (Class)nextQuestionViewControllerClass
-{
-    return nil;
-}
-
-- (BOOL)isQuestionCompleteValidationError:(NSString *__autoreleasing *)validationError
+- (BOOL)completeStepWithValidationError:(NSString *__autoreleasing *)errorDescription
 {
     if (self.gridSelectionView.selectedItems.count == 0) {
-        *validationError = NSLocalizedString(@"MustSpecifyResin", nil);
+        *errorDescription = NSLocalizedString(@"MustSpecifyResin", nil);
         return NO;
     }
 

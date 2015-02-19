@@ -23,11 +23,11 @@
         return nil;
     }
 
-    self.title = dictionary[@"title"];
+    self.title = dictionary[@"Title"];
     
-    NSString *className = [dictionary[@"class"] hasSuffix:@"ViewController"]
-      ? dictionary[@"class"]
-      : [NSString stringWithFormat:@"CMGuidedSearch%@ViewController", dictionary[@"class"]];
+    NSString *className = [dictionary[@"Class"] hasSuffix:@"ViewController"]
+      ? dictionary[@"Class"]
+      : [NSString stringWithFormat:@"CMGuidedSearch%@ViewController", dictionary[@"Class"]];
 
     self.viewControllerClass = NSClassFromString(className);
 
@@ -66,9 +66,9 @@
         return nil;
     }
     self.productSpecification = [CMProductSpecification new];
-    self.title = dictionary[@"title"];
+    self.title = dictionary[@"Title"];
     self.steps = [NSMutableArray new];
-    for (NSDictionary *stepDictionary in dictionary[@"steps"]) {
+    for (NSDictionary *stepDictionary in dictionary[@"Steps"]) {
         [((NSMutableArray*)self.steps) addObject:[[CMGuidedSearchFlowStep alloc] initWithDictionary:stepDictionary]];
     }
     return self;
@@ -89,10 +89,10 @@
     CMGuidedSearchFlowStep *step = firstStep ?: self.firstStep;
     NSUInteger count = 0;
     while ((step = [self nextStepAfter:step])) {
+        count += 1;
         if (step == finishStep) {
             return count;
         }
-        count += 1;
     }
     return 0; // step not found
 }
@@ -107,6 +107,12 @@
     // TODO: This can incorporate logic for search request properties, for example in additive steps
     NSUInteger index = [self.steps indexOfObjectIdenticalTo:step];
     return ((index != NSNotFound) && (index < self.steps.count-1)) ? self.steps[index+1] : nil;
+}
+
+- (CMGuidedSearchFlowStep*)previousStepBefore:(CMGuidedSearchFlowStep*)step
+{
+    NSUInteger index = [self.steps indexOfObjectIdenticalTo:step];
+    return (index == 0) ? nil : self.steps[index-1];
 }
 
 @end
