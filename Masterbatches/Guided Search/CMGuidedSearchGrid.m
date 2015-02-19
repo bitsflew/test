@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Clariant. All rights reserved.
 //
 
-#import "CMGuidedSearchGridSelectionView.h"
+#import "CMGuidedSearchGrid.h"
 
 static NSString *CMGuidedSearchGridSelectionItemRoundedCellIdentifier = @"CMGuidedSearchGridSelectionItemRoundedCell";
 static NSUInteger CMGuidedSearchGridSelectionItemCellTitleTag = 100;
@@ -65,11 +65,11 @@ static NSUInteger CMGuidedSearchGridSelectionItemCellTitleTag = 100;
 
 @end
 
-@interface CMGuidedSearchGridSelectionView () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface CMGuidedSearchGrid () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @end
 
-@implementation CMGuidedSearchGridSelectionView
+@implementation CMGuidedSearchGrid
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -157,13 +157,23 @@ static NSUInteger CMGuidedSearchGridSelectionItemCellTitleTag = 100;
     [collectionView dequeueReusableCellWithReuseIdentifier:CMGuidedSearchGridSelectionItemRoundedCellIdentifier
                                               forIndexPath:indexPath];
 
-    id<CMGuidedSearchGridSelectionItem> item = self.items[indexPath.row];
+    id<CMGuidedSearchGridItem> item = self.items[indexPath.row];
 
     ((UILabel*)[cell viewWithTag:CMGuidedSearchGridSelectionItemCellTitleTag]).text = [item title];
     
-//    cell.alpha = (cell.isSelected || cell.isHighlighted) ? 1.f : 0.3f;
-    
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    id<CMGuidedSearchGridItem> item = self.items[indexPath.row];
+    [self.selectionDelegate guidedSearchGrid:self didSelectItem:item];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    id<CMGuidedSearchGridItem> item = self.items[indexPath.row];
+    [self.selectionDelegate guidedSearchGrid:self didDeselectItem:item];
 }
 
 

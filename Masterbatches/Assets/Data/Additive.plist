@@ -10,13 +10,13 @@
 			<key>Class</key>
 			<string>AdditiveFunctionality</string>
 			<key>Title</key>
-			<string>Additive functionality</string>
+			<string>Select your additive functionality</string>
 		</dict>
 		<dict>
 			<key>Class</key>
 			<string>ResinType</string>
 			<key>Title</key>
-			<string>Resin type</string>
+			<string>What is your resin type?</string>
 		</dict>
 		<dict>
 			<key>Class</key>

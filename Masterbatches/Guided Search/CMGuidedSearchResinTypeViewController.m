@@ -9,7 +9,7 @@
 #import "CMGuidedSearchResinTypeViewController.h"
 #import "CMGuidedSearchProductTypeViewController.h"
 
-@interface CMProductSpecificationResin (Item) <CMGuidedSearchGridSelectionItem>
+@interface CMProductSpecificationResin (Item) <CMGuidedSearchGridItem>
 
 @end
 
@@ -55,14 +55,25 @@
 
 - (BOOL)completeStepWithValidationError:(NSString *__autoreleasing *)errorDescription
 {
-    if (self.gridSelectionView.selectedItems.count == 0) {
+    if (self.step.productSpecification.resins.count == 0) {
         *errorDescription = NSLocalizedString(@"MustSpecifyResin", nil);
         return NO;
     }
-    
-    self.step.productSpecification.resins = self.gridSelectionView.selectedItems;
 
     return YES;
 }
+
+#pragma mark -
+
+- (void)guidedSearchGrid:(CMGuidedSearchGrid*)guidedSearchGrid didSelectItem:(id<CMGuidedSearchGridItem>)item
+{
+    self.step.productSpecification.resins = self.gridSelectionView.selectedItems;
+}
+
+- (void)guidedSearchGrid:(CMGuidedSearchGrid*)guidedSearchGrid didDeselectItem:(id<CMGuidedSearchGridItem>)item
+{
+    self.step.productSpecification.resins = self.gridSelectionView.selectedItems;
+}
+
 
 @end

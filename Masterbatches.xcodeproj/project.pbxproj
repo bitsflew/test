@@ -20,7 +20,7 @@
 		441470B41A9346FC00131077 /* CMGuidedSearchProductTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 441470B21A9346FC00131077 /* CMGuidedSearchProductTypeViewController.xib */; };
 		441470B81A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 441470B61A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.m */; };
 		441470B91A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 441470B71A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.xib */; };
-		441470BD1A93588000131077 /* CMGuidedSearchGridSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 441470BC1A93588000131077 /* CMGuidedSearchGridSelectionView.m */; };
+		441470BD1A93588000131077 /* CMGuidedSearchGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 441470BC1A93588000131077 /* CMGuidedSearchGrid.m */; };
 		441470BF1A93599100131077 /* CMGuidedSearchGridSelectionItemRoundedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 441470BE1A93599100131077 /* CMGuidedSearchGridSelectionItemRoundedCell.xib */; };
 		443366A01A923349002DD5F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4433669F1A923349002DD5F5 /* main.m */; };
 		443366A31A923349002DD5F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 443366A21A923349002DD5F5 /* AppDelegate.m */; };
@@ -78,8 +78,8 @@
 		441470B51A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchTemperatureThicknessViewController.h; sourceTree = "<group>"; };
 		441470B61A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchTemperatureThicknessViewController.m; sourceTree = "<group>"; };
 		441470B71A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMGuidedSearchTemperatureThicknessViewController.xib; sourceTree = "<group>"; };
-		441470BB1A93588000131077 /* CMGuidedSearchGridSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchGridSelectionView.h; sourceTree = "<group>"; };
-		441470BC1A93588000131077 /* CMGuidedSearchGridSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchGridSelectionView.m; sourceTree = "<group>"; };
+		441470BB1A93588000131077 /* CMGuidedSearchGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchGrid.h; sourceTree = "<group>"; };
+		441470BC1A93588000131077 /* CMGuidedSearchGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchGrid.m; sourceTree = "<group>"; };
 		441470BE1A93599100131077 /* CMGuidedSearchGridSelectionItemRoundedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMGuidedSearchGridSelectionItemRoundedCell.xib; sourceTree = "<group>"; };
 		4433669A1A923349002DD5F5 /* Masterbatches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Masterbatches.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4433669E1A923349002DD5F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -256,8 +256,8 @@
 				44E9E5461A9616880028B01F /* CMGuidedSearchStepViewController.h */,
 				4457F47A1A949CC6002FF4F5 /* CMGuidedSearchFlowProgressView.h */,
 				4457F47B1A949CC6002FF4F5 /* CMGuidedSearchFlowProgressView.m */,
-				441470BB1A93588000131077 /* CMGuidedSearchGridSelectionView.h */,
-				441470BC1A93588000131077 /* CMGuidedSearchGridSelectionView.m */,
+				441470BB1A93588000131077 /* CMGuidedSearchGrid.h */,
+				441470BC1A93588000131077 /* CMGuidedSearchGrid.m */,
 				441470BE1A93599100131077 /* CMGuidedSearchGridSelectionItemRoundedCell.xib */,
 				443366CF1A923B58002DD5F5 /* Questions */,
 			);
@@ -468,7 +468,7 @@
 				443366A91A923349002DD5F5 /* ViewController.m in Sources */,
 				443366EA1A92513A002DD5F5 /* CMGuidedSearchAdditiveFunctionalityViewController.m in Sources */,
 				4B2EDFA81A93994F007E0493 /* MenuModel.m in Sources */,
-				441470BD1A93588000131077 /* CMGuidedSearchGridSelectionView.m in Sources */,
+				441470BD1A93588000131077 /* CMGuidedSearchGrid.m in Sources */,
 				443366E51A92499C002DD5F5 /* CMGuidedSearchColorViewController.m in Sources */,
 				441470B31A9346FC00131077 /* CMGuidedSearchProductTypeViewController.m in Sources */,
 				4457F4891A94A963002FF4F5 /* TOMSMorphingLabel.m in Sources */,

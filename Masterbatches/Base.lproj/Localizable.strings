@@ -8,10 +8,6 @@
 
 "GuidedSearch" = "Guided search";
 "Color"        = "Color";
-"AdditiveFunctionality" = "Additive functionality";
 "MustSpecifyAdditive" = "Choose one or more additive functionalities from the grid.";
-"ResinType" = "Resin type";
 "MustSpecifyResin" = "Choose one or more resins from the grid.";
-"ProductType" = "Product type";
-"TemperatureThickness" = "Temperature and thickness";
 "Close" = "Close";

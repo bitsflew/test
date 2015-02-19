@@ -3,11 +3,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <mutableArray key="Gotham-Bold.otf">
-            <string>Gotham-Bold</string>
-        </mutableArray>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CMGuidedSearchAdditiveFunctionalityViewController">
             <connections>
@@ -20,9 +15,12 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dLb-n3-dri" customClass="CMGuidedSearchGridSelectionView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dLb-n3-dri" customClass="CMGuidedSearchGrid">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="599.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="selectionDelegate" destination="-1" id="Nn7-zT-i6X"/>
+                    </connections>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="white-fade-tile.png" translatesAutoresizingMaskIntoConstraints="NO" id="dvK-ZJ-pTs">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="48"/>
@@ -30,19 +28,11 @@
                         <constraint firstAttribute="height" constant="48" id="yhR-Nc-g0z"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SELECT ADDITIVE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="699-Nw-rac">
-                    <rect key="frame" x="0.0" y="0.0" width="188" height="22.5"/>
-                    <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="20"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="dLb-n3-dri" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="3Kd-yn-JLG"/>
-                <constraint firstItem="699-Nw-rac" firstAttribute="leading" secondItem="dLb-n3-dri" secondAttribute="leading" id="Ak5-th-ReR"/>
                 <constraint firstItem="dvK-ZJ-pTs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Pu3-ch-HYr"/>
-                <constraint firstItem="699-Nw-rac" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="kHg-Rz-55J"/>
                 <constraint firstAttribute="bottom" secondItem="dLb-n3-dri" secondAttribute="bottom" id="oHR-ZD-zwB"/>
                 <constraint firstItem="dvK-ZJ-pTs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="paF-VR-4aN"/>
                 <constraint firstAttribute="trailing" secondItem="dvK-ZJ-pTs" secondAttribute="trailing" id="q1X-Oa-g1E"/>

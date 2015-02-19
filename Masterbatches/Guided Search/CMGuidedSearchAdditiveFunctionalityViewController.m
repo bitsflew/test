@@ -9,7 +9,7 @@
 #import "CMGuidedSearchAdditiveFunctionalityViewController.h"
 #import "CMGuidedSearchResinTypeViewController.h"
 
-@interface CMProductSpecificationAdditive (Item) <CMGuidedSearchGridSelectionItem>
+@interface CMProductSpecificationAdditive (Item) <CMGuidedSearchGridItem>
 
 @end
 
@@ -70,15 +70,24 @@
 
 - (BOOL)completeStepWithValidationError:(NSString**)errorDescription
 {
-    if (self.gridSelectionView.selectedItems.count == 0) {
+    if (self.step.productSpecification.additives.count == 0) {
         *errorDescription = NSLocalizedString(@"MustSpecifyAdditive", nil);
         return NO;
     }
 
-    self.step.productSpecification.additives = self.gridSelectionView.selectedItems;
-
     return YES;
 }
 
+#pragma mark -
+
+- (void)guidedSearchGrid:(CMGuidedSearchGrid*)guidedSearchGrid didSelectItem:(id<CMGuidedSearchGridItem>)item
+{
+    self.step.productSpecification.additives = self.gridSelectionView.selectedItems;
+}
+
+- (void)guidedSearchGrid:(CMGuidedSearchGrid*)guidedSearchGrid didDeselectItem:(id<CMGuidedSearchGridItem>)item
+{
+    self.step.productSpecification.additives = self.gridSelectionView.selectedItems;
+}
 
 @end
