@@ -21,6 +21,8 @@
     menu.name = menuDict[@"Name"];
     menu.angle = [menuDict[@"Angle"] doubleValue];
     menu.distance = [menuDict[@"Distance"] doubleValue];
+    menu.action = menuDict[@"Action"];
+    
     NSMutableArray *subMenuItems = [NSMutableArray arrayWithCapacity:[menuDict[@"Items"] count]];
     for (NSDictionary *item in menuDict[@"Items"]) {
         [subMenuItems addObject:[self parseMenu:item]];
@@ -28,10 +30,6 @@
     menu.subMenuItems = subMenuItems;
 
     return menu;
-    
-//    for (NSDictionary *itemDict in items) {
-//        set parent
-//    }
 }
 
 - (NSString *)description {

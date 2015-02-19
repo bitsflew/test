@@ -9,11 +9,17 @@
 #import "MenuView.h"
 #import <UIKit/UIKit.h>
 
+@class MenuItemView;
+
+typedef void (^MenuItemSelectHandler)(MenuItemView *);
+
 @interface MenuItemView : UIView
 + (instancetype)viewForMenuItem:(MenuModel *)item;
 @property (nonatomic, assign) CGFloat value;
 @property (nonatomic, strong) UILabel *label;
+@property (nonatomic, strong) UIButton *button;
 @property (nonatomic, strong) MenuModel *menuItem;
+@property (nonatomic, strong) MenuItemSelectHandler menuItemSelectHandler;
 @end
 
 @implementation MenuItemView
@@ -28,11 +34,22 @@
     itemView.label.textColor = [UIColor blackColor];
     itemView.label.text = item.name;
 
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.bounds = itemView.frame;
+    button.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+    [button addTarget:itemView action:@selector(select:) forControlEvents:UIControlEventTouchUpInside];
+    itemView.button = button;
+    [itemView addSubview:button];
+    
     itemView.layer.borderColor = [UIColor blackColor].CGColor;
     itemView.layer.borderWidth = itemView.borderWidth;
     itemView.backgroundColor = [UIColor whiteColor];
     
     return itemView;
+}
+
+- (void)select:(id)sender {
+    if (self.menuItemSelectHandler) self.menuItemSelectHandler(self);
 }
 
 - (void)setValue:(CGFloat)value {
@@ -71,6 +88,7 @@
 
 @interface MenuView()
 @property (nonatomic, strong) MenuItemView *centerItem;
+@property (nonatomic, strong) MenuItemView *parentItem;
 @property (nonatomic, strong) NSMutableArray *subItems;
 @property (nonatomic, strong) CADisplayLink *displayLink;
 @end
@@ -97,11 +115,14 @@
 }
 
 - (void)createSubviews {
-    self.menu = [MenuModel readMenuFromFile];
+    if (self.menu == nil) self.menu = [MenuModel readMenuFromFile];
 
-    self.centerItem = [MenuItemView viewForMenuItem:self.menu];
-    self.centerItem.value = 0.8;
-    [self addSubview:self.centerItem];
+    if (self.centerItem == nil) {
+        self.centerItem = [MenuItemView viewForMenuItem:self.menu];
+        [self addSubview:self.centerItem];
+    }
+    
+    self.centerItem.value = 0.3;
     
     self.subItems = [NSMutableArray arrayWithCapacity:self.menu.subMenuItems.count];
     
@@ -110,6 +131,37 @@
         itemView.value = 0.2;
         [self.subItems addObject:itemView];
         [self insertSubview:itemView belowSubview:self.centerItem];
+        
+        itemView.menuItemSelectHandler = ^(MenuItemView *itemView) {
+            if (itemView.menuItem.action.length) {
+                if (self.menuActionHandler) self.menuActionHandler(itemView.menuItem.action);
+            }
+            
+            self.menu = itemView.menuItem;
+            self.parentItem = self.centerItem;
+            self.centerItem = itemView;
+            
+            [self createSubviews];
+//            
+//            [self.subItems removeObject:self.centerItem];
+//            [self.subItems makeObjectsPerformSelector:@selector(removeFromSuperview)];
+//            [self.subItems removeAllObjects];
+//            
+//            for (MenuModel *item in self.menu.subMenuItems) {
+//                MenuItemView *itemView = [MenuItemView viewForMenuItem:item];
+//                itemView.value = 0.2;
+//                [self.subItems addObject:itemView];
+//                [self insertSubview:itemView belowSubview:self.centerItem];
+//            }
+//            
+//            self.parentItem.value = 0.2;
+//            self.centerItem.value = 0.2;
+//            
+//            [UIView animateWithDuration:0.5 animations:^{
+//                [self layoutSubviews];
+//            }];
+            
+        };
     }
     
     CGFloat interval = 1;
@@ -126,25 +178,30 @@
             [self setNeedsDisplay];
         }];
     });
-    dispatch_resume(timer);
+//    dispatch_resume(timer);
 
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
 
-    for (UIView *subView in self.subviews) {
-        if ([subView isKindOfClass:[MenuItemView class]]) {
-            MenuItemView *menuItemView = (MenuItemView *)subView;
-            [menuItemView sizeToFit];
-            [self layoutMenuItemView:menuItemView];
-        }
+    self.centerItem.center = self.center;
+    
+    if (self.parentItem) {
+        [self layoutMenuItemView:self.parentItem atDistance:400 withAngle:M_PI * 1.7];
+    }
+    
+    for (MenuItemView *subMenuItem in self.subItems) {
+        [subMenuItem sizeToFit];
+        [self layoutMenuItemView:subMenuItem
+                      atDistance:subMenuItem.menuItem.distance
+                       withAngle:subMenuItem.menuItem.angle];
     }
 }
 
-- (void)layoutMenuItemView:(MenuItemView *)itemView {
-    CGFloat xOffset = cos(-M_PI / 2 + itemView.menuItem.angle) * itemView.menuItem.distance;
-    CGFloat yOffset = sin(-M_PI / 2 + itemView.menuItem.angle) * itemView.menuItem.distance;
+- (void)layoutMenuItemView:(MenuItemView *)itemView atDistance:(CGFloat)distance withAngle:(CGFloat)angle {
+    CGFloat xOffset = cos(-M_PI / 2 + angle) * distance;
+    CGFloat yOffset = sin(-M_PI / 2 + angle) * distance;
     
     itemView.center = CGPointMake(self.center.x + xOffset, self.center.y + yOffset);
 }
@@ -152,10 +209,18 @@
 - (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
     
+    [[UIColor whiteColor] setFill];
+    CGContextFillRect(context, rect);
+    
     [[UIColor blackColor] set];
     
     CGContextSetLineWidth(context, 2);
-    for (MenuItemView *item in self.subItems) {
+    NSArray *items = self.subItems;
+    if (self.parentItem) {
+        items = [items arrayByAddingObject:self.parentItem];
+    }
+    
+    for (MenuItemView *item in items) {
         CGPoint pos = [(CALayer *)item.layer.presentationLayer position];
         CGContextMoveToPoint(context, self.center.x, self.center.y);
         CGContextAddLineToPoint(context, pos.x, pos.y);

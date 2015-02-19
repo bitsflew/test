@@ -7,21 +7,28 @@
 //
 
 #import "MenuViewController.h"
+#import "MenuView.h"
 
 @interface MenuViewController ()
-
+@property (nonatomic, strong) IBOutlet MenuView *menuView;
 @end
 
 @implementation MenuViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    __weak __typeof(self) weakSelf = self;
+    self.menuView.menuActionHandler = ^(NSString *menuAction) {
+        Class vcClass = NSClassFromString(menuAction);
+        assert(vcClass);
+        UIViewController *vc = [vcClass new];
+        [weakSelf presentViewController:vc animated:YES completion:nil];
+    };
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /*
