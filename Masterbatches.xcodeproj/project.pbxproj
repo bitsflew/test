@@ -307,21 +307,6 @@
 			name = Questions;
 			sourceTree = "<group>";
 		};
-		4B2EDF9F1A939896007E0493 /* Menu */ = {
-			isa = PBXGroup;
-			children = (
-				4B2EDFB11A93A9F0007E0493 /* Menu.plist */,
-				4B2EDFA61A93994F007E0493 /* MenuModel.h */,
-				4B2EDFA71A93994F007E0493 /* MenuModel.m */,
-				4B2EDFA91A939FAB007E0493 /* MenuView.h */,
-				4B2EDFAA1A939FAB007E0493 /* MenuView.m */,
-				4B2EDFAC1A93A9B7007E0493 /* MenuViewController.h */,
-				4B2EDFAD1A93A9B7007E0493 /* MenuViewController.m */,
-				4B2EDFAE1A93A9B7007E0493 /* MenuViewController.xib */,
-			);
-			path = Menu;
-			sourceTree = "<group>";
-		};
 		4457F4811A94A963002FF4F5 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
@@ -347,6 +332,21 @@
 				4457F4871A94A963002FF4F5 /* TOMSMorphingLabel.m */,
 			);
 			path = TOMSMorphingLabel;
+			sourceTree = "<group>";
+		};
+		4B2EDF9F1A939896007E0493 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				4B2EDFB11A93A9F0007E0493 /* Menu.plist */,
+				4B2EDFA61A93994F007E0493 /* MenuModel.h */,
+				4B2EDFA71A93994F007E0493 /* MenuModel.m */,
+				4B2EDFA91A939FAB007E0493 /* MenuView.h */,
+				4B2EDFAA1A939FAB007E0493 /* MenuView.m */,
+				4B2EDFAC1A93A9B7007E0493 /* MenuViewController.h */,
+				4B2EDFAD1A93A9B7007E0493 /* MenuViewController.m */,
+				4B2EDFAE1A93A9B7007E0493 /* MenuViewController.xib */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -575,7 +575,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -610,7 +610,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
