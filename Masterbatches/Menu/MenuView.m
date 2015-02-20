@@ -190,6 +190,7 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
 @property (nonatomic, strong) MenuItemView *parentItem;
 @property (nonatomic, strong) NSMutableDictionary *subItems;
 @property (nonatomic, strong) CADisplayLink *displayLink;
+@property (nonatomic, strong) NSMutableArray *parentStash;
 @end
 
 @implementation MenuView
@@ -208,7 +209,8 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
 
 - (void)setup {
     self.subItems = [NSMutableDictionary new];
-
+    self.parentStash = [NSMutableArray new];
+    
     [self createSubviews];
 
     self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(setNeedsDisplay)];
@@ -270,11 +272,18 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
     MenuItemView *oldCenterItem = self.centerItem;
     
     if ([itemView isEqual:self.parentItem]) {
-        self.parentItem = nil; // Help!
+        self.parentItem = [self.parentStash lastObject];
+        [self.parentStash removeLastObject];
+        if (self.parentItem) {
+            [self addSubview:self.parentItem];
+        }
         [self.subItems removeAllObjects];
         self.subItems[@(self.centerItem.menuItem.identifier)] = self.centerItem;
     } else if (isSubItem) {
-        [self.parentItem removeFromSuperview];
+        if (self.parentItem) {
+            [self.parentStash addObject:self.parentItem];
+            [self.parentItem removeFromSuperview];
+        }
         self.parentItem = self.centerItem;
         [self.subItems removeAllObjects];
         [oldSubMenuItems removeObject:itemView];
