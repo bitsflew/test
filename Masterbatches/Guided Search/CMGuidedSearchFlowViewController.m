@@ -10,7 +10,7 @@
 
 static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
 static CGFloat kCMGuidedSearchFlowViewControllerModeAnimationSpeed = 0.2f;
-static CGFloat kCMGuidedSearchFlowViewControllerTransitionAnimationSpeed = 0.2f;
+static CGFloat kCMGuidedSearchFlowViewControllerTransitionAnimationSpeed = 0.3f;
 
 @interface CMGuidedSearchFlowViewController ()
 
@@ -67,15 +67,18 @@ static CGFloat kCMGuidedSearchFlowViewControllerTransitionAnimationSpeed = 0.2f;
 {
     dispatch_block_t animateOutStepViewBlock = NULL;
     dispatch_block_t removeStepViewBlock = NULL;
-    
     CGRect bounds = self.view.bounds;
-
+    CGFloat animationDirection = 1.f;
+    
     if (self.stepViewController) {
+        if ([self.flow numberOfStepsBetween:self.stepViewController.step and:step] < 1) {
+            animationDirection = -1.f;
+        }
         [self.stepViewController removeFromParentViewController];
         if (self.stepViewController.isViewLoaded) {
             UIView *stepView = self.stepViewController.view;
             animateOutStepViewBlock = ^{
-                stepView.transform = CGAffineTransformMakeTranslation(-CGRectGetWidth(bounds), 0.f);
+                stepView.transform = CGAffineTransformMakeTranslation(animationDirection*-CGRectGetWidth(bounds), 0.f);
             };
             removeStepViewBlock = ^{
                 [stepView removeFromSuperview];
@@ -91,10 +94,10 @@ static CGFloat kCMGuidedSearchFlowViewControllerTransitionAnimationSpeed = 0.2f;
     [self addChildViewController:self.stepViewController];
     
     dispatch_block_t addStepViewBlock = ^{
-        [self.questionViewControllerContainerView addSubview:self.stepViewController.view];
+        [self.stepContainerView addSubview:self.stepViewController.view];
     };
 
-    self.stepViewController.view.frame = self.questionViewControllerContainerView.bounds;
+    self.stepViewController.view.frame = self.stepContainerView.bounds;
     self.stepViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     
     self.questionViewControllerTitleLabel.text = step.title;
@@ -106,7 +109,7 @@ static CGFloat kCMGuidedSearchFlowViewControllerTransitionAnimationSpeed = 0.2f;
     self.nextButton.hidden = self.flowProgressView.completedCount >= self.flowProgressView.stepCount;
     
     if (addStepViewBlock && animateOutStepViewBlock && removeStepViewBlock) {
-        self.stepViewController.view.transform = CGAffineTransformMakeTranslation(CGRectGetWidth(bounds), 0.f);
+        self.stepViewController.view.transform = CGAffineTransformMakeTranslation(animationDirection*CGRectGetWidth(bounds), 0.f);
         addStepViewBlock();
         [UIView animateWithDuration:kCMGuidedSearchFlowViewControllerTransitionAnimationSpeed
                          animations:^{
@@ -220,6 +223,7 @@ static CGFloat kCMGuidedSearchFlowViewControllerTransitionAnimationSpeed = 0.2f;
         self.nextButton.alpha = 1.f - modeOffset;
         self.previousButton.alpha = self.nextButton.alpha;
         self.flowProgressView.alpha = 1.f - modeOffset;
+        self.stepOverlayView.alpha = modeOffset;
 
         [self.view layoutIfNeeded];
         

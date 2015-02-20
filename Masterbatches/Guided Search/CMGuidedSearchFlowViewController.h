@@ -15,7 +15,8 @@
 
 @interface CMGuidedSearchFlowViewController : UIViewController <CMGuidedSearchStepViewControllerDelegate>
 
-@property (nonatomic, weak) IBOutlet UIView *questionViewControllerContainerView;
+@property (nonatomic, weak) IBOutlet UIView *stepContainerView;
+@property (nonatomic, weak) IBOutlet UIView *stepOverlayView;
 @property (nonatomic, weak) IBOutlet UILabel *questionViewControllerTitleLabel;
 @property (nonatomic, weak) IBOutlet UIButton *previousButton;
 @property (nonatomic, weak) IBOutlet UIButton *nextButton;
