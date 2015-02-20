@@ -10,6 +10,7 @@
 
 static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
 static CGFloat kCMGuidedSearchFlowViewControllerModeAnimationSpeed = 0.2f;
+static CGFloat kCMGuidedSearchFlowViewControllerTransitionAnimationSpeed = 0.2f;
 
 @interface CMGuidedSearchFlowViewController ()
 
@@ -64,10 +65,21 @@ static CGFloat kCMGuidedSearchFlowViewControllerModeAnimationSpeed = 0.2f;
 
 - (void)presentStep:(CMGuidedSearchFlowStep*)step
 {
+    dispatch_block_t animateOutStepViewBlock = NULL;
+    dispatch_block_t removeStepViewBlock = NULL;
+    
+    CGRect bounds = self.view.bounds;
+
     if (self.stepViewController) {
         [self.stepViewController removeFromParentViewController];
         if (self.stepViewController.isViewLoaded) {
-            [self.stepViewController.view removeFromSuperview];
+            UIView *stepView = self.stepViewController.view;
+            animateOutStepViewBlock = ^{
+                stepView.transform = CGAffineTransformMakeTranslation(-CGRectGetWidth(bounds), 0.f);
+            };
+            removeStepViewBlock = ^{
+                [stepView removeFromSuperview];
+            };
         }
     }
     
@@ -77,7 +89,11 @@ static CGFloat kCMGuidedSearchFlowViewControllerModeAnimationSpeed = 0.2f;
     [self.stepViewController setStepDelegate:self];
 
     [self addChildViewController:self.stepViewController];
-    [self.questionViewControllerContainerView addSubview:self.stepViewController.view];
+    
+    dispatch_block_t addStepViewBlock = ^{
+        [self.questionViewControllerContainerView addSubview:self.stepViewController.view];
+    };
+
     self.stepViewController.view.frame = self.questionViewControllerContainerView.bounds;
     self.stepViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     
@@ -88,6 +104,22 @@ static CGFloat kCMGuidedSearchFlowViewControllerModeAnimationSpeed = 0.2f;
 
     self.previousButton.hidden = self.flowProgressView.completedCount == 0;
     self.nextButton.hidden = self.flowProgressView.completedCount >= self.flowProgressView.stepCount;
+    
+    if (addStepViewBlock && animateOutStepViewBlock && removeStepViewBlock) {
+        self.stepViewController.view.transform = CGAffineTransformMakeTranslation(CGRectGetWidth(bounds), 0.f);
+        addStepViewBlock();
+        [UIView animateWithDuration:kCMGuidedSearchFlowViewControllerTransitionAnimationSpeed
+                         animations:^{
+                             animateOutStepViewBlock();
+                             self.stepViewController.view.transform = CGAffineTransformIdentity;
+                         } completion:^(BOOL finished) {
+                             if (finished) {
+                                 removeStepViewBlock();
+                             }
+                         }];
+    } else {
+        addStepViewBlock();
+    }
 }
 
 - (void)presentPreviousStep
