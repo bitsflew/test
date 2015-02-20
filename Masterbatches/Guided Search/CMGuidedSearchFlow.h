@@ -9,6 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "CMProductSpecification.h"
 
+@interface CMGuidedSearchFlowAdditionalQuestion : NSObject
+
+@property (nonatomic, retain) Class viewControllerClass;
+@property (nonatomic, retain) NSDictionary *attributes; // used to configure view controller
+@property (nonatomic, retain) NSString *title;
+@property (nonatomic, retain) CMProductSpecification* productSpecification;
+@property (nonatomic, retain) NSString *key;
+
+@end
+
 @interface CMGuidedSearchFlowStep : NSObject
 
 @property (nonatomic, retain) Class viewControllerClass;

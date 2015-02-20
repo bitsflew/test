@@ -35,4 +35,7 @@
 @property (nonatomic, retain) NSArray *additives; // <CMProductSpecificationAdditive>
 @property (nonatomic, retain) NSArray *resins;    // <CMProductSpecificationResin>
 
+- (void)setValue:(id)value forAdditionalQuestionKey:(NSString*)key;
+- (id)valueForAdditionalQuestionKey:(NSString*)key;
+
 @end

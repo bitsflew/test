@@ -57,6 +57,31 @@
 
 @end
 
+@interface CMProductSpecification ()
+
+@property (nonatomic, retain) NSMutableDictionary *additionalQuestionValues;
+
+@end
+
 @implementation CMProductSpecification
+
+- (id)init
+{
+    if (!(self = [super init])) {
+        return nil;
+    }
+    self.additionalQuestionValues = [NSMutableDictionary new];
+    return self;
+}
+
+- (void)setValue:(id)value forAdditionalQuestionKey:(NSString*)key
+{
+    self.additionalQuestionValues[key] = value;
+}
+
+- (id)valueForAdditionalQuestionKey:(NSString*)key
+{
+    return self.additionalQuestionValues[key];
+}
 
 @end

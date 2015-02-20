@@ -30,6 +30,7 @@
                 <constraint firstAttribute="trailing" secondItem="n9C-xM-bRE" secondAttribute="trailing" id="jp9-QP-9jp"/>
                 <constraint firstItem="n9C-xM-bRE" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="kcn-Ih-wXL"/>
             </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
         </view>
     </objects>
 </document>

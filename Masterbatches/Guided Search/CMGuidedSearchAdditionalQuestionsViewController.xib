@@ -4,8 +4,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CMGuidedSearchColorViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CMGuidedSearchAdditionalQuestionsViewController">
             <connections>
+                <outlet property="questionsScrollView" destination="Z04-Ok-2SN" id="YFo-jf-8qP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,17 +15,16 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By resin" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7l-1g-v1e">
-                    <rect key="frame" x="8" y="8" width="62" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z04-Ok-2SN">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="h7l-1g-v1e" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="Zz2-I9-zoZ"/>
-                <constraint firstItem="h7l-1g-v1e" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="qzx-n6-BnN"/>
+                <constraint firstItem="Z04-Ok-2SN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Ap1-PQ-QDC"/>
+                <constraint firstAttribute="trailing" secondItem="Z04-Ok-2SN" secondAttribute="trailing" id="FNr-0i-k6M"/>
+                <constraint firstAttribute="bottom" secondItem="Z04-Ok-2SN" secondAttribute="bottom" id="JAt-Kf-1mh"/>
+                <constraint firstItem="Z04-Ok-2SN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="WhC-Rg-bBJ"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
         </view>

@@ -30,6 +30,12 @@
 			<key>Title</key>
 			<string>Temperature and thickness</string>
 		</dict>
+		<dict>
+			<key>Class</key>
+			<string>AdditionalQuestions</string>
+			<key>Title</key>
+			<string>Additional questions</string>
+		</dict>
 	</array>
 </dict>
 </plist>
