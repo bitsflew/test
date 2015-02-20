@@ -62,7 +62,7 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
     if (self.menuItemSelectHandler) self.menuItemSelectHandler(self);
 }
 
-- (void)setDisplayMode:(MenuItemDisplayMode)displayMode {
+- (void)setDisplayMode:(MenuItemDisplayMode)displayMode { //animated:
     _displayMode = displayMode;
 
     self.label.font = [self font];
@@ -70,7 +70,10 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
     self.layer.borderColor = self.circleColor.CGColor;
     self.label.textColor = self.fontColor;
 
+    // Don't move the center while resizing
+    CGPoint center = self.center;
     [self sizeToFit];
+    self.center = center;
 }
 
 - (CGFloat)borderWidth {
@@ -276,15 +279,16 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
         item.displayMode = MenuItemDisplayModeDefault;
     }
     
-    self.centerItem.displayMode = MenuItemDisplayModeMain;
-    self.parentItem.displayMode = MenuItemDisplayModeBack;
-
     for (MenuItemView *item in newMenuItems) {
         [item sizeToFit];
         item.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.5, 0.5);
     }
+
+    self.centerItem.displayMode = MenuItemDisplayModeMain;
+    self.parentItem.displayMode = MenuItemDisplayModeBack;
     
     [UIView animateWithDuration:0.5 animations:^{
+
         self.centerItem.center = self.center;
         
         if (self.parentItem) {
