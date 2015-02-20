@@ -274,6 +274,7 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
         [self.subItems removeAllObjects];
         self.subItems[@(self.centerItem.menuItem.identifier)] = self.centerItem;
     } else if (isSubItem) {
+        [self.parentItem removeFromSuperview];
         self.parentItem = self.centerItem;
         [self.subItems removeAllObjects];
         [oldSubMenuItems removeObject:itemView];
