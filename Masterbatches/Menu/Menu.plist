@@ -106,8 +106,25 @@ documents</string>
 					<real>2.3</real>
 					<key>Distance</key>
 					<integer>200</integer>
-					<key>Action</key>
-					<string></string>
+					<key>Items</key>
+					<array>
+						<dict>
+							<key>Name</key>
+							<string>Hydrocerol</string>
+							<key>Angle</key>
+							<integer>1</integer>
+							<key>Distance</key>
+							<integer>300</integer>
+						</dict>
+						<dict>
+							<key>Name</key>
+							<string>Business Unit</string>
+							<key>Angle</key>
+							<real>2.14</real>
+							<key>Distance</key>
+							<integer>300</integer>
+						</dict>
+					</array>
 				</dict>
 				<dict>
 					<key>Name</key>
@@ -137,7 +154,7 @@ solution finder</string>
 					<key>Angle</key>
 					<real>0.3</real>
 					<key>Distance</key>
-					<integer>200</integer>
+					<integer>250</integer>
 					<key>Action</key>
 					<string>CMGuidedSearchFlowViewController</string>
 				</dict>
@@ -147,31 +164,33 @@ solution finder</string>
 					<key>Angle</key>
 					<real>0.9</real>
 					<key>Distance</key>
-					<integer>300</integer>
+					<integer>350</integer>
 				</dict>
 				<dict>
 					<key>Name</key>
-					<string>Additives</string>
+					<string>Additive</string>
 					<key>Angle</key>
 					<real>1.5</real>
 					<key>Distance</key>
-					<integer>200</integer>
+					<integer>250</integer>
+				</dict>
+				<dict>
+					<key>Name</key>
+					<string>Color
++
+Additive</string>
+					<key>Angle</key>
+					<real>2.1</real>
+					<key>Distance</key>
+					<integer>350</integer>
 				</dict>
 				<dict>
 					<key>Name</key>
 					<string>Industries</string>
 					<key>Angle</key>
-					<real>2.1</real>
-					<key>Distance</key>
-					<integer>300</integer>
-				</dict>
-				<dict>
-					<key>Name</key>
-					<string>GS Expert Mode</string>
-					<key>Angle</key>
 					<real>2.7</real>
 					<key>Distance</key>
-					<integer>200</integer>
+					<integer>250</integer>
 				</dict>
 			</array>
 		</dict>
