@@ -11,7 +11,7 @@
 
 @interface CMGuidedSearchFlowStep ()
 
-- (id)initWithDictionary:(NSDictionary*)dictionary;
+- (id)initWithDictionary:(NSDictionary*)dictionary productSpecification:(CMProductSpecification*)productSpecification;
 
 @end
 

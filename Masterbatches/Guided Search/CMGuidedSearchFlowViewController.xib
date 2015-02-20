@@ -11,6 +11,7 @@
         <mutableArray key="Gotham-Book.otf">
             <string>Gotham-Book</string>
             <string>Gotham-Book</string>
+            <string>Gotham-Book</string>
         </mutableArray>
         <mutableArray key="Mercury_Text_G1_Roman.ttf">
             <string>MercuryTextG1-Roman</string>
@@ -19,12 +20,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CMGuidedSearchFlowViewController">
             <connections>
-                <outlet property="backButton" destination="B4N-V8-SJB" id="bYk-tO-GtT"/>
+                <outlet property="closeSearchModeButton" destination="ddT-Y6-SV0" id="oZS-3m-yne"/>
                 <outlet property="flowProgressView" destination="Q1d-J0-WaX" id="PYZ-SB-feA"/>
                 <outlet property="menuButton" destination="SSU-VL-LVr" id="qgo-YP-ezH"/>
                 <outlet property="modeToggleButton" destination="QXi-dr-Szf" id="TSz-9p-hp0"/>
                 <outlet property="modeToggleButtonTopConstraint" destination="04Z-tg-80G" id="8nG-5m-K6K"/>
                 <outlet property="nextButton" destination="0s3-dU-3c6" id="ine-cL-lzY"/>
+                <outlet property="previousButton" destination="B4N-V8-SJB" id="eeG-BY-D6w"/>
                 <outlet property="questionViewControllerContainerView" destination="VWH-Un-ZpZ" id="rDX-DH-aD2"/>
                 <outlet property="questionViewControllerTitleLabel" destination="wRK-Kl-oOk" id="mfw-pR-E1s"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -74,6 +76,9 @@
                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="tappedModeToggle:" destination="-1" eventType="touchUpInside" id="XLp-yO-GT8"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4N-V8-SJB">
                     <rect key="frame" x="35" y="180" width="100" height="29"/>
@@ -104,6 +109,23 @@
                         <action selector="tappedNext:" destination="-1" eventType="touchUpInside" id="BgM-sW-jfT"/>
                     </connections>
                 </button>
+                <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ddT-Y6-SV0">
+                    <rect key="frame" x="215" y="151" width="170" height="58"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="170" id="E4O-Fw-z0b"/>
+                        <constraint firstAttribute="height" constant="58" id="pkt-fV-HPI"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="11"/>
+                    <inset key="titleEdgeInsets" minX="-28" minY="30" maxX="0.0" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="68" minY="-20" maxX="2" maxY="0.0"/>
+                    <state key="normal" title="back to solution finder" image="ic_close_black.png">
+                        <color key="titleColor" red="0.50165504217147827" green="0.50964659452438354" blue="0.52206969261169434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tappedCloseSearchMode:" destination="-1" eventType="touchUpInside" id="ZYm-Sh-azd"/>
+                    </connections>
+                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1d-J0-WaX" customClass="CMGuidedSearchFlowProgressView">
                     <rect key="frame" x="50" y="159" width="500" height="22"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -126,6 +148,7 @@
             <constraints>
                 <constraint firstItem="QXi-dr-Szf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="210" id="04Z-tg-80G"/>
                 <constraint firstAttribute="trailing" secondItem="Uiy-dh-BtW" secondAttribute="trailing" constant="10" id="0q5-kq-h2i"/>
+                <constraint firstItem="B4N-V8-SJB" firstAttribute="bottom" secondItem="ddT-Y6-SV0" secondAttribute="bottom" id="1iG-qV-i8n"/>
                 <constraint firstItem="wRK-Kl-oOk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="35" id="20G-rq-Kaf"/>
                 <constraint firstItem="VWH-Un-ZpZ" firstAttribute="top" secondItem="0s3-dU-3c6" secondAttribute="top" constant="30" id="6Kl-eQ-OOO"/>
                 <constraint firstItem="QXi-dr-Szf" firstAttribute="top" secondItem="VWH-Un-ZpZ" secondAttribute="top" id="Avu-Yl-hdh"/>
@@ -150,6 +173,7 @@
                 <constraint firstItem="wRK-Kl-oOk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="90" id="uVt-Cw-P9e"/>
                 <constraint firstAttribute="centerX" secondItem="QXi-dr-Szf" secondAttribute="centerX" id="vrM-cS-22L"/>
                 <constraint firstItem="B4N-V8-SJB" firstAttribute="leading" secondItem="VWH-Un-ZpZ" secondAttribute="leading" constant="35" id="wm5-hp-wGf"/>
+                <constraint firstAttribute="centerX" secondItem="ddT-Y6-SV0" secondAttribute="centerX" id="zBe-4D-gCO"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -164,6 +188,7 @@
         </view>
     </objects>
     <resources>
+        <image name="ic_close_black.png" width="27" height="27"/>
         <image name="img_logo_actionbar.png" width="226" height="54"/>
     </resources>
 </document>

@@ -56,6 +56,17 @@
     [self setNeedsLayout];
 }
 
+- (void)setContractionFactor:(CGFloat)contractionFactor
+{
+    [self setContractionFactor:contractionFactor animated:NO];
+}
+
+- (void)setContractionFactor:(CGFloat)contractionFactor animated:(BOOL)animated
+{
+    _contractionFactor = contractionFactor;
+    [self updateLayersAnimated:animated];
+}
+
 - (void)layoutSubviews
 {
     [self updateLayers];
@@ -63,9 +74,15 @@
 
 - (void)updateLayers
 {
+    [self updateLayersAnimated:YES];
+}
+
+- (void)updateLayersAnimated:(BOOL)animated
+{
     static const CGFloat borderWidth = 2.f;
     static const CGFloat stepIncompleteScale = 0.8f;
     static const CGFloat stepIncompleteContentScale = 0.1f;
+    static const CGFloat animationSpeed = 0.2f;
 
     if (self.stepCount == 0) {
         self.stepsLayer.opacity = 0.f;
@@ -74,17 +91,29 @@
     }
 
     [CATransaction begin];
-    [CATransaction setValue:@(.3f) forKey:kCATransactionAnimationDuration];
+
+    if (animated) {
+        [CATransaction setValue:@(animationSpeed) forKey:kCATransactionAnimationDuration];
+    } else {
+        [CATransaction setValue:@(YES) forKey:kCATransactionDisableActions];
+    }
 
     CGRect bounds = self.bounds;
-    
+
     if (self.stepCount == 1) {
         bounds = CGRectMake(CGRectGetMidX(bounds)-CGRectGetHeight(bounds)/2.f,
-                            0.f,
+                            CGRectGetMinY(bounds),
                             CGRectGetHeight(bounds),
                             CGRectGetHeight(bounds));
-    }
-    
+    } else
+        if (self.contractionFactor > 0.f) {
+            CGFloat contractedWidth = CGRectGetWidth(bounds) - (CGRectGetWidth(bounds) * self.contractionFactor);
+            bounds = CGRectMake(CGRectGetMidX(bounds)-contractedWidth/2.f,
+                                CGRectGetMinY(bounds),
+                                contractedWidth,
+                                CGRectGetHeight(bounds));
+        }
+
     CGFloat stepWidth = (CGRectGetWidth(bounds)/(CGFloat)self.stepCount);
 
     if (!self.trackLayer) {
@@ -114,17 +143,19 @@
     self.stepsLayer.position = CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
 
     for (int i=0; i<self.stepCount; i++) {
+
         BOOL newStepLayer = NO;
+
         CMStepLayer *stepLayer = nil;
         if (i < self.stepsLayer.sublayers.count) {
             stepLayer = self.stepsLayer.sublayers[i];
-            [stepLayer addSublayer:stepLayer.completeLayer];
         } else {
             newStepLayer = YES;
             stepLayer = [CMStepLayer layer];
             stepLayer.completeLayer = [CALayer layer];
             stepLayer.completeLayer.contents = (__bridge id)([UIImage imageNamed:@"ic_pagination_checkmark_light.png"].CGImage);
             stepLayer.completeLayer.transform = CATransform3DMakeScale(stepIncompleteContentScale, stepIncompleteContentScale, stepIncompleteContentScale);
+            [stepLayer addSublayer:stepLayer.completeLayer];
             [self.stepsLayer addSublayer:stepLayer];
         }
 
@@ -146,6 +177,8 @@
         CGFloat contentScale = stepCompleted ? 1.f : stepIncompleteContentScale;
         stepLayer.completeLayer.transform = CATransform3DMakeScale(contentScale, contentScale, contentScale);
     }
+    
+//    self.layer.opacity = sqrtf(1.f - self.contractionFactor);
     
     [CATransaction commit];
 }

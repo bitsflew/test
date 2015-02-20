@@ -15,4 +15,6 @@
 
 @property (nonatomic) CGFloat contractionFactor;
 
+- (void)setContractionFactor:(CGFloat)contractionFactor animated:(BOOL)animated;
+
 @end
