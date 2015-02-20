@@ -32,6 +32,8 @@
 {
     [super viewDidLoad];
     
+    self.gridSelectionView.contentInset = UIEdgeInsetsMake(48.f, 0.f, 0.f, 0.f);
+    self.gridSelectionView.scrollIndicatorInsets = self.gridSelectionView.contentInset;
     self.gridSelectionView.allowsMultipleSelection = YES;
     
     self.gridSelectionView.items =

@@ -13,4 +13,6 @@
 @property (nonatomic) NSUInteger stepCount;
 @property (nonatomic) NSUInteger completedCount;
 
+@property (nonatomic) CGFloat contractionFactor;
+
 @end

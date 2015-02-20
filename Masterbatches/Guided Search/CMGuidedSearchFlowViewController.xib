@@ -5,6 +5,13 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="Gotham-Bold.otf">
+            <string>Gotham-Bold</string>
+        </mutableArray>
+        <mutableArray key="Gotham-Book.otf">
+            <string>Gotham-Book</string>
+            <string>Gotham-Book</string>
+        </mutableArray>
         <mutableArray key="Mercury_Text_G1_Roman.ttf">
             <string>MercuryTextG1-Roman</string>
         </mutableArray>
@@ -15,6 +22,8 @@
                 <outlet property="backButton" destination="B4N-V8-SJB" id="bYk-tO-GtT"/>
                 <outlet property="flowProgressView" destination="Q1d-J0-WaX" id="PYZ-SB-feA"/>
                 <outlet property="menuButton" destination="SSU-VL-LVr" id="qgo-YP-ezH"/>
+                <outlet property="modeToggleButton" destination="QXi-dr-Szf" id="TSz-9p-hp0"/>
+                <outlet property="modeToggleButtonTopConstraint" destination="04Z-tg-80G" id="8nG-5m-K6K"/>
                 <outlet property="nextButton" destination="0s3-dU-3c6" id="ine-cL-lzY"/>
                 <outlet property="questionViewControllerContainerView" destination="VWH-Un-ZpZ" id="rDX-DH-aD2"/>
                 <outlet property="questionViewControllerTitleLabel" destination="wRK-Kl-oOk" id="mfw-pR-E1s"/>
@@ -26,6 +35,14 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VWH-Un-ZpZ">
+                    <rect key="frame" x="0.0" y="210" width="600" height="382"/>
+                    <color key="backgroundColor" red="0.9802737832069397" green="0.98038023710250854" blue="0.98435753583908081" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Htg-xM-6NX">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="210"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wRK-Kl-oOk" customClass="TOMSMorphingLabel">
                     <rect key="frame" x="35" y="90" width="530" height="80"/>
                     <constraints>
@@ -46,13 +63,23 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VWH-Un-ZpZ">
-                    <rect key="frame" x="35" y="210" width="530" height="382"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QXi-dr-Szf">
+                    <rect key="frame" x="150" y="210" width="300" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="P0w-Xx-OrY"/>
+                        <constraint firstAttribute="width" constant="300" id="sNc-MB-O46"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="15"/>
+                    <state key="normal" title="25 results">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4N-V8-SJB">
-                    <rect key="frame" x="35" y="180" width="35" height="30"/>
-                    <state key="normal" title="Back">
+                    <rect key="frame" x="35" y="180" width="100" height="29"/>
+                    <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="15"/>
+                    <state key="normal" title="previous step">
+                        <color key="titleColor" red="0.50165504217147827" green="0.50964659452438354" blue="0.52206969261169434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -60,15 +87,17 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_logo_actionbar.png" translatesAutoresizingMaskIntoConstraints="NO" id="Uiy-dh-BtW">
-                    <rect key="frame" x="470" y="30" width="120" height="29"/>
+                    <rect key="frame" x="470" y="30" width="120" height="28.5"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="Uiy-dh-BtW" secondAttribute="height" multiplier="113:27" id="8Ua-uX-P4h"/>
                         <constraint firstAttribute="width" constant="120" id="l37-oJ-juW"/>
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0s3-dU-3c6">
-                    <rect key="frame" x="533" y="180" width="32" height="30"/>
-                    <state key="normal" title="Next">
+                    <rect key="frame" x="496" y="180" width="69" height="29"/>
+                    <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="15"/>
+                    <state key="normal" title="next step">
+                        <color key="titleColor" red="0.50165504217147827" green="0.50964659452438354" blue="0.52206969261169434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -95,26 +124,42 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="QXi-dr-Szf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="210" id="04Z-tg-80G"/>
                 <constraint firstAttribute="trailing" secondItem="Uiy-dh-BtW" secondAttribute="trailing" constant="10" id="0q5-kq-h2i"/>
                 <constraint firstItem="wRK-Kl-oOk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="35" id="20G-rq-Kaf"/>
                 <constraint firstItem="VWH-Un-ZpZ" firstAttribute="top" secondItem="0s3-dU-3c6" secondAttribute="top" constant="30" id="6Kl-eQ-OOO"/>
-                <constraint firstItem="VWH-Un-ZpZ" firstAttribute="trailing" secondItem="0s3-dU-3c6" secondAttribute="trailing" id="Ent-jW-bLV"/>
-                <constraint firstAttribute="trailing" secondItem="VWH-Un-ZpZ" secondAttribute="trailing" constant="35" id="GaP-UE-Ohb"/>
+                <constraint firstItem="QXi-dr-Szf" firstAttribute="top" secondItem="VWH-Un-ZpZ" secondAttribute="top" id="Avu-Yl-hdh"/>
+                <constraint firstItem="VWH-Un-ZpZ" firstAttribute="trailing" secondItem="0s3-dU-3c6" secondAttribute="trailing" constant="35" id="Ent-jW-bLV"/>
+                <constraint firstAttribute="trailing" secondItem="VWH-Un-ZpZ" secondAttribute="trailing" id="GaP-UE-Ohb"/>
+                <constraint firstItem="QXi-dr-Szf" firstAttribute="top" secondItem="Htg-xM-6NX" secondAttribute="bottom" id="JCJ-Jh-OcJ"/>
+                <constraint firstItem="Htg-xM-6NX" firstAttribute="bottom" secondItem="VWH-Un-ZpZ" secondAttribute="bottom" constant="-383" id="LFL-gN-XyT"/>
                 <constraint firstAttribute="trailing" secondItem="SSU-VL-LVr" secondAttribute="trailing" constant="11" id="LOz-A0-ym7"/>
-                <constraint firstItem="wRK-Kl-oOk" firstAttribute="leading" secondItem="VWH-Un-ZpZ" secondAttribute="leading" id="Mv7-UJ-H7e"/>
+                <constraint firstItem="wRK-Kl-oOk" firstAttribute="leading" secondItem="VWH-Un-ZpZ" secondAttribute="leading" constant="35" id="Mv7-UJ-H7e"/>
                 <constraint firstItem="Uiy-dh-BtW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="PxV-he-kSc"/>
-                <constraint firstItem="VWH-Un-ZpZ" firstAttribute="top" secondItem="wRK-Kl-oOk" secondAttribute="bottom" constant="40" id="QTr-N6-MgV"/>
                 <constraint firstItem="B4N-V8-SJB" firstAttribute="top" secondItem="VWH-Un-ZpZ" secondAttribute="top" constant="-30" id="a8q-yK-XJu"/>
                 <constraint firstAttribute="bottom" secondItem="VWH-Un-ZpZ" secondAttribute="bottom" constant="8" id="cQq-hG-7M8"/>
                 <constraint firstAttribute="trailing" secondItem="wRK-Kl-oOk" secondAttribute="trailing" constant="35" id="coo-HD-Fzd"/>
+                <constraint firstAttribute="trailing" secondItem="Htg-xM-6NX" secondAttribute="trailing" id="gZA-yk-Wlg"/>
+                <constraint firstItem="Q1d-J0-WaX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="159" id="iM0-ah-AYc"/>
                 <constraint firstAttribute="bottom" secondItem="SSU-VL-LVr" secondAttribute="bottom" constant="13" id="iNP-qT-mUO"/>
                 <constraint firstAttribute="centerX" secondItem="Q1d-J0-WaX" secondAttribute="centerX" id="iu2-v6-mfq"/>
+                <constraint firstItem="Htg-xM-6NX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="mIy-2Z-FdC"/>
+                <constraint firstItem="VWH-Un-ZpZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="210" id="oMi-Xi-VHW"/>
+                <constraint firstItem="Htg-xM-6NX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="pSK-wy-UI0"/>
                 <constraint firstItem="VWH-Un-ZpZ" firstAttribute="top" secondItem="Q1d-J0-WaX" secondAttribute="bottom" constant="29" id="uF9-Fv-tCu"/>
                 <constraint firstItem="wRK-Kl-oOk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="90" id="uVt-Cw-P9e"/>
-                <constraint firstItem="B4N-V8-SJB" firstAttribute="leading" secondItem="VWH-Un-ZpZ" secondAttribute="leading" id="wm5-hp-wGf"/>
+                <constraint firstAttribute="centerX" secondItem="QXi-dr-Szf" secondAttribute="centerX" id="vrM-cS-22L"/>
+                <constraint firstItem="B4N-V8-SJB" firstAttribute="leading" secondItem="VWH-Un-ZpZ" secondAttribute="leading" constant="35" id="wm5-hp-wGf"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="LFL-gN-XyT"/>
+                    <exclude reference="uF9-Fv-tCu"/>
+                    <exclude reference="Avu-Yl-hdh"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="409" y="485"/>
         </view>
     </objects>

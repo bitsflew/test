@@ -13,6 +13,10 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
 @interface CMGuidedSearchFlowViewController ()
 
 @property (nonatomic, strong) UIViewController<CMGuidedSearchStepViewController> *stepViewController;
+@property (nonatomic) CGFloat modeToggleButtonInitialTop;
+@property (nonatomic) CGFloat modeOffset;
+
+- (void)setModeOffset:(CGFloat)modeOffset animated:(BOOL)animated;
 
 @end
 
@@ -31,10 +35,18 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
+    self.modeToggleButtonInitialTop = self.modeToggleButtonTopConstraint.constant;
+
     if (self.flow) {
         [self presentStep:self.flow.firstStep];
     }
+    
+    [self.modeToggleButton setBackgroundImage:[[UIImage imageNamed:@"img_guided_search_tab.png"]
+                                               resizableImageWithCapInsets:UIEdgeInsetsMake(0.f, 40.f, 0.f, 40.f)]
+                                     forState:UIControlStateNormal];
+
+    [self.modeToggleButton addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(recognizedSwipe:)]];
 }
 
 - (void)setFlow:(CMGuidedSearchFlow*)flow
@@ -129,6 +141,51 @@ static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
 - (void)stepViewControllerDidCompleteStep:(id<CMGuidedSearchStepViewController>)stepViewController
 {
     [self presentNextStep];
+}
+
+#pragma mark -
+
+- (void)setModeOffset:(CGFloat)modeOffset
+{
+    [self setModeOffset:modeOffset animated:NO];
+}
+
+- (void)setModeOffset:(CGFloat)modeOffset animated:(BOOL)animated
+{
+    _modeOffset = modeOffset;
+    
+    CGRect bounds = self.view.bounds;
+    
+    self.modeToggleButtonTopConstraint.constant =
+      self.modeToggleButtonInitialTop + modeOffset * (CGRectGetHeight(bounds) - self.modeToggleButtonInitialTop);
+    self.nextButton.alpha = 1.f - modeOffset;
+    self.flowProgressView.contractionFactor = modeOffset;
+    
+
+}
+
+#pragma mark -
+
+- (void)recognizedSwipe:(UISwipeGestureRecognizer*)recognizer
+{
+    CGFloat top = [recognizer locationInView:self.view].y - CGRectGetMidY(self.modeToggleButton.bounds);
+    
+    CGFloat modeOffset = fmaxf(top - self.modeToggleButtonInitialTop, 0.f) / (CGRectGetHeight(self.view.bounds) - self.modeToggleButtonInitialTop);
+
+    switch (recognizer.state) {
+        case UIGestureRecognizerStateBegan:
+            
+            break;
+        case UIGestureRecognizerStateChanged:
+            self.modeOffset = modeOffset;
+            break;
+            
+        case UIGestureRecognizerStateEnded:
+            self.modeOffset = 1.f;
+            break;
+        default:
+            break;
+    }
 }
 
 

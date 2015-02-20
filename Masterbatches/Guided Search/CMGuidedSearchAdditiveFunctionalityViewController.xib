@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6254"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CMGuidedSearchAdditiveFunctionalityViewController">
@@ -17,25 +17,16 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dLb-n3-dri" customClass="CMGuidedSearchGrid">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="599.5"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="selectionDelegate" destination="-1" id="Nn7-zT-i6X"/>
                     </connections>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="white-fade-tile.png" translatesAutoresizingMaskIntoConstraints="NO" id="dvK-ZJ-pTs">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="48"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="48" id="yhR-Nc-g0z"/>
-                    </constraints>
-                </imageView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="dLb-n3-dri" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="3Kd-yn-JLG"/>
-                <constraint firstItem="dvK-ZJ-pTs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Pu3-ch-HYr"/>
                 <constraint firstAttribute="bottom" secondItem="dLb-n3-dri" secondAttribute="bottom" id="oHR-ZD-zwB"/>
-                <constraint firstItem="dvK-ZJ-pTs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="paF-VR-4aN"/>
-                <constraint firstAttribute="trailing" secondItem="dvK-ZJ-pTs" secondAttribute="trailing" id="q1X-Oa-g1E"/>
                 <constraint firstAttribute="trailing" secondItem="dLb-n3-dri" secondAttribute="trailing" id="vUy-b7-Ihy"/>
                 <constraint firstItem="dLb-n3-dri" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="wxU-lo-gHM"/>
             </constraints>
@@ -43,7 +34,4 @@
             <point key="canvasLocation" x="279" y="405.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="white-fade-tile.png" width="32" height="96"/>
-    </resources>
 </document>
