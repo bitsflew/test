@@ -49,6 +49,8 @@
 		44E9E5531A9642180028B01F /* Gotham-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 44E9E5521A9642180028B01F /* Gotham-Book.otf */; };
 		44E9E55A1A974FB00028B01F /* ic_close_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 44E9E5581A974FB00028B01F /* ic_close_black.png */; };
 		44E9E55B1A974FB00028B01F /* ic_close_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44E9E5591A974FB00028B01F /* ic_close_black@2x.png */; };
+		44E9E55F1A9770ED0028B01F /* CMSearchDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E9E55E1A9770ED0028B01F /* CMSearchDAO.m */; };
+		44E9E5611A9777DF0028B01F /* Additive-Additional-Conductive.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44E9E5601A9777DF0028B01F /* Additive-Additional-Conductive.plist */; };
 		4B2EDFA81A93994F007E0493 /* MenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2EDFA71A93994F007E0493 /* MenuModel.m */; };
 		4B2EDFAB1A939FAB007E0493 /* MenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2EDFAA1A939FAB007E0493 /* MenuView.m */; };
 		4B2EDFAF1A93A9B7007E0493 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2EDFAD1A93A9B7007E0493 /* MenuViewController.m */; };
@@ -106,8 +108,8 @@
 		443366CA1A9239CE002DD5F5 /* CMGuidedSearchFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchFlowViewController.h; sourceTree = "<group>"; };
 		443366CB1A9239CE002DD5F5 /* CMGuidedSearchFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchFlowViewController.m; sourceTree = "<group>"; };
 		443366CC1A9239CE002DD5F5 /* CMGuidedSearchFlowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMGuidedSearchFlowViewController.xib; sourceTree = "<group>"; };
-		443366D01A923BE0002DD5F5 /* CMProductSpecification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMProductSpecification.h; sourceTree = "<group>"; };
-		443366D11A923BE0002DD5F5 /* CMProductSpecification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMProductSpecification.m; sourceTree = "<group>"; };
+		443366D01A923BE0002DD5F5 /* CMProductSpecification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMProductSpecification.h; path = ../CMProductSpecification.h; sourceTree = "<group>"; };
+		443366D11A923BE0002DD5F5 /* CMProductSpecification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMProductSpecification.m; path = ../CMProductSpecification.m; sourceTree = "<group>"; };
 		443366DB1A923DE9002DD5F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		443366E21A92499C002DD5F5 /* CMGuidedSearchColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchColorViewController.h; sourceTree = "<group>"; };
 		443366E31A92499C002DD5F5 /* CMGuidedSearchColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchColorViewController.m; sourceTree = "<group>"; };
@@ -131,6 +133,9 @@
 		44E9E5521A9642180028B01F /* Gotham-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Book.otf"; sourceTree = "<group>"; };
 		44E9E5581A974FB00028B01F /* ic_close_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_close_black.png; sourceTree = "<group>"; };
 		44E9E5591A974FB00028B01F /* ic_close_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_close_black@2x.png"; sourceTree = "<group>"; };
+		44E9E55D1A9770ED0028B01F /* CMSearchDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMSearchDAO.h; path = DAO/CMSearchDAO.h; sourceTree = "<group>"; };
+		44E9E55E1A9770ED0028B01F /* CMSearchDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMSearchDAO.m; path = DAO/CMSearchDAO.m; sourceTree = "<group>"; };
+		44E9E5601A9777DF0028B01F /* Additive-Additional-Conductive.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Additive-Additional-Conductive.plist"; sourceTree = "<group>"; };
 		4B2EDFA61A93994F007E0493 /* MenuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuModel.h; sourceTree = "<group>"; };
 		4B2EDFA71A93994F007E0493 /* MenuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuModel.m; sourceTree = "<group>"; };
 		4B2EDFA91A939FAB007E0493 /* MenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuView.h; sourceTree = "<group>"; };
@@ -225,8 +230,6 @@
 				4457F4811A94A963002FF4F5 /* Dependencies */,
 				4B2EDF9F1A939896007E0493 /* Menu */,
 				44107DA91A9361AA004053A2 /* Assets */,
-				443366D01A923BE0002DD5F5 /* CMProductSpecification.h */,
-				443366D11A923BE0002DD5F5 /* CMProductSpecification.m */,
 				443366C81A92395E002DD5F5 /* Guided Search */,
 				443366A11A923349002DD5F5 /* AppDelegate.h */,
 				443366A21A923349002DD5F5 /* AppDelegate.m */,
@@ -273,6 +276,9 @@
 		443366C81A92395E002DD5F5 /* Guided Search */ = {
 			isa = PBXGroup;
 			children = (
+				44E9E55C1A9770A50028B01F /* DAO */,
+				443366D01A923BE0002DD5F5 /* CMProductSpecification.h */,
+				443366D11A923BE0002DD5F5 /* CMProductSpecification.m */,
 				44E9E53D1A95E58F0028B01F /* CMGuidedSearchFlow.h */,
 				44E9E53E1A95E58F0028B01F /* CMGuidedSearchFlow.m */,
 				443366CA1A9239CE002DD5F5 /* CMGuidedSearchFlowViewController.h */,
@@ -342,8 +348,18 @@
 			isa = PBXGroup;
 			children = (
 				44E9E5481A96231E0028B01F /* Additive.plist */,
+				44E9E5601A9777DF0028B01F /* Additive-Additional-Conductive.plist */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		44E9E55C1A9770A50028B01F /* DAO */ = {
+			isa = PBXGroup;
+			children = (
+				44E9E55D1A9770ED0028B01F /* CMSearchDAO.h */,
+				44E9E55E1A9770ED0028B01F /* CMSearchDAO.m */,
+			);
+			name = DAO;
 			sourceTree = "<group>";
 		};
 		4B2EDF9F1A939896007E0493 /* Menu */ = {
@@ -458,6 +474,7 @@
 				443366E61A92499C002DD5F5 /* CMGuidedSearchColorViewController.xib in Resources */,
 				4B2EDFB01A93A9B7007E0493 /* MenuViewController.xib in Resources */,
 				44E9E54D1A9623A80028B01F /* Main.storyboard in Resources */,
+				44E9E5611A9777DF0028B01F /* Additive-Additional-Conductive.plist in Resources */,
 				44E9E5491A96231E0028B01F /* Additive.plist in Resources */,
 				44E9E5501A96410B0028B01F /* img_guided_search_tab.png in Resources */,
 				44E9E5531A9642180028B01F /* Gotham-Book.otf in Resources */,
@@ -506,6 +523,7 @@
 				4B2EDFA81A93994F007E0493 /* MenuModel.m in Sources */,
 				441470BD1A93588000131077 /* CMGuidedSearchGrid.m in Sources */,
 				4B7AA9691A963DFB00AD81EF /* ClariantColors.m in Sources */,
+				44E9E55F1A9770ED0028B01F /* CMSearchDAO.m in Sources */,
 				443366E51A92499C002DD5F5 /* CMGuidedSearchColorViewController.m in Sources */,
 				441470B31A9346FC00131077 /* CMGuidedSearchProductTypeViewController.m in Sources */,
 				4457F4891A94A963002FF4F5 /* TOMSMorphingLabel.m in Sources */,

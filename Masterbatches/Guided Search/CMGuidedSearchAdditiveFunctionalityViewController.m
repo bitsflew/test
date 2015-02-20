@@ -64,7 +64,7 @@
        [CMProductSpecificationAdditive additiveWithName:@"Photo degradable"],
        [CMProductSpecificationAdditive additiveWithName:@"Process support"],
        [CMProductSpecificationAdditive additiveWithName:@"PV-stabilizer"] ];
-    
+
     [self.gridSelectionView selectItems:self.step.productSpecification.additives animated:YES];
 }
 
@@ -83,11 +83,13 @@
 - (void)guidedSearchGrid:(CMGuidedSearchGrid*)guidedSearchGrid didSelectItem:(id<CMGuidedSearchGridItem>)item
 {
     self.step.productSpecification.additives = self.gridSelectionView.selectedItems;
+    [self.stepDelegate stepViewControllerDidChangeProductSpecification:self];
 }
 
 - (void)guidedSearchGrid:(CMGuidedSearchGrid*)guidedSearchGrid didDeselectItem:(id<CMGuidedSearchGridItem>)item
 {
     self.step.productSpecification.additives = self.gridSelectionView.selectedItems;
+    [self.stepDelegate stepViewControllerDidChangeProductSpecification:self];
 }
 
 @end

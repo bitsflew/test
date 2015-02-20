@@ -7,10 +7,13 @@
 //
 
 #import "CMGuidedSearchFlowViewController.h"
+#import "CMSearchDAO.h"
 
 static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
+
 static CGFloat kCMGuidedSearchFlowViewControllerModeAnimationSpeed = 0.2f;
 static CGFloat kCMGuidedSearchFlowViewControllerTransitionAnimationSpeed = 0.3f;
+static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 
 @interface CMGuidedSearchFlowViewController ()
 
@@ -43,8 +46,9 @@ static CGFloat kCMGuidedSearchFlowViewControllerTransitionAnimationSpeed = 0.3f;
 
     if (self.flow) {
         [self presentStep:self.flow.firstStep];
+        [self updateSearchResults];
     }
-    
+
     [self.modeToggleButton setBackgroundImage:[[UIImage imageNamed:@"img_guided_search_tab.png"]
                                                resizableImageWithCapInsets:UIEdgeInsetsMake(0.f, 40.f, 0.f, 40.f)]
                                      forState:UIControlStateNormal];
@@ -58,10 +62,21 @@ static CGFloat kCMGuidedSearchFlowViewControllerTransitionAnimationSpeed = 0.3f;
 
     if (self.isViewLoaded) {
         [self presentStep:flow.firstStep];
+        [self updateSearchResults];
     }
 }
 
 #pragma mark -
+
+- (void)updateSearchResults
+{
+    __weak __typeof(self) _self = self;
+    [CMSearchDAO loadSearchResultsForProductSpecification:self.flow.productSpecification
+                                               completion:^(NSArray *results, NSError *error) {
+                                                   [_self.modeToggleButton setTitle:[NSString stringWithFormat:@"show %d results", (int)results.count]
+                                                                           forState:UIControlStateNormal];
+                                               }];
+}
 
 - (void)presentStep:(CMGuidedSearchFlowStep*)step
 {
@@ -193,13 +208,6 @@ static CGFloat kCMGuidedSearchFlowViewControllerTransitionAnimationSpeed = 0.3f;
 
 #pragma mark -
 
-- (void)stepViewControllerDidCompleteStep:(id<CMGuidedSearchStepViewController>)stepViewController
-{
-    [self presentNextStep];
-}
-
-#pragma mark -
-
 - (void)setModeOffset:(CGFloat)modeOffset
 {
     [self setModeOffset:modeOffset animated:NO];
@@ -303,6 +311,19 @@ static CGFloat kCMGuidedSearchFlowViewControllerTransitionAnimationSpeed = 0.3f;
         default:
             break;
     }
+}
+
+#pragma mark - Step view controller delegate
+
+- (void)stepViewControllerDidCompleteStep:(id<CMGuidedSearchStepViewController>)stepViewController
+{
+    [self presentNextStep];
+}
+
+- (void)stepViewControllerDidChangeProductSpecification:(id<CMGuidedSearchStepViewController>)stepViewController
+{
+    [NSRunLoop cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateSearchResults) object:nil];
+    [self performSelector:@selector(updateSearchResults) withObject:nil afterDelay:kCMGuidedSearchFlowViewControllerSearchThrottleDelay];
 }
 
 

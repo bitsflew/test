@@ -70,11 +70,13 @@
 - (void)guidedSearchGrid:(CMGuidedSearchGrid*)guidedSearchGrid didSelectItem:(id<CMGuidedSearchGridItem>)item
 {
     self.step.productSpecification.resins = self.gridSelectionView.selectedItems;
+    [self.stepDelegate stepViewControllerDidChangeProductSpecification:self];
 }
 
 - (void)guidedSearchGrid:(CMGuidedSearchGrid*)guidedSearchGrid didDeselectItem:(id<CMGuidedSearchGridItem>)item
 {
     self.step.productSpecification.resins = self.gridSelectionView.selectedItems;
+    [self.stepDelegate stepViewControllerDidChangeProductSpecification:self];
 }
 
 

@@ -13,6 +13,7 @@
 @protocol CMGuidedSearchStepViewControllerDelegate <NSObject>
 
 - (void)stepViewControllerDidCompleteStep:(id<CMGuidedSearchStepViewController>)stepViewController;
+- (void)stepViewControllerDidChangeProductSpecification:(id<CMGuidedSearchStepViewController>)stepViewController;
 
 @end
 
