@@ -100,10 +100,10 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
 - (UIFont *)font {
     switch (self.displayMode) {
         case MenuItemDisplayModeMain:
-            return [UIFont fontWithName:@"Helvetica-Bold" size:18];
+            return [UIFont fontWithName:@"Gotham-Bold" size:18];
         case MenuItemDisplayModeDefault:
         case MenuItemDisplayModeBack:
-            return [UIFont fontWithName:@"Helvetica" size:15];
+            return [UIFont fontWithName:@"Gotham-Book" size:15];
     }
 }
 
