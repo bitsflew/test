@@ -48,6 +48,9 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
     button.bounds = itemView.frame;
     button.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     [button addTarget:itemView action:@selector(select:) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:itemView action:@selector(touchDown:) forControlEvents:UIControlEventTouchDown];
+    [button addTarget:itemView action:@selector(touchUpOutside:) forControlEvents:UIControlEventTouchUpOutside];
+
     itemView.button = button;
     [itemView addSubview:button];
     
@@ -59,10 +62,29 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
 }
 
 - (void)select:(id)sender {
+    [self.layer removeAllAnimations];
     if (self.menuItemSelectHandler) self.menuItemSelectHandler(self);
 }
 
-- (void)setDisplayMode:(MenuItemDisplayMode)displayMode { //animated:
+- (void)touchUpOutside:(id)sender {
+    [self.layer removeAllAnimations];
+}
+
+- (void)touchDown:(id)sender {
+    // Scaling the UIView in an animation causes the cirles to become a bit squarish
+    // Insead, scaling the layer works fine
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    
+    animation.fillMode = kCAFillModeForwards;
+    animation.removedOnCompletion = NO;
+    animation.fromValue = @(1.0);
+    animation.toValue = @(1.15);
+    animation.duration = 0.15;
+    
+    [self.layer addAnimation:animation forKey:@"scale"];
+}
+
+- (void)setDisplayMode:(MenuItemDisplayMode)displayMode {
     _displayMode = displayMode;
 
     self.label.font = [self font];
@@ -131,6 +153,8 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
 
 - (void)layoutSubviews {
     self.label.center = [self convertPoint:self.center fromView:self.superview];
+    // Fix off-pixel alignment
+    self.label.frame = CGRectIntegral(self.label.frame);
     self.layer.cornerRadius = self.frame.size.width / 2;
 }
 
@@ -143,9 +167,11 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
     self.label.frame = frame;
     
     [self.label sizeToFit];
-
+    
     CGFloat width = self.label.frame.size.width + self.margin + 2 * self.borderWidth;
-    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, width, width);
+    // Make this circle is layed-out on whole pixels
+    width = ceil(width / 2) * 2;
+    self.frame = CGRectIntegral(CGRectMake(self.frame.origin.x, self.frame.origin.y, width, width));
     
     [self layoutSubviews];
 }
@@ -190,12 +216,15 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
 }
 
 - (void)createSubviews {
+    // Stop the drawRect: while new items are being added and not yet layed-out
+    self.displayLink.paused = YES;
+    
     if (self.menu == nil) self.menu = [MenuModel readMenuFromFile];
 
     if (self.centerItem == nil) {
         self.centerItem = [self createViewForMenuItem:self.menu];
         self.centerItem.displayMode = MenuItemDisplayModeMain;
-        [self.centerItem setPolarCoordinate:PolarCoordinateZero withCenter:self.center];
+        [self.centerItem setIntegralPolarCoordinate:PolarCoordinateZero withCenter:self.center];
         [self addSubview:self.centerItem];
     }
     
@@ -205,29 +234,12 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
         if (itemView == nil) {
             itemView = [self createViewForMenuItem:item];
             itemView.displayMode = MenuItemDisplayModeDefault;
-            [itemView setPolarCoordinate:PolarCoordinateZero withCenter:self.centerItem.center];
+            [itemView setIntegralPolarCoordinate:PolarCoordinateZero withCenter:self.centerItem.center];
             self.subItems[@(item.identifier)] = itemView;
         }
         
         [self insertSubview:itemView belowSubview:self.centerItem];
     }
-    
-    CGFloat interval = 1;
-    
-    static dispatch_source_t timer = nil;
-    timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());
-    dispatch_source_set_timer(timer, dispatch_time(DISPATCH_TIME_NOW, interval * NSEC_PER_SEC), interval * NSEC_PER_SEC, (1ull * NSEC_PER_SEC) / 10);
-    dispatch_source_set_event_handler(timer, ^{
-        [UIView animateWithDuration:0.5 animations:^{
-            for (MenuModel *item in self.menu.subMenuItems) {
-                item.angle = item.angle + M_PI / 5;
-            }
-            [self layoutSubviews];
-            [self setNeedsDisplay];
-        }];
-    });
-//    dispatch_resume(timer);
-
 }
 
 - (MenuItemView *)createViewForMenuItem:(MenuModel *)menuItem {
@@ -292,17 +304,17 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
         self.centerItem.center = self.center;
         
         if (self.parentItem) {
-            [self.parentItem setPolarCoordinate:PolarCoordinateMake(350, M_PI * 1.7) withCenter:self.center];
+            [self.parentItem setIntegralPolarCoordinate:PolarCoordinateMake(350, M_PI * 1.7) withCenter:self.center];
         }
 
         for (MenuItemView *item in self.subItems.allValues) {
             item.transform = CGAffineTransformIdentity;
             MenuModel *menuItem = item.menuItem;
-            [item setPolarCoordinate:PolarCoordinateMake(menuItem.distance, menuItem.angle) withCenter:self.center];
+            [item setIntegralPolarCoordinate:PolarCoordinateMake(menuItem.distance, menuItem.angle) withCenter:self.center];
         }
         
         for (MenuItemView *item in oldSubMenuItems) {
-            [item setPolarCoordinate:PolarCoordinateZero withCenter:oldCenterItem.center];
+            [item setIntegralPolarCoordinate:PolarCoordinateZero withCenter:oldCenterItem.center];
             item.alpha = 0;
             item.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.5, 0.5);
         }
@@ -313,17 +325,18 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    self.displayLink.paused = NO;
 
     self.centerItem.center = self.center;
     
     if (self.parentItem) {
-        [self.parentItem setPolarCoordinate:PolarCoordinateMake(350, M_PI * 1.7) withCenter:self.center];
+        [self.parentItem setIntegralPolarCoordinate:PolarCoordinateMake(350, M_PI * 1.7) withCenter:self.center];
     }
     
     for (MenuItemView *subMenuItem in self.subItems.allValues) {
         [subMenuItem sizeToFit];
         MenuModel *menuItem = subMenuItem.menuItem;
-        [subMenuItem setPolarCoordinate:PolarCoordinateMake(menuItem.distance, menuItem.angle) withCenter:self.center];
+        [subMenuItem setIntegralPolarCoordinate:PolarCoordinateMake(menuItem.distance, menuItem.angle) withCenter:self.center];
     }
 }
 

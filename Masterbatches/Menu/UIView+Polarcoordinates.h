@@ -16,9 +16,11 @@ typedef struct {
 extern PolarCoordinate PolarCoordinateZero;
 
 PolarCoordinate PolarCoordinateMake(CGFloat radius, CGFloat angle);
+CGPoint CGPointIntegral(CGPoint point);
 
 @interface UIView (Polar)
 - (void)setPolarCoordinate:(PolarCoordinate)polar withCenter:(CGPoint)center;
+- (void)setIntegralPolarCoordinate:(PolarCoordinate)polar withCenter:(CGPoint)center;
 - (PolarCoordinate)polarCoordinateWithCenter:(CGPoint)center;
 @end
 

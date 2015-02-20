@@ -14,6 +14,10 @@ PolarCoordinate PolarCoordinateMake(CGFloat radius, CGFloat angle) {
     return (PolarCoordinate){radius, angle};
 }
 
+CGPoint CGPointIntegral(CGPoint point) {
+    return (CGPoint){ceil(point.x), ceil(point.y)};
+}
+
 @implementation UIView (Polar)
 
 #define RotateToTop (-M_PI / 2)
@@ -36,6 +40,11 @@ PolarCoordinate PolarCoordinateMake(CGFloat radius, CGFloat angle) {
         center.x + dx,
         center.y + dy
     };
+}
+
+- (void)setIntegralPolarCoordinate:(PolarCoordinate)polar withCenter:(CGPoint)center {
+    [self setPolarCoordinate:polar withCenter:center];
+    self.center = CGPointIntegral(self.center);
 }
 
 @end
