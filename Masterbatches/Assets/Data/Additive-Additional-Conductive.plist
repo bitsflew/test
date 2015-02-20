@@ -15,7 +15,7 @@
 			<string>conductivity</string>
 			<key>Attributes</key>
 			<dict>
-				<key>Options</key>
+				<key>Choices</key>
 				<array>
 					<string>Not very conductive</string>
 					<string>Quite conductive</string>

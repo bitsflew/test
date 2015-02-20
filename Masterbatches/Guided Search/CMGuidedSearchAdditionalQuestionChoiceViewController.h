@@ -8,7 +8,7 @@
 
 #import "CMGuidedSearchAdditionalQuestionViewController.h"
 
-@interface CMGuidedSearchAdditionalQuestionChoiceViewController : UIViewController <CMGuidedSearchAdditionalQuestionViewController>
+@interface CMGuidedSearchAdditionalQuestionChoiceViewController : UITableViewController <CMGuidedSearchAdditionalQuestionViewController>
 
 @property (nonatomic, retain) CMGuidedSearchFlowAdditionalQuestion* additionalQuestion;
 

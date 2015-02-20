@@ -54,7 +54,6 @@
 		44E9E5671A9780C50028B01F /* CMGuidedSearchAdditionalQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E9E5651A9780C50028B01F /* CMGuidedSearchAdditionalQuestionsViewController.m */; };
 		44E9E5681A9780C50028B01F /* CMGuidedSearchAdditionalQuestionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44E9E5661A9780C50028B01F /* CMGuidedSearchAdditionalQuestionsViewController.xib */; };
 		44E9E56D1A9784C30028B01F /* CMGuidedSearchAdditionalQuestionChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E9E56B1A9784C30028B01F /* CMGuidedSearchAdditionalQuestionChoiceViewController.m */; };
-		44E9E56E1A9784C30028B01F /* CMGuidedSearchAdditionalQuestionChoiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44E9E56C1A9784C30028B01F /* CMGuidedSearchAdditionalQuestionChoiceViewController.xib */; };
 		4B2EDFA81A93994F007E0493 /* MenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2EDFA71A93994F007E0493 /* MenuModel.m */; };
 		4B2EDFAB1A939FAB007E0493 /* MenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2EDFAA1A939FAB007E0493 /* MenuView.m */; };
 		4B2EDFAF1A93A9B7007E0493 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2EDFAD1A93A9B7007E0493 /* MenuViewController.m */; };
@@ -145,7 +144,6 @@
 		44E9E5661A9780C50028B01F /* CMGuidedSearchAdditionalQuestionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMGuidedSearchAdditionalQuestionsViewController.xib; sourceTree = "<group>"; };
 		44E9E56A1A9784C30028B01F /* CMGuidedSearchAdditionalQuestionChoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchAdditionalQuestionChoiceViewController.h; sourceTree = "<group>"; };
 		44E9E56B1A9784C30028B01F /* CMGuidedSearchAdditionalQuestionChoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchAdditionalQuestionChoiceViewController.m; sourceTree = "<group>"; };
-		44E9E56C1A9784C30028B01F /* CMGuidedSearchAdditionalQuestionChoiceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMGuidedSearchAdditionalQuestionChoiceViewController.xib; sourceTree = "<group>"; };
 		44E9E56F1A9785380028B01F /* CMGuidedSearchAdditionalQuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchAdditionalQuestionViewController.h; sourceTree = "<group>"; };
 		4B2EDFA61A93994F007E0493 /* MenuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuModel.h; sourceTree = "<group>"; };
 		4B2EDFA71A93994F007E0493 /* MenuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuModel.m; sourceTree = "<group>"; };
@@ -383,7 +381,6 @@
 				44E9E56F1A9785380028B01F /* CMGuidedSearchAdditionalQuestionViewController.h */,
 				44E9E56A1A9784C30028B01F /* CMGuidedSearchAdditionalQuestionChoiceViewController.h */,
 				44E9E56B1A9784C30028B01F /* CMGuidedSearchAdditionalQuestionChoiceViewController.m */,
-				44E9E56C1A9784C30028B01F /* CMGuidedSearchAdditionalQuestionChoiceViewController.xib */,
 			);
 			name = "Additional questions";
 			sourceTree = "<group>";
@@ -510,7 +507,6 @@
 				443366CE1A9239CE002DD5F5 /* CMGuidedSearchFlowViewController.xib in Resources */,
 				4457F4801A94A744002FF4F5 /* ic_pagination_checkmark_light.png in Resources */,
 				44107DAD1A9361AA004053A2 /* rounded-cell-background.png in Resources */,
-				44E9E56E1A9784C30028B01F /* CMGuidedSearchAdditionalQuestionChoiceViewController.xib in Resources */,
 				441470B91A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.xib in Resources */,
 				44107DB51A9377FF004053A2 /* white-fade-tile.png in Resources */,
 				441470AF1A93465200131077 /* CMGuidedSearchResinTypeViewController.xib in Resources */,

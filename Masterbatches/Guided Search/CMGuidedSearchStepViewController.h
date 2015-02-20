@@ -15,6 +15,8 @@
 - (void)stepViewControllerDidCompleteStep:(id<CMGuidedSearchStepViewController>)stepViewController;
 - (void)stepViewControllerDidChangeProductSpecification:(id<CMGuidedSearchStepViewController>)stepViewController;
 
+- (CMGuidedSearchFlow*)flow;
+
 @end
 
 @protocol CMGuidedSearchStepViewController <NSObject>

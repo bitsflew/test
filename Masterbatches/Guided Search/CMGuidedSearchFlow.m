@@ -9,9 +9,28 @@
 #import "CMGuidedSearchFlow.h"
 #import "CMProductSpecification.h"
 
-@interface CMGuidedSearchFlowStep ()
+@implementation CMGuidedSearchFlowAdditionalQuestion
 
-- (id)initWithDictionary:(NSDictionary*)dictionary productSpecification:(CMProductSpecification*)productSpecification;
+- (id)initWithDictionary:(NSDictionary*)dictionary productSpecification:(CMProductSpecification*)productSpecification
+{
+    if (!(self = [super init])) {
+        return nil;
+    }
+    
+    self.title = dictionary[@"Title"];
+    self.attributes = dictionary[@"Attributes"];
+    self.key = dictionary[@"Key"];
+
+    NSString *className = [dictionary[@"Class"] hasSuffix:@"ViewController"]
+      ? dictionary[@"Class"]
+      : [NSString stringWithFormat:@"CMGuidedSearchAdditionalQuestion%@ViewController", dictionary[@"Class"]];
+    
+    self.viewControllerClass = NSClassFromString(className);
+    
+    self.productSpecification = productSpecification;
+
+    return self;
+}
 
 @end
 
@@ -42,6 +61,7 @@
 
 @property (nonatomic, retain) NSArray *steps;
 @property (nonatomic, readwrite, retain) CMProductSpecification* productSpecification;
+@property (nonatomic, readwrite, retain) NSArray *additionalQuestions;
 
 - (id)initWithDictionary:(NSDictionary*)dictionary;
 
@@ -77,6 +97,35 @@
     }
     return self;
 }
+
+- (NSArray*)additionalQuestionsNamed:(NSString*)name
+{
+    if (![name hasPrefix:@".plist"]) {
+        name = [name stringByAppendingString:@".plist"];
+    }
+    return [self additionalQuestionsWithContentsOfFile:
+            [[NSBundle mainBundle] pathForResource:name ofType:nil]];
+}
+
+- (NSArray*)additionalQuestionsWithContentsOfFile:(NSString*)path
+{
+    NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:path];
+    if (!dictionary) {
+        return @[];
+    }
+
+    NSMutableArray *questions = [NSMutableArray new];
+
+    for (NSDictionary *questionDictionary in dictionary[@"Questions"]) {
+        [questions addObject:
+         [[CMGuidedSearchFlowAdditionalQuestion alloc] initWithDictionary:questionDictionary
+                                                     productSpecification:self.productSpecification]];
+    }
+
+    return questions;
+}
+
+#pragma mark -
 
 - (NSUInteger)stepCount
 {

@@ -44,4 +44,7 @@
 - (CMGuidedSearchFlowStep*)nextStepAfter:(CMGuidedSearchFlowStep*)step;
 - (CMGuidedSearchFlowStep*)previousStepBefore:(CMGuidedSearchFlowStep*)step;
 
+- (NSArray*)additionalQuestionsNamed:(NSString*)name;
+- (NSArray*)additionalQuestionsWithContentsOfFile:(NSString*)path;
+
 @end
