@@ -3,7 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>Name</key>
-	<string>Start</string>
+	<string>WHAT IS
+PRECIOUS
+TO YOU?</string>
 	<key>Items</key>
 	<array>
 		<dict>
@@ -12,7 +14,8 @@
 			<key>Distance</key>
 			<integer>200</integer>
 			<key>Name</key>
-			<string>Doc Finder</string>
+			<string>Clariant
+documents</string>
 			<key>Items</key>
 			<array/>
 		</dict>
@@ -22,14 +25,15 @@
 			<key>Distance</key>
 			<integer>300</integer>
 			<key>Name</key>
-			<string>Masterbatch SF</string>
+			<string>Masterbatch
+solution finder</string>
 			<key>Items</key>
 			<array>
 				<dict>
 					<key>Name</key>
 					<string>Guided Search</string>
 					<key>Angle</key>
-					<real>0.9</real>
+					<real>0.3</real>
 					<key>Distance</key>
 					<integer>200</integer>
 					<key>Action</key>
@@ -39,7 +43,7 @@
 					<key>Name</key>
 					<string>Color</string>
 					<key>Angle</key>
-					<real>1.5</real>
+					<real>0.9</real>
 					<key>Distance</key>
 					<integer>300</integer>
 				</dict>
@@ -47,7 +51,7 @@
 					<key>Name</key>
 					<string>Additives</string>
 					<key>Angle</key>
-					<real>2.1</real>
+					<real>1.5</real>
 					<key>Distance</key>
 					<integer>200</integer>
 				</dict>
@@ -55,7 +59,7 @@
 					<key>Name</key>
 					<string>Industries</string>
 					<key>Angle</key>
-					<real>2.7</real>
+					<real>2.1</real>
 					<key>Distance</key>
 					<integer>300</integer>
 				</dict>
@@ -63,7 +67,7 @@
 					<key>Name</key>
 					<string>GS Expert Mode</string>
 					<key>Angle</key>
-					<real>3.3</real>
+					<real>2.7</real>
 					<key>Distance</key>
 					<integer>200</integer>
 				</dict>

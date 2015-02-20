@@ -54,6 +54,9 @@
 		4B2EDFAF1A93A9B7007E0493 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2EDFAD1A93A9B7007E0493 /* MenuViewController.m */; };
 		4B2EDFB01A93A9B7007E0493 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B2EDFAE1A93A9B7007E0493 /* MenuViewController.xib */; };
 		4B2EDFB21A93A9F0007E0493 /* Menu.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B2EDFB11A93A9F0007E0493 /* Menu.plist */; };
+		4B7AA9631A96320500AD81EF /* gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B7AA9621A96320500AD81EF /* gradient.png */; };
+		4B7AA9661A963D0B00AD81EF /* UIView+Polarcoordinates.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B7AA9651A963D0B00AD81EF /* UIView+Polarcoordinates.m */; };
+		4B7AA9691A963DFB00AD81EF /* ClariantColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B7AA9681A963DFB00AD81EF /* ClariantColors.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +139,11 @@
 		4B2EDFAD1A93A9B7007E0493 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		4B2EDFAE1A93A9B7007E0493 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
 		4B2EDFB11A93A9F0007E0493 /* Menu.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Menu.plist; sourceTree = "<group>"; };
+		4B7AA9621A96320500AD81EF /* gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gradient.png; sourceTree = "<group>"; };
+		4B7AA9641A963D0B00AD81EF /* UIView+Polarcoordinates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Polarcoordinates.h"; sourceTree = "<group>"; };
+		4B7AA9651A963D0B00AD81EF /* UIView+Polarcoordinates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Polarcoordinates.m"; sourceTree = "<group>"; };
+		4B7AA9671A963DFB00AD81EF /* ClariantColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClariantColors.h; sourceTree = "<group>"; };
+		4B7AA9681A963DFB00AD81EF /* ClariantColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClariantColors.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +232,8 @@
 				443366A21A923349002DD5F5 /* AppDelegate.m */,
 				443366A71A923349002DD5F5 /* ViewController.h */,
 				443366A81A923349002DD5F5 /* ViewController.m */,
+				4B7AA9671A963DFB00AD81EF /* ClariantColors.h */,
+				4B7AA9681A963DFB00AD81EF /* ClariantColors.m */,
 				443366AA1A923349002DD5F5 /* Main.storyboard */,
 				443366AD1A923349002DD5F5 /* Images.xcassets */,
 				443366AF1A923349002DD5F5 /* LaunchScreen.xib */,
@@ -339,6 +349,7 @@
 		4B2EDF9F1A939896007E0493 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				4B7AA9621A96320500AD81EF /* gradient.png */,
 				4B2EDFB11A93A9F0007E0493 /* Menu.plist */,
 				4B2EDFA61A93994F007E0493 /* MenuModel.h */,
 				4B2EDFA71A93994F007E0493 /* MenuModel.m */,
@@ -347,6 +358,8 @@
 				4B2EDFAC1A93A9B7007E0493 /* MenuViewController.h */,
 				4B2EDFAD1A93A9B7007E0493 /* MenuViewController.m */,
 				4B2EDFAE1A93A9B7007E0493 /* MenuViewController.xib */,
+				4B7AA9641A963D0B00AD81EF /* UIView+Polarcoordinates.h */,
+				4B7AA9651A963D0B00AD81EF /* UIView+Polarcoordinates.m */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -400,6 +413,7 @@
 				TargetAttributes = {
 					443366991A923349002DD5F5 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = SFWNSYN8YK;
 					};
 					443366B51A923349002DD5F5 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -439,6 +453,7 @@
 				4B2EDFB21A93A9F0007E0493 /* Menu.plist in Resources */,
 				441470B41A9346FC00131077 /* CMGuidedSearchProductTypeViewController.xib in Resources */,
 				44107DB31A937719004053A2 /* Gotham-Bold.otf in Resources */,
+				4B7AA9631A96320500AD81EF /* gradient.png in Resources */,
 				441470BF1A93599100131077 /* CMGuidedSearchGridSelectionItemRoundedCell.xib in Resources */,
 				443366E61A92499C002DD5F5 /* CMGuidedSearchColorViewController.xib in Resources */,
 				4B2EDFB01A93A9B7007E0493 /* MenuViewController.xib in Resources */,
@@ -485,10 +500,12 @@
 				443366A31A923349002DD5F5 /* AppDelegate.m in Sources */,
 				443366A01A923349002DD5F5 /* main.m in Sources */,
 				4B2EDFAB1A939FAB007E0493 /* MenuView.m in Sources */,
+				4B7AA9661A963D0B00AD81EF /* UIView+Polarcoordinates.m in Sources */,
 				443366A91A923349002DD5F5 /* ViewController.m in Sources */,
 				443366EA1A92513A002DD5F5 /* CMGuidedSearchAdditiveFunctionalityViewController.m in Sources */,
 				4B2EDFA81A93994F007E0493 /* MenuModel.m in Sources */,
 				441470BD1A93588000131077 /* CMGuidedSearchGrid.m in Sources */,
+				4B7AA9691A963DFB00AD81EF /* ClariantColors.m in Sources */,
 				443366E51A92499C002DD5F5 /* CMGuidedSearchColorViewController.m in Sources */,
 				441470B31A9346FC00131077 /* CMGuidedSearchProductTypeViewController.m in Sources */,
 				4457F4891A94A963002FF4F5 /* TOMSMorphingLabel.m in Sources */,
@@ -625,9 +642,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Masterbatches/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "69a2df6d-9895-489c-9b12-5b9c721a98e3";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -636,9 +656,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				INFOPLIST_FILE = Masterbatches/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "69a2df6d-9895-489c-9b12-5b9c721a98e3";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;

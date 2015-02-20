@@ -8,60 +8,26 @@
 
 #import "MenuView.h"
 #import <UIKit/UIKit.h>
+#import "UIView+Polarcoordinates.h"
+#import "ClariantColors.h"
 
 @class MenuItemView;
 
 typedef void (^MenuItemSelectHandler)(MenuItemView *);
 
-typedef struct {
-    CGFloat radius;
-    CGFloat angle;
-} PolarCoordinate;
-
-PolarCoordinate PolarCoordinateZero = (PolarCoordinate){0, 0};
-
-PolarCoordinate PolarCoordinateMake(CGFloat radius, CGFloat angle) {
-    return (PolarCoordinate){radius, angle};
-}
-
-@interface UIView (Polar)
-- (void)setPolarCoordinate:(PolarCoordinate)polar withCenter:(CGPoint)center;
-- (PolarCoordinate)polarCoordinateWithCenter:(CGPoint)center;
-@end
-
-@implementation UIView (Polar)
-
-#define RotateToTop (-M_PI / 2)
-
-- (PolarCoordinate)polarCoordinateWithCenter:(CGPoint)center {
-    CGFloat dx = self.center.x - center.x;
-    CGFloat dy = self.center.y - center.y;
-
-    return (PolarCoordinate){
-        sqrt(dx * dx + dy * dy),
-        atan2(dy, dx) - RotateToTop
-    };
-}
-
-- (void)setPolarCoordinate:(PolarCoordinate)polar withCenter:(CGPoint)center {
-    CGFloat dx = cos(polar.angle + RotateToTop) * polar.radius;
-    CGFloat dy = sin(polar.angle + RotateToTop) * polar.radius;
-
-    self.center = (CGPoint){
-        center.x + dx,
-        center.y + dy
-    };
-}
-
-@end
+typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
+    MenuItemDisplayModeDefault,
+    MenuItemDisplayModeMain,
+    MenuItemDisplayModeBack
+};
 
 @interface MenuItemView : UIView
 + (instancetype)viewForMenuItem:(MenuModel *)item;
-@property (nonatomic, assign) CGFloat value;
 @property (nonatomic, strong) UILabel *label;
 @property (nonatomic, strong) UIButton *button;
 @property (nonatomic, strong) MenuModel *menuItem;
 @property (nonatomic, strong) MenuItemSelectHandler menuItemSelectHandler;
+@property (nonatomic, assign) MenuItemDisplayMode displayMode;
 @end
 
 @implementation MenuItemView
@@ -71,9 +37,11 @@ PolarCoordinate PolarCoordinateMake(CGFloat radius, CGFloat angle) {
     itemView.menuItem = item;
     
     itemView.label = [UILabel new];
+    itemView.label.numberOfLines = -1;
+    itemView.label.textAlignment = NSTextAlignmentCenter;
     [itemView addSubview:itemView.label];
     
-    itemView.label.textColor = [UIColor blackColor];
+    itemView.label.textColor = itemView.fontColor;
     itemView.label.text = item.name;
 
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -83,9 +51,9 @@ PolarCoordinate PolarCoordinateMake(CGFloat radius, CGFloat angle) {
     itemView.button = button;
     [itemView addSubview:button];
     
-    itemView.layer.borderColor = [UIColor blackColor].CGColor;
+    itemView.layer.borderColor = itemView.circleColor.CGColor;
     itemView.layer.borderWidth = itemView.borderWidth;
-    itemView.backgroundColor = [UIColor whiteColor];
+    itemView.backgroundColor = [ClariantColors menuBackgroundColor];
     
     return itemView;
 }
@@ -94,23 +62,71 @@ PolarCoordinate PolarCoordinateMake(CGFloat radius, CGFloat angle) {
     if (self.menuItemSelectHandler) self.menuItemSelectHandler(self);
 }
 
-- (void)setValue:(CGFloat)value {
-    _value = value;
-    
-    self.label.font = [UIFont systemFontOfSize:[self fontSize]];
+- (void)setDisplayMode:(MenuItemDisplayMode)displayMode { //animated:
+    _displayMode = displayMode;
+
+    self.label.font = [self font];
+    self.layer.borderWidth = self.borderWidth;
+    self.layer.borderColor = self.circleColor.CGColor;
+    self.label.textColor = self.fontColor;
+
+    // Don't move the center while resizing
+    CGPoint center = self.center;
     [self sizeToFit];
+    self.center = center;
 }
 
 - (CGFloat)borderWidth {
-    return 2;
+    switch (self.displayMode) {
+        case MenuItemDisplayModeDefault:
+            return 1;
+        case MenuItemDisplayModeMain:
+        case MenuItemDisplayModeBack:
+            return 2;
+    }
 }
 
 - (CGFloat)margin {
-    return 15 + self.value * 4;
+    switch (self.displayMode) {
+        case MenuItemDisplayModeDefault:
+            return 50;
+        case MenuItemDisplayModeMain:
+            return 60;
+        case MenuItemDisplayModeBack:
+            return 35;
+    }
 }
 
-- (CGFloat)fontSize {
-    return self.value * 100;
+- (UIFont *)font {
+    switch (self.displayMode) {
+        case MenuItemDisplayModeMain:
+            return [UIFont fontWithName:@"Gotham-Bold" size:18];
+        case MenuItemDisplayModeDefault:
+        case MenuItemDisplayModeBack:
+            return [UIFont fontWithName:@"Gotham-Book" size:15];
+    }
+}
+
+- (UIColor *)fontColor {
+    switch (self.displayMode) {
+        case MenuItemDisplayModeMain:
+            return [ClariantColors menuMainFontColor];
+        case MenuItemDisplayModeDefault:
+            return [ClariantColors menuDefaultFontColor];
+        case MenuItemDisplayModeBack:
+            return [ClariantColors menuBackFontColor];
+    }
+}
+
+- (UIColor *)circleColor {
+    switch (self.displayMode) {
+        case MenuItemDisplayModeMain:
+            return [UIColor colorWithPatternImage:[UIImage imageNamed:@"gradient.png"]];
+        case MenuItemDisplayModeDefault:
+            return [UIColor colorWithWhite:0.5 alpha:1];
+        case MenuItemDisplayModeBack:
+            return [UIColor colorWithWhite:0.2 alpha:1];
+    }
 }
 
 - (void)layoutSubviews {
@@ -120,9 +136,18 @@ PolarCoordinate PolarCoordinateMake(CGFloat radius, CGFloat angle) {
 
 - (void)sizeToFit {
     [super sizeToFit];
+    
+    // This causes some jumping of the titles
+    CGRect frame = self.label.frame;
+    frame.size.width = CGFLOAT_MAX;
+    self.label.frame = frame;
+    
     [self.label sizeToFit];
+
     CGFloat width = self.label.frame.size.width + self.margin + 2 * self.borderWidth;
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, width, width);
+    
+    [self layoutSubviews];
 }
 
 - (BOOL)isEqual:(id)object {
@@ -156,8 +181,10 @@ PolarCoordinate PolarCoordinateMake(CGFloat radius, CGFloat angle) {
 }
 
 - (void)setup {
+    self.subItems = [NSMutableDictionary new];
+
     [self createSubviews];
-    
+
     self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(setNeedsDisplay)];
     [self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
 }
@@ -167,25 +194,21 @@ PolarCoordinate PolarCoordinateMake(CGFloat radius, CGFloat angle) {
 
     if (self.centerItem == nil) {
         self.centerItem = [self createViewForMenuItem:self.menu];
+        self.centerItem.displayMode = MenuItemDisplayModeMain;
         [self.centerItem setPolarCoordinate:PolarCoordinateZero withCenter:self.center];
         [self addSubview:self.centerItem];
     }
-    
-    self.centerItem.value = 0.3;
-    
-    self.subItems = [NSMutableDictionary dictionaryWithCapacity:self.menu.subMenuItems.count];
     
     for (MenuModel *item in self.menu.subMenuItems) {
         
         MenuItemView *itemView = self.subItems[@(item.identifier)];
         if (itemView == nil) {
             itemView = [self createViewForMenuItem:item];
+            itemView.displayMode = MenuItemDisplayModeDefault;
+            [itemView setPolarCoordinate:PolarCoordinateZero withCenter:self.centerItem.center];
             self.subItems[@(item.identifier)] = itemView;
         }
         
-        [self createViewForMenuItem:item];
-        [itemView setPolarCoordinate:PolarCoordinateZero withCenter:self.centerItem.center];
-        itemView.value = 0.2;
         [self insertSubview:itemView belowSubview:self.centerItem];
     }
     
@@ -231,33 +254,60 @@ PolarCoordinate PolarCoordinateMake(CGFloat radius, CGFloat angle) {
     }
     
     BOOL isSubItem = self.subItems[@(itemView.menuItem.identifier)] != nil;
+    NSMutableArray *oldSubMenuItems = [self.subItems.allValues mutableCopy];
+    MenuItemView *oldCenterItem = self.centerItem;
     
     if ([itemView isEqual:self.parentItem]) {
         self.parentItem = nil; // Help!
+        [self.subItems removeAllObjects];
         self.subItems[@(self.centerItem.menuItem.identifier)] = self.centerItem;
     } else if (isSubItem) {
         self.parentItem = self.centerItem;
-        [self.subItems removeObjectForKey:@(itemView.menuItem.identifier)];
+        [self.subItems removeAllObjects];
+        [oldSubMenuItems removeObject:itemView];
     }
-    
+
     self.menu = itemView.menuItem;
     self.centerItem = itemView;
     
-    NSArray *subItems = self.subItems.allValues;
-    
     [self createSubviews];
-    [UIView animateWithDuration:0.5 animations:^{
-        [self layoutSubviews];
-    }];
+    
+    NSMutableArray *newMenuItems = [self.subItems.allValues mutableCopy];
+    [newMenuItems removeObject:oldCenterItem];
+    
+    for (MenuItemView *item in self.subItems.allValues) {
+        item.displayMode = MenuItemDisplayModeDefault;
+    }
+    
+    for (MenuItemView *item in newMenuItems) {
+        [item sizeToFit];
+        item.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.5, 0.5);
+    }
+
+    self.centerItem.displayMode = MenuItemDisplayModeMain;
+    self.parentItem.displayMode = MenuItemDisplayModeBack;
     
     [UIView animateWithDuration:0.5 animations:^{
-        for (MenuItemView *item in subItems) {
-            CGPoint center = self.parentItem ? self.parentItem.center : self.center;
-            [item setPolarCoordinate:PolarCoordinateZero withCenter:center];
+
+        self.centerItem.center = self.center;
+        
+        if (self.parentItem) {
+            [self.parentItem setPolarCoordinate:PolarCoordinateMake(350, M_PI * 1.7) withCenter:self.center];
+        }
+
+        for (MenuItemView *item in self.subItems.allValues) {
+            item.transform = CGAffineTransformIdentity;
+            MenuModel *menuItem = item.menuItem;
+            [item setPolarCoordinate:PolarCoordinateMake(menuItem.distance, menuItem.angle) withCenter:self.center];
+        }
+        
+        for (MenuItemView *item in oldSubMenuItems) {
+            [item setPolarCoordinate:PolarCoordinateZero withCenter:oldCenterItem.center];
             item.alpha = 0;
+            item.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.5, 0.5);
         }
     } completion:^(BOOL finished) {
-        [subItems makeObjectsPerformSelector:@selector(removeFromSuperview)];
+        [oldSubMenuItems makeObjectsPerformSelector:@selector(removeFromSuperview)];
     }];
 }
 
@@ -280,12 +330,12 @@ PolarCoordinate PolarCoordinateMake(CGFloat radius, CGFloat angle) {
 - (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    [[UIColor whiteColor] setFill];
+    [[ClariantColors menuBackgroundColor] setFill];
     CGContextFillRect(context, rect);
     
-    [[UIColor blackColor] set];
+    [[ClariantColors menuLineColor] set];
     
-    CGContextSetLineWidth(context, 2);
+    CGContextSetLineWidth(context, 1);
     NSArray *items = self.subItems.allValues;
     if (self.parentItem) {
         items = [items arrayByAddingObject:self.parentItem];
