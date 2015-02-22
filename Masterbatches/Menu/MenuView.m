@@ -21,6 +21,12 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
     MenuItemDisplayModeBack
 };
 
+#define CGTransformScale CGAffineTransformScale(CGAffineTransformIdentity, 0.5, 0.5)
+#define AnimationDuration 0.5
+
+#define ParentItemRadius 350
+#define ParentItemAngle (M_PI * 1.7)
+
 @interface MenuItemView : UIView
 + (instancetype)viewForMenuItem:(MenuModel *)item;
 @property (nonatomic, strong) UILabel *label;
@@ -272,17 +278,30 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
     MenuItemView *oldCenterItem = self.centerItem;
     
     if ([itemView isEqual:self.parentItem]) {
-        self.parentItem = [self.parentStash lastObject];
+        MenuItemView *parentItem = [self.parentStash lastObject];
+        self.parentItem = parentItem;
         [self.parentStash removeLastObject];
-        if (self.parentItem) {
-            [self addSubview:self.parentItem];
+        if (parentItem) {
+            [self insertSubview:parentItem belowSubview:itemView];
+            parentItem.transform = CGTransformScale;
+            parentItem.alpha = 0;
+            [UIView animateWithDuration:AnimationDuration animations:^{
+                parentItem.transform = CGAffineTransformIdentity;
+                parentItem.alpha = 1;
+            }];
         }
         [self.subItems removeAllObjects];
         self.subItems[@(self.centerItem.menuItem.identifier)] = self.centerItem;
     } else if (isSubItem) {
         if (self.parentItem) {
-            [self.parentStash addObject:self.parentItem];
-            [self.parentItem removeFromSuperview];
+            MenuItemView *parentItem = self.parentItem;
+            [self.parentStash addObject:parentItem];
+            [UIView animateWithDuration:AnimationDuration animations:^{
+                parentItem.transform = CGTransformScale;
+                parentItem.alpha = 0;
+            } completion:^(BOOL finished) {
+                [parentItem removeFromSuperview];
+            }];
         }
         self.parentItem = self.centerItem;
         [self.subItems removeAllObjects];
@@ -291,6 +310,7 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
 
     self.menu = itemView.menuItem;
     self.centerItem = itemView;
+    [self bringSubviewToFront:itemView];
     
     [self createSubviews];
     
@@ -303,18 +323,18 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
     
     for (MenuItemView *item in newMenuItems) {
         [item sizeToFit];
-        item.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.5, 0.5);
+        item.transform = CGTransformScale;
     }
 
     self.centerItem.displayMode = MenuItemDisplayModeMain;
     self.parentItem.displayMode = MenuItemDisplayModeBack;
     
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:AnimationDuration animations:^{
 
         self.centerItem.center = self.center;
         
         if (self.parentItem) {
-            [self.parentItem setIntegralPolarCoordinate:PolarCoordinateMake(350, M_PI * 1.7) withCenter:self.center];
+            [self.parentItem setIntegralPolarCoordinate:PolarCoordinateMake(ParentItemRadius, ParentItemAngle) withCenter:self.center];
         }
 
         for (MenuItemView *item in self.subItems.allValues) {
@@ -326,7 +346,7 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
         for (MenuItemView *item in oldSubMenuItems) {
             [item setIntegralPolarCoordinate:PolarCoordinateZero withCenter:oldCenterItem.center];
             item.alpha = 0;
-            item.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.5, 0.5);
+            item.transform = CGTransformScale;
         }
     } completion:^(BOOL finished) {
         [oldSubMenuItems makeObjectsPerformSelector:@selector(removeFromSuperview)];
@@ -340,7 +360,7 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
     self.centerItem.center = self.center;
     
     if (self.parentItem) {
-        [self.parentItem setIntegralPolarCoordinate:PolarCoordinateMake(350, M_PI * 1.7) withCenter:self.center];
+        [self.parentItem setIntegralPolarCoordinate:PolarCoordinateMake(ParentItemRadius, ParentItemAngle) withCenter:self.center];
     }
     
     for (MenuItemView *subMenuItem in self.subItems.allValues) {
