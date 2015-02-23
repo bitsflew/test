@@ -34,6 +34,7 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
 @property (nonatomic, strong) MenuModel *menuItem;
 @property (nonatomic, strong) MenuItemSelectHandler menuItemSelectHandler;
 @property (nonatomic, assign) MenuItemDisplayMode displayMode;
+@property (nonatomic, strong) NSMutableDictionary *subItems;
 @end
 
 @implementation MenuItemView
@@ -63,6 +64,8 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
     itemView.layer.borderColor = itemView.circleColor.CGColor;
     itemView.layer.borderWidth = itemView.borderWidth;
     itemView.backgroundColor = [ClariantColors menuBackgroundColor];
+    
+    itemView.subItems = [NSMutableDictionary new];
     
     return itemView;
 }
@@ -188,13 +191,26 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
     return [other.menuItem isEqual:self.menuItem];
 }
 
+- (void)drawLinesToSubItemsInContext:(CGContextRef)context {
+    CALayer *centerItemLayer = (CALayer *)self.layer.presentationLayer;
+
+    for (MenuItemView *subItem in self.subItems.allValues) {
+        CALayer *itemLayer = (CALayer *)subItem.layer.presentationLayer;
+
+        if (subItem.window == nil) continue;
+        if (itemLayer.opacity < 0.3) continue;
+        
+        CGContextMoveToPoint(context, centerItemLayer.position.x, centerItemLayer.position.y);
+        CGContextAddLineToPoint(context, itemLayer.position.x, itemLayer.position.y);
+    }
+}
+
 @end
 
 
 @interface MenuView()
 @property (nonatomic, strong) MenuItemView *centerItem;
 @property (nonatomic, strong) MenuItemView *parentItem;
-@property (nonatomic, strong) NSMutableDictionary *subItems;
 @property (nonatomic, strong) CADisplayLink *displayLink;
 @property (nonatomic, strong) NSMutableArray *parentStash;
 @end
@@ -214,7 +230,6 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
 }
 
 - (void)setup {
-    self.subItems = [NSMutableDictionary new];
     self.parentStash = [NSMutableArray new];
     
     [self createSubviews];
@@ -238,12 +253,12 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
     
     for (MenuModel *item in self.menu.subMenuItems) {
         
-        MenuItemView *itemView = self.subItems[@(item.identifier)];
+        MenuItemView *itemView = self.centerItem.subItems[@(item.identifier)];
         if (itemView == nil) {
             itemView = [self createViewForMenuItem:item];
             itemView.displayMode = MenuItemDisplayModeDefault;
             [itemView setIntegralPolarCoordinate:PolarCoordinateZero withCenter:self.centerItem.center];
-            self.subItems[@(item.identifier)] = itemView;
+            self.centerItem.subItems[@(item.identifier)] = itemView;
         }
         
         [self insertSubview:itemView belowSubview:self.centerItem];
@@ -273,25 +288,25 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
         return;
     }
     
-    BOOL isSubItem = self.subItems[@(itemView.menuItem.identifier)] != nil;
-    NSMutableArray *oldSubMenuItems = [self.subItems.allValues mutableCopy];
+    BOOL isSubItem = self.centerItem.subItems[@(itemView.menuItem.identifier)] != nil;
+    NSMutableArray *oldSubMenuItems = [self.centerItem.subItems.allValues mutableCopy];
     MenuItemView *oldCenterItem = self.centerItem;
     
     if ([itemView isEqual:self.parentItem]) {
         MenuItemView *parentItem = [self.parentStash lastObject];
         self.parentItem = parentItem;
-        [self.parentStash removeLastObject];
         if (parentItem) {
+            [self.parentStash removeLastObject];
             [self insertSubview:parentItem belowSubview:itemView];
             parentItem.transform = CGTransformScale;
             parentItem.alpha = 0;
             [UIView animateWithDuration:AnimationDuration animations:^{
                 parentItem.transform = CGAffineTransformIdentity;
                 parentItem.alpha = 1;
+            } completion:^(BOOL finished) {
+                
             }];
         }
-        [self.subItems removeAllObjects];
-        self.subItems[@(self.centerItem.menuItem.identifier)] = self.centerItem;
     } else if (isSubItem) {
         if (self.parentItem) {
             MenuItemView *parentItem = self.parentItem;
@@ -304,7 +319,6 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
             }];
         }
         self.parentItem = self.centerItem;
-        [self.subItems removeAllObjects];
         [oldSubMenuItems removeObject:itemView];
     }
 
@@ -314,10 +328,10 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
     
     [self createSubviews];
     
-    NSMutableArray *newMenuItems = [self.subItems.allValues mutableCopy];
+    NSMutableArray *newMenuItems = [itemView.subItems.allValues mutableCopy];
     [newMenuItems removeObject:oldCenterItem];
     
-    for (MenuItemView *item in self.subItems.allValues) {
+    for (MenuItemView *item in itemView.subItems.allValues) {
         item.displayMode = MenuItemDisplayModeDefault;
     }
     
@@ -337,8 +351,9 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
             [self.parentItem setIntegralPolarCoordinate:PolarCoordinateMake(ParentItemRadius, ParentItemAngle) withCenter:self.center];
         }
 
-        for (MenuItemView *item in self.subItems.allValues) {
+        for (MenuItemView *item in itemView.subItems.allValues) {
             item.transform = CGAffineTransformIdentity;
+            item.alpha = 1;
             MenuModel *menuItem = item.menuItem;
             [item setIntegralPolarCoordinate:PolarCoordinateMake(menuItem.distance, menuItem.angle) withCenter:self.center];
         }
@@ -363,7 +378,7 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
         [self.parentItem setIntegralPolarCoordinate:PolarCoordinateMake(ParentItemRadius, ParentItemAngle) withCenter:self.center];
     }
     
-    for (MenuItemView *subMenuItem in self.subItems.allValues) {
+    for (MenuItemView *subMenuItem in self.centerItem.subItems.allValues) {
         [subMenuItem sizeToFit];
         MenuModel *menuItem = subMenuItem.menuItem;
         [subMenuItem setIntegralPolarCoordinate:PolarCoordinateMake(menuItem.distance, menuItem.angle) withCenter:self.center];
@@ -379,17 +394,12 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
     [[ClariantColors menuLineColor] set];
     
     CGContextSetLineWidth(context, 1);
-    NSArray *items = self.subItems.allValues;
-    if (self.parentItem) {
-        items = [items arrayByAddingObject:self.parentItem];
-    }
     
-    for (MenuItemView *item in items) {
-        CALayer *itemLayer = (CALayer *)item.layer.presentationLayer;
-        CALayer *centerItemLayer = (CALayer *)self.centerItem.layer.presentationLayer;
-        
-        CGContextMoveToPoint(context, centerItemLayer.position.x, centerItemLayer.position.y);
-        CGContextAddLineToPoint(context, itemLayer.position.x, itemLayer.position.y);
+    for (UIView *view in self.subviews) {
+        if ([view isKindOfClass:[MenuItemView class]]) {
+            MenuItemView *itemView = (MenuItemView *)view;
+            [itemView drawLinesToSubItemsInContext:context];
+        }
     }
     
     CGContextStrokePath(context);
