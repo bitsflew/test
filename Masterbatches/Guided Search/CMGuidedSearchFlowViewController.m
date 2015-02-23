@@ -12,7 +12,7 @@
 static UIEdgeInsets kCMGuidedSearchFlowViewControllerEdgeInsets = (UIEdgeInsets) { 48.f, 0.f, 0.f, 0.f };
 static NSString *kCMGuidedSearchMainViewControllerCellIdentifier = @"cell";
 
-static CGFloat kCMGuidedSearchFlowViewControllerModeAnimationSpeed = 0.2f;
+static CGFloat kCMGuidedSearchFlowViewControllerModeAnimationSpeed = 0.3f;
 static CGFloat kCMGuidedSearchFlowViewControllerTransitionAnimationSpeed = 0.3f;
 static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 
@@ -43,6 +43,7 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.view.clipsToBounds = YES;
     self.modeToggleButtonInitialTop = self.modeToggleButtonTopConstraint.constant;
 
     if (self.flow) {
