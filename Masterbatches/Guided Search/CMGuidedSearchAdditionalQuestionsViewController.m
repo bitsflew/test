@@ -10,7 +10,9 @@
 #import "CMGuidedSearchAdditionalQuestionViewController.h"
 
 static CGFloat kCMGuidedSearchAdditionalQuestionsViewControllerSpacing = 10.f;
-static CGFloat kCMGuidedSearchAdditionalQuestionsViewControllerTitleMargin = 10.f;
+static CGFloat kCMGuidedSearchAdditionalQuestionsViewControllerTitleMarginLeft = 15.f;
+static CGFloat kCMGuidedSearchAdditionalQuestionsViewControllerTitleMarginRight = 15.f;
+static CGFloat kCMGuidedSearchAdditionalQuestionsViewControllerTitleMarginBottom = 10.f;
 
 @interface CMGuidedSearchAdditionalQuestionsViewController ()
 
@@ -64,57 +66,65 @@ static CGFloat kCMGuidedSearchAdditionalQuestionsViewControllerTitleMargin = 10.
     NSLayoutAttribute attributeToLayoutTitleTo = self.lastQuestionView ? NSLayoutAttributeBottom : NSLayoutAttributeTop;
     CGFloat spacing = self.lastQuestionView ? kCMGuidedSearchAdditionalQuestionsViewControllerSpacing : 0.f;
 
-    [self.questionsScrollView addConstraint:[NSLayoutConstraint constraintWithItem:titleLabel
-                                                                         attribute:NSLayoutAttributeTop
-                                                                         relatedBy:NSLayoutRelationEqual
-                                                                            toItem:viewToAlignTitleLabelTo
-                                                                         attribute:attributeToLayoutTitleTo
-                                                                        multiplier:1
-                                                                          constant:spacing]];
-    
-    [self.questionsScrollView addConstraint:[NSLayoutConstraint constraintWithItem:titleLabel
-                                                                         attribute:NSLayoutAttributeLeft
-                                                                         relatedBy:NSLayoutRelationEqual
-                                                                            toItem:self.questionsScrollView
-                                                                         attribute:NSLayoutAttributeLeft
-                                                                        multiplier:1
-                                                                          constant:kCMGuidedSearchAdditionalQuestionsViewControllerTitleMargin]];
+    [self.questionsScrollView addConstraint:
+     [NSLayoutConstraint constraintWithItem:titleLabel
+                                  attribute:NSLayoutAttributeTop
+                                  relatedBy:NSLayoutRelationEqual
+                                     toItem:viewToAlignTitleLabelTo
+                                  attribute:attributeToLayoutTitleTo
+                                 multiplier:1
+                                   constant:spacing]];
 
-    [self.questionsScrollView addConstraint:[NSLayoutConstraint constraintWithItem:titleLabel
-                                                                         attribute:NSLayoutAttributeWidth
-                                                                         relatedBy:NSLayoutRelationEqual
-                                                                            toItem:self.questionsScrollView
-                                                                         attribute:NSLayoutAttributeWidth
-                                                                        multiplier:1
-                                                                          constant:-kCMGuidedSearchAdditionalQuestionsViewControllerTitleMargin]];
+    [self.questionsScrollView addConstraint:
+     [NSLayoutConstraint constraintWithItem:titleLabel
+                                  attribute:NSLayoutAttributeLeft
+                                  relatedBy:NSLayoutRelationEqual
+                                     toItem:self.questionsScrollView
+                                  attribute:NSLayoutAttributeLeft
+                                 multiplier:1
+                                   constant:kCMGuidedSearchAdditionalQuestionsViewControllerTitleMarginLeft]];
+
+    [self.questionsScrollView addConstraint:
+     [NSLayoutConstraint constraintWithItem:titleLabel
+                                  attribute:NSLayoutAttributeWidth
+                                  relatedBy:NSLayoutRelationEqual
+                                     toItem:self.questionsScrollView
+                                  attribute:NSLayoutAttributeWidth
+                                 multiplier:1
+                                   constant:
+      -kCMGuidedSearchAdditionalQuestionsViewControllerTitleMarginLeft
+      -kCMGuidedSearchAdditionalQuestionsViewControllerTitleMarginRight]];
 
     viewController.view.translatesAutoresizingMaskIntoConstraints = NO;
 
     [self.questionsScrollView addSubview:viewController.view];
-    
-    [self.questionsScrollView addConstraint:[NSLayoutConstraint constraintWithItem:viewController.view
-                                                                         attribute:NSLayoutAttributeTop
-                                                                         relatedBy:NSLayoutRelationEqual
-                                                                            toItem:titleLabel
-                                                                         attribute:NSLayoutAttributeBottom
-                                                                        multiplier:1
-                                                                          constant:0]];
-    
-    [self.questionsScrollView addConstraint:[NSLayoutConstraint constraintWithItem:viewController.view
-                                                                         attribute:NSLayoutAttributeLeft
-                                                                         relatedBy:NSLayoutRelationEqual
-                                                                            toItem:titleLabel
-                                                                         attribute:NSLayoutAttributeLeft
-                                                                        multiplier:1
-                                                                          constant:0]];
-    
-    [self.questionsScrollView addConstraint:[NSLayoutConstraint constraintWithItem:viewController.view
-                                                                         attribute:NSLayoutAttributeRight
-                                                                         relatedBy:NSLayoutRelationEqual
-                                                                            toItem:titleLabel
-                                                                         attribute:NSLayoutAttributeRight
-                                                                        multiplier:1
-                                                                          constant:0]];
+
+    [self.questionsScrollView addConstraint:
+     [NSLayoutConstraint constraintWithItem:viewController.view
+                                  attribute:NSLayoutAttributeTop
+                                  relatedBy:NSLayoutRelationEqual
+                                     toItem:titleLabel
+                                  attribute:NSLayoutAttributeBottom
+                                 multiplier:1
+                                   constant:kCMGuidedSearchAdditionalQuestionsViewControllerTitleMarginBottom]];
+
+    [self.questionsScrollView addConstraint:
+     [NSLayoutConstraint constraintWithItem:viewController.view
+                                  attribute:NSLayoutAttributeLeft
+                                  relatedBy:NSLayoutRelationEqual
+                                     toItem:titleLabel
+                                  attribute:NSLayoutAttributeLeft
+                                 multiplier:1
+                                   constant:0]];
+
+    [self.questionsScrollView addConstraint:
+     [NSLayoutConstraint constraintWithItem:viewController.view
+                                  attribute:NSLayoutAttributeRight
+                                  relatedBy:NSLayoutRelationEqual
+                                     toItem:titleLabel
+                                  attribute:NSLayoutAttributeRight
+                                 multiplier:1
+                                   constant:0]];
 
     self.lastQuestionView = viewController.view;
 

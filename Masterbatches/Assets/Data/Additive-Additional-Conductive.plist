@@ -7,8 +7,16 @@
 	<key>Questions</key>
 	<array>
 		<dict>
+			<key>Class</key>
+			<string>TextField</string>
 			<key>Title</key>
-			<string>Exactly how conductive do you want this thing?</string>
+			<string>Additional notes</string>
+			<key>Key</key>
+			<string>name</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>How conductive should it be?</string>
 			<key>Class</key>
 			<string>Choice</string>
 			<key>Key</key>
@@ -20,23 +28,6 @@
 					<string>Not very conductive</string>
 					<string>Quite conductive</string>
 					<string>Very conductive indeed</string>
-				</array>
-			</dict>
-		</dict>
-		<dict>
-			<key>Title</key>
-			<string>Are you sure?</string>
-			<key>Class</key>
-			<string>Choice</string>
-			<key>Key</key>
-			<string>sureness</string>
-			<key>Attributes</key>
-			<dict>
-				<key>Choices</key>
-				<array>
-					<string>Pretty damned sure</string>
-					<string>Not at all sure</string>
-					<string>Where am I again?</string>
 				</array>
 			</dict>
 		</dict>
