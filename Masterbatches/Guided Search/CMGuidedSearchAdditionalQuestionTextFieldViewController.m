@@ -8,7 +8,7 @@
 
 #import "CMGuidedSearchAdditionalQuestionTextFieldViewController.h"
 
-static const CGFloat CMGuidedSearchAdditionalQuestionTextFieldViewHorizontalPadding = 10.f;
+static const CGFloat CMGuidedSearchAdditionalQuestionTextFieldViewHorizontalPadding = 15.f;
 static const CGFloat CMGuidedSearchAdditionalQuestionTextFieldViewVerticalPadding = 10.f;
 
 @interface CMGuidedSearchAdditionalQuestionTextFieldView : UITextField
