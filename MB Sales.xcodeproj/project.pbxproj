@@ -54,6 +54,8 @@
 		44E9E5671A9780C50028B01F /* CMGuidedSearchAdditionalQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E9E5651A9780C50028B01F /* CMGuidedSearchAdditionalQuestionsViewController.m */; };
 		44E9E5681A9780C50028B01F /* CMGuidedSearchAdditionalQuestionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44E9E5661A9780C50028B01F /* CMGuidedSearchAdditionalQuestionsViewController.xib */; };
 		44E9E56D1A9784C30028B01F /* CMGuidedSearchAdditionalQuestionChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E9E56B1A9784C30028B01F /* CMGuidedSearchAdditionalQuestionChoiceViewController.m */; };
+		4B24D7841A9B44AB001487B7 /* tap-smallest.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4B24D7821A9B44AB001487B7 /* tap-smallest.aif */; };
+		4B24D7861A9B4599001487B7 /* slide-metal.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4B24D7851A9B4593001487B7 /* slide-metal.aif */; };
 		4B2EDFA81A93994F007E0493 /* MenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2EDFA71A93994F007E0493 /* MenuModel.m */; };
 		4B2EDFAB1A939FAB007E0493 /* MenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2EDFAA1A939FAB007E0493 /* MenuView.m */; };
 		4B2EDFAF1A93A9B7007E0493 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2EDFAD1A93A9B7007E0493 /* MenuViewController.m */; };
@@ -145,6 +147,8 @@
 		44E9E56A1A9784C30028B01F /* CMGuidedSearchAdditionalQuestionChoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchAdditionalQuestionChoiceViewController.h; sourceTree = "<group>"; };
 		44E9E56B1A9784C30028B01F /* CMGuidedSearchAdditionalQuestionChoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchAdditionalQuestionChoiceViewController.m; sourceTree = "<group>"; };
 		44E9E56F1A9785380028B01F /* CMGuidedSearchAdditionalQuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchAdditionalQuestionViewController.h; sourceTree = "<group>"; };
+		4B24D7821A9B44AB001487B7 /* tap-smallest.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = "tap-smallest.aif"; sourceTree = "<group>"; };
+		4B24D7851A9B4593001487B7 /* slide-metal.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = "slide-metal.aif"; sourceTree = "<group>"; };
 		4B2EDFA61A93994F007E0493 /* MenuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuModel.h; sourceTree = "<group>"; };
 		4B2EDFA71A93994F007E0493 /* MenuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuModel.m; sourceTree = "<group>"; };
 		4B2EDFA91A939FAB007E0493 /* MenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuView.h; sourceTree = "<group>"; };
@@ -388,6 +392,8 @@
 		4B2EDF9F1A939896007E0493 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				4B24D7851A9B4593001487B7 /* slide-metal.aif */,
+				4B24D7821A9B44AB001487B7 /* tap-smallest.aif */,
 				4B7AA9621A96320500AD81EF /* gradient.png */,
 				4B2EDFB11A93A9F0007E0493 /* Menu.plist */,
 				4B2EDFA61A93994F007E0493 /* MenuModel.h */,
@@ -489,6 +495,7 @@
 				44E9E5511A96410B0028B01F /* img_guided_search_tab@2x.png in Resources */,
 				44E9E55B1A974FB00028B01F /* ic_close_black@2x.png in Resources */,
 				44E9E55A1A974FB00028B01F /* ic_close_black.png in Resources */,
+				4B24D7841A9B44AB001487B7 /* tap-smallest.aif in Resources */,
 				4B2EDFB21A93A9F0007E0493 /* Menu.plist in Resources */,
 				441470B41A9346FC00131077 /* CMGuidedSearchProductTypeViewController.xib in Resources */,
 				44107DB31A937719004053A2 /* Gotham-Bold.otf in Resources */,
@@ -513,6 +520,7 @@
 				44107DB91A937946004053A2 /* img_logo_actionbar@2x.png in Resources */,
 				44E9E54C1A9623920028B01F /* Localizable.strings in Resources */,
 				44E9E54B1A9623790028B01F /* LaunchScreen.xib in Resources */,
+				4B24D7861A9B4599001487B7 /* slide-metal.aif in Resources */,
 				443366AE1A923349002DD5F5 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

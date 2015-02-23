@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "UIView+Polarcoordinates.h"
 #import "ClariantColors.h"
+#import <AudioToolbox/AudioServices.h>
 
 @class MenuItemView;
 
@@ -27,6 +28,9 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
 #define ParentItemRadius 350
 #define ParentItemAngle (M_PI * 1.7)
 
+static SystemSoundID audioEffectMenuTouch = 0;
+static SystemSoundID audioEffectMenuSelect = 0;
+
 @interface MenuItemView : UIView
 + (instancetype)viewForMenuItem:(MenuModel *)item;
 @property (nonatomic, strong) UILabel *label;
@@ -38,6 +42,14 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
 @end
 
 @implementation MenuItemView
+
++ (void)load {
+    NSString *pathMenuSelect = [[NSBundle mainBundle] pathForResource:@"slide-metal" ofType:@"aif"];
+    NSString *pathMenuTouch = [[NSBundle mainBundle] pathForResource:@"tap-smallest" ofType:@"aif"];
+    
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:pathMenuSelect], &audioEffectMenuSelect);
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:pathMenuTouch], &audioEffectMenuTouch);
+}
 
 + (instancetype)viewForMenuItem:(MenuModel *)item {
     MenuItemView *itemView = [[super alloc] initWithFrame:CGRectZero];
@@ -73,6 +85,7 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
 - (void)select:(id)sender {
     [self.layer removeAllAnimations];
     if (self.menuItemSelectHandler) self.menuItemSelectHandler(self);
+    AudioServicesPlaySystemSound(audioEffectMenuSelect);
 }
 
 - (void)touchUpOutside:(id)sender {
@@ -91,6 +104,8 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
     animation.duration = 0.15;
     
     [self.layer addAnimation:animation forKey:@"scale"];
+    
+    AudioServicesPlaySystemSound(audioEffectMenuTouch);
 }
 
 - (void)setDisplayMode:(MenuItemDisplayMode)displayMode {
