@@ -29,17 +29,6 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 
 @implementation CMGuidedSearchFlowViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    if (!(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
-        return nil;
-    }
-
-    [self setFlow:[CMGuidedSearchFlow flowNamed:@"Additive"]];
-
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 

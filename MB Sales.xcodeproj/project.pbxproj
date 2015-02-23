@@ -54,8 +54,14 @@
 		4457F4801A94A744002FF4F5 /* ic_pagination_checkmark_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 4457F47F1A94A744002FF4F5 /* ic_pagination_checkmark_light.png */; };
 		4457F4881A94A963002FF4F5 /* NSString+Morphing.m in Sources */ = {isa = PBXBuildFile; fileRef = 4457F4851A94A963002FF4F5 /* NSString+Morphing.m */; };
 		4457F4891A94A963002FF4F5 /* TOMSMorphingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4457F4871A94A963002FF4F5 /* TOMSMorphingLabel.m */; };
+		44B4BD671A9B759400158D90 /* CMGuidedSearchAdditiveFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B4BD661A9B759400158D90 /* CMGuidedSearchAdditiveFlowViewController.m */; };
+		44B4BD6A1A9B763A00158D90 /* CMGuidedSearchColorFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B4BD691A9B763A00158D90 /* CMGuidedSearchColorFlowViewController.m */; };
+		44B4BD6E1A9B768400158D90 /* AdditiveGuidedSearchFlow.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44B4BD6B1A9B768400158D90 /* AdditiveGuidedSearchFlow.plist */; };
+		44B4BD6F1A9B768400158D90 /* BothGuidedSearchFlow.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44B4BD6C1A9B768400158D90 /* BothGuidedSearchFlow.plist */; };
+		44B4BD701A9B768400158D90 /* ColorGuidedSearchFlow.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44B4BD6D1A9B768400158D90 /* ColorGuidedSearchFlow.plist */; };
+		44B4BD731A9B769900158D90 /* CMGuidedSearchBothFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B4BD721A9B769900158D90 /* CMGuidedSearchBothFlowViewController.m */; };
+		44B4BD751A9B76B800158D90 /* Menu.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44B4BD741A9B76B800158D90 /* Menu.plist */; };
 		44E9E53F1A95E58F0028B01F /* CMGuidedSearchFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E9E53E1A95E58F0028B01F /* CMGuidedSearchFlow.m */; };
-		44E9E5491A96231E0028B01F /* Additive.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44E9E5481A96231E0028B01F /* Additive.plist */; };
 		44E9E54B1A9623790028B01F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 443366AF1A923349002DD5F5 /* LaunchScreen.xib */; };
 		44E9E54C1A9623920028B01F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 443366DC1A923DE9002DD5F5 /* Localizable.strings */; };
 		44E9E54D1A9623A80028B01F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 443366AA1A923349002DD5F5 /* Main.storyboard */; };
@@ -75,7 +81,6 @@
 		4B2EDFAB1A939FAB007E0493 /* MenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2EDFAA1A939FAB007E0493 /* MenuView.m */; };
 		4B2EDFAF1A93A9B7007E0493 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2EDFAD1A93A9B7007E0493 /* MenuViewController.m */; };
 		4B2EDFB01A93A9B7007E0493 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B2EDFAE1A93A9B7007E0493 /* MenuViewController.xib */; };
-		4B2EDFB21A93A9F0007E0493 /* Menu.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B2EDFB11A93A9F0007E0493 /* Menu.plist */; };
 		4B7AA9631A96320500AD81EF /* gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B7AA9621A96320500AD81EF /* gradient.png */; };
 		4B7AA9661A963D0B00AD81EF /* UIView+Polarcoordinates.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B7AA9651A963D0B00AD81EF /* UIView+Polarcoordinates.m */; };
 		4B7AA9691A963DFB00AD81EF /* ClariantColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B7AA9681A963DFB00AD81EF /* ClariantColors.m */; };
@@ -161,10 +166,19 @@
 		4457F4851A94A963002FF4F5 /* NSString+Morphing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Morphing.m"; sourceTree = "<group>"; };
 		4457F4861A94A963002FF4F5 /* TOMSMorphingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOMSMorphingLabel.h; sourceTree = "<group>"; };
 		4457F4871A94A963002FF4F5 /* TOMSMorphingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOMSMorphingLabel.m; sourceTree = "<group>"; };
+		44B4BD651A9B759400158D90 /* CMGuidedSearchAdditiveFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMGuidedSearchAdditiveFlowViewController.h; path = "Flow subclasses/CMGuidedSearchAdditiveFlowViewController.h"; sourceTree = "<group>"; };
+		44B4BD661A9B759400158D90 /* CMGuidedSearchAdditiveFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMGuidedSearchAdditiveFlowViewController.m; path = "Flow subclasses/CMGuidedSearchAdditiveFlowViewController.m"; sourceTree = "<group>"; };
+		44B4BD681A9B763A00158D90 /* CMGuidedSearchColorFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMGuidedSearchColorFlowViewController.h; path = "Flow subclasses/CMGuidedSearchColorFlowViewController.h"; sourceTree = "<group>"; };
+		44B4BD691A9B763A00158D90 /* CMGuidedSearchColorFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMGuidedSearchColorFlowViewController.m; path = "Flow subclasses/CMGuidedSearchColorFlowViewController.m"; sourceTree = "<group>"; };
+		44B4BD6B1A9B768400158D90 /* AdditiveGuidedSearchFlow.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AdditiveGuidedSearchFlow.plist; sourceTree = "<group>"; };
+		44B4BD6C1A9B768400158D90 /* BothGuidedSearchFlow.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BothGuidedSearchFlow.plist; sourceTree = "<group>"; };
+		44B4BD6D1A9B768400158D90 /* ColorGuidedSearchFlow.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ColorGuidedSearchFlow.plist; sourceTree = "<group>"; };
+		44B4BD711A9B769900158D90 /* CMGuidedSearchBothFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMGuidedSearchBothFlowViewController.h; path = "Flow subclasses/CMGuidedSearchBothFlowViewController.h"; sourceTree = "<group>"; };
+		44B4BD721A9B769900158D90 /* CMGuidedSearchBothFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMGuidedSearchBothFlowViewController.m; path = "Flow subclasses/CMGuidedSearchBothFlowViewController.m"; sourceTree = "<group>"; };
+		44B4BD741A9B76B800158D90 /* Menu.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Menu.plist; sourceTree = "<group>"; };
 		44E9E53D1A95E58F0028B01F /* CMGuidedSearchFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchFlow.h; sourceTree = "<group>"; };
 		44E9E53E1A95E58F0028B01F /* CMGuidedSearchFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchFlow.m; sourceTree = "<group>"; };
 		44E9E5461A9616880028B01F /* CMGuidedSearchStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchStepViewController.h; sourceTree = "<group>"; };
-		44E9E5481A96231E0028B01F /* Additive.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Additive.plist; sourceTree = "<group>"; };
 		44E9E54E1A96410B0028B01F /* img_guided_search_tab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_guided_search_tab.png; sourceTree = "<group>"; };
 		44E9E54F1A96410B0028B01F /* img_guided_search_tab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_guided_search_tab@2x.png"; sourceTree = "<group>"; };
 		44E9E5521A9642180028B01F /* Gotham-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Book.otf"; sourceTree = "<group>"; };
@@ -188,7 +202,6 @@
 		4B2EDFAC1A93A9B7007E0493 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		4B2EDFAD1A93A9B7007E0493 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		4B2EDFAE1A93A9B7007E0493 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
-		4B2EDFB11A93A9F0007E0493 /* Menu.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Menu.plist; sourceTree = "<group>"; };
 		4B7AA9621A96320500AD81EF /* gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gradient.png; sourceTree = "<group>"; };
 		4B7AA9641A963D0B00AD81EF /* UIView+Polarcoordinates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Polarcoordinates.h"; sourceTree = "<group>"; };
 		4B7AA9651A963D0B00AD81EF /* UIView+Polarcoordinates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Polarcoordinates.m"; sourceTree = "<group>"; };
@@ -341,6 +354,7 @@
 		443366C81A92395E002DD5F5 /* Guided Search */ = {
 			isa = PBXGroup;
 			children = (
+				44B4BD641A9B754C00158D90 /* Flow subclasses */,
 				44E9E55C1A9770A50028B01F /* DAO */,
 				443366D01A923BE0002DD5F5 /* CMProductSpecification.h */,
 				443366D11A923BE0002DD5F5 /* CMProductSpecification.m */,
@@ -416,10 +430,26 @@
 			path = TOMSMorphingLabel;
 			sourceTree = "<group>";
 		};
+		44B4BD641A9B754C00158D90 /* Flow subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				44B4BD651A9B759400158D90 /* CMGuidedSearchAdditiveFlowViewController.h */,
+				44B4BD661A9B759400158D90 /* CMGuidedSearchAdditiveFlowViewController.m */,
+				44B4BD681A9B763A00158D90 /* CMGuidedSearchColorFlowViewController.h */,
+				44B4BD691A9B763A00158D90 /* CMGuidedSearchColorFlowViewController.m */,
+				44B4BD711A9B769900158D90 /* CMGuidedSearchBothFlowViewController.h */,
+				44B4BD721A9B769900158D90 /* CMGuidedSearchBothFlowViewController.m */,
+			);
+			name = "Flow subclasses";
+			sourceTree = "<group>";
+		};
 		44E9E5471A96231E0028B01F /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				44E9E5481A96231E0028B01F /* Additive.plist */,
+				44B4BD741A9B76B800158D90 /* Menu.plist */,
+				44B4BD6B1A9B768400158D90 /* AdditiveGuidedSearchFlow.plist */,
+				44B4BD6C1A9B768400158D90 /* BothGuidedSearchFlow.plist */,
+				44B4BD6D1A9B768400158D90 /* ColorGuidedSearchFlow.plist */,
 				44E9E5601A9777DF0028B01F /* Additive-Additional-Conductive.plist */,
 			);
 			path = Data;
@@ -452,7 +482,6 @@
 				4B24D7851A9B4593001487B7 /* slide-metal.aif */,
 				4B24D7821A9B44AB001487B7 /* tap-smallest.aif */,
 				4B7AA9621A96320500AD81EF /* gradient.png */,
-				4B2EDFB11A93A9F0007E0493 /* Menu.plist */,
 				4B2EDFA61A93994F007E0493 /* MenuModel.h */,
 				4B2EDFA71A93994F007E0493 /* MenuModel.m */,
 				4B2EDFA91A939FAB007E0493 /* MenuView.h */,
@@ -555,9 +584,9 @@
 				44E9E55B1A974FB00028B01F /* ic_close_black@2x.png in Resources */,
 				44000BD31A9B63FE0032B747 /* gui_presentation 2@2x.png in Resources */,
 				44E9E55A1A974FB00028B01F /* ic_close_black.png in Resources */,
+				44B4BD6E1A9B768400158D90 /* AdditiveGuidedSearchFlow.plist in Resources */,
 				4B24D7841A9B44AB001487B7 /* tap-smallest.aif in Resources */,
 				44000BCD1A9B63FE0032B747 /* gui_ArticleMedia 2@2x.png in Resources */,
-				4B2EDFB21A93A9F0007E0493 /* Menu.plist in Resources */,
 				441470B41A9346FC00131077 /* CMGuidedSearchProductTypeViewController.xib in Resources */,
 				44000BD71A9B63FE0032B747 /* gui_video 3@2x.png in Resources */,
 				44107DB31A937719004053A2 /* Gotham-Bold.otf in Resources */,
@@ -566,12 +595,12 @@
 				443366E61A92499C002DD5F5 /* CMGuidedSearchColorViewController.xib in Resources */,
 				4B2EDFB01A93A9B7007E0493 /* MenuViewController.xib in Resources */,
 				44000BCE1A9B63FE0032B747 /* gui_ArticleMedia@2x.png in Resources */,
+				44B4BD701A9B768400158D90 /* ColorGuidedSearchFlow.plist in Resources */,
 				44E9E5681A9780C50028B01F /* CMGuidedSearchAdditionalQuestionsViewController.xib in Resources */,
 				44000BD41A9B63FE0032B747 /* gui_presentation 3@2x.png in Resources */,
 				44E9E54D1A9623A80028B01F /* Main.storyboard in Resources */,
 				44000BD21A9B63FE0032B747 /* gui_flyer@2x.png in Resources */,
 				44E9E5611A9777DF0028B01F /* Additive-Additional-Conductive.plist in Resources */,
-				44E9E5491A96231E0028B01F /* Additive.plist in Resources */,
 				44E9E5501A96410B0028B01F /* img_guided_search_tab.png in Resources */,
 				44000BD01A9B63FE0032B747 /* gui_factsheet@2x.png in Resources */,
 				44E9E5531A9642180028B01F /* Gotham-Book.otf in Resources */,
@@ -587,7 +616,9 @@
 				44107DB91A937946004053A2 /* img_logo_actionbar@2x.png in Resources */,
 				44E9E54C1A9623920028B01F /* Localizable.strings in Resources */,
 				44000BD51A9B63FE0032B747 /* gui_presentation@2x.png in Resources */,
+				44B4BD751A9B76B800158D90 /* Menu.plist in Resources */,
 				44E9E54B1A9623790028B01F /* LaunchScreen.xib in Resources */,
+				44B4BD6F1A9B768400158D90 /* BothGuidedSearchFlow.plist in Resources */,
 				4B24D7861A9B4599001487B7 /* slide-metal.aif in Resources */,
 				44000BDD1A9B64830032B747 /* CMGuidedSearchResultController.xib in Resources */,
 				443366AE1A923349002DD5F5 /* Images.xcassets in Resources */,
@@ -620,7 +651,9 @@
 				4B2EDFAF1A93A9B7007E0493 /* MenuViewController.m in Sources */,
 				443366A31A923349002DD5F5 /* AppDelegate.m in Sources */,
 				44E9E5671A9780C50028B01F /* CMGuidedSearchAdditionalQuestionsViewController.m in Sources */,
+				44B4BD731A9B769900158D90 /* CMGuidedSearchBothFlowViewController.m in Sources */,
 				443366A01A923349002DD5F5 /* main.m in Sources */,
+				44B4BD6A1A9B763A00158D90 /* CMGuidedSearchColorFlowViewController.m in Sources */,
 				4B2EDFAB1A939FAB007E0493 /* MenuView.m in Sources */,
 				4B7AA9661A963D0B00AD81EF /* UIView+Polarcoordinates.m in Sources */,
 				44E9E56D1A9784C30028B01F /* CMGuidedSearchAdditionalQuestionChoiceViewController.m in Sources */,
@@ -632,6 +665,7 @@
 				44E9E55F1A9770ED0028B01F /* CMSearchDAO.m in Sources */,
 				443366E51A92499C002DD5F5 /* CMGuidedSearchColorViewController.m in Sources */,
 				441470B31A9346FC00131077 /* CMGuidedSearchProductTypeViewController.m in Sources */,
+				44B4BD671A9B759400158D90 /* CMGuidedSearchAdditiveFlowViewController.m in Sources */,
 				4457F4891A94A963002FF4F5 /* TOMSMorphingLabel.m in Sources */,
 				443366A61A923349002DD5F5 /* Masterbatches.xcdatamodeld in Sources */,
 				443366D21A923BE0002DD5F5 /* CMProductSpecification.m in Sources */,

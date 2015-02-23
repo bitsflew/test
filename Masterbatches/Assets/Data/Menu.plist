@@ -155,8 +155,6 @@ solution finder</string>
 					<real>0.3</real>
 					<key>Distance</key>
 					<integer>250</integer>
-					<key>Action</key>
-					<string>CMGuidedSearchFlowViewController</string>
 				</dict>
 				<dict>
 					<key>Name</key>
@@ -165,6 +163,8 @@ solution finder</string>
 					<real>0.9</real>
 					<key>Distance</key>
 					<integer>350</integer>
+					<key>Action</key>
+					<string>CMGuidedSearchColorFlowViewController</string>
 				</dict>
 				<dict>
 					<key>Name</key>
@@ -173,6 +173,8 @@ solution finder</string>
 					<real>1.5</real>
 					<key>Distance</key>
 					<integer>250</integer>
+					<key>Action</key>
+					<string>CMGuidedSearchAdditiveFlowViewController</string>
 				</dict>
 				<dict>
 					<key>Name</key>
@@ -183,6 +185,8 @@ Additive</string>
 					<real>2.1</real>
 					<key>Distance</key>
 					<integer>350</integer>
+					<key>Action</key>
+					<string>CMGuidedSearchBothFlowViewController</string>
 				</dict>
 				<dict>
 					<key>Name</key>

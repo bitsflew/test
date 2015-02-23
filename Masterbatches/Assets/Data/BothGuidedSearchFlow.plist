@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Title</key>
+	<string>Additive</string>
+	<key>Steps</key>
+	<array>
+		<dict>
+			<key>Class</key>
+			<string>AdditiveFunctionality</string>
+			<key>Title</key>
+			<string>Select your additive functionality</string>
+		</dict>
+		<dict>
+			<key>Class</key>
+			<string>AdditionalQuestions</string>
+			<key>Title</key>
+			<string>Additional questions</string>
+		</dict>
+		<dict>
+			<key>Class</key>
+			<string>ResinType</string>
+			<key>Title</key>
+			<string>What is your resin type?</string>
+		</dict>
+		<dict>
+			<key>Class</key>
+			<string>ProductType</string>
+			<key>Title</key>
+			<string>Product type</string>
+		</dict>
+		<dict>
+			<key>Class</key>
+			<string>TemperatureThickness</string>
+			<key>Title</key>
+			<string>Temperature and thickness</string>
+		</dict>
+	</array>
+</dict>
+</plist>
