@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7515.2" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7512"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -28,6 +28,7 @@
                 <outlet property="nextButton" destination="0s3-dU-3c6" id="ine-cL-lzY"/>
                 <outlet property="previousButton" destination="B4N-V8-SJB" id="eeG-BY-D6w"/>
                 <outlet property="questionViewControllerTitleLabel" destination="wRK-Kl-oOk" id="mfw-pR-E1s"/>
+                <outlet property="resultContainerView" destination="Htg-xM-6NX" id="cmL-lc-Nrc"/>
                 <outlet property="stepContainerView" destination="VWH-Un-ZpZ" id="ZhG-EY-Lyt"/>
                 <outlet property="stepOverlayView" destination="r3d-3f-BtS" id="gQf-X3-Ybb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -50,13 +51,17 @@
                     <rect key="frame" x="0.0" y="-180" width="600" height="390"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xW9-OW-XJO">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="210"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wRK-Kl-oOk" customClass="TOMSMorphingLabel">
                     <rect key="frame" x="35" y="90" width="530" height="80"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="80" id="Hn8-bq-7V0"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="MercuryTextG1-Roman" family="Mercury Text G1" pointSize="39"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="animationDuration">
@@ -157,8 +162,11 @@
                 <constraint firstItem="wRK-Kl-oOk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="35" id="20G-rq-Kaf"/>
                 <constraint firstItem="r3d-3f-BtS" firstAttribute="leading" secondItem="VWH-Un-ZpZ" secondAttribute="leading" id="268-Cp-EXQ"/>
                 <constraint firstItem="VWH-Un-ZpZ" firstAttribute="top" secondItem="0s3-dU-3c6" secondAttribute="top" constant="30" id="6Kl-eQ-OOO"/>
+                <constraint firstItem="xW9-OW-XJO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8Ii-VU-POi"/>
                 <constraint firstItem="QXi-dr-Szf" firstAttribute="top" secondItem="VWH-Un-ZpZ" secondAttribute="top" id="Avu-Yl-hdh"/>
+                <constraint firstAttribute="trailing" secondItem="xW9-OW-XJO" secondAttribute="trailing" id="D5o-iP-8Lx"/>
                 <constraint firstItem="VWH-Un-ZpZ" firstAttribute="trailing" secondItem="0s3-dU-3c6" secondAttribute="trailing" constant="35" id="Ent-jW-bLV"/>
+                <constraint firstItem="xW9-OW-XJO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="EqA-gq-27J"/>
                 <constraint firstAttribute="trailing" secondItem="VWH-Un-ZpZ" secondAttribute="trailing" id="GaP-UE-Ohb"/>
                 <constraint firstItem="r3d-3f-BtS" firstAttribute="top" secondItem="VWH-Un-ZpZ" secondAttribute="top" id="Ilm-lK-5eU"/>
                 <constraint firstItem="QXi-dr-Szf" firstAttribute="top" secondItem="Htg-xM-6NX" secondAttribute="bottom" id="JCJ-Jh-OcJ"/>
@@ -175,6 +183,7 @@
                 <constraint firstAttribute="bottom" secondItem="SSU-VL-LVr" secondAttribute="bottom" constant="13" id="iNP-qT-mUO"/>
                 <constraint firstAttribute="centerX" secondItem="Q1d-J0-WaX" secondAttribute="centerX" id="iu2-v6-mfq"/>
                 <constraint firstItem="Htg-xM-6NX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="mIy-2Z-FdC"/>
+                <constraint firstItem="xW9-OW-XJO" firstAttribute="bottom" secondItem="ddT-Y6-SV0" secondAttribute="bottom" constant="1" id="met-yi-j2y"/>
                 <constraint firstItem="VWH-Un-ZpZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="210" id="oMi-Xi-VHW"/>
                 <constraint firstItem="Htg-xM-6NX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="pSK-wy-UI0"/>
                 <constraint firstItem="Htg-xM-6NX" firstAttribute="height" secondItem="VWH-Un-ZpZ" secondAttribute="height" id="pyM-Ag-Bf6"/>

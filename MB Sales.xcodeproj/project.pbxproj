@@ -8,6 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		44000BBE1A9B46D80032B747 /* CMGuidedSearchAdditionalQuestionTextFieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44000BBC1A9B46D80032B747 /* CMGuidedSearchAdditionalQuestionTextFieldViewController.m */; };
+		44000BCD1A9B63FE0032B747 /* gui_ArticleMedia 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BC11A9B63FE0032B747 /* gui_ArticleMedia 2@2x.png */; };
+		44000BCE1A9B63FE0032B747 /* gui_ArticleMedia@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BC21A9B63FE0032B747 /* gui_ArticleMedia@2x.png */; };
+		44000BCF1A9B63FE0032B747 /* gui_factsheet 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BC31A9B63FE0032B747 /* gui_factsheet 2@2x.png */; };
+		44000BD01A9B63FE0032B747 /* gui_factsheet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BC41A9B63FE0032B747 /* gui_factsheet@2x.png */; };
+		44000BD11A9B63FE0032B747 /* gui_flyer 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BC51A9B63FE0032B747 /* gui_flyer 2@2x.png */; };
+		44000BD21A9B63FE0032B747 /* gui_flyer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BC61A9B63FE0032B747 /* gui_flyer@2x.png */; };
+		44000BD31A9B63FE0032B747 /* gui_presentation 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BC71A9B63FE0032B747 /* gui_presentation 2@2x.png */; };
+		44000BD41A9B63FE0032B747 /* gui_presentation 3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BC81A9B63FE0032B747 /* gui_presentation 3@2x.png */; };
+		44000BD51A9B63FE0032B747 /* gui_presentation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BC91A9B63FE0032B747 /* gui_presentation@2x.png */; };
+		44000BD61A9B63FE0032B747 /* gui_video 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BCA1A9B63FE0032B747 /* gui_video 2@2x.png */; };
+		44000BD71A9B63FE0032B747 /* gui_video 3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BCB1A9B63FE0032B747 /* gui_video 3@2x.png */; };
+		44000BD81A9B63FE0032B747 /* gui_video@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BCC1A9B63FE0032B747 /* gui_video@2x.png */; };
+		44000BDC1A9B64830032B747 /* CMGuidedSearchResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44000BDA1A9B64830032B747 /* CMGuidedSearchResultController.m */; };
+		44000BDD1A9B64830032B747 /* CMGuidedSearchResultController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44000BDB1A9B64830032B747 /* CMGuidedSearchResultController.xib */; };
 		44107DAD1A9361AA004053A2 /* rounded-cell-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 44107DAB1A9361AA004053A2 /* rounded-cell-background.png */; };
 		44107DAE1A9361AA004053A2 /* rounded-cell-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44107DAC1A9361AA004053A2 /* rounded-cell-background@2x.png */; };
 		44107DB11A937488004053A2 /* Mercury_Text_G1_Roman.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 44107DB01A937488004053A2 /* Mercury_Text_G1_Roman.ttf */; };
@@ -80,6 +94,21 @@
 /* Begin PBXFileReference section */
 		44000BBB1A9B46D80032B747 /* CMGuidedSearchAdditionalQuestionTextFieldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchAdditionalQuestionTextFieldViewController.h; sourceTree = "<group>"; };
 		44000BBC1A9B46D80032B747 /* CMGuidedSearchAdditionalQuestionTextFieldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchAdditionalQuestionTextFieldViewController.m; sourceTree = "<group>"; };
+		44000BC11A9B63FE0032B747 /* gui_ArticleMedia 2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gui_ArticleMedia 2@2x.png"; sourceTree = "<group>"; };
+		44000BC21A9B63FE0032B747 /* gui_ArticleMedia@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gui_ArticleMedia@2x.png"; sourceTree = "<group>"; };
+		44000BC31A9B63FE0032B747 /* gui_factsheet 2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gui_factsheet 2@2x.png"; sourceTree = "<group>"; };
+		44000BC41A9B63FE0032B747 /* gui_factsheet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gui_factsheet@2x.png"; sourceTree = "<group>"; };
+		44000BC51A9B63FE0032B747 /* gui_flyer 2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gui_flyer 2@2x.png"; sourceTree = "<group>"; };
+		44000BC61A9B63FE0032B747 /* gui_flyer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gui_flyer@2x.png"; sourceTree = "<group>"; };
+		44000BC71A9B63FE0032B747 /* gui_presentation 2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gui_presentation 2@2x.png"; sourceTree = "<group>"; };
+		44000BC81A9B63FE0032B747 /* gui_presentation 3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gui_presentation 3@2x.png"; sourceTree = "<group>"; };
+		44000BC91A9B63FE0032B747 /* gui_presentation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gui_presentation@2x.png"; sourceTree = "<group>"; };
+		44000BCA1A9B63FE0032B747 /* gui_video 2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gui_video 2@2x.png"; sourceTree = "<group>"; };
+		44000BCB1A9B63FE0032B747 /* gui_video 3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gui_video 3@2x.png"; sourceTree = "<group>"; };
+		44000BCC1A9B63FE0032B747 /* gui_video@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gui_video@2x.png"; sourceTree = "<group>"; };
+		44000BD91A9B64830032B747 /* CMGuidedSearchResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchResultController.h; sourceTree = "<group>"; };
+		44000BDA1A9B64830032B747 /* CMGuidedSearchResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchResultController.m; sourceTree = "<group>"; };
+		44000BDB1A9B64830032B747 /* CMGuidedSearchResultController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMGuidedSearchResultController.xib; sourceTree = "<group>"; };
 		44107DAB1A9361AA004053A2 /* rounded-cell-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rounded-cell-background.png"; sourceTree = "<group>"; };
 		44107DAC1A9361AA004053A2 /* rounded-cell-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rounded-cell-background@2x.png"; sourceTree = "<group>"; };
 		44107DB01A937488004053A2 /* Mercury_Text_G1_Roman.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mercury_Text_G1_Roman.ttf; sourceTree = "<group>"; };
@@ -185,9 +214,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		44000BC01A9B63FE0032B747 /* DEMO */ = {
+			isa = PBXGroup;
+			children = (
+				44000BC11A9B63FE0032B747 /* gui_ArticleMedia 2@2x.png */,
+				44000BC21A9B63FE0032B747 /* gui_ArticleMedia@2x.png */,
+				44000BC31A9B63FE0032B747 /* gui_factsheet 2@2x.png */,
+				44000BC41A9B63FE0032B747 /* gui_factsheet@2x.png */,
+				44000BC51A9B63FE0032B747 /* gui_flyer 2@2x.png */,
+				44000BC61A9B63FE0032B747 /* gui_flyer@2x.png */,
+				44000BC71A9B63FE0032B747 /* gui_presentation 2@2x.png */,
+				44000BC81A9B63FE0032B747 /* gui_presentation 3@2x.png */,
+				44000BC91A9B63FE0032B747 /* gui_presentation@2x.png */,
+				44000BCA1A9B63FE0032B747 /* gui_video 2@2x.png */,
+				44000BCB1A9B63FE0032B747 /* gui_video 3@2x.png */,
+				44000BCC1A9B63FE0032B747 /* gui_video@2x.png */,
+			);
+			path = DEMO;
+			sourceTree = "<group>";
+		};
 		44107DA91A9361AA004053A2 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				44000BC01A9B63FE0032B747 /* DEMO */,
 				44E9E5471A96231E0028B01F /* Data */,
 				44107DAF1A937488004053A2 /* Fonts */,
 				44107DAA1A9361AA004053A2 /* Images */,
@@ -305,6 +354,9 @@
 				441470BB1A93588000131077 /* CMGuidedSearchGrid.h */,
 				441470BC1A93588000131077 /* CMGuidedSearchGrid.m */,
 				441470BE1A93599100131077 /* CMGuidedSearchGridSelectionItemRoundedCell.xib */,
+				44000BD91A9B64830032B747 /* CMGuidedSearchResultController.h */,
+				44000BDA1A9B64830032B747 /* CMGuidedSearchResultController.m */,
+				44000BDB1A9B64830032B747 /* CMGuidedSearchResultController.xib */,
 				443366CF1A923B58002DD5F5 /* Steps */,
 			);
 			path = "Guided Search";
@@ -495,28 +547,38 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44000BD81A9B63FE0032B747 /* gui_video@2x.png in Resources */,
 				443366EB1A92513A002DD5F5 /* CMGuidedSearchAdditiveFunctionalityViewController.xib in Resources */,
 				44107DB11A937488004053A2 /* Mercury_Text_G1_Roman.ttf in Resources */,
+				44000BD61A9B63FE0032B747 /* gui_video 2@2x.png in Resources */,
 				44E9E5511A96410B0028B01F /* img_guided_search_tab@2x.png in Resources */,
 				44E9E55B1A974FB00028B01F /* ic_close_black@2x.png in Resources */,
+				44000BD31A9B63FE0032B747 /* gui_presentation 2@2x.png in Resources */,
 				44E9E55A1A974FB00028B01F /* ic_close_black.png in Resources */,
 				4B24D7841A9B44AB001487B7 /* tap-smallest.aif in Resources */,
+				44000BCD1A9B63FE0032B747 /* gui_ArticleMedia 2@2x.png in Resources */,
 				4B2EDFB21A93A9F0007E0493 /* Menu.plist in Resources */,
 				441470B41A9346FC00131077 /* CMGuidedSearchProductTypeViewController.xib in Resources */,
+				44000BD71A9B63FE0032B747 /* gui_video 3@2x.png in Resources */,
 				44107DB31A937719004053A2 /* Gotham-Bold.otf in Resources */,
 				4B7AA9631A96320500AD81EF /* gradient.png in Resources */,
 				441470BF1A93599100131077 /* CMGuidedSearchGridSelectionItemRoundedCell.xib in Resources */,
 				443366E61A92499C002DD5F5 /* CMGuidedSearchColorViewController.xib in Resources */,
 				4B2EDFB01A93A9B7007E0493 /* MenuViewController.xib in Resources */,
+				44000BCE1A9B63FE0032B747 /* gui_ArticleMedia@2x.png in Resources */,
 				44E9E5681A9780C50028B01F /* CMGuidedSearchAdditionalQuestionsViewController.xib in Resources */,
+				44000BD41A9B63FE0032B747 /* gui_presentation 3@2x.png in Resources */,
 				44E9E54D1A9623A80028B01F /* Main.storyboard in Resources */,
+				44000BD21A9B63FE0032B747 /* gui_flyer@2x.png in Resources */,
 				44E9E5611A9777DF0028B01F /* Additive-Additional-Conductive.plist in Resources */,
 				44E9E5491A96231E0028B01F /* Additive.plist in Resources */,
 				44E9E5501A96410B0028B01F /* img_guided_search_tab.png in Resources */,
+				44000BD01A9B63FE0032B747 /* gui_factsheet@2x.png in Resources */,
 				44E9E5531A9642180028B01F /* Gotham-Book.otf in Resources */,
 				44107DB81A937946004053A2 /* img_logo_actionbar.png in Resources */,
 				44107DAE1A9361AA004053A2 /* rounded-cell-background@2x.png in Resources */,
 				443366CE1A9239CE002DD5F5 /* CMGuidedSearchFlowViewController.xib in Resources */,
+				44000BD11A9B63FE0032B747 /* gui_flyer 2@2x.png in Resources */,
 				4457F4801A94A744002FF4F5 /* ic_pagination_checkmark_light.png in Resources */,
 				44107DAD1A9361AA004053A2 /* rounded-cell-background.png in Resources */,
 				441470B91A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.xib in Resources */,
@@ -524,9 +586,12 @@
 				441470AF1A93465200131077 /* CMGuidedSearchResinTypeViewController.xib in Resources */,
 				44107DB91A937946004053A2 /* img_logo_actionbar@2x.png in Resources */,
 				44E9E54C1A9623920028B01F /* Localizable.strings in Resources */,
+				44000BD51A9B63FE0032B747 /* gui_presentation@2x.png in Resources */,
 				44E9E54B1A9623790028B01F /* LaunchScreen.xib in Resources */,
 				4B24D7861A9B4599001487B7 /* slide-metal.aif in Resources */,
+				44000BDD1A9B64830032B747 /* CMGuidedSearchResultController.xib in Resources */,
 				443366AE1A923349002DD5F5 /* Images.xcassets in Resources */,
+				44000BCF1A9B63FE0032B747 /* gui_factsheet 2@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,6 +615,7 @@
 				443366CD1A9239CE002DD5F5 /* CMGuidedSearchFlowViewController.m in Sources */,
 				441470B81A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.m in Sources */,
 				4457F4881A94A963002FF4F5 /* NSString+Morphing.m in Sources */,
+				44000BDC1A9B64830032B747 /* CMGuidedSearchResultController.m in Sources */,
 				44E9E53F1A95E58F0028B01F /* CMGuidedSearchFlow.m in Sources */,
 				4B2EDFAF1A93A9B7007E0493 /* MenuViewController.m in Sources */,
 				443366A31A923349002DD5F5 /* AppDelegate.m in Sources */,

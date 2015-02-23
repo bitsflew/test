@@ -216,8 +216,15 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 
 - (void)setModeOffset:(CGFloat)modeOffset animated:(BOOL)animated
 {
+    BOOL departingTop = (_modeOffset == 0.f) && (modeOffset > 0.f);
     BOOL hittingBottom = (_modeOffset < 1.f) && (modeOffset == 1.f);
     BOOL hittingTop = !hittingBottom && (_modeOffset > 0.f) && (modeOffset == 0.f);
+
+    if (departingTop && !self.resultController) {
+        self.resultController = [CMGuidedSearchResultController new];
+        self.resultController.view.frame = self.resultContainerView.bounds;
+        [self.resultContainerView addSubview:self.resultController.view];
+    }
 
     _modeOffset = modeOffset;
 
