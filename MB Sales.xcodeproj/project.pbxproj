@@ -94,7 +94,7 @@
 		441470BB1A93588000131077 /* CMGuidedSearchGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchGrid.h; sourceTree = "<group>"; };
 		441470BC1A93588000131077 /* CMGuidedSearchGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchGrid.m; sourceTree = "<group>"; };
 		441470BE1A93599100131077 /* CMGuidedSearchGridSelectionItemRoundedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMGuidedSearchGridSelectionItemRoundedCell.xib; sourceTree = "<group>"; };
-		4433669A1A923349002DD5F5 /* Masterbatches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Masterbatches.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4433669A1A923349002DD5F5 /* MB Sales.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MB Sales.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4433669E1A923349002DD5F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4433669F1A923349002DD5F5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		443366A11A923349002DD5F5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 		443366AB1A923349002DD5F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		443366AD1A923349002DD5F5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		443366B01A923349002DD5F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		443366B61A923349002DD5F5 /* MasterbatchesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MasterbatchesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		443366B61A923349002DD5F5 /* MB SalesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MB SalesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		443366BB1A923349002DD5F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		443366BC1A923349002DD5F5 /* MasterbatchesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterbatchesTests.m; sourceTree = "<group>"; };
 		443366CA1A9239CE002DD5F5 /* CMGuidedSearchFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchFlowViewController.h; sourceTree = "<group>"; };
@@ -227,8 +227,8 @@
 		4433669B1A923349002DD5F5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4433669A1A923349002DD5F5 /* Masterbatches.app */,
-				443366B61A923349002DD5F5 /* MasterbatchesTests.xctest */,
+				4433669A1A923349002DD5F5 /* MB Sales.app */,
+				443366B61A923349002DD5F5 /* MB SalesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -406,9 +406,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		443366991A923349002DD5F5 /* Masterbatches */ = {
+		443366991A923349002DD5F5 /* MB Sales */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 443366C01A923349002DD5F5 /* Build configuration list for PBXNativeTarget "Masterbatches" */;
+			buildConfigurationList = 443366C01A923349002DD5F5 /* Build configuration list for PBXNativeTarget "MB Sales" */;
 			buildPhases = (
 				443366961A923349002DD5F5 /* Sources */,
 				443366971A923349002DD5F5 /* Frameworks */,
@@ -418,14 +418,14 @@
 			);
 			dependencies = (
 			);
-			name = Masterbatches;
+			name = "MB Sales";
 			productName = Masterbatches;
-			productReference = 4433669A1A923349002DD5F5 /* Masterbatches.app */;
+			productReference = 4433669A1A923349002DD5F5 /* MB Sales.app */;
 			productType = "com.apple.product-type.application";
 		};
-		443366B51A923349002DD5F5 /* MasterbatchesTests */ = {
+		443366B51A923349002DD5F5 /* MB SalesTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 443366C31A923349002DD5F5 /* Build configuration list for PBXNativeTarget "MasterbatchesTests" */;
+			buildConfigurationList = 443366C31A923349002DD5F5 /* Build configuration list for PBXNativeTarget "MB SalesTests" */;
 			buildPhases = (
 				443366B21A923349002DD5F5 /* Sources */,
 				443366B31A923349002DD5F5 /* Frameworks */,
@@ -436,9 +436,9 @@
 			dependencies = (
 				443366B81A923349002DD5F5 /* PBXTargetDependency */,
 			);
-			name = MasterbatchesTests;
+			name = "MB SalesTests";
 			productName = MasterbatchesTests;
-			productReference = 443366B61A923349002DD5F5 /* MasterbatchesTests.xctest */;
+			productReference = 443366B61A923349002DD5F5 /* MB SalesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -460,7 +460,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 443366951A923349002DD5F5 /* Build configuration list for PBXProject "Masterbatches" */;
+			buildConfigurationList = 443366951A923349002DD5F5 /* Build configuration list for PBXProject "MB Sales" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -473,8 +473,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				443366991A923349002DD5F5 /* Masterbatches */,
-				443366B51A923349002DD5F5 /* MasterbatchesTests */,
+				443366991A923349002DD5F5 /* MB Sales */,
+				443366B51A923349002DD5F5 /* MB SalesTests */,
 			);
 		};
 /* End PBXProject section */
@@ -571,7 +571,7 @@
 /* Begin PBXTargetDependency section */
 		443366B81A923349002DD5F5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 443366991A923349002DD5F5 /* Masterbatches */;
+			target = 443366991A923349002DD5F5 /* MB Sales */;
 			targetProxy = 443366B71A923349002DD5F5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -690,7 +690,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Masterbatches/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "MB Sales";
 				PROVISIONING_PROFILE = "69a2df6d-9895-489c-9b12-5b9c721a98e3";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -704,7 +704,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				INFOPLIST_FILE = Masterbatches/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "MB Sales";
 				PROVISIONING_PROFILE = "69a2df6d-9895-489c-9b12-5b9c721a98e3";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -724,7 +724,7 @@
 				);
 				INFOPLIST_FILE = MasterbatchesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "MB SalesTests";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Masterbatches.app/Masterbatches";
 			};
 			name = Debug;
@@ -739,7 +739,7 @@
 				);
 				INFOPLIST_FILE = MasterbatchesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "MB SalesTests";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Masterbatches.app/Masterbatches";
 			};
 			name = Release;
@@ -747,7 +747,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		443366951A923349002DD5F5 /* Build configuration list for PBXProject "Masterbatches" */ = {
+		443366951A923349002DD5F5 /* Build configuration list for PBXProject "MB Sales" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				443366BE1A923349002DD5F5 /* Debug */,
@@ -756,7 +756,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		443366C01A923349002DD5F5 /* Build configuration list for PBXNativeTarget "Masterbatches" */ = {
+		443366C01A923349002DD5F5 /* Build configuration list for PBXNativeTarget "MB Sales" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				443366C11A923349002DD5F5 /* Debug */,
@@ -765,7 +765,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		443366C31A923349002DD5F5 /* Build configuration list for PBXNativeTarget "MasterbatchesTests" */ = {
+		443366C31A923349002DD5F5 /* Build configuration list for PBXNativeTarget "MB SalesTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				443366C41A923349002DD5F5 /* Debug */,
