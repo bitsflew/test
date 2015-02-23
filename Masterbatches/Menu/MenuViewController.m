@@ -23,7 +23,7 @@
         Class vcClass = NSClassFromString(menuAction);
         assert(vcClass);
         UIViewController *vc = [vcClass new];
-        [weakSelf presentViewController:vc animated:YES completion:nil];
+        [weakSelf.navigationController pushViewController:vc animated:YES];
     };
 }
 

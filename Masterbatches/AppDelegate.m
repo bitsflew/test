@@ -20,19 +20,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    UINavigationController *navigationController
-      = [[UINavigationController alloc] initWithRootViewController:[MenuViewController new]];
-    
-    navigationController.navigationBar.backgroundColor = [UIColor clearColor];
-
-    [navigationController.navigationBar setBackgroundImage:[UIImage new]
-                       forBarPosition:UIBarPositionAny
-                           barMetrics:UIBarMetricsDefault];
-
-    navigationController.navigationBar.shadowImage = [UIImage new];
-    
-    self.window.rootViewController = navigationController;    
-    
     return YES;
 }
 
