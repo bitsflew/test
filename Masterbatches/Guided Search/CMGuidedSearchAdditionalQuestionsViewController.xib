@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7515.2" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7512"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Gotham-Bold.otf">
+            <string>Gotham-Bold</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CMGuidedSearchAdditionalQuestionsViewController">
             <connections>
+                <outlet property="questionTitleTemplateLabel" destination="QpR-z0-Zpc" id="tdq-k7-c8s"/>
                 <outlet property="questionsScrollView" destination="Z04-Ok-2SN" id="YFo-jf-8qP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -17,9 +23,37 @@
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z04-Ok-2SN">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QUESTION TITLE TEMPLATE LABEL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QpR-z0-Zpc">
+                            <rect key="frame" x="0.0" y="0.0" width="311" height="19"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="311" id="18O-Zy-Ieh"/>
+                                <constraint firstAttribute="height" constant="21" id="6gC-td-CaB"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="288" id="iMm-g9-aNt"/>
+                                <constraint firstAttribute="width" constant="288" id="meS-1k-fbj"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="6gC-td-CaB"/>
+                                    <exclude reference="iMm-g9-aNt"/>
+                                    <exclude reference="meS-1k-fbj"/>
+                                </mask>
+                            </variation>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="QpR-z0-Zpc" secondAttribute="trailing" constant="289" id="0mn-te-m8p"/>
+                        <constraint firstItem="QpR-z0-Zpc" firstAttribute="top" secondItem="Z04-Ok-2SN" secondAttribute="top" id="4N4-CX-JJo"/>
+                        <constraint firstItem="QpR-z0-Zpc" firstAttribute="leading" secondItem="Z04-Ok-2SN" secondAttribute="leading" id="NPr-pX-aoG"/>
+                        <constraint firstAttribute="bottom" secondItem="QpR-z0-Zpc" secondAttribute="bottom" constant="581" id="hKH-x6-nMq"/>
+                    </constraints>
                 </scrollView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Z04-Ok-2SN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Ap1-PQ-QDC"/>
                 <constraint firstAttribute="trailing" secondItem="Z04-Ok-2SN" secondAttribute="trailing" id="FNr-0i-k6M"/>

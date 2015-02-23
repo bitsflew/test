@@ -23,6 +23,23 @@
 				</array>
 			</dict>
 		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Are you sure?</string>
+			<key>Class</key>
+			<string>Choice</string>
+			<key>Key</key>
+			<string>sureness</string>
+			<key>Attributes</key>
+			<dict>
+				<key>Choices</key>
+				<array>
+					<string>Pretty damned sure</string>
+					<string>Not at all sure</string>
+					<string>Where am I again?</string>
+				</array>
+			</dict>
+		</dict>
 	</array>
 </dict>
 </plist>

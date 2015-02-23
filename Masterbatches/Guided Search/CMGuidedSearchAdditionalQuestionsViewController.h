@@ -13,6 +13,7 @@
 @property (nonatomic, strong) CMGuidedSearchFlowStep *step;
 @property (nonatomic, weak) id<CMGuidedSearchStepViewControllerDelegate> stepDelegate;
 
+@property (nonatomic, weak) IBOutlet UILabel *questionTitleTemplateLabel;
 @property (nonatomic, weak) IBOutlet UIScrollView *questionsScrollView;
 
 @end

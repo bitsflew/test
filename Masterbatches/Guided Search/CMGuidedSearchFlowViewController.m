@@ -9,7 +9,8 @@
 #import "CMGuidedSearchFlowViewController.h"
 #import "CMSearchDAO.h"
 
-static NSString *CMGuidedSearchMainViewControllerCellIdentifier = @"cell";
+static UIEdgeInsets kCMGuidedSearchFlowViewControllerEdgeInsets = (UIEdgeInsets) { 48.f, 0.f, 0.f, 0.f };
+static NSString *kCMGuidedSearchMainViewControllerCellIdentifier = @"cell";
 
 static CGFloat kCMGuidedSearchFlowViewControllerModeAnimationSpeed = 0.2f;
 static CGFloat kCMGuidedSearchFlowViewControllerTransitionAnimationSpeed = 0.3f;
@@ -324,6 +325,16 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 {
     [NSRunLoop cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateSearchResults) object:nil];
     [self performSelector:@selector(updateSearchResults) withObject:nil afterDelay:kCMGuidedSearchFlowViewControllerSearchThrottleDelay];
+}
+
+- (CMGuidedSearchFlow*)flowForStepViewController:(id<CMGuidedSearchStepViewController>)stepViewController
+{
+    return self.flow;
+}
+
+- (UIEdgeInsets)edgeInsetsForStepViewController:(id<CMGuidedSearchStepViewController>)stepViewController
+{
+    return kCMGuidedSearchFlowViewControllerEdgeInsets;
 }
 
 

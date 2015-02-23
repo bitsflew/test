@@ -24,8 +24,6 @@
 
 @interface CMProductSpecificationResin : CMProductSpecificationSimpleNamedAttribute
 
-@property (nonatomic, copy) NSString *name;
-
 + (instancetype)resinWithName:(NSString*)name;
 
 @end

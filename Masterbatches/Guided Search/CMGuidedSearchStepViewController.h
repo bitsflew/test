@@ -14,8 +14,8 @@
 
 - (void)stepViewControllerDidCompleteStep:(id<CMGuidedSearchStepViewController>)stepViewController;
 - (void)stepViewControllerDidChangeProductSpecification:(id<CMGuidedSearchStepViewController>)stepViewController;
-
-- (CMGuidedSearchFlow*)flow;
+- (CMGuidedSearchFlow*)flowForStepViewController:(id<CMGuidedSearchStepViewController>)stepViewController;
+- (UIEdgeInsets)edgeInsetsForStepViewController:(id<CMGuidedSearchStepViewController>)stepViewController;
 
 @end
 
