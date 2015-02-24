@@ -64,8 +64,17 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
     __weak __typeof(self) _self = self;
     [CMSearchDAO loadSearchResultsForProductSpecification:self.flow.productSpecification
                                                completion:^(NSArray *results, NSError *error) {
-                                                   [_self.modeToggleButton setTitle:[NSString stringWithFormat:@"show %d results", (int)results.count]
-                                                                           forState:UIControlStateNormal];
+                                                   
+                                                   NSString *title = (results.count > 0)
+                                                     ? [NSString stringWithFormat:@"show %d results", (int)results.count]
+                                                     : @"No results – tap for project request";
+                                                   
+                                                   UIColor *color = (results.count > 0)
+                                                     ? [UIColor blackColor]
+                                                     : [UIColor colorWithRed:.8f green:0.f blue:0.f alpha:1.f];
+
+                                                   [_self.modeToggleButton setTitleColor:color forState:UIControlStateNormal];
+                                                   [_self.modeToggleButton setTitle:title forState:UIControlStateNormal];
                                                }];
 }
 

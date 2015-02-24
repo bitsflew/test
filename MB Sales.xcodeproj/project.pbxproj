@@ -8,18 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		44000BBE1A9B46D80032B747 /* CMGuidedSearchAdditionalQuestionTextFieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44000BBC1A9B46D80032B747 /* CMGuidedSearchAdditionalQuestionTextFieldViewController.m */; };
-		44000BCD1A9B63FE0032B747 /* gui_ArticleMedia 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BC11A9B63FE0032B747 /* gui_ArticleMedia 2@2x.png */; };
-		44000BCE1A9B63FE0032B747 /* gui_ArticleMedia@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BC21A9B63FE0032B747 /* gui_ArticleMedia@2x.png */; };
-		44000BCF1A9B63FE0032B747 /* gui_factsheet 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BC31A9B63FE0032B747 /* gui_factsheet 2@2x.png */; };
-		44000BD01A9B63FE0032B747 /* gui_factsheet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BC41A9B63FE0032B747 /* gui_factsheet@2x.png */; };
-		44000BD11A9B63FE0032B747 /* gui_flyer 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BC51A9B63FE0032B747 /* gui_flyer 2@2x.png */; };
-		44000BD21A9B63FE0032B747 /* gui_flyer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BC61A9B63FE0032B747 /* gui_flyer@2x.png */; };
-		44000BD31A9B63FE0032B747 /* gui_presentation 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BC71A9B63FE0032B747 /* gui_presentation 2@2x.png */; };
-		44000BD41A9B63FE0032B747 /* gui_presentation 3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BC81A9B63FE0032B747 /* gui_presentation 3@2x.png */; };
-		44000BD51A9B63FE0032B747 /* gui_presentation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BC91A9B63FE0032B747 /* gui_presentation@2x.png */; };
-		44000BD61A9B63FE0032B747 /* gui_video 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BCA1A9B63FE0032B747 /* gui_video 2@2x.png */; };
-		44000BD71A9B63FE0032B747 /* gui_video 3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BCB1A9B63FE0032B747 /* gui_video 3@2x.png */; };
-		44000BD81A9B63FE0032B747 /* gui_video@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BCC1A9B63FE0032B747 /* gui_video@2x.png */; };
 		44000BDC1A9B64830032B747 /* CMGuidedSearchResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44000BDA1A9B64830032B747 /* CMGuidedSearchResultController.m */; };
 		44000BDD1A9B64830032B747 /* CMGuidedSearchResultController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44000BDB1A9B64830032B747 /* CMGuidedSearchResultController.xib */; };
 		44107DAD1A9361AA004053A2 /* rounded-cell-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 44107DAB1A9361AA004053A2 /* rounded-cell-background.png */; };
@@ -37,6 +25,7 @@
 		441470B91A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 441470B71A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.xib */; };
 		441470BD1A93588000131077 /* CMGuidedSearchGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 441470BC1A93588000131077 /* CMGuidedSearchGrid.m */; };
 		441470BF1A93599100131077 /* CMGuidedSearchGridSelectionItemRoundedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 441470BE1A93599100131077 /* CMGuidedSearchGridSelectionItemRoundedCell.xib */; };
+		442549501A9C91D600C38557 /* clear.png in Resources */ = {isa = PBXBuildFile; fileRef = 4425494F1A9C91D600C38557 /* clear.png */; };
 		443366A01A923349002DD5F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4433669F1A923349002DD5F5 /* main.m */; };
 		443366A31A923349002DD5F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 443366A21A923349002DD5F5 /* AppDelegate.m */; };
 		443366A61A923349002DD5F5 /* Masterbatches.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 443366A41A923349002DD5F5 /* Masterbatches.xcdatamodeld */; };
@@ -90,8 +79,6 @@
 		4B7F2C191A9C857900505165 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B7F2C181A9C857900505165 /* Security.framework */; };
 		4B7F2C1B1A9C858100505165 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B7F2C1A1A9C858100505165 /* SystemConfiguration.framework */; };
 		4B7F2C221A9C85AF00505165 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B7F2C1E1A9C85AF00505165 /* HockeySDK.framework */; };
-		4B7F2C231A9C85AF00505165 /* HockeySDK.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 4B7F2C201A9C85AF00505165 /* HockeySDK.xcconfig */; };
-		4B7F2C241A9C85AF00505165 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4B7F2C211A9C85AF00505165 /* HockeySDKResources.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +116,7 @@
 		441470BB1A93588000131077 /* CMGuidedSearchGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchGrid.h; sourceTree = "<group>"; };
 		441470BC1A93588000131077 /* CMGuidedSearchGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchGrid.m; sourceTree = "<group>"; };
 		441470BE1A93599100131077 /* CMGuidedSearchGridSelectionItemRoundedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMGuidedSearchGridSelectionItemRoundedCell.xib; sourceTree = "<group>"; };
+		4425494F1A9C91D600C38557 /* clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clear.png; sourceTree = "<group>"; };
 		4433669A1A923349002DD5F5 /* MB Sales.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MB Sales.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4433669E1A923349002DD5F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4433669F1A923349002DD5F5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -251,6 +239,7 @@
 		44107DAA1A9361AA004053A2 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4425494F1A9C91D600C38557 /* clear.png */,
 				44E9E5581A974FB00028B01F /* ic_close_black.png */,
 				44E9E5591A974FB00028B01F /* ic_close_black@2x.png */,
 				4457F47F1A94A744002FF4F5 /* ic_pagination_checkmark_light.png */,
@@ -602,6 +591,7 @@
 			files = (
 				443366EB1A92513A002DD5F5 /* CMGuidedSearchAdditiveFunctionalityViewController.xib in Resources */,
 				44107DB11A937488004053A2 /* Mercury_Text_G1_Roman.ttf in Resources */,
+				442549501A9C91D600C38557 /* clear.png in Resources */,
 				44E9E5511A96410B0028B01F /* img_guided_search_tab@2x.png in Resources */,
 				44E9E55B1A974FB00028B01F /* ic_close_black@2x.png in Resources */,
 				44E9E55A1A974FB00028B01F /* ic_close_black.png in Resources */,

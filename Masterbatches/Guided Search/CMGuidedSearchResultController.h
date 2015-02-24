@@ -10,4 +10,8 @@
 
 @interface CMGuidedSearchResultController : UIViewController
 
+@property (nonatomic, weak) IBOutlet UIButton *startProjectRequestButton;
+@property (nonatomic, weak) IBOutlet UITextField *projectRequestNameField;
+@property (nonatomic, weak) IBOutlet UILabel *noResultsLabel;
+
 @end

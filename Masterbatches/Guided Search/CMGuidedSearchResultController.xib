@@ -6,6 +6,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CMGuidedSearchResultController">
             <connections>
+                <outlet property="noResultsLabel" destination="5Er-3r-uyd" id="ph8-l5-p3b"/>
+                <outlet property="projectRequestNameField" destination="KrI-i2-UDX" id="0Kr-9O-CMV"/>
+                <outlet property="startProjectRequestButton" destination="dRp-2L-w2w" id="Dgg-sy-0fK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,46 +17,53 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gui_flyer.png" translatesAutoresizingMaskIntoConstraints="NO" id="NXe-Iq-nyJ">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="71"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRp-2L-w2w">
+                    <rect key="frame" x="230" y="8" width="141" height="30"/>
+                    <state key="normal" title="Start project request">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tappedStartProjectRequest:" destination="-1" eventType="touchUpInside" id="lZ3-Em-n5q"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Project request name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KrI-i2-UDX">
+                    <rect key="frame" x="8" y="44" width="584" height="30"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="71" id="Kei-CA-wKW"/>
+                        <constraint firstAttribute="width" constant="584" id="Dfk-8R-SEk"/>
                     </constraints>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gui_presentation 3.png" translatesAutoresizingMaskIntoConstraints="NO" id="9zW-3B-YJ5">
-                    <rect key="frame" x="0.0" y="79" width="600" height="71"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No search results – create a project request to obtain a product with these properties" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Er-3r-uyd">
+                    <rect key="frame" x="133" y="263" width="334" height="74"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="71" id="Y3q-Xm-C0N"/>
+                        <constraint firstAttribute="height" constant="74" id="0FV-4Q-7q7"/>
+                        <constraint firstAttribute="width" constant="334" id="yqQ-yO-tZm"/>
                     </constraints>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gui_video 3.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZOU-lo-b4j">
-                    <rect key="frame" x="0.0" y="158" width="600" height="71"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="71" id="mHn-MQ-hUO"/>
-                    </constraints>
-                </imageView>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="NXe-Iq-nyJ" firstAttribute="leading" secondItem="ZOU-lo-b4j" secondAttribute="leading" id="12A-lN-8Lj"/>
-                <constraint firstItem="9zW-3B-YJ5" firstAttribute="top" secondItem="NXe-Iq-nyJ" secondAttribute="bottom" constant="8" id="35K-YJ-bDs"/>
-                <constraint firstItem="NXe-Iq-nyJ" firstAttribute="trailing" secondItem="ZOU-lo-b4j" secondAttribute="trailing" id="3iu-Tv-mz8"/>
-                <constraint firstAttribute="trailing" secondItem="NXe-Iq-nyJ" secondAttribute="trailing" id="C0U-iZ-q6g"/>
-                <constraint firstItem="NXe-Iq-nyJ" firstAttribute="trailing" secondItem="9zW-3B-YJ5" secondAttribute="trailing" id="UGa-Vb-sWz"/>
-                <constraint firstItem="NXe-Iq-nyJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Yqc-0g-UeM"/>
-                <constraint firstItem="NXe-Iq-nyJ" firstAttribute="height" secondItem="ZOU-lo-b4j" secondAttribute="height" id="biA-Si-mdu"/>
-                <constraint firstItem="NXe-Iq-nyJ" firstAttribute="leading" secondItem="9zW-3B-YJ5" secondAttribute="leading" id="bxY-ch-1bP"/>
-                <constraint firstItem="ZOU-lo-b4j" firstAttribute="top" secondItem="9zW-3B-YJ5" secondAttribute="bottom" constant="8" id="jS2-i4-vVc"/>
-                <constraint firstItem="NXe-Iq-nyJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oOk-q3-Zdb"/>
-                <constraint firstItem="NXe-Iq-nyJ" firstAttribute="height" secondItem="9zW-3B-YJ5" secondAttribute="height" id="ubT-lm-8ZG"/>
+                <constraint firstItem="KrI-i2-UDX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="CXM-tZ-bWL"/>
+                <constraint firstAttribute="centerX" secondItem="dRp-2L-w2w" secondAttribute="centerX" id="LAe-fx-UCh"/>
+                <constraint firstItem="dRp-2L-w2w" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="Rkf-LQ-V5x"/>
+                <constraint firstItem="KrI-i2-UDX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="44" id="UWq-3r-I8J"/>
+                <constraint firstAttribute="trailing" secondItem="KrI-i2-UDX" secondAttribute="trailing" constant="8" id="cik-ZS-XXj"/>
+                <constraint firstAttribute="centerX" secondItem="5Er-3r-uyd" secondAttribute="centerX" id="lfS-9D-2N3"/>
+                <constraint firstAttribute="centerY" secondItem="5Er-3r-uyd" secondAttribute="centerY" id="ly4-HB-0tc"/>
+                <constraint firstAttribute="centerX" secondItem="KrI-i2-UDX" secondAttribute="centerX" id="s7P-6J-t4N"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="CXM-tZ-bWL"/>
+                    <exclude reference="cik-ZS-XXj"/>
+                </mask>
+            </variation>
         </view>
     </objects>
-    <resources>
-        <image name="gui_flyer.png" width="1204" height="137"/>
-        <image name="gui_presentation 3.png" width="1204" height="137"/>
-        <image name="gui_video 3.png" width="1204" height="137"/>
-    </resources>
 </document>

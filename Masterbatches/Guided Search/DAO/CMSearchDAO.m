@@ -19,7 +19,7 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         NSMutableArray *results = [NSMutableArray new];
-        for (int i=0; i<arc4random_uniform(128); i++) {
+        for (int i=0; i<arc4random_uniform(2); i++) {
             [results addObject:@"X"];
         }
         completion(results, nil);
