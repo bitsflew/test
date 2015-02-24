@@ -42,13 +42,11 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VWH-Un-ZpZ">
                     <rect key="frame" x="0.0" y="210" width="600" height="390"/>
-                    <subviews>
-                        <view userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r3d-3f-BtS">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="390"/>
-                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
-                        </view>
-                    </subviews>
                     <color key="backgroundColor" red="0.9802737832069397" green="0.98038023710250854" blue="0.98435753583908081" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <view userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r3d-3f-BtS">
+                    <rect key="frame" x="0.0" y="210" width="600" height="390"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Htg-xM-6NX">
                     <rect key="frame" x="0.0" y="-180" width="600" height="390"/>
@@ -60,7 +58,7 @@
                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PROJECT REQUEST" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKh-4e-0Az">
                             <rect key="frame" x="230" y="71" width="141" height="15"/>
                             <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="14"/>
-                            <color key="textColor" red="0.59999999999999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.78823536630000002" green="0.1098039299" blue="0.17254902420000001" alpha="1" colorSpace="deviceRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -199,11 +197,15 @@
                 <constraint firstItem="4Uv-kM-caO" firstAttribute="centerX" secondItem="QXi-dr-Szf" secondAttribute="centerX" constant="0.5" id="bid-32-uld"/>
                 <constraint firstAttribute="bottom" secondItem="VWH-Un-ZpZ" secondAttribute="bottom" id="cQq-hG-7M8"/>
                 <constraint firstAttribute="trailing" secondItem="wRK-Kl-oOk" secondAttribute="trailing" constant="35" id="coo-HD-Fzd"/>
+                <constraint firstItem="VWH-Un-ZpZ" firstAttribute="top" secondItem="r3d-3f-BtS" secondAttribute="top" id="eU7-Z5-Fiu"/>
+                <constraint firstItem="VWH-Un-ZpZ" firstAttribute="trailing" secondItem="r3d-3f-BtS" secondAttribute="trailing" id="g16-EC-98r"/>
                 <constraint firstAttribute="trailing" secondItem="Htg-xM-6NX" secondAttribute="trailing" id="gZA-yk-Wlg"/>
                 <constraint firstItem="Q1d-J0-WaX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="159" id="iM0-ah-AYc"/>
                 <constraint firstAttribute="bottom" secondItem="SSU-VL-LVr" secondAttribute="bottom" constant="13" id="iNP-qT-mUO"/>
                 <constraint firstAttribute="centerX" secondItem="Q1d-J0-WaX" secondAttribute="centerX" id="iu2-v6-mfq"/>
+                <constraint firstItem="VWH-Un-ZpZ" firstAttribute="bottom" secondItem="r3d-3f-BtS" secondAttribute="bottom" id="kPZ-nE-Ssa"/>
                 <constraint firstItem="Htg-xM-6NX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="mIy-2Z-FdC"/>
+                <constraint firstItem="VWH-Un-ZpZ" firstAttribute="leading" secondItem="r3d-3f-BtS" secondAttribute="leading" id="mcH-cq-Qj2"/>
                 <constraint firstItem="xW9-OW-XJO" firstAttribute="bottom" secondItem="ddT-Y6-SV0" secondAttribute="bottom" constant="1" id="met-yi-j2y"/>
                 <constraint firstItem="VWH-Un-ZpZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="210" id="oMi-Xi-VHW"/>
                 <constraint firstItem="Htg-xM-6NX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="pSK-wy-UI0"/>

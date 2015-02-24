@@ -85,7 +85,7 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
     } else {
         if (self.searchResults.count == 0) {
             title = NSLocalizedString(@"ShowNoResults", nil);
-            titleColor = [UIColor redColor];
+            titleColor = [UIColor colorWithRed:0.788 green:0.109 blue:0.172 alpha:1];
         } else {
             title = (self.searchResults.count == 1)
               ? NSLocalizedString(@"ShowSingleResult", nil)
