@@ -19,7 +19,7 @@
     if (!(self = [super init])) {
         return nil;
     }
-    self.title = @"Project request";
+    self.title = NSLocalizedString(@"Overview", nil);
     return self;
 }
 

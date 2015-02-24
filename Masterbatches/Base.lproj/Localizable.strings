@@ -11,8 +11,8 @@
 "MustSpecifyAdditive" = "Choose one or more additive functionalities from the grid.";
 "MustSpecifyResin" = "Choose one or more resins from the grid.";
 "Close" = "Close";
-"ProjectRequestOverview" = "Project request overview";
-"SeeProjectRequest" = "See project request";
+"Overview" = "Overview";
+"SeeProjectRequest" = "See project request overview";
 "ShowNoResults" = "No results – tap for project request";
 "ShowSingleResult" = "Show one result";
 "ShowPluralResultsFormat" = "Show %d results";

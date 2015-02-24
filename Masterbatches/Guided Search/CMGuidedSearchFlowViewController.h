@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *menuButton;
 
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+@property (nonatomic, weak) IBOutlet UILabel *projectRequestLabel;
 @property (nonatomic, weak) IBOutlet UIView *stepContainerView;
 @property (nonatomic, weak) IBOutlet UIView *stepOverlayView;
 @property (nonatomic, weak) IBOutlet UIButton *previousButton;

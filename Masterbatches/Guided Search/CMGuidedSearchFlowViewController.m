@@ -96,6 +96,8 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 
     [self.overviewToggleButton setTitle:title forState:UIControlStateNormal];
     [self.overviewToggleButton setTitleColor:titleColor forState:UIControlStateNormal];
+    
+    self.projectRequestLabel.alpha = self.flow.projectRequest ? 1.f : 0.f;
 }
 
 - (void)presentStep:(CMGuidedSearchFlowStep*)step

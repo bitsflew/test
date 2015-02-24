@@ -17,21 +17,18 @@
  
  */
 
-@interface CMGuidedSearchFlowAdditionalQuestion : NSObject
-
-@property (nonatomic, retain) Class viewControllerClass;
-@property (nonatomic, retain) NSDictionary *attributes; // used to configure view controller
-@property (nonatomic, retain) NSString *title;
-@property (nonatomic, retain) CMProductSpecification* productSpecification;
-@property (nonatomic, retain) NSString *key;
-
-@end
-
 @interface CMGuidedSearchFlowStep : NSObject
 
 @property (nonatomic, retain) Class viewControllerClass;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, retain) CMProductSpecification* productSpecification;
+
+@end
+
+@interface CMGuidedSearchFlowAdditionalQuestion : CMGuidedSearchFlowStep
+
+@property (nonatomic, retain) NSDictionary *attributes; // used to configure view controller
+@property (nonatomic, retain) NSString *key;
 
 @end
 
