@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CMProjectRequest.h"
+#import "CMGuidedSearchFlow.h"
 
 @interface CMGuidedSearchProjectRequestViewController : UIViewController
+
+@property (nonatomic, strong) CMProjectRequest *projectRequest;
+@property (nonatomic, strong) CMGuidedSearchFlow *flow; // populate steps filled/remaining
 
 @end

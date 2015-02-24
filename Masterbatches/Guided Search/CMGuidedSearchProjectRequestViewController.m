@@ -23,4 +23,11 @@
     return self;
 }
 
+- (void)setFlow:(CMGuidedSearchFlow *)flow
+{
+    _flow = flow;
+    // TODO: reload collection view of flow steps
+    // TODO: 
+}
+
 @end
