@@ -23,11 +23,9 @@
     return self;
 }
 
-- (void)setFlow:(CMGuidedSearchFlow *)flow
+- (IBAction)tappedCancelProjectRequest:(id)sender
 {
-    _flow = flow;
-    // TODO: reload collection view of flow steps
-    // TODO: 
+    [self.delegate projectRequestViewControllerDismissedCancellingProjectRequest:self];
 }
 
 @end

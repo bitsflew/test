@@ -18,7 +18,7 @@ static CGFloat kCMGuidedSearchFlowViewControllerOverviewAnimationSpeed = 0.3f;
 static CGFloat kCMGuidedSearchFlowViewControllerTransitionAnimationSpeed = 0.3f;
 static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 
-@interface CMGuidedSearchFlowViewController () <CMGuidedSearchResultsViewControllerDelegate>
+@interface CMGuidedSearchFlowViewController () <CMGuidedSearchResultsViewControllerDelegate, CMGuidedSearchProjectRequestViewControllerDelegate>
 
 @property (nonatomic, strong) NSArray *searchResults;
 
@@ -79,7 +79,7 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
     NSString *title;
     UIColor *titleColor;
 
-    if (self.flow.productSpecification.isProjectRequest) {
+    if (self.flow.projectRequest) {
         title = NSLocalizedString(@"SeeProjectRequest", nil);
         titleColor = [UIColor blackColor];
     } else {
@@ -234,8 +234,9 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
     BOOL hittingTop = !hittingBottom && (_overviewPosition > 0.f) && (overviewPosition == 0.f);
 
     if (departingTop && !self.overviewController) {
-        if (self.flow.productSpecification.isProjectRequest) {
+        if (self.flow.projectRequest) {
             self.overviewController = [CMGuidedSearchProjectRequestViewController new];
+            ((CMGuidedSearchProjectRequestViewController*)self.overviewController).delegate = self;
         } else {
             self.overviewController = [CMGuidedSearchResultsViewController new];
             ((CMGuidedSearchResultsViewController*)self.overviewController).delegate = self;
@@ -371,17 +372,32 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 
 - (void)searchResultsViewControllerDismissedWithProjectRequest:(CMGuidedSearchResultsViewController*)resultsViewController
 {
-    self.flow.productSpecification.projectRequest = YES;
+    [self.flow createProjectRequest];
     [self updateOverviewToggleButton];
 
     __weak __typeof(self) _self = self;
     [self setOverviewPosition:0.f
                animated:YES
              completion:^{
-                 _self.overviewController = nil; // correct controller will instantiate when overview is pulled down again
-                 
+                 _self.overviewController = nil;
                  [_self.flowProgressView setStepCount:10];
              }];
+}
+
+#pragma mark -
+
+- (void)projectRequestViewControllerDismissedCancellingProjectRequest:(CMGuidedSearchProjectRequestViewController*)projectRequestViewController
+{
+    [self.flow cancelProjectRequest];
+    [self updateOverviewToggleButton];
+
+    __weak __typeof(self) _self = self;
+    [self setOverviewPosition:0.f
+                     animated:YES
+                   completion:^{
+                       _self.overviewController = nil;
+                       [_self.flowProgressView setStepCount:10];
+                   }];
 }
 
 

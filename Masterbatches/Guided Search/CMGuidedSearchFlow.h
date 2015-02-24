@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CMProductSpecification.h"
+#import "CMProjectRequest.h"
 
 /*
  
@@ -37,12 +38,17 @@
 @interface CMGuidedSearchFlow : NSObject
 
 @property (nonatomic, copy) NSString *title;
+@property (nonatomic, readonly, retain) CMProjectRequest *projectRequest;
+
 @property (nonatomic, readonly, retain) CMProductSpecification* productSpecification;
 @property (nonatomic, readonly) NSUInteger stepCount;
 
 + (CMGuidedSearchFlow*)flowNamed:(NSString*)name;
 
 - (id)initWithContentsOfFile:(NSString*)path;
+
+- (void)createProjectRequest;
+- (void)cancelProjectRequest;
 
 - (NSUInteger)numberOfStepsBefore:(CMGuidedSearchFlowStep*)finishStep;
 - (NSUInteger)numberOfStepsBetween:(CMGuidedSearchFlowStep*)firstStep and:(CMGuidedSearchFlowStep*)finishStep;

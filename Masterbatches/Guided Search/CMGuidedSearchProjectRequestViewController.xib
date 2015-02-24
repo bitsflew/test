@@ -4,6 +4,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7512"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="Gotham-Book.otf">
+            <string>Gotham-Book</string>
+        </mutableArray>
         <mutableArray key="Mercury_Text_G1_Roman.ttf">
             <string>MercuryTextG1-Roman</string>
         </mutableArray>
@@ -45,10 +48,23 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iFF-bu-QVZ">
+                    <rect key="frame" x="167" y="565" width="157" height="27"/>
+                    <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="14"/>
+                    <state key="normal" title="Cancel project request">
+                        <color key="titleColor" red="0.80000000000000004" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tappedCancelProjectRequest:" destination="-1" eventType="touchUpInside" id="dQg-w5-1l9"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="iFF-bu-QVZ" secondAttribute="bottom" constant="8" id="1Gy-dD-6Oy"/>
                 <constraint firstItem="TNn-3w-HD7" firstAttribute="top" secondItem="zeQ-e8-gg4" secondAttribute="bottom" constant="8" id="I8C-fG-Lz1"/>
+                <constraint firstAttribute="centerX" secondItem="iFF-bu-QVZ" secondAttribute="centerX" id="K5V-3Q-t9L"/>
                 <constraint firstItem="TNn-3w-HD7" firstAttribute="width" secondItem="zeQ-e8-gg4" secondAttribute="width" id="KSV-Ly-fJ7"/>
                 <constraint firstAttribute="centerX" secondItem="RUd-SY-gD7" secondAttribute="centerX" id="Yfy-7P-V4T"/>
                 <constraint firstAttribute="centerX" secondItem="zeQ-e8-gg4" secondAttribute="centerX" id="i94-xT-HqP"/>

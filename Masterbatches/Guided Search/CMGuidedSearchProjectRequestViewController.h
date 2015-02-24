@@ -10,9 +10,18 @@
 #import "CMProjectRequest.h"
 #import "CMGuidedSearchFlow.h"
 
+@class CMGuidedSearchProjectRequestViewController;
+
+@protocol CMGuidedSearchProjectRequestViewControllerDelegate <NSObject>
+
+- (void)projectRequestViewControllerDismissedCancellingProjectRequest:(CMGuidedSearchProjectRequestViewController*)projectRequestViewController;
+
+@end
+
 @interface CMGuidedSearchProjectRequestViewController : UIViewController
 
 @property (nonatomic, strong) CMProjectRequest *projectRequest;
-@property (nonatomic, strong) CMGuidedSearchFlow *flow; // populate steps filled/remaining
+
+@property (nonatomic, weak) id<CMGuidedSearchProjectRequestViewControllerDelegate> delegate;
 
 @end
