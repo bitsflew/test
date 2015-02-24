@@ -60,9 +60,9 @@
 @interface CMGuidedSearchFlow ()
 
 @property (nonatomic, retain) NSArray *steps;
+
 @property (nonatomic, readwrite, retain) CMProductSpecification* productSpecification;
 @property (nonatomic, readwrite, retain) CMProjectRequest *projectRequest;
-@property (nonatomic, readwrite, retain) NSArray *additionalQuestions;
 
 - (id)initWithDictionary:(NSDictionary*)dictionary;
 
