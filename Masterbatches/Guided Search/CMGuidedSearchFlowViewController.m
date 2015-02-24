@@ -14,18 +14,19 @@
 static UIEdgeInsets kCMGuidedSearchFlowViewControllerEdgeInsets = (UIEdgeInsets) { 48.f, 0.f, 0.f, 0.f };
 static NSString *kCMGuidedSearchMainViewControllerCellIdentifier = @"cell";
 
-static CGFloat kCMGuidedSearchFlowViewControllerModeAnimationSpeed = 0.3f;
+static CGFloat kCMGuidedSearchFlowViewControllerOverviewAnimationSpeed = 0.3f;
 static CGFloat kCMGuidedSearchFlowViewControllerTransitionAnimationSpeed = 0.3f;
 static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 
 @interface CMGuidedSearchFlowViewController () <CMGuidedSearchResultsViewControllerDelegate>
 
 @property (nonatomic, strong) UIViewController<CMGuidedSearchStepViewController> *stepViewController;
-@property (nonatomic) CGFloat modeToggleButtonInitialTop;
-@property (nonatomic) CGFloat modeOffset;
-@property (nonatomic) CGFloat modeOffsetBeforePan;
 
-- (void)setModeOffset:(CGFloat)modeOffset animated:(BOOL)animated completion:(dispatch_block_t)completionBlock;
+@property (nonatomic) CGFloat overviewToggleButtonInitialTop;
+@property (nonatomic) CGFloat overviewPosition;
+@property (nonatomic) CGFloat overviewPositionBeforePan;
+
+- (void)setOverviewPosition:(CGFloat)overviewPosition animated:(BOOL)animated completion:(dispatch_block_t)completionBlock;
 
 @end
 
@@ -35,7 +36,7 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
     [super viewDidLoad];
 
     self.view.clipsToBounds = YES;
-    self.modeToggleButtonInitialTop = self.overviewToggleButtonTopConstraint.constant;
+    self.overviewToggleButtonInitialTop = self.overviewToggleButtonTopConstraint.constant;
 
     if (self.flow) {
         [self presentStep:self.flow.firstStep];
@@ -162,11 +163,16 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 
 #pragma mark -
 
-- (IBAction)tappedModeToggle:(id)sender
+- (IBAction)tappedOverviewToggle:(id)sender
 {
-    [self setModeOffset:(self.modeOffset == 0.f) ? 1.f : 0.f
+    [self setOverviewPosition:(self.overviewPosition == 0.f) ? 1.f : 0.f
                animated:YES
              completion:NULL];
+}
+
+- (IBAction)tappedCloseOverview:(id)sender
+{
+    [self setOverviewPosition:0.f animated:YES completion:NULL];
 }
 
 - (IBAction)tappedBack:(id)sender
@@ -193,27 +199,22 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
     [self presentNextStep];
 }
 
-- (IBAction)tappedCloseSearchMode:(id)sender
-{
-        [self setModeOffset:0.f animated:YES completion:NULL];
-}
-
 - (IBAction)showMenu:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark -
 
-- (void)setModeOffset:(CGFloat)modeOffset
+- (void)setOverviewPosition:(CGFloat)overviewPosition
 {
-    [self setModeOffset:modeOffset animated:NO completion:NULL];
+    [self setOverviewPosition:overviewPosition animated:NO completion:NULL];
 }
 
-- (void)setModeOffset:(CGFloat)modeOffset animated:(BOOL)animated completion:(dispatch_block_t)completionBlock
+- (void)setOverviewPosition:(CGFloat)overviewPosition animated:(BOOL)animated completion:(dispatch_block_t)completionBlock
 {
-    BOOL departingTop = (_modeOffset == 0.f) && (modeOffset > 0.f);
-    BOOL hittingBottom = (_modeOffset < 1.f) && (modeOffset == 1.f);
-    BOOL hittingTop = !hittingBottom && (_modeOffset > 0.f) && (modeOffset == 0.f);
+    BOOL departingTop = (_overviewPosition == 0.f) && (overviewPosition > 0.f);
+    BOOL hittingBottom = (_overviewPosition < 1.f) && (overviewPosition == 1.f);
+    BOOL hittingTop = !hittingBottom && (_overviewPosition > 0.f) && (overviewPosition == 0.f);
 
     if (departingTop && !self.overviewController) {
         if (self.flow.isProjectRequest) {
@@ -227,7 +228,7 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
         [self.overviewContainerView addSubview:self.overviewController.view];
     }
 
-    _modeOffset = modeOffset;
+    _overviewPosition = overviewPosition;
 
     CGRect bounds = self.view.bounds;
     
@@ -235,18 +236,18 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 
     dispatch_block_t layoutBlock = ^{
         self.overviewToggleButtonTopConstraint.constant =
-        self.modeToggleButtonInitialTop + modeOffset * (CGRectGetHeight(bounds) - self.modeToggleButtonInitialTop);
+        self.overviewToggleButtonInitialTop + overviewPosition * (CGRectGetHeight(bounds) - self.overviewToggleButtonInitialTop);
 
-        self.nextButton.alpha = 1.f - modeOffset;
+        self.nextButton.alpha = 1.f - overviewPosition;
         self.previousButton.alpha = self.nextButton.alpha;
-        self.flowProgressView.alpha = 1.f - modeOffset;
-        self.stepOverlayView.alpha = modeOffset;
-        self.closeOverviewButton.alpha = fmaxf((modeOffset - 0.9f) / 0.1f, 0.f);
+        self.flowProgressView.alpha = 1.f - overviewPosition;
+        self.stepOverlayView.alpha = overviewPosition;
+        self.closeOverviewButton.alpha = fmaxf((overviewPosition - 0.9f) / 0.1f, 0.f);
 
         [self.view layoutIfNeeded];
         
         if (self.stepViewController.isViewLoaded) {
-            CGFloat scale = 1.f - sqrtf(modeOffset / 1000.f);
+            CGFloat scale = 1.f - sqrtf(overviewPosition / 1000.f);
             self.stepViewController.view.transform = hittingTop
               ? CGAffineTransformIdentity
               : CGAffineTransformMakeScale(scale, scale);
@@ -254,7 +255,7 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
     };
 
     if (animated) {
-        [UIView animateWithDuration:kCMGuidedSearchFlowViewControllerModeAnimationSpeed
+        [UIView animateWithDuration:kCMGuidedSearchFlowViewControllerOverviewAnimationSpeed
                          animations:layoutBlock
                          completion:^(BOOL finished) {
                              if (completionBlock) {
@@ -273,7 +274,7 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
         self.titleLabel.text = self.stepViewController.step.title;
     }
 
-    [self.flowProgressView setContractionFactor:modeOffset animated:animated];
+    [self.flowProgressView setContractionFactor:overviewPosition animated:animated];
 
     if (!animated && completionBlock) {
         completionBlock();
@@ -287,35 +288,35 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
     CGFloat top = [recognizer locationInView:self.view].y - CGRectGetMidY(self.overviewToggleButton.bounds);
     CGFloat topVelocity = [recognizer velocityInView:self.view].y;
 
-    CGFloat modeOffset = fmaxf(top - self.modeToggleButtonInitialTop, 0.f) / (CGRectGetHeight(self.view.bounds) - self.modeToggleButtonInitialTop);
+    CGFloat overviewPosition = fmaxf(top - self.overviewToggleButtonInitialTop, 0.f) / (CGRectGetHeight(self.view.bounds) - self.overviewToggleButtonInitialTop);
 
     switch (recognizer.state) {
         case UIGestureRecognizerStateBegan:
-            self.modeOffsetBeforePan = modeOffset;
-            self.modeOffset = modeOffset;
+            self.overviewPositionBeforePan = overviewPosition;
+            self.overviewPosition = overviewPosition;
             break;
         case UIGestureRecognizerStateChanged:
-            self.modeOffset = modeOffset;
+            self.overviewPosition = overviewPosition;
             break;
             
         case UIGestureRecognizerStateEnded:
         {
-            CGFloat projectedTop = top + (topVelocity * kCMGuidedSearchFlowViewControllerModeAnimationSpeed);
-            CGFloat projectedModeOffset = fmaxf((projectedTop) - self.modeToggleButtonInitialTop, 0.f) / (CGRectGetHeight(self.view.bounds) - self.modeToggleButtonInitialTop);
+            CGFloat projectedTop = top + (topVelocity * kCMGuidedSearchFlowViewControllerOverviewAnimationSpeed);
+            CGFloat projectedOverviewPosition = fmaxf((projectedTop) - self.overviewToggleButtonInitialTop, 0.f) / (CGRectGetHeight(self.view.bounds) - self.overviewToggleButtonInitialTop);
             
-            if (self.modeOffsetBeforePan == 0.f) {
+            if (self.overviewPositionBeforePan == 0.f) {
                 // Started at the top: prefer movement to bottom
-                if ((modeOffset < 0.25f) || (projectedModeOffset < 0.5f)) {
-                    [self setModeOffset:0.f animated:YES completion:NULL];
+                if ((overviewPosition < 0.25f) || (projectedOverviewPosition < 0.5f)) {
+                    [self setOverviewPosition:0.f animated:YES completion:NULL];
                 } else {
-                    [self setModeOffset:1.f animated:YES completion:NULL];
+                    [self setOverviewPosition:1.f animated:YES completion:NULL];
                 }
             } else {
                 // Started at the bottom: prefer movement to top
-                if ((modeOffset > 0.75f) || (projectedModeOffset > 0.5f)) {
-                    [self setModeOffset:1.f animated:YES completion:NULL];
+                if ((overviewPosition > 0.75f) || (projectedOverviewPosition > 0.5f)) {
+                    [self setOverviewPosition:1.f animated:YES completion:NULL];
                 } else {
-                    [self setModeOffset:0.f animated:YES completion:NULL];
+                    [self setOverviewPosition:0.f animated:YES completion:NULL];
                 }
             }
             break;
@@ -353,11 +354,11 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 - (void)searchResultsViewControllerDismissedWithProjectRequest:(CMGuidedSearchResultsViewController*)resultsViewController
 {
     __weak __typeof(self) _self = self;
-    [self setModeOffset:0.f
+    [self setOverviewPosition:0.f
                animated:YES
              completion:^{
                  _self.flow.projectRequest = YES;
-                 _self.overviewController = nil;
+                 _self.overviewController = nil; // correct controller will instantiate when overview is pulled down again
              }];
 }
 

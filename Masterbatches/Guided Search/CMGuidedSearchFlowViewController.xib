@@ -87,7 +87,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="tappedModeToggle:" destination="-1" eventType="touchUpInside" id="XLp-yO-GT8"/>
+                        <action selector="tappedOverviewToggle:" destination="-1" eventType="touchUpInside" id="6Vd-gf-fvd"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4N-V8-SJB">
@@ -134,7 +134,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="tappedCloseSearchMode:" destination="-1" eventType="touchUpInside" id="ZYm-Sh-azd"/>
+                        <action selector="tappedCloseOverview:" destination="-1" eventType="touchUpInside" id="xwZ-sb-1QK"/>
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1d-J0-WaX" customClass="CMGuidedSearchFlowProgressView">
