@@ -67,6 +67,9 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 - (void)updateSearchResults
 {
     __weak __typeof(self) _self = self;
+    
+    // TODO! Scale animation: activity indicator vs. arrow for busy state!!!    
+    
     [CMSearchDAO loadSearchResultsForProductSpecification:self.flow.productSpecification
                                                completion:^(NSArray *results, NSError *error) {
                                                    _self.searchResults = results;
@@ -261,7 +264,7 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
         self.flowProgressView.alpha = 1.f - overviewPosition;
         self.stepOverlayView.alpha = overviewPosition;
         self.closeOverviewButton.alpha = fmaxf((overviewPosition - 0.9f) / 0.1f, 0.f);
-        self.overviewArrowView.alpha = 1.f - self.closeOverviewButton.alpha;
+        self.overviewActivityContainerView.alpha = 1.f - self.closeOverviewButton.alpha;
 
         [self.view layoutIfNeeded];
         

@@ -29,6 +29,8 @@
 // The overview pulls down from the top and displays information about either search results or the ongoing project request
 @property (nonatomic, weak) IBOutlet UIButton *overviewToggleButton;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *overviewToggleButtonTopConstraint;
+@property (nonatomic, weak) IBOutlet UIView *overviewActivityContainerView;
+@property (nonatomic, weak) IBOutlet UIActivityIndicatorView *overviewActivityIndicator;
 @property (nonatomic, weak) IBOutlet UIImageView *overviewArrowView;
 @property (nonatomic, weak) IBOutlet UIButton *closeOverviewButton;
 @property (nonatomic, weak) IBOutlet UIView *overviewContainerView;
