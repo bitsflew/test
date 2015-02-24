@@ -96,8 +96,6 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 
     [self.overviewToggleButton setTitle:title forState:UIControlStateNormal];
     [self.overviewToggleButton setTitleColor:titleColor forState:UIControlStateNormal];
-    
-    self.projectRequestLabel.alpha = self.flow.projectRequest ? 1.f : 0.f;
 }
 
 - (void)presentStep:(CMGuidedSearchFlowStep*)step
@@ -384,6 +382,11 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
                  _self.overviewController = nil;
                  [_self.flowProgressView setStepCount:10];
              }];
+    
+    [UIView animateWithDuration:kCMGuidedSearchFlowViewControllerOverviewAnimationSpeed
+                     animations:^{
+                         self.projectRequestLabel.alpha = 1.f;
+                     }];
 }
 
 #pragma mark -
@@ -400,6 +403,11 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
                        _self.overviewController = nil;
                        [_self.flowProgressView setStepCount:10];
                    }];
+    
+    [UIView animateWithDuration:kCMGuidedSearchFlowViewControllerOverviewAnimationSpeed
+                     animations:^{
+                         self.projectRequestLabel.alpha = 0.f;
+                     }];
 }
 
 
