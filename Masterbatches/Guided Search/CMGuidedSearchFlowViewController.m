@@ -11,7 +11,7 @@
 #import "CMGuidedSearchResultsViewController.h"
 #import "CMGuidedSearchProjectRequestViewController.h"
 
-static UIEdgeInsets kCMGuidedSearchFlowViewControllerEdgeInsets = (UIEdgeInsets) { 48.f, 0.f, 0.f, 0.f };
+static UIEdgeInsets kCMGuidedSearchFlowViewControllerEdgeInsets = (UIEdgeInsets) { 8.f, 0.f, 0.f, 0.f };
 static NSString *kCMGuidedSearchMainViewControllerCellIdentifier = @"cell";
 
 static CGFloat kCMGuidedSearchFlowViewControllerOverviewAnimationSpeed = 0.3f;
@@ -19,6 +19,8 @@ static CGFloat kCMGuidedSearchFlowViewControllerTransitionAnimationSpeed = 0.3f;
 static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 
 @interface CMGuidedSearchFlowViewController () <CMGuidedSearchResultsViewControllerDelegate>
+
+@property (nonatomic, strong) NSArray *searchResults;
 
 @property (nonatomic, strong) UIViewController<CMGuidedSearchStepViewController> *stepViewController;
 
@@ -67,18 +69,33 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
     __weak __typeof(self) _self = self;
     [CMSearchDAO loadSearchResultsForProductSpecification:self.flow.productSpecification
                                                completion:^(NSArray *results, NSError *error) {
-                                                   
-                                                   NSString *title = (results.count > 0)
-                                                     ? [NSString stringWithFormat:@"show %d results", (int)results.count]
-                                                     : @"No results – tap for project request";
-                                                   
-                                                   UIColor *color = (results.count > 0)
-                                                     ? [UIColor blackColor]
-                                                     : [UIColor colorWithRed:.8f green:0.f blue:0.f alpha:1.f];
-
-                                                   [_self.overviewToggleButton setTitleColor:color forState:UIControlStateNormal];
-                                                   [_self.overviewToggleButton setTitle:title forState:UIControlStateNormal];
+                                                   _self.searchResults = results;
+                                                   [_self updateOverviewToggleButton];
                                                }];
+}
+
+- (void)updateOverviewToggleButton
+{
+    NSString *title;
+    UIColor *titleColor;
+
+    if (self.flow.productSpecification.isProjectRequest) {
+        title = NSLocalizedString(@"SeeProjectRequest", nil);
+        titleColor = [UIColor blackColor];
+    } else {
+        if (self.searchResults.count == 0) {
+            title = NSLocalizedString(@"ShowNoResults", nil);
+            titleColor = [UIColor redColor];
+        } else {
+            title = (self.searchResults.count == 1)
+              ? NSLocalizedString(@"ShowSingleResult", nil)
+              : [NSString stringWithFormat:NSLocalizedString(@"ShowPluralResultsFormat", nil), self.searchResults.count];
+            titleColor = [UIColor blackColor];
+        }
+    }
+
+    [self.overviewToggleButton setTitle:title forState:UIControlStateNormal];
+    [self.overviewToggleButton setTitleColor:titleColor forState:UIControlStateNormal];
 }
 
 - (void)presentStep:(CMGuidedSearchFlowStep*)step
@@ -217,7 +234,7 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
     BOOL hittingTop = !hittingBottom && (_overviewPosition > 0.f) && (overviewPosition == 0.f);
 
     if (departingTop && !self.overviewController) {
-        if (self.flow.isProjectRequest) {
+        if (self.flow.productSpecification.isProjectRequest) {
             self.overviewController = [CMGuidedSearchProjectRequestViewController new];
         } else {
             self.overviewController = [CMGuidedSearchResultsViewController new];
@@ -243,6 +260,7 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
         self.flowProgressView.alpha = 1.f - overviewPosition;
         self.stepOverlayView.alpha = overviewPosition;
         self.closeOverviewButton.alpha = fmaxf((overviewPosition - 0.9f) / 0.1f, 0.f);
+        self.overviewArrowView.alpha = 1.f - self.closeOverviewButton.alpha;
 
         [self.view layoutIfNeeded];
         
@@ -353,12 +371,16 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 
 - (void)searchResultsViewControllerDismissedWithProjectRequest:(CMGuidedSearchResultsViewController*)resultsViewController
 {
+    self.flow.productSpecification.projectRequest = YES;
+    [self updateOverviewToggleButton];
+
     __weak __typeof(self) _self = self;
     [self setOverviewPosition:0.f
                animated:YES
              completion:^{
-                 _self.flow.projectRequest = YES;
                  _self.overviewController = nil; // correct controller will instantiate when overview is pulled down again
+                 
+                 [_self.flowProgressView setStepCount:10];
              }];
 }
 

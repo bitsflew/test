@@ -33,6 +33,8 @@
 @property (nonatomic, retain) NSArray *additives; // <CMProductSpecificationAdditive>
 @property (nonatomic, retain) NSArray *resins;    // <CMProductSpecificationResin>
 
+@property (nonatomic, getter=isProjectRequest) BOOL projectRequest;
+
 - (void)setValue:(id)value forAdditionalQuestionKey:(NSString*)key;
 - (id)valueForAdditionalQuestionKey:(NSString*)key;
 

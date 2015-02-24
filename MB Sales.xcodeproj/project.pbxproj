@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		44000BBE1A9B46D80032B747 /* CMGuidedSearchAdditionalQuestionTextFieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44000BBC1A9B46D80032B747 /* CMGuidedSearchAdditionalQuestionTextFieldViewController.m */; };
+		44053E101A9CBCC900AFEBC6 /* CMProjectRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 44053E0F1A9CBCC900AFEBC6 /* CMProjectRequest.m */; };
+		44053E151A9CCCC900AFEBC6 /* ic_circle_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 44053E111A9CCCC900AFEBC6 /* ic_circle_down.png */; };
+		44053E161A9CCCC900AFEBC6 /* ic_circle_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44053E121A9CCCC900AFEBC6 /* ic_circle_down@2x.png */; };
+		44053E171A9CCCC900AFEBC6 /* ic_circle_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 44053E131A9CCCC900AFEBC6 /* ic_circle_up.png */; };
+		44053E181A9CCCC900AFEBC6 /* ic_circle_up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44053E141A9CCCC900AFEBC6 /* ic_circle_up@2x.png */; };
 		44107DAD1A9361AA004053A2 /* rounded-cell-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 44107DAB1A9361AA004053A2 /* rounded-cell-background.png */; };
 		44107DAE1A9361AA004053A2 /* rounded-cell-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44107DAC1A9361AA004053A2 /* rounded-cell-background@2x.png */; };
 		44107DB11A937488004053A2 /* Mercury_Text_G1_Roman.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 44107DB01A937488004053A2 /* Mercury_Text_G1_Roman.ttf */; };
@@ -97,6 +102,12 @@
 /* Begin PBXFileReference section */
 		44000BBB1A9B46D80032B747 /* CMGuidedSearchAdditionalQuestionTextFieldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchAdditionalQuestionTextFieldViewController.h; sourceTree = "<group>"; };
 		44000BBC1A9B46D80032B747 /* CMGuidedSearchAdditionalQuestionTextFieldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchAdditionalQuestionTextFieldViewController.m; sourceTree = "<group>"; };
+		44053E0E1A9CBCC900AFEBC6 /* CMProjectRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMProjectRequest.h; sourceTree = "<group>"; };
+		44053E0F1A9CBCC900AFEBC6 /* CMProjectRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMProjectRequest.m; sourceTree = "<group>"; };
+		44053E111A9CCCC900AFEBC6 /* ic_circle_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_circle_down.png; sourceTree = "<group>"; };
+		44053E121A9CCCC900AFEBC6 /* ic_circle_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_circle_down@2x.png"; sourceTree = "<group>"; };
+		44053E131A9CCCC900AFEBC6 /* ic_circle_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_circle_up.png; sourceTree = "<group>"; };
+		44053E141A9CCCC900AFEBC6 /* ic_circle_up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_circle_up@2x.png"; sourceTree = "<group>"; };
 		44107DAB1A9361AA004053A2 /* rounded-cell-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rounded-cell-background.png"; sourceTree = "<group>"; };
 		44107DAC1A9361AA004053A2 /* rounded-cell-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rounded-cell-background@2x.png"; sourceTree = "<group>"; };
 		44107DB01A937488004053A2 /* Mercury_Text_G1_Roman.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mercury_Text_G1_Roman.ttf; sourceTree = "<group>"; };
@@ -250,6 +261,10 @@
 				4425494F1A9C91D600C38557 /* clear.png */,
 				44E9E5581A974FB00028B01F /* ic_close_black.png */,
 				44E9E5591A974FB00028B01F /* ic_close_black@2x.png */,
+				44053E111A9CCCC900AFEBC6 /* ic_circle_down.png */,
+				44053E121A9CCCC900AFEBC6 /* ic_circle_down@2x.png */,
+				44053E131A9CCCC900AFEBC6 /* ic_circle_up.png */,
+				44053E141A9CCCC900AFEBC6 /* ic_circle_up@2x.png */,
 				4457F47F1A94A744002FF4F5 /* ic_pagination_checkmark_light.png */,
 				44107DB41A9377FF004053A2 /* white-fade-tile.png */,
 				44E9E54E1A96410B0028B01F /* img_guided_search_tab.png */,
@@ -346,6 +361,8 @@
 				44E9E55C1A9770A50028B01F /* DAO */,
 				443366D01A923BE0002DD5F5 /* CMProductSpecification.h */,
 				443366D11A923BE0002DD5F5 /* CMProductSpecification.m */,
+				44053E0E1A9CBCC900AFEBC6 /* CMProjectRequest.h */,
+				44053E0F1A9CBCC900AFEBC6 /* CMProjectRequest.m */,
 				44E9E53D1A95E58F0028B01F /* CMGuidedSearchFlow.h */,
 				44E9E53E1A95E58F0028B01F /* CMGuidedSearchFlow.m */,
 				443366CA1A9239CE002DD5F5 /* CMGuidedSearchFlowViewController.h */,
@@ -607,6 +624,7 @@
 				442549501A9C91D600C38557 /* clear.png in Resources */,
 				44E9E5511A96410B0028B01F /* img_guided_search_tab@2x.png in Resources */,
 				44E9E55B1A974FB00028B01F /* ic_close_black@2x.png in Resources */,
+				44053E151A9CCCC900AFEBC6 /* ic_circle_down.png in Resources */,
 				44E9E55A1A974FB00028B01F /* ic_close_black.png in Resources */,
 				442549601A9CAA6700C38557 /* CMGuidedSearchProjectRequestViewController.xib in Resources */,
 				4425495B1A9CA9C600C38557 /* CMGuidedSearchResultsViewController.xib in Resources */,
@@ -626,7 +644,9 @@
 				44107DB81A937946004053A2 /* img_logo_actionbar.png in Resources */,
 				44107DAE1A9361AA004053A2 /* rounded-cell-background@2x.png in Resources */,
 				443366CE1A9239CE002DD5F5 /* CMGuidedSearchFlowViewController.xib in Resources */,
+				44053E181A9CCCC900AFEBC6 /* ic_circle_up@2x.png in Resources */,
 				4457F4801A94A744002FF4F5 /* ic_pagination_checkmark_light.png in Resources */,
+				44053E171A9CCCC900AFEBC6 /* ic_circle_up.png in Resources */,
 				44107DAD1A9361AA004053A2 /* rounded-cell-background.png in Resources */,
 				441470B91A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.xib in Resources */,
 				44107DB51A9377FF004053A2 /* white-fade-tile.png in Resources */,
@@ -635,6 +655,7 @@
 				44E9E54C1A9623920028B01F /* Localizable.strings in Resources */,
 				44B4BD751A9B76B800158D90 /* Menu.plist in Resources */,
 				44E9E54B1A9623790028B01F /* LaunchScreen.xib in Resources */,
+				44053E161A9CCCC900AFEBC6 /* ic_circle_down@2x.png in Resources */,
 				44B4BD6F1A9B768400158D90 /* BothGuidedSearchFlow.plist in Resources */,
 				4B24D7861A9B4599001487B7 /* slide-metal.aif in Resources */,
 				443366AE1A923349002DD5F5 /* Images.xcassets in Resources */,
@@ -700,6 +721,7 @@
 				441470B31A9346FC00131077 /* CMGuidedSearchProductTypeViewController.m in Sources */,
 				44B4BD671A9B759400158D90 /* CMGuidedSearchAdditiveFlowViewController.m in Sources */,
 				4457F4891A94A963002FF4F5 /* TOMSMorphingLabel.m in Sources */,
+				44053E101A9CBCC900AFEBC6 /* CMProjectRequest.m in Sources */,
 				443366A61A923349002DD5F5 /* Masterbatches.xcdatamodeld in Sources */,
 				443366D21A923BE0002DD5F5 /* CMProductSpecification.m in Sources */,
 			);

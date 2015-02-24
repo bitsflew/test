@@ -25,6 +25,7 @@
 @property (nonatomic, weak) IBOutlet CMGuidedSearchFlowProgressView *flowProgressView;
 @property (nonatomic, weak) IBOutlet UIButton *overviewToggleButton;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *overviewToggleButtonTopConstraint;
+@property (nonatomic, weak) IBOutlet UIImageView *overviewArrowView;
 @property (nonatomic, weak) IBOutlet UIButton *closeOverviewButton;
 @property (nonatomic, weak) IBOutlet UIView *overviewContainerView; // contains search results or project request summary
 @property (nonatomic, strong) UIViewController *overviewController;

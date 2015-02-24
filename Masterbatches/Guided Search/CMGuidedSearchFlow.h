@@ -9,6 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "CMProductSpecification.h"
 
+/*
+ 
+ These classes may be thought of as "view model". They should be used simply to instantiate a series
+ of view controllers that are capable of modifying a product specification.
+ 
+ */
+
 @interface CMGuidedSearchFlowAdditionalQuestion : NSObject
 
 @property (nonatomic, retain) Class viewControllerClass;
@@ -32,7 +39,6 @@
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, readonly, retain) CMProductSpecification* productSpecification;
 @property (nonatomic, readonly) NSUInteger stepCount;
-@property (nonatomic, getter=isProjectRequest) BOOL projectRequest;
 
 + (CMGuidedSearchFlow*)flowNamed:(NSString*)name;
 
