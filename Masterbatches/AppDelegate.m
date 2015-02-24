@@ -20,6 +20,11 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [[UINavigationBar appearance] setShadowImage:[UIImage new]];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage new]
+                       forBarPosition:UIBarPositionAny
+                           barMetrics:UIBarMetricsDefault];
 
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"3cdb31a9f9a51d026f539c6fb7e271f5"];
     [[BITHockeyManager sharedHockeyManager] startManager];
