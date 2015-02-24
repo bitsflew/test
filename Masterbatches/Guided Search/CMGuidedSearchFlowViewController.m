@@ -11,7 +11,7 @@
 #import "CMGuidedSearchResultsViewController.h"
 #import "CMGuidedSearchProjectRequestViewController.h"
 
-static UIEdgeInsets kCMGuidedSearchFlowViewControllerEdgeInsets = (UIEdgeInsets) { 8.f, 0.f, 0.f, 0.f };
+static UIEdgeInsets kCMGuidedSearchFlowViewControllerEdgeInsets = (UIEdgeInsets) { 48.f, 0.f, 0.f, 0.f };
 static NSString *kCMGuidedSearchMainViewControllerCellIdentifier = @"cell";
 
 static CGFloat kCMGuidedSearchFlowViewControllerOverviewAnimationSpeed = 0.3f;
