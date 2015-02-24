@@ -8,6 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		44000BBE1A9B46D80032B747 /* CMGuidedSearchAdditionalQuestionTextFieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44000BBC1A9B46D80032B747 /* CMGuidedSearchAdditionalQuestionTextFieldViewController.m */; };
+		44000BCD1A9B63FE0032B747 /* gui_ArticleMedia 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BC11A9B63FE0032B747 /* gui_ArticleMedia 2@2x.png */; };
+		44000BCE1A9B63FE0032B747 /* gui_ArticleMedia@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BC21A9B63FE0032B747 /* gui_ArticleMedia@2x.png */; };
+		44000BCF1A9B63FE0032B747 /* gui_factsheet 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BC31A9B63FE0032B747 /* gui_factsheet 2@2x.png */; };
+		44000BD01A9B63FE0032B747 /* gui_factsheet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BC41A9B63FE0032B747 /* gui_factsheet@2x.png */; };
+		44000BD11A9B63FE0032B747 /* gui_flyer 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BC51A9B63FE0032B747 /* gui_flyer 2@2x.png */; };
+		44000BD21A9B63FE0032B747 /* gui_flyer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BC61A9B63FE0032B747 /* gui_flyer@2x.png */; };
+		44000BD31A9B63FE0032B747 /* gui_presentation 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BC71A9B63FE0032B747 /* gui_presentation 2@2x.png */; };
+		44000BD41A9B63FE0032B747 /* gui_presentation 3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BC81A9B63FE0032B747 /* gui_presentation 3@2x.png */; };
+		44000BD51A9B63FE0032B747 /* gui_presentation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BC91A9B63FE0032B747 /* gui_presentation@2x.png */; };
+		44000BD61A9B63FE0032B747 /* gui_video 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BCA1A9B63FE0032B747 /* gui_video 2@2x.png */; };
+		44000BD71A9B63FE0032B747 /* gui_video 3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BCB1A9B63FE0032B747 /* gui_video 3@2x.png */; };
+		44000BD81A9B63FE0032B747 /* gui_video@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44000BCC1A9B63FE0032B747 /* gui_video@2x.png */; };
 		44000BDC1A9B64830032B747 /* CMGuidedSearchResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44000BDA1A9B64830032B747 /* CMGuidedSearchResultController.m */; };
 		44000BDD1A9B64830032B747 /* CMGuidedSearchResultController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44000BDB1A9B64830032B747 /* CMGuidedSearchResultController.xib */; };
 		44107DAD1A9361AA004053A2 /* rounded-cell-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 44107DAB1A9361AA004053A2 /* rounded-cell-background.png */; };
@@ -68,7 +80,7 @@
 		4B2EDFA81A93994F007E0493 /* MenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2EDFA71A93994F007E0493 /* MenuModel.m */; };
 		4B2EDFAB1A939FAB007E0493 /* MenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2EDFAA1A939FAB007E0493 /* MenuView.m */; };
 		4B2EDFAF1A93A9B7007E0493 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2EDFAD1A93A9B7007E0493 /* MenuViewController.m */; };
-		4B2EDFB01A93A9B7007E0493 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B2EDFAE1A93A9B7007E0493 /* MenuViewController.xib */; };
+		4B2EDFB21A93A9F0007E0493 /* Menu.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B2EDFB11A93A9F0007E0493 /* Menu.plist */; };
 		4B7AA9631A96320500AD81EF /* gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B7AA9621A96320500AD81EF /* gradient.png */; };
 		4B7AA9661A963D0B00AD81EF /* UIView+Polarcoordinates.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B7AA9651A963D0B00AD81EF /* UIView+Polarcoordinates.m */; };
 		4B7AA9691A963DFB00AD81EF /* ClariantColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B7AA9681A963DFB00AD81EF /* ClariantColors.m */; };
@@ -177,7 +189,7 @@
 		4B2EDFAA1A939FAB007E0493 /* MenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuView.m; sourceTree = "<group>"; };
 		4B2EDFAC1A93A9B7007E0493 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		4B2EDFAD1A93A9B7007E0493 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
-		4B2EDFAE1A93A9B7007E0493 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
+		4B2EDFB11A93A9F0007E0493 /* Menu.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Menu.plist; sourceTree = "<group>"; };
 		4B7AA9621A96320500AD81EF /* gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gradient.png; sourceTree = "<group>"; };
 		4B7AA9641A963D0B00AD81EF /* UIView+Polarcoordinates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Polarcoordinates.h"; sourceTree = "<group>"; };
 		4B7AA9651A963D0B00AD81EF /* UIView+Polarcoordinates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Polarcoordinates.m"; sourceTree = "<group>"; };
@@ -444,7 +456,6 @@
 				4B2EDFAA1A939FAB007E0493 /* MenuView.m */,
 				4B2EDFAC1A93A9B7007E0493 /* MenuViewController.h */,
 				4B2EDFAD1A93A9B7007E0493 /* MenuViewController.m */,
-				4B2EDFAE1A93A9B7007E0493 /* MenuViewController.xib */,
 				4B7AA9641A963D0B00AD81EF /* UIView+Polarcoordinates.h */,
 				4B7AA9651A963D0B00AD81EF /* UIView+Polarcoordinates.m */,
 			);
@@ -544,7 +555,6 @@
 				4B7AA9631A96320500AD81EF /* gradient.png in Resources */,
 				441470BF1A93599100131077 /* CMGuidedSearchGridSelectionItemRoundedCell.xib in Resources */,
 				443366E61A92499C002DD5F5 /* CMGuidedSearchColorViewController.xib in Resources */,
-				4B2EDFB01A93A9B7007E0493 /* MenuViewController.xib in Resources */,
 				44B4BD701A9B768400158D90 /* ColorGuidedSearchFlow.plist in Resources */,
 				44E9E5681A9780C50028B01F /* CMGuidedSearchAdditionalQuestionsViewController.xib in Resources */,
 				44E9E54D1A9623A80028B01F /* Main.storyboard in Resources */,
