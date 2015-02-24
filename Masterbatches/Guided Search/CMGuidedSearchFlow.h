@@ -32,6 +32,7 @@
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, readonly, retain) CMProductSpecification* productSpecification;
 @property (nonatomic, readonly) NSUInteger stepCount;
+@property (nonatomic, getter=isProjectRequest) BOOL projectRequest;
 
 + (CMGuidedSearchFlow*)flowNamed:(NSString*)name;
 

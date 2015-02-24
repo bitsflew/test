@@ -20,17 +20,17 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CMGuidedSearchFlowViewController">
             <connections>
-                <outlet property="closeSearchModeButton" destination="ddT-Y6-SV0" id="oZS-3m-yne"/>
+                <outlet property="closeOverviewButton" destination="ddT-Y6-SV0" id="gnk-Ph-nc6"/>
                 <outlet property="flowProgressView" destination="Q1d-J0-WaX" id="PYZ-SB-feA"/>
                 <outlet property="menuButton" destination="SSU-VL-LVr" id="qgo-YP-ezH"/>
-                <outlet property="modeToggleButton" destination="QXi-dr-Szf" id="TSz-9p-hp0"/>
-                <outlet property="modeToggleButtonTopConstraint" destination="04Z-tg-80G" id="8nG-5m-K6K"/>
                 <outlet property="nextButton" destination="0s3-dU-3c6" id="ine-cL-lzY"/>
+                <outlet property="overviewContainerView" destination="Htg-xM-6NX" id="VZg-51-ent"/>
+                <outlet property="overviewToggleButton" destination="QXi-dr-Szf" id="U3M-1x-soC"/>
+                <outlet property="overviewToggleButtonTopConstraint" destination="04Z-tg-80G" id="12C-yQ-Djc"/>
                 <outlet property="previousButton" destination="B4N-V8-SJB" id="eeG-BY-D6w"/>
-                <outlet property="questionViewControllerTitleLabel" destination="wRK-Kl-oOk" id="mfw-pR-E1s"/>
-                <outlet property="resultContainerView" destination="Htg-xM-6NX" id="cmL-lc-Nrc"/>
                 <outlet property="stepContainerView" destination="VWH-Un-ZpZ" id="ZhG-EY-Lyt"/>
                 <outlet property="stepOverlayView" destination="r3d-3f-BtS" id="gQf-X3-Ybb"/>
+                <outlet property="titleLabel" destination="wRK-Kl-oOk" id="kFU-ib-dUL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -121,6 +121,7 @@
                 </button>
                 <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ddT-Y6-SV0">
                     <rect key="frame" x="215" y="151" width="170" height="58"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="170" id="E4O-Fw-z0b"/>
                         <constraint firstAttribute="height" constant="58" id="pkt-fV-HPI"/>
@@ -138,7 +139,7 @@
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1d-J0-WaX" customClass="CMGuidedSearchFlowProgressView">
                     <rect key="frame" x="50" y="159" width="500" height="22"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="500" id="hyq-J4-pJj"/>
                         <constraint firstAttribute="height" constant="22" id="kOG-8Z-Ofe"/>

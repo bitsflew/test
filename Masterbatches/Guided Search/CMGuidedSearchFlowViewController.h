@@ -12,25 +12,23 @@
 #import "CMProductSpecification.h"
 #import "CMGuidedSearchFlowProgressView.h"
 #import "CMGuidedSearchFlow.h"
-#import "CMGuidedSearchResultController.h"
 
 @interface CMGuidedSearchFlowViewController : UIViewController <CMGuidedSearchStepViewControllerDelegate>
 
-@property (nonatomic, weak) IBOutlet UIView *stepContainerView;
-@property (nonatomic, weak) IBOutlet UIView *stepOverlayView;
-@property (nonatomic, weak) IBOutlet UIView *resultContainerView;
-@property (nonatomic, weak) IBOutlet UILabel *questionViewControllerTitleLabel;
-@property (nonatomic, weak) IBOutlet UIButton *previousButton;
-@property (nonatomic, weak) IBOutlet UIButton *nextButton;
-@property (nonatomic, weak) IBOutlet UIButton *modeToggleButton;
-@property (nonatomic, weak) IBOutlet UIButton *closeSearchModeButton;
-@property (nonatomic, weak) IBOutlet CMGuidedSearchFlowProgressView *flowProgressView;
 @property (weak, nonatomic) IBOutlet UIButton *menuButton;
 
+@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+@property (nonatomic, weak) IBOutlet UIView *stepContainerView;
+@property (nonatomic, weak) IBOutlet UIView *stepOverlayView;
+@property (nonatomic, weak) IBOutlet UIButton *previousButton;
+@property (nonatomic, weak) IBOutlet UIButton *nextButton;
+@property (nonatomic, weak) IBOutlet CMGuidedSearchFlowProgressView *flowProgressView;
+@property (nonatomic, weak) IBOutlet UIButton *overviewToggleButton;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *overviewToggleButtonTopConstraint;
+@property (nonatomic, weak) IBOutlet UIButton *closeOverviewButton;
+@property (nonatomic, weak) IBOutlet UIView *overviewContainerView; // contains search results or project request summary
+@property (nonatomic, strong) UIViewController *overviewController;
+
 @property (nonatomic, strong) CMGuidedSearchFlow *flow;
-
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *modeToggleButtonTopConstraint;
-
-@property (nonatomic, strong) CMGuidedSearchResultController *resultController;
 
 @end

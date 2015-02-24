@@ -6,13 +6,15 @@
 //  Copyright (c) 2015 Clariant. All rights reserved.
 //
 
-#import "CMGuidedSearchResultController.h"
+#import "CMGuidedSearchResultsController.h"
 
-@interface CMGuidedSearchResultController ()
+@interface CMGuidedSearchResultsController ()
+
+- (void)updateModeLayoutAnimated:(BOOL)animated;
 
 @end
 
-@implementation CMGuidedSearchResultController
+@implementation CMGuidedSearchResultsController
 
 - (IBAction)tappedStartProjectRequest:(id)sender
 {
@@ -38,12 +40,6 @@
          [self.view layoutIfNeeded];
     }
      completion:^(BOOL finished) {
-         if (finished) {
-             [UIView animateWithDuration:0.3f
-                              animations:^{
-                                  self.projectRequestNameField.alpha = 1.f;
-                              }];
-         }
      }];
 }
 
