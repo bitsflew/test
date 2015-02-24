@@ -10,6 +10,7 @@
 
 #import "CMGuidedSearchFlowViewController.h"
 #import "MenuViewController.h"
+#import <HockeySDK/HockeySDK.h>
 
 @interface AppDelegate ()
 
@@ -19,7 +20,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
+
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"3cdb31a9f9a51d026f539c6fb7e271f5"];
+    [[BITHockeyManager sharedHockeyManager] startManager];
+    [[BITHockeyManager sharedHockeyManager].authenticator
+     authenticateInstallation];
+
     return YES;
 }
 
