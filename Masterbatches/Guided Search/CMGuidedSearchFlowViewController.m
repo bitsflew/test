@@ -18,7 +18,11 @@ static CGFloat kCMGuidedSearchFlowViewControllerOverviewAnimationSpeed = 0.3f;
 static CGFloat kCMGuidedSearchFlowViewControllerTransitionAnimationSpeed = 0.3f;
 static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 
-@interface CMGuidedSearchFlowViewController () <CMGuidedSearchResultsViewControllerDelegate, CMGuidedSearchProjectRequestViewControllerDelegate>
+@interface CMGuidedSearchFlowViewController () <
+    CMGuidedSearchResultsViewControllerDelegate,
+    CMGuidedSearchProjectRequestViewControllerDelegate,
+    UIGestureRecognizerDelegate
+    >
 
 @property (nonatomic, strong) NSArray *searchResults;
 
@@ -28,6 +32,8 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 @property (nonatomic) CGFloat overviewPosition;
 @property (nonatomic) CGFloat overviewPositionBeforePan;
 @property (nonatomic) BOOL overviewBusy;
+
+@property (nonatomic, retain) UIGestureRecognizer *overviewPanRecognizer;
 
 - (void)setOverviewPosition:(CGFloat)overviewPosition animated:(BOOL)animated completion:(dispatch_block_t)completionBlock;
 
@@ -50,7 +56,9 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
                                                resizableImageWithCapInsets:UIEdgeInsetsMake(0.f, 40.f, 0.f, 40.f)]
                                      forState:UIControlStateNormal];
 
-    [self.overviewToggleButton addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(recognizedPan:)]];
+    self.overviewPanRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(recognizedPan:)];
+    self.overviewPanRecognizer.delegate = self;
+    [self.overviewToggleButton addGestureRecognizer:self.overviewPanRecognizer];
 }
 
 - (void)setFlow:(CMGuidedSearchFlow*)flow
@@ -287,7 +295,7 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 
     dispatch_block_t layoutBlock = ^{
         self.overviewToggleButtonTopConstraint.constant =
-        self.overviewToggleButtonInitialTop + overviewPosition * (CGRectGetHeight(bounds) - self.overviewToggleButtonInitialTop);
+          self.overviewToggleButtonInitialTop + overviewPosition * (CGRectGetHeight(bounds) - self.overviewToggleButtonInitialTop - CGRectGetHeight(self.overviewToggleButton.frame)/2.f);
 
         self.nextButton.alpha = 1.f - overviewPosition;
         self.previousButton.alpha = self.nextButton.alpha;
@@ -335,9 +343,18 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 
 #pragma mark -
 
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    if (gestureRecognizer == self.overviewPanRecognizer) {
+        return self.overviewPosition < 1.f;
+    }
+
+    return YES;
+}
+
 - (void)recognizedPan:(UIPanGestureRecognizer*)recognizer
 {
-    CGFloat top = [recognizer locationInView:self.view].y - CGRectGetMidY(self.overviewToggleButton.bounds);
+    CGFloat top = [recognizer locationInView:self.view].y - CGRectGetHeight(self.overviewToggleButton.bounds);
     CGFloat topVelocity = [recognizer velocityInView:self.view].y;
 
     CGFloat overviewPosition = fmaxf(top - self.overviewToggleButtonInitialTop, 0.f) / (CGRectGetHeight(self.view.bounds) - self.overviewToggleButtonInitialTop);
