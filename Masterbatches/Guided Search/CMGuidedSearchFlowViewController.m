@@ -27,6 +27,7 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 @property (nonatomic) CGFloat overviewToggleButtonInitialTop;
 @property (nonatomic) CGFloat overviewPosition;
 @property (nonatomic) CGFloat overviewPositionBeforePan;
+@property (nonatomic) BOOL overviewBusy;
 
 - (void)setOverviewPosition:(CGFloat)overviewPosition animated:(BOOL)animated completion:(dispatch_block_t)completionBlock;
 
@@ -62,16 +63,45 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
     }
 }
 
+- (void)setOverviewBusy:(BOOL)overviewBusy
+{
+    if (overviewBusy == _overviewBusy) {
+        return;
+    }
+
+    _overviewBusy = overviewBusy;
+    
+    if (_overviewBusy) {
+        [self.overviewActivityIndicator startAnimating];
+    } else {
+        [self.overviewActivityIndicator stopAnimating];
+    }
+
+    [UIView animateWithDuration:kCMGuidedSearchFlowViewControllerOverviewAnimationSpeed
+                     animations:^{
+                         CGAffineTransform scaledToPoint =
+                           CGAffineTransformMakeScale(0.1f, 0.1f);
+                         self.overviewActivityIndicator.transform =
+                           overviewBusy ? CGAffineTransformIdentity : scaledToPoint;
+                         self.overviewArrowView.transform =
+                           overviewBusy ? scaledToPoint : CGAffineTransformIdentity;
+                         
+                         self.overviewActivityIndicator.alpha = (CGFloat)overviewBusy;
+                         self.overviewArrowView.alpha = (CGFloat)!overviewBusy;
+                     }];
+}
+
 #pragma mark -
 
 - (void)updateSearchResults
 {
+    self.overviewBusy = YES;
+
     __weak __typeof(self) _self = self;
-    
-    // TODO! Scale animation: activity indicator vs. arrow for busy state!!!    
     
     [CMSearchDAO loadSearchResultsForProductSpecification:self.flow.productSpecification
                                                completion:^(NSArray *results, NSError *error) {
+                                                   _self.overviewBusy = NO;
                                                    _self.searchResults = results;
                                                    [_self updateOverviewToggleButton];
                                                }];
