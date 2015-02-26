@@ -25,7 +25,7 @@ typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
 #define CGTransformScale CGAffineTransformScale(CGAffineTransformIdentity, 0.5, 0.5)
 #define AnimationDuration 0.5
 
-#define ParentItemRadius 350
+#define ParentItemRadius 300
 #define ParentItemAngle (M_PI * 1.7)
 
 static SystemSoundID audioEffectMenuTouch = 0;
@@ -207,6 +207,8 @@ static SystemSoundID audioEffectMenuSelect = 0;
 }
 
 - (void)drawLinesToSubItemsInContext:(CGContextRef)context {
+    if (self.subItems.count == 0) return;
+    
     CALayer *centerItemLayer = (CALayer *)self.layer.presentationLayer;
 
     for (MenuItemView *subItem in self.subItems.allValues) {
@@ -232,6 +234,51 @@ static SystemSoundID audioEffectMenuSelect = 0;
 
 @implementation MenuView
 
+static UIMotionEffectGroup *centerItemMotionEffect = nil;
+static UIMotionEffectGroup *parentItemMotionEffect = nil;
+static UIMotionEffectGroup *subItemMotionEffect = nil;
+
++(void)load {
+    UIInterpolatingMotionEffect *verticalMotionEffect =
+    [[UIInterpolatingMotionEffect alloc]
+     initWithKeyPath:@"center.y"
+     type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+    UIInterpolatingMotionEffect *horizontalMotionEffect =
+    [[UIInterpolatingMotionEffect alloc]
+     initWithKeyPath:@"center.x"
+     type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    
+    verticalMotionEffect.minimumRelativeValue = @(10);
+    verticalMotionEffect.maximumRelativeValue = @(-10);
+    horizontalMotionEffect.minimumRelativeValue = @(10);
+    horizontalMotionEffect.maximumRelativeValue = @(-10);
+    
+    centerItemMotionEffect = [UIMotionEffectGroup new];
+    centerItemMotionEffect.motionEffects = @[verticalMotionEffect, horizontalMotionEffect];
+    
+    verticalMotionEffect = [verticalMotionEffect copy];
+    horizontalMotionEffect = [horizontalMotionEffect copy];
+    
+    verticalMotionEffect.minimumRelativeValue = @(-100);
+    verticalMotionEffect.maximumRelativeValue = @(100);
+    horizontalMotionEffect.minimumRelativeValue = @(-100);
+    horizontalMotionEffect.maximumRelativeValue = @(100);
+    
+    subItemMotionEffect = [UIMotionEffectGroup new];
+    subItemMotionEffect.motionEffects = @[verticalMotionEffect, horizontalMotionEffect];
+
+    verticalMotionEffect = [verticalMotionEffect copy];
+    horizontalMotionEffect = [horizontalMotionEffect copy];
+    
+    verticalMotionEffect.minimumRelativeValue = @(100);
+    verticalMotionEffect.maximumRelativeValue = @(-100);
+    horizontalMotionEffect.minimumRelativeValue = @(100);
+    horizontalMotionEffect.maximumRelativeValue = @(-100);
+    
+    parentItemMotionEffect = [UIMotionEffectGroup new];
+    parentItemMotionEffect.motionEffects = @[verticalMotionEffect, horizontalMotionEffect];
+}
+
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     [self setup];
@@ -248,7 +295,7 @@ static SystemSoundID audioEffectMenuSelect = 0;
     self.parentStash = [NSMutableArray new];
     
     [self createSubviews];
-
+    
     self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(setNeedsDisplay)];
     [self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
 }
@@ -264,6 +311,7 @@ static SystemSoundID audioEffectMenuSelect = 0;
         self.centerItem.displayMode = MenuItemDisplayModeMain;
         [self.centerItem setIntegralPolarCoordinate:PolarCoordinateZero withCenter:self.center];
         [self addSubview:self.centerItem];
+        self.centerItem.motionEffects = @[centerItemMotionEffect];
     }
     
     for (MenuModel *item in self.menu.subMenuItems) {
@@ -275,6 +323,8 @@ static SystemSoundID audioEffectMenuSelect = 0;
             [itemView setIntegralPolarCoordinate:PolarCoordinateZero withCenter:self.centerItem.center];
             self.centerItem.subItems[@(item.identifier)] = itemView;
         }
+        
+        itemView.motionEffects = @[subItemMotionEffect];
         
         [self insertSubview:itemView belowSubview:self.centerItem];
     }
@@ -310,6 +360,7 @@ static SystemSoundID audioEffectMenuSelect = 0;
     if ([itemView isEqual:self.parentItem]) {
         MenuItemView *parentItem = [self.parentStash lastObject];
         self.parentItem = parentItem;
+        parentItem.motionEffects = @[parentItemMotionEffect];
         if (parentItem) {
             [self.parentStash removeLastObject];
             [self insertSubview:parentItem belowSubview:itemView];
@@ -334,11 +385,13 @@ static SystemSoundID audioEffectMenuSelect = 0;
             }];
         }
         self.parentItem = self.centerItem;
+        self.parentItem.motionEffects = @[parentItemMotionEffect];
         [oldSubMenuItems removeObject:itemView];
     }
 
     self.menu = itemView.menuItem;
     self.centerItem = itemView;
+    itemView.motionEffects = @[centerItemMotionEffect];
     [self bringSubviewToFront:itemView];
     
     [self createSubviews];
@@ -348,6 +401,7 @@ static SystemSoundID audioEffectMenuSelect = 0;
     
     for (MenuItemView *item in itemView.subItems.allValues) {
         item.displayMode = MenuItemDisplayModeDefault;
+        item.motionEffects = @[subItemMotionEffect];
     }
     
     for (MenuItemView *item in newMenuItems) {
@@ -400,25 +454,25 @@ static SystemSoundID audioEffectMenuSelect = 0;
     }
 }
 
-- (void)drawRect:(CGRect)rect {
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    [[ClariantColors menuBackgroundColor] setFill];
-    CGContextFillRect(context, rect);
-    
-    [[ClariantColors menuLineColor] set];
-    
-    CGContextSetLineWidth(context, 1);
-    
-    for (UIView *view in self.subviews) {
-        if ([view isKindOfClass:[MenuItemView class]]) {
-            MenuItemView *itemView = (MenuItemView *)view;
-            [itemView drawLinesToSubItemsInContext:context];
-        }
-    }
-    
-    CGContextStrokePath(context);
-}
+//- (void)drawRect:(CGRect)rect {
+//    CGContextRef context = UIGraphicsGetCurrentContext();
+//    
+//    [[ClariantColors menuBackgroundColor] setFill];
+//    //CGContextFillRect(context, rect);
+//    
+//    [[ClariantColors menuLineColor] set];
+//    
+//    CGContextSetLineWidth(context, 1);
+//    
+//    for (UIView *view in self.subviews) {
+//        if ([view isKindOfClass:[MenuItemView class]]) {
+//            MenuItemView *itemView = (MenuItemView *)view;
+//            [itemView drawLinesToSubItemsInContext:context];
+//        }
+//    }
+//    
+//    CGContextStrokePath(context);
+//}
 
 
 
