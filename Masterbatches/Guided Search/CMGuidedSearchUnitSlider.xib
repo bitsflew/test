@@ -9,7 +9,13 @@
         </mutableArray>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CMGuidedSearchUnitSlider"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CMGuidedSearchUnitSlider">
+            <connections>
+                <outlet property="thumbContainerView" destination="5UR-5h-ygo" id="s5O-c5-CUK"/>
+                <outlet property="unitSegmentedControl" destination="7BB-mJ-Qvf" id="aeQ-fA-bi7"/>
+                <outlet property="valueLabel" destination="ENL-Ha-9JH" id="6po-6x-GE1"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="246" height="388"/>
@@ -21,16 +27,22 @@
                         <segment title="First"/>
                         <segment title="Second"/>
                     </segments>
+                    <connections>
+                        <action selector="tappedUnitSegment:" destination="-1" eventType="valueChanged" id="uJ5-kO-Tev"/>
+                    </connections>
                 </segmentedControl>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENL-Ha-9JH">
-                    <rect key="frame" x="93" y="44" width="58.5" height="27"/>
+                    <rect key="frame" x="93" y="66" width="58.5" height="27"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="27" id="jAU-av-Nnl"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="24"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5UR-5h-ygo">
-                    <rect key="frame" x="52" y="79" width="140" height="301"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <rect key="frame" x="52" y="113" width="140" height="267"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="140" id="h6v-tu-YUc"/>
                     </constraints>
@@ -40,11 +52,11 @@
             <constraints>
                 <constraint firstItem="7BB-mJ-Qvf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="7TA-Ub-0Xy"/>
                 <constraint firstAttribute="bottom" secondItem="5UR-5h-ygo" secondAttribute="bottom" constant="8" id="ZpA-6w-fzV"/>
-                <constraint firstItem="ENL-Ha-9JH" firstAttribute="top" secondItem="7BB-mJ-Qvf" secondAttribute="bottom" constant="8" id="fmM-YK-vet"/>
+                <constraint firstItem="ENL-Ha-9JH" firstAttribute="top" secondItem="7BB-mJ-Qvf" secondAttribute="bottom" constant="30" id="fmM-YK-vet"/>
                 <constraint firstAttribute="centerX" secondItem="5UR-5h-ygo" secondAttribute="centerX" constant="0.5" id="iZM-mb-k5E"/>
                 <constraint firstAttribute="centerX" secondItem="ENL-Ha-9JH" secondAttribute="centerX" constant="0.5" id="sb8-no-3Cy"/>
                 <constraint firstAttribute="centerX" secondItem="7BB-mJ-Qvf" secondAttribute="centerX" id="tCq-EU-It2"/>
-                <constraint firstItem="5UR-5h-ygo" firstAttribute="top" secondItem="ENL-Ha-9JH" secondAttribute="bottom" constant="8" id="wkY-5S-8Lh"/>
+                <constraint firstItem="5UR-5h-ygo" firstAttribute="top" secondItem="ENL-Ha-9JH" secondAttribute="bottom" constant="20" id="wkY-5S-8Lh"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

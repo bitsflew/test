@@ -120,8 +120,8 @@
         self.trackLayer = [CAGradientLayer layer];
         self.trackLayer.colors = @[ (id)[UIColor colorWithRed:0.396 green:0.811 blue:0.913 alpha:1].CGColor,
                                     (id)[UIColor colorWithRed:0.458 green:0.721 blue:0.286 alpha:1].CGColor ];
-        self.trackLayer.startPoint = CGPointMake(0.f, 0.3f);
-        self.trackLayer.endPoint = CGPointMake(1.f, 0.7f);
+        self.trackLayer.startPoint = CGPointMake(0.f, 0.5f);
+        self.trackLayer.endPoint = CGPointMake(1.f, 0.5f);
         [self.layer addSublayer:self.trackLayer];
     } else {
         self.trackLayer.opacity = 1.f;

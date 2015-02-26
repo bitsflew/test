@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CMGuidedSearchTemperatureThicknessViewController">
             <connections>
+                <outlet property="temperatureSlider" destination="Drh-nl-hbO" id="GR4-1N-VH3"/>
+                <outlet property="thicknessSlider" destination="HFC-8N-NrZ" id="0mA-Rb-xPW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
