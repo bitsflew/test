@@ -169,12 +169,14 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
     [self addChildViewController:self.stepViewController];
     
     dispatch_block_t addStepViewBlock = ^{
+        self.stepViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
         [self.stepContainerView addSubview:self.stepViewController.view];
-        
+
         for (NSNumber *attribute in @[ @(NSLayoutAttributeLeft),
                                        @(NSLayoutAttributeTop),
                                        @(NSLayoutAttributeWidth),
-                                       @(NSLayoutAttributeHeight) ]) {
+                                       @(NSLayoutAttributeHeight)
+                                       ]) {
             [self.stepContainerView addConstraint:[NSLayoutConstraint constraintWithItem:self.stepViewController.view
                                                              attribute:attribute.integerValue
                                                              relatedBy:NSLayoutRelationEqual
