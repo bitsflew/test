@@ -7,7 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CMProjectRequest.h"
+#import "CMGuidedSearchFlow.h"
+
+@class CMGuidedSearchProjectRequestViewController;
+
+@protocol CMGuidedSearchProjectRequestViewControllerDelegate <NSObject>
+
+- (void)projectRequestViewControllerDismissedCancellingProjectRequest:(CMGuidedSearchProjectRequestViewController*)projectRequestViewController;
+
+@end
 
 @interface CMGuidedSearchProjectRequestViewController : UIViewController
+
+@property (nonatomic, strong) CMProjectRequest *projectRequest;
+
+@property (nonatomic, weak) id<CMGuidedSearchProjectRequestViewControllerDelegate> delegate;
 
 @end

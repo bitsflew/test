@@ -142,7 +142,7 @@
     self.stepsLayer.bounds = bounds;
     self.stepsLayer.position = CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
 
-    for (int i=0; i<self.stepCount; i++) {
+    for (NSUInteger i=0; i<self.stepCount; i++) {
 
         BOOL newStepLayer = NO;
 
@@ -176,6 +176,10 @@
         stepLayer.completeLayer.position = CGPointMake(CGRectGetMidX(stepLayer.bounds), CGRectGetMidY(stepLayer.bounds));
         CGFloat contentScale = stepCompleted ? 1.f : stepIncompleteContentScale;
         stepLayer.completeLayer.transform = CATransform3DMakeScale(contentScale, contentScale, contentScale);
+    }
+    
+    while (self.stepsLayer.sublayers.count > self.stepCount) {
+        [self.stepsLayer.sublayers.lastObject removeFromSuperlayer];
     }
     
 //    self.layer.opacity = sqrtf(1.f - self.contractionFactor);

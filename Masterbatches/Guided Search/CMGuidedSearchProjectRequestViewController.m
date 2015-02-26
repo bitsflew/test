@@ -19,8 +19,13 @@
     if (!(self = [super init])) {
         return nil;
     }
-    self.title = @"Project request";
+    self.title = NSLocalizedString(@"Overview", nil);
     return self;
+}
+
+- (IBAction)tappedCancelProjectRequest:(id)sender
+{
+    [self.delegate projectRequestViewControllerDismissedCancellingProjectRequest:self];
 }
 
 @end

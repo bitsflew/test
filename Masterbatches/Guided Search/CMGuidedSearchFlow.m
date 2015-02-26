@@ -60,8 +60,9 @@
 @interface CMGuidedSearchFlow ()
 
 @property (nonatomic, retain) NSArray *steps;
+
 @property (nonatomic, readwrite, retain) CMProductSpecification* productSpecification;
-@property (nonatomic, readwrite, retain) NSArray *additionalQuestions;
+@property (nonatomic, readwrite, retain) CMProjectRequest *projectRequest;
 
 - (id)initWithDictionary:(NSDictionary*)dictionary;
 
@@ -123,6 +124,20 @@
     }
 
     return questions;
+}
+
+#pragma mark -
+
+- (void)createProjectRequest
+{
+    if (!self.projectRequest) {
+        self.projectRequest = [[CMProjectRequest alloc] initWithProductSpecification:self.productSpecification];
+    }
+}
+
+- (void)cancelProjectRequest
+{
+    self.projectRequest = nil;
 }
 
 #pragma mark -

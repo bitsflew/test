@@ -18,13 +18,22 @@ static CGFloat kCMGuidedSearchFlowViewControllerOverviewAnimationSpeed = 0.3f;
 static CGFloat kCMGuidedSearchFlowViewControllerTransitionAnimationSpeed = 0.3f;
 static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 
-@interface CMGuidedSearchFlowViewController () <CMGuidedSearchResultsViewControllerDelegate>
+@interface CMGuidedSearchFlowViewController () <
+    CMGuidedSearchResultsViewControllerDelegate,
+    CMGuidedSearchProjectRequestViewControllerDelegate,
+    UIGestureRecognizerDelegate
+    >
+
+@property (nonatomic, strong) NSArray *searchResults;
 
 @property (nonatomic, strong) UIViewController<CMGuidedSearchStepViewController> *stepViewController;
 
 @property (nonatomic) CGFloat overviewToggleButtonInitialTop;
 @property (nonatomic) CGFloat overviewPosition;
 @property (nonatomic) CGFloat overviewPositionBeforePan;
+@property (nonatomic) BOOL overviewBusy;
+
+@property (nonatomic, retain) UIGestureRecognizer *overviewPanRecognizer;
 
 - (void)setOverviewPosition:(CGFloat)overviewPosition animated:(BOOL)animated completion:(dispatch_block_t)completionBlock;
 
@@ -35,19 +44,20 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.view.clipsToBounds = YES;
     self.overviewToggleButtonInitialTop = self.overviewToggleButtonTopConstraint.constant;
-
-    if (self.flow) {
-        [self presentStep:self.flow.firstStep];
-        [self updateSearchResults];
-    }
 
     [self.overviewToggleButton setBackgroundImage:[[UIImage imageNamed:@"img_guided_search_tab.png"]
                                                resizableImageWithCapInsets:UIEdgeInsetsMake(0.f, 40.f, 0.f, 40.f)]
                                      forState:UIControlStateNormal];
 
-    [self.overviewToggleButton addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(recognizedPan:)]];
+    self.overviewPanRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(recognizedPan:)];
+    self.overviewPanRecognizer.delegate = self;
+    [self.overviewToggleButton addGestureRecognizer:self.overviewPanRecognizer];
+
+    if (self.flow) {
+        [self presentStep:self.flow.firstStep];
+        [self updateSearchResults];
+    }
 }
 
 - (void)setFlow:(CMGuidedSearchFlow*)flow
@@ -60,25 +70,72 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
     }
 }
 
+- (void)setOverviewBusy:(BOOL)overviewBusy
+{
+    if (overviewBusy == _overviewBusy) {
+        return;
+    }
+
+    _overviewBusy = overviewBusy;
+
+    if (_overviewBusy) {
+        [self.overviewActivityIndicator startAnimating];
+    } else {
+        [self.overviewActivityIndicator stopAnimating];
+    }
+
+    [UIView animateWithDuration:kCMGuidedSearchFlowViewControllerOverviewAnimationSpeed
+                     animations:^{
+                         CGAffineTransform scaledToPoint =
+                           CGAffineTransformMakeScale(0.1f, 0.1f);
+                         self.overviewActivityIndicator.transform =
+                           overviewBusy ? CGAffineTransformIdentity : scaledToPoint;
+                         self.overviewArrowView.transform =
+                           overviewBusy ? scaledToPoint : CGAffineTransformIdentity;
+
+                         self.overviewActivityIndicator.alpha = (CGFloat)overviewBusy;
+                         self.overviewArrowView.alpha = (CGFloat)!overviewBusy;
+                     }];
+}
+
 #pragma mark -
 
 - (void)updateSearchResults
 {
+    self.overviewBusy = YES;
+
     __weak __typeof(self) _self = self;
+    
     [CMSearchDAO loadSearchResultsForProductSpecification:self.flow.productSpecification
                                                completion:^(NSArray *results, NSError *error) {
-                                                   
-                                                   NSString *title = (results.count > 0)
-                                                     ? [NSString stringWithFormat:@"show %d results", (int)results.count]
-                                                     : @"No results – tap for project request";
-                                                   
-                                                   UIColor *color = (results.count > 0)
-                                                     ? [UIColor blackColor]
-                                                     : [UIColor colorWithRed:.8f green:0.f blue:0.f alpha:1.f];
-
-                                                   [_self.overviewToggleButton setTitleColor:color forState:UIControlStateNormal];
-                                                   [_self.overviewToggleButton setTitle:title forState:UIControlStateNormal];
+                                                   _self.overviewBusy = NO;
+                                                   _self.searchResults = results;
+                                                   [_self updateOverviewToggleButton];
                                                }];
+}
+
+- (void)updateOverviewToggleButton
+{
+    NSString *title;
+    UIColor *titleColor;
+
+    if (self.flow.projectRequest) {
+        title = NSLocalizedString(@"SeeProjectRequest", nil);
+        titleColor = [UIColor blackColor];
+    } else {
+        if (self.searchResults.count == 0) {
+            title = NSLocalizedString(@"ShowNoResults", nil);
+            titleColor = [UIColor colorWithRed:0.788 green:0.109 blue:0.172 alpha:1];
+        } else {
+            title = (self.searchResults.count == 1)
+              ? NSLocalizedString(@"ShowSingleResult", nil)
+              : [NSString stringWithFormat:NSLocalizedString(@"ShowPluralResultsFormat", nil), self.searchResults.count];
+            titleColor = [UIColor blackColor];
+        }
+    }
+
+    [self.overviewToggleButton setTitle:title forState:UIControlStateNormal];
+    [self.overviewToggleButton setTitleColor:titleColor forState:UIControlStateNormal];
 }
 
 - (void)presentStep:(CMGuidedSearchFlowStep*)step
@@ -113,11 +170,40 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
     
     dispatch_block_t addStepViewBlock = ^{
         [self.stepContainerView addSubview:self.stepViewController.view];
+        
+        [self.stepContainerView addConstraint:[NSLayoutConstraint constraintWithItem:self.stepViewController.view
+                                                                           attribute:NSLayoutAttributeLeadingMargin
+                                                                           relatedBy:NSLayoutRelationEqual
+                                                                              toItem:self.stepContainerView
+                                                                           attribute:NSLayoutAttributeLeadingMargin
+                                                                          multiplier:1.f
+                                                                            constant:0.f]];
+        
+        [self.stepContainerView addConstraint:[NSLayoutConstraint constraintWithItem:self.stepViewController.view
+                                                                           attribute:NSLayoutAttributeTopMargin
+                                                                           relatedBy:NSLayoutRelationEqual
+                                                                              toItem:self.stepContainerView
+                                                                           attribute:NSLayoutAttributeTopMargin
+                                                                          multiplier:1.f
+                                                                            constant:0.f]];
+
+        [self.stepContainerView addConstraint:[NSLayoutConstraint constraintWithItem:self.stepViewController.view
+                                                                           attribute:NSLayoutAttributeWidth
+                                                                           relatedBy:NSLayoutRelationEqual
+                                                                              toItem:self.stepContainerView
+                                                                           attribute:NSLayoutAttributeWidth
+                                                                          multiplier:1.f
+                                                                            constant:0.f]];
+        
+        [self.stepContainerView addConstraint:[NSLayoutConstraint constraintWithItem:self.stepViewController.view
+                                                                           attribute:NSLayoutAttributeHeight
+                                                                           relatedBy:NSLayoutRelationEqual
+                                                                              toItem:self.stepContainerView
+                                                                           attribute:NSLayoutAttributeHeight
+                                                                          multiplier:1.f
+                                                                            constant:0.f]];
     };
 
-    self.stepViewController.view.frame = self.stepContainerView.bounds;
-    self.stepViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-    
     self.titleLabel.text = step.title;
     
     self.flowProgressView.stepCount = self.flow.stepCount;
@@ -139,7 +225,10 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
                              }
                          }];
     } else {
-        addStepViewBlock();
+        // Extremely unfortunate fix for bad initial layout
+        dispatch_async(dispatch_get_main_queue(), ^{
+            addStepViewBlock();
+        });
     }
 }
 
@@ -217,8 +306,9 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
     BOOL hittingTop = !hittingBottom && (_overviewPosition > 0.f) && (overviewPosition == 0.f);
 
     if (departingTop && !self.overviewController) {
-        if (self.flow.isProjectRequest) {
+        if (self.flow.projectRequest) {
             self.overviewController = [CMGuidedSearchProjectRequestViewController new];
+            ((CMGuidedSearchProjectRequestViewController*)self.overviewController).delegate = self;
         } else {
             self.overviewController = [CMGuidedSearchResultsViewController new];
             ((CMGuidedSearchResultsViewController*)self.overviewController).delegate = self;
@@ -236,13 +326,14 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 
     dispatch_block_t layoutBlock = ^{
         self.overviewToggleButtonTopConstraint.constant =
-        self.overviewToggleButtonInitialTop + overviewPosition * (CGRectGetHeight(bounds) - self.overviewToggleButtonInitialTop);
+          self.overviewToggleButtonInitialTop + overviewPosition * (CGRectGetHeight(bounds) - self.overviewToggleButtonInitialTop - CGRectGetHeight(self.overviewToggleButton.frame)/2.f);
 
         self.nextButton.alpha = 1.f - overviewPosition;
         self.previousButton.alpha = self.nextButton.alpha;
         self.flowProgressView.alpha = 1.f - overviewPosition;
         self.stepOverlayView.alpha = overviewPosition;
         self.closeOverviewButton.alpha = fmaxf((overviewPosition - 0.9f) / 0.1f, 0.f);
+        self.overviewActivityContainerView.alpha = 1.f - self.closeOverviewButton.alpha;
 
         [self.view layoutIfNeeded];
         
@@ -283,9 +374,18 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 
 #pragma mark -
 
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    if (gestureRecognizer == self.overviewPanRecognizer) {
+        return self.overviewPosition < 1.f;
+    }
+
+    return YES;
+}
+
 - (void)recognizedPan:(UIPanGestureRecognizer*)recognizer
 {
-    CGFloat top = [recognizer locationInView:self.view].y - CGRectGetMidY(self.overviewToggleButton.bounds);
+    CGFloat top = [recognizer locationInView:self.view].y - CGRectGetHeight(self.overviewToggleButton.bounds);
     CGFloat topVelocity = [recognizer velocityInView:self.view].y;
 
     CGFloat overviewPosition = fmaxf(top - self.overviewToggleButtonInitialTop, 0.f) / (CGRectGetHeight(self.view.bounds) - self.overviewToggleButtonInitialTop);
@@ -353,13 +453,42 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 
 - (void)searchResultsViewControllerDismissedWithProjectRequest:(CMGuidedSearchResultsViewController*)resultsViewController
 {
+    [self.flow createProjectRequest];
+    [self updateOverviewToggleButton];
+
     __weak __typeof(self) _self = self;
     [self setOverviewPosition:0.f
                animated:YES
              completion:^{
-                 _self.flow.projectRequest = YES;
-                 _self.overviewController = nil; // correct controller will instantiate when overview is pulled down again
+                 _self.overviewController = nil;
+                 [_self.flowProgressView setStepCount:10];
              }];
+    
+    [UIView animateWithDuration:kCMGuidedSearchFlowViewControllerOverviewAnimationSpeed
+                     animations:^{
+                         self.projectRequestLabel.alpha = 1.f;
+                     }];
+}
+
+#pragma mark -
+
+- (void)projectRequestViewControllerDismissedCancellingProjectRequest:(CMGuidedSearchProjectRequestViewController*)projectRequestViewController
+{
+    [self.flow cancelProjectRequest];
+    [self updateOverviewToggleButton];
+
+    __weak __typeof(self) _self = self;
+    [self setOverviewPosition:0.f
+                     animated:YES
+                   completion:^{
+                       _self.overviewController = nil;
+                       [_self.flowProgressView setStepCount:10];
+                   }];
+    
+    [UIView animateWithDuration:kCMGuidedSearchFlowViewControllerOverviewAnimationSpeed
+                     animations:^{
+                         self.projectRequestLabel.alpha = 0.f;
+                     }];
 }
 
 

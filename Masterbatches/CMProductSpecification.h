@@ -28,10 +28,18 @@
 
 @end
 
+@interface CMProductSpecificationProductType : CMProductSpecificationSimpleNamedAttribute
+
++ (instancetype)productTypeWithName:(NSString*)name;
+
+@end
+
+
 @interface CMProductSpecification : NSObject
 
 @property (nonatomic, retain) NSArray *additives; // <CMProductSpecificationAdditive>
 @property (nonatomic, retain) NSArray *resins;    // <CMProductSpecificationResin>
+@property (nonatomic, retain) CMProductSpecificationProductType *productType;
 
 - (void)setValue:(id)value forAdditionalQuestionKey:(NSString*)key;
 - (id)valueForAdditionalQuestionKey:(NSString*)key;
