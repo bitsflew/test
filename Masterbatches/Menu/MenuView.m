@@ -454,25 +454,22 @@ static UIMotionEffectGroup *subItemMotionEffect = nil;
     }
 }
 
-//- (void)drawRect:(CGRect)rect {
-//    CGContextRef context = UIGraphicsGetCurrentContext();
-//    
-//    [[ClariantColors menuBackgroundColor] setFill];
-//    //CGContextFillRect(context, rect);
-//    
-//    [[ClariantColors menuLineColor] set];
-//    
-//    CGContextSetLineWidth(context, 1);
-//    
-//    for (UIView *view in self.subviews) {
-//        if ([view isKindOfClass:[MenuItemView class]]) {
-//            MenuItemView *itemView = (MenuItemView *)view;
-//            [itemView drawLinesToSubItemsInContext:context];
-//        }
-//    }
-//    
-//    CGContextStrokePath(context);
-//}
+- (void)drawRect:(CGRect)rect {
+    CGContextRef context = UIGraphicsGetCurrentContext();
+        
+    [[ClariantColors menuLineColor] set];
+    
+    CGContextSetLineWidth(context, 1);
+    
+    for (UIView *view in self.subviews) {
+        if ([view isKindOfClass:[MenuItemView class]]) {
+            MenuItemView *itemView = (MenuItemView *)view;
+            [itemView drawLinesToSubItemsInContext:context];
+        }
+    }
+    
+    CGContextStrokePath(context);
+}
 
 
 
