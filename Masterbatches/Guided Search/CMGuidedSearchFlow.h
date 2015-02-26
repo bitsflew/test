@@ -36,7 +36,6 @@
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, readonly, retain) CMProjectRequest *projectRequest;
-
 @property (nonatomic, readonly, retain) CMProductSpecification* productSpecification;
 @property (nonatomic, readonly) NSUInteger stepCount;
 

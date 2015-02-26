@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Gotham-Bold.otf">
+            <string>Gotham-Bold</string>
+            <string>Gotham-Bold</string>
+            <string>Gotham-Bold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CMGuidedSearchProductRegulatoryIndustryViewController">
+            <connections>
+                <outlet property="industryGrid" destination="1cz-7Y-0Or" id="fls-g0-8rU"/>
+                <outlet property="industryGridHeightConstraint" destination="rok-2O-m69" id="Jck-oA-6n7"/>
+                <outlet property="productGrid" destination="gPh-lC-fhf" id="oZy-8h-kyd"/>
+                <outlet property="productGridHeightConstraint" destination="yIA-SF-FVw" id="qXh-Lb-NeM"/>
+                <outlet property="regulatoryGrid" destination="4Xr-oT-45S" id="gil-9e-6mO"/>
+                <outlet property="regulatoryGridHeightConstraint" destination="dHN-QP-soF" id="xjb-Zp-sVG"/>
+                <outlet property="scrollView" destination="x8a-6k-Akr" id="4nw-N6-cuS"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="413" height="815"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x8a-6k-Akr">
+                    <rect key="frame" x="0.0" y="0.0" width="413" height="815"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SELECT PRODUCT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9z-rp-lfV">
+                            <rect key="frame" x="40" y="8" width="161" height="19"/>
+                            <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gPh-lC-fhf" customClass="CMGuidedSearchGrid">
+                            <rect key="frame" x="40" y="35" width="332" height="222"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="222" id="yIA-SF-FVw"/>
+                            </constraints>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HZe-KO-Pp8" customClass="CMGuidedSearchGridCollectionViewLayout">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                            <connections>
+                                <outlet property="selectionDelegate" destination="-1" id="lMt-RS-SPx"/>
+                            </connections>
+                        </collectionView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SELECT REGULATORY" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ie-LP-uFH">
+                            <rect key="frame" x="40" y="265" width="194.5" height="19"/>
+                            <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="4Xr-oT-45S" customClass="CMGuidedSearchGrid">
+                            <rect key="frame" x="40" y="292" width="332" height="222"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="222" id="dHN-QP-soF"/>
+                            </constraints>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZiB-Ad-Kbk" customClass="CMGuidedSearchGridCollectionViewLayout">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                            <connections>
+                                <outlet property="selectionDelegate" destination="-1" id="E4Z-od-pOm"/>
+                            </connections>
+                        </collectionView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SELECT INDUSTRY" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7MA-tt-A1E">
+                            <rect key="frame" x="40" y="522" width="164" height="19"/>
+                            <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="1cz-7Y-0Or" customClass="CMGuidedSearchGrid">
+                            <rect key="frame" x="40" y="549" width="332" height="222"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="222" id="rok-2O-m69"/>
+                            </constraints>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bVZ-18-jiN" customClass="CMGuidedSearchGridCollectionViewLayout">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                            <connections>
+                                <outlet property="selectionDelegate" destination="-1" id="tlg-Ve-6Rb"/>
+                            </connections>
+                        </collectionView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="3ie-LP-uFH" firstAttribute="top" secondItem="gPh-lC-fhf" secondAttribute="bottom" constant="8" id="12N-NB-Put"/>
+                        <constraint firstItem="7MA-tt-A1E" firstAttribute="top" secondItem="4Xr-oT-45S" secondAttribute="bottom" constant="8" id="6OY-Ao-IkC"/>
+                        <constraint firstAttribute="bottom" secondItem="1cz-7Y-0Or" secondAttribute="bottom" constant="40" id="AoR-3e-5Ug"/>
+                        <constraint firstItem="4Xr-oT-45S" firstAttribute="leading" secondItem="7MA-tt-A1E" secondAttribute="leading" id="BFX-bj-igQ"/>
+                        <constraint firstItem="gPh-lC-fhf" firstAttribute="top" secondItem="x8a-6k-Akr" secondAttribute="top" constant="35" id="FtV-sv-Fup"/>
+                        <constraint firstItem="gPh-lC-fhf" firstAttribute="leading" secondItem="x8a-6k-Akr" secondAttribute="leading" constant="40" id="Izg-FH-a9S"/>
+                        <constraint firstItem="1cz-7Y-0Or" firstAttribute="leading" secondItem="7MA-tt-A1E" secondAttribute="leading" id="P5T-mf-R8c"/>
+                        <constraint firstItem="4Xr-oT-45S" firstAttribute="width" secondItem="gPh-lC-fhf" secondAttribute="width" id="PLi-w6-pQS"/>
+                        <constraint firstAttribute="width" secondItem="gPh-lC-fhf" secondAttribute="width" constant="81" id="T1g-Ga-xvC"/>
+                        <constraint firstItem="4Xr-oT-45S" firstAttribute="leading" secondItem="3ie-LP-uFH" secondAttribute="leading" id="ebL-HX-KEu"/>
+                        <constraint firstItem="1cz-7Y-0Or" firstAttribute="top" secondItem="7MA-tt-A1E" secondAttribute="bottom" constant="8" id="fEB-Nn-tNs"/>
+                        <constraint firstItem="4Xr-oT-45S" firstAttribute="width" secondItem="1cz-7Y-0Or" secondAttribute="width" id="gaR-mo-D3S"/>
+                        <constraint firstItem="4Xr-oT-45S" firstAttribute="top" secondItem="3ie-LP-uFH" secondAttribute="bottom" constant="8" id="kcw-eZ-RxJ"/>
+                        <constraint firstItem="3ie-LP-uFH" firstAttribute="leading" secondItem="gPh-lC-fhf" secondAttribute="leading" id="t5e-ux-jYv"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="x8a-6k-Akr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="EdC-O6-lKI"/>
+                <constraint firstAttribute="bottom" secondItem="x8a-6k-Akr" secondAttribute="bottom" id="Ykx-wT-dSA"/>
+                <constraint firstItem="x8a-6k-Akr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="pX1-sj-0KU"/>
+                <constraint firstAttribute="trailing" secondItem="x8a-6k-Akr" secondAttribute="trailing" id="wRM-2r-mYP"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="318.5" y="346.5"/>
+        </view>
+    </objects>
+</document>

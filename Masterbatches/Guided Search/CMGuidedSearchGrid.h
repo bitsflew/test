@@ -15,6 +15,12 @@
 
 @class CMGuidedSearchGrid;
 
+@protocol CMGuidedSearchGridLayoutDelegate <NSObject>
+
+- (void)guidedSearchGridDidLayoutItems:(CMGuidedSearchGrid*)guidedSearchGrid;
+
+@end
+
 @protocol CMGuidedSearchGridSelectionDelegate <NSObject>
 
 - (void)guidedSearchGrid:(CMGuidedSearchGrid*)guidedSearchGrid didSelectItem:(id<CMGuidedSearchGridItem>)item;

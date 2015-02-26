@@ -35,40 +35,44 @@
     self.grid.scrollIndicatorInsets = self.grid.contentInset;
 
     self.grid.items =
-        @[ [CMProductSpecificationAdditive additiveWithName:@"Absorbents"],
-           [CMProductSpecificationAdditive additiveWithName:@"Anti-blocking"],
-           [CMProductSpecificationAdditive additiveWithName:@"Anti-fog"],
-           [CMProductSpecificationAdditive additiveWithName:@"Anti-microbial"],
-           [CMProductSpecificationAdditive additiveWithName:@"Anti-oxidant"],
-           [CMProductSpecificationAdditive additiveWithName:@"Anti-slip"],
-           [CMProductSpecificationAdditive additiveWithName:@"Anti-static"],
-           [CMProductSpecificationAdditive additiveWithName:@"Biodegradable"],
-           [CMProductSpecificationAdditive additiveWithName:@"Blowing agent"],
-           [CMProductSpecificationAdditive additiveWithName:@"Cleaning agent"],
-           [CMProductSpecificationAdditive additiveWithName:@"Compatibilizer"],
-           [CMProductSpecificationAdditive additiveWithName:@"Conductive"],
-           [CMProductSpecificationAdditive additiveWithName:@"Corrosion protection"],
-           [CMProductSpecificationAdditive additiveWithName:@"Drying agent"],
-           [CMProductSpecificationAdditive additiveWithName:@"Filler"],
-           [CMProductSpecificationAdditive additiveWithName:@"Flame retardent"],
-           [CMProductSpecificationAdditive additiveWithName:@"Laser marking"],
-           [CMProductSpecificationAdditive additiveWithName:@"Light stabilizer"],
-           [CMProductSpecificationAdditive additiveWithName:@"Lubricant"],
-           [CMProductSpecificationAdditive additiveWithName:@"Matting agent"],
-           [CMProductSpecificationAdditive additiveWithName:@"Mould release"],
-           [CMProductSpecificationAdditive additiveWithName:@"Nucleating"],
-           [CMProductSpecificationAdditive additiveWithName:@"Opacifier"],
-           [CMProductSpecificationAdditive additiveWithName:@"Optical brightner"],
-           [CMProductSpecificationAdditive additiveWithName:@"Other"],
-           [CMProductSpecificationAdditive additiveWithName:@"Photo degradable"],
-           [CMProductSpecificationAdditive additiveWithName:@"Process support"],
-           [CMProductSpecificationAdditive additiveWithName:@"PV-stabilizer"] ];
+        @[ [CMProductSpecificationAdditive attributeWithName:@"Absorbents"],
+           [CMProductSpecificationAdditive attributeWithName:@"Anti-blocking"],
+           [CMProductSpecificationAdditive attributeWithName:@"Anti-fog"],
+           [CMProductSpecificationAdditive attributeWithName:@"Anti-microbial"],
+           [CMProductSpecificationAdditive attributeWithName:@"Anti-oxidant"],
+           [CMProductSpecificationAdditive attributeWithName:@"Anti-slip"],
+           [CMProductSpecificationAdditive attributeWithName:@"Anti-static"],
+           [CMProductSpecificationAdditive attributeWithName:@"Biodegradable"],
+           [CMProductSpecificationAdditive attributeWithName:@"Blowing agent"],
+           [CMProductSpecificationAdditive attributeWithName:@"Cleaning agent"],
+           [CMProductSpecificationAdditive attributeWithName:@"Compatibilizer"],
+           [CMProductSpecificationAdditive attributeWithName:@"Conductive"],
+           [CMProductSpecificationAdditive attributeWithName:@"Corrosion protection"],
+           [CMProductSpecificationAdditive attributeWithName:@"Drying agent"],
+           [CMProductSpecificationAdditive attributeWithName:@"Filler"],
+           [CMProductSpecificationAdditive attributeWithName:@"Flame retardent"],
+           [CMProductSpecificationAdditive attributeWithName:@"Laser marking"],
+           [CMProductSpecificationAdditive attributeWithName:@"Light stabilizer"],
+           [CMProductSpecificationAdditive attributeWithName:@"Lubricant"],
+           [CMProductSpecificationAdditive attributeWithName:@"Matting agent"],
+           [CMProductSpecificationAdditive attributeWithName:@"Mould release"],
+           [CMProductSpecificationAdditive attributeWithName:@"Nucleating"],
+           [CMProductSpecificationAdditive attributeWithName:@"Opacifier"],
+           [CMProductSpecificationAdditive attributeWithName:@"Optical brightner"],
+           [CMProductSpecificationAdditive attributeWithName:@"Other"],
+           [CMProductSpecificationAdditive attributeWithName:@"Photo degradable"],
+           [CMProductSpecificationAdditive attributeWithName:@"Process support"],
+           [CMProductSpecificationAdditive attributeWithName:@"PV-stabilizer"] ];
 
     [self.grid selectItems:self.step.productSpecification.additives animated:YES];
 }
 
 - (BOOL)completeStepWithValidationError:(NSString**)errorDescription
 {
+    if (![self.stepDelegate flowForStepViewController:self].projectRequest) {
+        return YES;
+    }
+
     if (self.step.productSpecification.additives.count == 0) {
         *errorDescription = NSLocalizedString(@"MustSpecifyAdditive", nil);
         return NO;

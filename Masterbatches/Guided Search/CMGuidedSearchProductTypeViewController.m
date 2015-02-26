@@ -35,9 +35,9 @@
     self.grid.scrollIndicatorInsets = self.grid.contentInset;
 
     self.grid.items =
-    @[ [CMProductSpecificationProductType productTypeWithName:@"Master Batch pellet"],
-       [CMProductSpecificationProductType productTypeWithName:@"Compound"],
-       [CMProductSpecificationProductType productTypeWithName:@"Liquid"] ];
+      @[ [CMProductSpecificationProductType attributeWithName:@"Master Batch pellet"],
+         [CMProductSpecificationProductType attributeWithName:@"Compound"],
+         [CMProductSpecificationProductType attributeWithName:@"Liquid"] ];
 
     if (self.step.productSpecification.productType) {
         [self.grid selectItems:@[ self.step.productSpecification.productType ] animated:YES];

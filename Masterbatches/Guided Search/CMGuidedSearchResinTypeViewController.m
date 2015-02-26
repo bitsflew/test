@@ -36,20 +36,20 @@
     self.grid.allowsMultipleSelection = YES;
     
     self.grid.items =
-    @[ [CMProductSpecificationResin resinWithName:@"PP"],
-       [CMProductSpecificationResin resinWithName:@"PE"],
-       [CMProductSpecificationResin resinWithName:@"PS"],
-       [CMProductSpecificationResin resinWithName:@"PA"],
-       [CMProductSpecificationResin resinWithName:@"POM"],
-       [CMProductSpecificationResin resinWithName:@"ABS"],
-       [CMProductSpecificationResin resinWithName:@"PC"],
-       [CMProductSpecificationResin resinWithName:@"EVA"],
-       [CMProductSpecificationResin resinWithName:@"PVC"],
-       [CMProductSpecificationResin resinWithName:@"TPU"],
-       [CMProductSpecificationResin resinWithName:@"PET"],
-       [CMProductSpecificationResin resinWithName:@"PEEK"],
-       [CMProductSpecificationResin resinWithName:@"TPO"],
-       [CMProductSpecificationResin resinWithName:@"PLA"] ];
+    @[ [CMProductSpecificationResin attributeWithName:@"PP"],
+       [CMProductSpecificationResin attributeWithName:@"PE"],
+       [CMProductSpecificationResin attributeWithName:@"PS"],
+       [CMProductSpecificationResin attributeWithName:@"PA"],
+       [CMProductSpecificationResin attributeWithName:@"POM"],
+       [CMProductSpecificationResin attributeWithName:@"ABS"],
+       [CMProductSpecificationResin attributeWithName:@"PC"],
+       [CMProductSpecificationResin attributeWithName:@"EVA"],
+       [CMProductSpecificationResin attributeWithName:@"PVC"],
+       [CMProductSpecificationResin attributeWithName:@"TPU"],
+       [CMProductSpecificationResin attributeWithName:@"PET"],
+       [CMProductSpecificationResin attributeWithName:@"PEEK"],
+       [CMProductSpecificationResin attributeWithName:@"TPO"],
+       [CMProductSpecificationResin attributeWithName:@"PLA"] ];
 
     [self.grid selectItems:self.step.productSpecification.resins animated:YES];
 }

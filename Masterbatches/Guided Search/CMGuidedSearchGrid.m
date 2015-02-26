@@ -97,9 +97,7 @@ static NSUInteger CMGuidedSearchGridSelectionItemCellTitleTag = 100;
 
 - (id)commonInit
 {
-    if (!self.collectionViewLayout) {
-        self.collectionViewLayout = [CMGuidedSearchGridCollectionViewLayout new];
-    }
+    self.collectionViewLayout = [CMGuidedSearchGridCollectionViewLayout new];
     
     self.dataSource = self;
     self.delegate = self;
@@ -193,6 +191,5 @@ static NSUInteger CMGuidedSearchGridSelectionItemCellTitleTag = 100;
     id<CMGuidedSearchGridItem> item = self.items[indexPath.row];
     [self.selectionDelegate guidedSearchGrid:self didDeselectItem:item];
 }
-
 
 @end

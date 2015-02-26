@@ -10,6 +10,11 @@
 
 @implementation CMProductSpecificationSimpleNamedAttribute
 
++ (instancetype)attributeWithName:(NSString*)name
+{
+    return [[self alloc] initWithName:name];
+}
+
 - (id)initWithName:(NSString *)name
 {
     if (!(self = [super init])) {
@@ -41,28 +46,21 @@
 
 @implementation CMProductSpecificationAdditive
 
-+ (instancetype)additiveWithName:(NSString*)name
-{
-    return [[CMProductSpecificationAdditive alloc] initWithName:name];
-}
-
 @end
 
 @implementation CMProductSpecificationResin
-
-+ (instancetype)resinWithName:(NSString*)name
-{
-    return [[CMProductSpecificationResin alloc] initWithName:name];
-}
 
 @end
 
 @implementation CMProductSpecificationProductType
 
-+ (instancetype)productTypeWithName:(NSString*)name
-{
-    return [[CMProductSpecificationProductType alloc] initWithName:name];
-}
+@end
+
+@implementation CMProductSpecificationRegulatoryType
+
+@end
+
+@implementation CMProductSpecificationIndustryType
 
 @end
 
