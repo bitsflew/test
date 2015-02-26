@@ -170,12 +170,40 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
     
     dispatch_block_t addStepViewBlock = ^{
         [self.stepContainerView addSubview:self.stepViewController.view];
-        NSLog(@"%@", NSStringFromCGRect(self.stepViewController.view.bounds));
+        
+        [self.stepContainerView addConstraint:[NSLayoutConstraint constraintWithItem:self.stepViewController.view
+                                                                           attribute:NSLayoutAttributeLeadingMargin
+                                                                           relatedBy:NSLayoutRelationEqual
+                                                                              toItem:self.stepContainerView
+                                                                           attribute:NSLayoutAttributeLeadingMargin
+                                                                          multiplier:1.f
+                                                                            constant:0.f]];
+        
+        [self.stepContainerView addConstraint:[NSLayoutConstraint constraintWithItem:self.stepViewController.view
+                                                                           attribute:NSLayoutAttributeTopMargin
+                                                                           relatedBy:NSLayoutRelationEqual
+                                                                              toItem:self.stepContainerView
+                                                                           attribute:NSLayoutAttributeTopMargin
+                                                                          multiplier:1.f
+                                                                            constant:0.f]];
+
+        [self.stepContainerView addConstraint:[NSLayoutConstraint constraintWithItem:self.stepViewController.view
+                                                                           attribute:NSLayoutAttributeWidth
+                                                                           relatedBy:NSLayoutRelationEqual
+                                                                              toItem:self.stepContainerView
+                                                                           attribute:NSLayoutAttributeWidth
+                                                                          multiplier:1.f
+                                                                            constant:0.f]];
+        
+        [self.stepContainerView addConstraint:[NSLayoutConstraint constraintWithItem:self.stepViewController.view
+                                                                           attribute:NSLayoutAttributeHeight
+                                                                           relatedBy:NSLayoutRelationEqual
+                                                                              toItem:self.stepContainerView
+                                                                           attribute:NSLayoutAttributeHeight
+                                                                          multiplier:1.f
+                                                                            constant:0.f]];
     };
 
-    self.stepViewController.view.frame = self.stepContainerView.bounds;
-//    self.stepViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-    
     self.titleLabel.text = step.title;
     
     self.flowProgressView.stepCount = self.flow.stepCount;
@@ -197,7 +225,10 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
                              }
                          }];
     } else {
-        addStepViewBlock();
+        // Extremely unfortunate fix for bad initial layout
+        dispatch_async(dispatch_get_main_queue(), ^{
+            addStepViewBlock();
+        });
     }
 }
 
