@@ -29,12 +29,12 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
-    return [super initWithCoder:aDecoder] ? [self commonInit] : nil;
+    return (self = [super initWithCoder:aDecoder]) ? [self commonInit] : nil;
 }
 
 - (id)initWithFrame:(CGRect)frame
 {
-    return [super initWithFrame:frame] ? [self commonInit] : nil;
+    return (self = [super initWithFrame:frame]) ? [self commonInit] : nil;
 }
 
 - (id)commonInit

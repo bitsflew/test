@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		44000BBE1A9B46D80032B747 /* CMGuidedSearchAdditionalQuestionTextFieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44000BBC1A9B46D80032B747 /* CMGuidedSearchAdditionalQuestionTextFieldViewController.m */; };
 		4402E38B1A9DC7270087AFE4 /* CMGuidedSearchGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4402E38A1A9DC7270087AFE4 /* CMGuidedSearchGridViewController.m */; };
+		4402E5E81A9F21CD0087AFE4 /* CMGuidedSearchUnitSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4402E5E71A9F21CD0087AFE4 /* CMGuidedSearchUnitSlider.m */; };
+		4402E5EA1A9F26330087AFE4 /* CMGuidedSearchUnitSlider.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4402E5E91A9F26330087AFE4 /* CMGuidedSearchUnitSlider.xib */; };
 		44053E101A9CBCC900AFEBC6 /* CMProjectRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 44053E0F1A9CBCC900AFEBC6 /* CMProjectRequest.m */; };
 		44053E151A9CCCC900AFEBC6 /* ic_circle_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 44053E111A9CCCC900AFEBC6 /* ic_circle_down.png */; };
 		44053E161A9CCCC900AFEBC6 /* ic_circle_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44053E121A9CCCC900AFEBC6 /* ic_circle_down@2x.png */; };
@@ -102,6 +104,9 @@
 		44000BBC1A9B46D80032B747 /* CMGuidedSearchAdditionalQuestionTextFieldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchAdditionalQuestionTextFieldViewController.m; sourceTree = "<group>"; };
 		4402E3891A9DC7270087AFE4 /* CMGuidedSearchGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchGridViewController.h; sourceTree = "<group>"; };
 		4402E38A1A9DC7270087AFE4 /* CMGuidedSearchGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchGridViewController.m; sourceTree = "<group>"; };
+		4402E5E61A9F21CD0087AFE4 /* CMGuidedSearchUnitSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchUnitSlider.h; sourceTree = "<group>"; };
+		4402E5E71A9F21CD0087AFE4 /* CMGuidedSearchUnitSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchUnitSlider.m; sourceTree = "<group>"; };
+		4402E5E91A9F26330087AFE4 /* CMGuidedSearchUnitSlider.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMGuidedSearchUnitSlider.xib; sourceTree = "<group>"; };
 		44053E0E1A9CBCC900AFEBC6 /* CMProjectRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMProjectRequest.h; sourceTree = "<group>"; };
 		44053E0F1A9CBCC900AFEBC6 /* CMProjectRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMProjectRequest.m; sourceTree = "<group>"; };
 		44053E111A9CCCC900AFEBC6 /* ic_circle_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_circle_down.png; sourceTree = "<group>"; };
@@ -367,6 +372,9 @@
 				443366CC1A9239CE002DD5F5 /* CMGuidedSearchFlowViewController.xib */,
 				4457F47A1A949CC6002FF4F5 /* CMGuidedSearchFlowProgressView.h */,
 				4457F47B1A949CC6002FF4F5 /* CMGuidedSearchFlowProgressView.m */,
+				4402E5E61A9F21CD0087AFE4 /* CMGuidedSearchUnitSlider.h */,
+				4402E5E71A9F21CD0087AFE4 /* CMGuidedSearchUnitSlider.m */,
+				4402E5E91A9F26330087AFE4 /* CMGuidedSearchUnitSlider.xib */,
 				441470BB1A93588000131077 /* CMGuidedSearchGrid.h */,
 				441470BC1A93588000131077 /* CMGuidedSearchGrid.m */,
 				4402E3891A9DC7270087AFE4 /* CMGuidedSearchGridViewController.h */,
@@ -649,6 +657,7 @@
 				44B4BD751A9B76B800158D90 /* Menu.plist in Resources */,
 				44E9E54B1A9623790028B01F /* LaunchScreen.xib in Resources */,
 				44053E161A9CCCC900AFEBC6 /* ic_circle_down@2x.png in Resources */,
+				4402E5EA1A9F26330087AFE4 /* CMGuidedSearchUnitSlider.xib in Resources */,
 				44B4BD6F1A9B768400158D90 /* BothGuidedSearchFlow.plist in Resources */,
 				4B24D7861A9B4599001487B7 /* slide-metal.aif in Resources */,
 				443366AE1A923349002DD5F5 /* Images.xcassets in Resources */,
@@ -693,6 +702,7 @@
 				441470B81A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.m in Sources */,
 				4457F4881A94A963002FF4F5 /* NSString+Morphing.m in Sources */,
 				442549561A9C9C0D00C38557 /* CMGuidedSearchFlowSummaryView.m in Sources */,
+				4402E5E81A9F21CD0087AFE4 /* CMGuidedSearchUnitSlider.m in Sources */,
 				44E9E53F1A95E58F0028B01F /* CMGuidedSearchFlow.m in Sources */,
 				4B2EDFAF1A93A9B7007E0493 /* MenuViewController.m in Sources */,
 				443366A31A923349002DD5F5 /* AppDelegate.m in Sources */,
