@@ -7,7 +7,6 @@
 //
 
 #import "CMGuidedSearchResinTypeViewController.h"
-#import "CMGuidedSearchProductTypeViewController.h"
 
 @interface CMProductSpecificationResin (Item) <CMGuidedSearchGridItem>
 
@@ -32,11 +31,11 @@
 {
     [super viewDidLoad];
     
-    self.gridSelectionView.contentInset = [self.stepDelegate edgeInsetsForStepViewController:self];
-    self.gridSelectionView.scrollIndicatorInsets = self.gridSelectionView.contentInset;
-    self.gridSelectionView.allowsMultipleSelection = YES;
+    self.grid.contentInset = [self.stepDelegate edgeInsetsForStepViewController:self];
+    self.grid.scrollIndicatorInsets = self.grid.contentInset;
+    self.grid.allowsMultipleSelection = YES;
     
-    self.gridSelectionView.items =
+    self.grid.items =
     @[ [CMProductSpecificationResin resinWithName:@"PP"],
        [CMProductSpecificationResin resinWithName:@"PE"],
        [CMProductSpecificationResin resinWithName:@"PS"],
@@ -52,7 +51,7 @@
        [CMProductSpecificationResin resinWithName:@"TPO"],
        [CMProductSpecificationResin resinWithName:@"PLA"] ];
 
-    [self.gridSelectionView selectItems:self.step.productSpecification.resins animated:YES];
+    [self.grid selectItems:self.step.productSpecification.resins animated:YES];
 }
 
 - (BOOL)completeStepWithValidationError:(NSString *__autoreleasing *)errorDescription
@@ -69,15 +68,14 @@
 
 - (void)guidedSearchGrid:(CMGuidedSearchGrid*)guidedSearchGrid didSelectItem:(id<CMGuidedSearchGridItem>)item
 {
-    self.step.productSpecification.resins = self.gridSelectionView.selectedItems;
+    self.step.productSpecification.resins = self.grid.selectedItems;
     [self.stepDelegate stepViewControllerDidChangeProductSpecification:self];
 }
 
 - (void)guidedSearchGrid:(CMGuidedSearchGrid*)guidedSearchGrid didDeselectItem:(id<CMGuidedSearchGridItem>)item
 {
-    self.step.productSpecification.resins = self.gridSelectionView.selectedItems;
+    self.step.productSpecification.resins = self.grid.selectedItems;
     [self.stepDelegate stepViewControllerDidChangeProductSpecification:self];
 }
-
 
 @end

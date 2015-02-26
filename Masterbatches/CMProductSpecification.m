@@ -57,6 +57,15 @@
 
 @end
 
+@implementation CMProductSpecificationProductType
+
++ (instancetype)productTypeWithName:(NSString*)name
+{
+    return [[CMProductSpecificationProductType alloc] initWithName:name];
+}
+
+@end
+
 @interface CMProductSpecification ()
 
 @property (nonatomic, retain) NSMutableDictionary *additionalQuestionValues;

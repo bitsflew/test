@@ -79,9 +79,27 @@ static NSUInteger CMGuidedSearchGridSelectionItemCellTitleTag = 100;
     return [self commonInit];
 }
 
+- (id)initWithFrame:(CGRect)frame
+{
+    if (!(self = [super initWithFrame:frame collectionViewLayout:[CMGuidedSearchGridCollectionViewLayout new]])) {
+        return nil;
+    }
+    return [self commonInit];
+}
+
+- (id)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout
+{
+    if (!(self = [super initWithFrame:frame collectionViewLayout:layout])) {
+        return nil;
+    }
+    return [self commonInit];
+}
+
 - (id)commonInit
 {
-    self.collectionViewLayout = [CMGuidedSearchGridCollectionViewLayout new];
+    if (!self.collectionViewLayout) {
+        self.collectionViewLayout = [CMGuidedSearchGridCollectionViewLayout new];
+    }
     
     self.dataSource = self;
     self.delegate = self;

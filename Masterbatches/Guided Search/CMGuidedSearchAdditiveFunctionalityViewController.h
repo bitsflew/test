@@ -7,11 +7,9 @@
 //
 
 #import "CMGuidedSearchStepViewController.h"
-#import "CMGuidedSearchGrid.h"
+#import "CMGuidedSearchGridViewController.h"
 
-@interface CMGuidedSearchAdditiveFunctionalityViewController : UIViewController <CMGuidedSearchStepViewController, CMGuidedSearchGridSelectionDelegate>
-
-@property (nonatomic, weak) IBOutlet CMGuidedSearchGrid *gridSelectionView;
+@interface CMGuidedSearchAdditiveFunctionalityViewController : CMGuidedSearchGridViewController <CMGuidedSearchStepViewController>
 
 @property (nonatomic, strong) CMGuidedSearchFlowStep *step;
 @property (nonatomic, weak) id<CMGuidedSearchStepViewControllerDelegate> stepDelegate;

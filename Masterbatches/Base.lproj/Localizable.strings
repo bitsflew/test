@@ -10,6 +10,7 @@
 "Color"        = "Color";
 "MustSpecifyAdditive" = "Choose one or more additive functionalities from the grid.";
 "MustSpecifyResin" = "Choose one or more resins from the grid.";
+"MustSpecifyProductType" = "Choose a product type from the grid.";
 "Close" = "Close";
 "Overview" = "Overview";
 "SeeProjectRequest" = "See project request overview";

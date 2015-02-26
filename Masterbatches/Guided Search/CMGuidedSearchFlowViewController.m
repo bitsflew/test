@@ -44,13 +44,7 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.view.clipsToBounds = YES;
     self.overviewToggleButtonInitialTop = self.overviewToggleButtonTopConstraint.constant;
-
-    if (self.flow) {
-        [self presentStep:self.flow.firstStep];
-        [self updateSearchResults];
-    }
 
     [self.overviewToggleButton setBackgroundImage:[[UIImage imageNamed:@"img_guided_search_tab.png"]
                                                resizableImageWithCapInsets:UIEdgeInsetsMake(0.f, 40.f, 0.f, 40.f)]
@@ -59,6 +53,11 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
     self.overviewPanRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(recognizedPan:)];
     self.overviewPanRecognizer.delegate = self;
     [self.overviewToggleButton addGestureRecognizer:self.overviewPanRecognizer];
+
+    if (self.flow) {
+        [self presentStep:self.flow.firstStep];
+        [self updateSearchResults];
+    }
 }
 
 - (void)setFlow:(CMGuidedSearchFlow*)flow
@@ -78,7 +77,7 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
     }
 
     _overviewBusy = overviewBusy;
-    
+
     if (_overviewBusy) {
         [self.overviewActivityIndicator startAnimating];
     } else {
@@ -93,7 +92,7 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
                            overviewBusy ? CGAffineTransformIdentity : scaledToPoint;
                          self.overviewArrowView.transform =
                            overviewBusy ? scaledToPoint : CGAffineTransformIdentity;
-                         
+
                          self.overviewActivityIndicator.alpha = (CGFloat)overviewBusy;
                          self.overviewArrowView.alpha = (CGFloat)!overviewBusy;
                      }];
@@ -171,10 +170,11 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
     
     dispatch_block_t addStepViewBlock = ^{
         [self.stepContainerView addSubview:self.stepViewController.view];
+        NSLog(@"%@", NSStringFromCGRect(self.stepViewController.view.bounds));
     };
 
     self.stepViewController.view.frame = self.stepContainerView.bounds;
-    self.stepViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+//    self.stepViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     
     self.titleLabel.text = step.title;
     
