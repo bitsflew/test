@@ -51,13 +51,12 @@
 {
     if (sender == self.thicknessSlider) {
         self.step.productSpecification.thicknessInMillimeters = self.thicknessSlider.value;
-        return;
-    }
-    
-    if (sender == self.temperatureSlider) {
-        self.step.productSpecification.temperatureInCentrigrade = self.temperatureSlider.value;
-        return;
-    }
+    } else
+        if (sender == self.temperatureSlider) {
+            self.step.productSpecification.temperatureInCentrigrade = self.temperatureSlider.value;
+        }
+
+    [self.stepDelegate stepViewControllerDidChangeProductSpecification:self];
 }
 
 @end
