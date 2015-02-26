@@ -8,14 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-
 @interface CMGuidedSearchUnitSlider : UIView
 
 @property (nonatomic, weak) IBOutlet UIView *thumbContainerView;
 @property (nonatomic, weak) IBOutlet UILabel *valueLabel;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *unitSegmentedControl;
-
-@property (nonatomic, strong) NSNumberFormatter *numberFormatter;
 
 @property (nonatomic) CGFloat minimumValue;
 @property (nonatomic) CGFloat maximumValue;
@@ -23,6 +20,6 @@
 @property (nonatomic) CGFloat value;
 @property (nonatomic) CGFloat thumbSize;
 
-- (void)addUnitWithName:(NSString*)name multiplier:(CGFloat)multiplier constant:(CGFloat)constant;
+- (void)addUnitWithName:(NSString*)name formatString:(NSString*)formatString multiplier:(CGFloat)multiplier constant:(CGFloat)constant;
 
 @end

@@ -11,6 +11,7 @@
 @interface CMGuidedSearchUnitSliderUnit : NSObject
 
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *formatString;
 @property (nonatomic) CGFloat multiplier;
 @property (nonatomic) CGFloat constant;
 
@@ -18,9 +19,9 @@
 
 @implementation CMGuidedSearchUnitSliderUnit
 
-- (CGFloat)applyTo:(CGFloat)amount
+- (NSString*)stringFromValue:(CGFloat)value
 {
-    return amount * self.multiplier + self.constant;
+    return [NSString stringWithFormat:self.formatString, value * self.multiplier + self.constant];
 }
 
 @end
@@ -29,6 +30,7 @@
 
 @property (nonatomic, retain) NSMutableArray *units;
 @property (nonatomic, retain) CALayer *thumbLayer;
+@property (nonatomic, retain) CALayer *trackLayer;
 @property (nonatomic, retain) NSMutableArray *stepLayers;
 
 @end
@@ -70,12 +72,22 @@
                                                           constant:0.f]];
     }
     
-    self.numberFormatter = [[NSNumberFormatter alloc] init];
-    self.numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+    [self.thumbContainerView addGestureRecognizer:
+     [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(recognizedPan:)]];
     
-    [self.thumbContainerView addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self
-                                                                                          action:@selector(recognizedPan:)]];
+    UIFont *defaultSegmentFont = [UIFont fontWithName:@"Gotham-Book" size:14.f];
+    UIFont *selectedSegmentFont = [UIFont fontWithName:@"Gotham-Bold" size:14.f];
     
+    [self.unitSegmentedControl setTitleTextAttributes:@{ NSForegroundColorAttributeName: [UIColor grayColor],
+                                                         NSFontAttributeName: defaultSegmentFont }
+                                             forState:UIControlStateNormal];
+    
+    [self.unitSegmentedControl setTitleTextAttributes:@{ NSForegroundColorAttributeName: [UIColor darkGrayColor],
+                                                         NSFontAttributeName: selectedSegmentFont }
+                                             forState:UIControlStateSelected];
+
+    self.unitSegmentedControl.tintColor = [UIColor clearColor];
+
     self.thumbSize = 0.1f;
     self.minimumValue = 0.f;
     self.maximumValue = 100.f;
@@ -88,25 +100,21 @@
 
 #pragma mark -
 
-- (void)addUnitWithName:(NSString *)name multiplier:(CGFloat)multiplier constant:(CGFloat)constant
+- (void)addUnitWithName:(NSString *)name formatString:(NSString *)formatString multiplier:(CGFloat)multiplier constant:(CGFloat)constant
 {
     CMGuidedSearchUnitSliderUnit *unit = [CMGuidedSearchUnitSliderUnit new];
+    unit.formatString = formatString;
     unit.name = name;
     unit.multiplier = multiplier;
     unit.constant = constant;
 
     [self.units addObject:unit];
+
     [self updateUnitSegments];
+    [self updateLabel];
 }
 
 #pragma mark -
-
-- (void)setNumberFormatter:(NSNumberFormatter *)numberFormatter
-{
-    _numberFormatter = numberFormatter;
-
-    [self updateLabel];
-}
 
 - (void)setThumbSize:(CGFloat)thumbSize
 {
@@ -166,11 +174,17 @@
 
 - (void)updateLabel
 {
-    CGFloat displayValue = (self.unitSegmentedControl.selectedSegmentIndex < self.units.count)
-    ? [self.units[self.unitSegmentedControl.selectedSegmentIndex] applyTo:_value]
-    : _value;
-
-    self.valueLabel.text = [self.numberFormatter stringFromNumber:@(displayValue)];
+    if (self.unitSegmentedControl.selectedSegmentIndex < self.units.count) {
+        self.valueLabel.text = [self.units[self.unitSegmentedControl.selectedSegmentIndex] stringFromValue:self.value];
+    } else {
+        static dispatch_once_t onceToken;
+        static NSNumberFormatter *numberFormatter;
+        dispatch_once(&onceToken, ^{
+            numberFormatter = [NSNumberFormatter new];
+            numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+        });
+        self.valueLabel.text = [numberFormatter stringFromNumber:@(self.value)];
+    }
 }
 
 - (void)updateUnitSegments
@@ -198,18 +212,18 @@
 
 - (void)updateLayersAnimated:(BOOL)animated
 {
+    [CATransaction begin];
+
+    if (!animated) {
+        [CATransaction setValue:@(YES) forKey:kCATransactionDisableActions];
+    }
+    
     if (!self.thumbLayer) {
         self.thumbLayer = [CALayer new];
         self.thumbLayer.backgroundColor = [UIColor whiteColor].CGColor;
         self.thumbLayer.borderColor = [UIColor lightGrayColor].CGColor;
         self.thumbLayer.borderWidth = 1.f;
         [self.thumbContainerView.layer addSublayer:self.thumbLayer];
-    }
-    
-    [CATransaction begin];
-
-    if (!animated) {
-        [CATransaction setValue:@(YES) forKey:kCATransactionDisableActions];
     }
     
     CGFloat thumbHeight = self.thumbSize * CGRectGetHeight(self.thumbContainerView.frame) * 2.f;
@@ -219,11 +233,22 @@
     CGFloat thumbOffset = ((-.5f - (1.f - fractionalValue)) * thumbHeight) + thumbHeight/2.f;
     
     self.thumbLayer.cornerRadius = thumbHeight/2.f;
-    self.thumbLayer.frame = CGRectMake(CGRectGetWidth(self.thumbContainerView.frame)/2.f - thumbHeight/2.f,
-                                       (1.f - fractionalValue) * CGRectGetHeight(self.thumbContainerView.frame) + thumbOffset,
-                                       thumbHeight,
-                                       thumbHeight);
+    self.thumbLayer.frame = CGRectIntegral(CGRectMake(CGRectGetWidth(self.thumbContainerView.frame)/2.f - thumbHeight/2.f,
+                                                      (1.f - fractionalValue) * CGRectGetHeight(self.thumbContainerView.frame) + thumbOffset,
+                                                      thumbHeight,
+                                                      thumbHeight));
 
+    if (!self.trackLayer) {
+        self.trackLayer = [CALayer new];
+        self.trackLayer.backgroundColor = [UIColor colorWithWhite:0.9f alpha:1.f].CGColor;
+        [self.thumbContainerView.layer insertSublayer:self.trackLayer below:self.thumbLayer];
+    }
+    
+    self.trackLayer.frame = CGRectIntegral(CGRectMake(CGRectGetWidth(self.thumbContainerView.frame)/2.f,
+                                                      0.f,
+                                                      1.f,
+                                                      CGRectGetHeight(self.thumbContainerView.frame)));
+    
     if (!self.stepLayers) {
         self.stepLayers = [NSMutableArray new];
     }
@@ -241,16 +266,18 @@
                 stepLayer = self.stepLayers[i];
             } else {
                 stepLayer = [CAGradientLayer new];
-                stepLayer.colors = @[ (id)[UIColor clearColor].CGColor,
-                                      (id)[UIColor lightGrayColor].CGColor,
-                                      (id)[UIColor clearColor].CGColor ];
+                stepLayer.colors = @[ (id)[UIColor colorWithWhite:0.9f alpha:0.f].CGColor,
+                                      (id)[UIColor colorWithWhite:0.9f alpha:1.f].CGColor,
+                                      (id)[UIColor colorWithWhite:0.9f alpha:1.f].CGColor,
+                                      (id)[UIColor colorWithWhite:0.9f alpha:0.f].CGColor ];
+                stepLayer.locations = @[ @(0.f), @(0.3f), @(0.7f), @(1.f) ];
                 stepLayer.startPoint = CGPointMake(0.f, 0.5f);
                 stepLayer.endPoint = CGPointMake(1.f, 0.5f);
                 [self.thumbContainerView.layer insertSublayer:stepLayer below:self.thumbLayer];
                 [self.stepLayers addObject:stepLayer];
             }
 
-            stepLayer.frame = CGRectMake(0.f, (i+1)*stepGap, stepWidth, 1.f);
+            stepLayer.frame = CGRectMake(0.f, roundf((i+1)*stepGap), stepWidth, 1.f);
         }
     }
 

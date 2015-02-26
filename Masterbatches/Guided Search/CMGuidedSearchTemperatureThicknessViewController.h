@@ -13,6 +13,7 @@
 
 @property (nonatomic, weak) IBOutlet CMGuidedSearchUnitSlider *temperatureSlider;
 @property (nonatomic, weak) IBOutlet CMGuidedSearchUnitSlider *thicknessSlider;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *topConstraint;
 
 @property (nonatomic, strong) CMGuidedSearchFlowStep *step;
 @property (nonatomic, weak) id<CMGuidedSearchStepViewControllerDelegate> stepDelegate;
