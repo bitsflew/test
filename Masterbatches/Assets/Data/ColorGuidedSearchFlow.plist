@@ -8,15 +8,15 @@
 	<array>
 		<dict>
 			<key>Class</key>
-			<string>ProductType</string>
-			<key>Title</key>
-			<string>Product type</string>
-		</dict>
-		<dict>
-			<key>Class</key>
 			<string>TemperatureThickness</string>
 			<key>Title</key>
 			<string>Temperature and thickness</string>
+		</dict>
+		<dict>
+			<key>Class</key>
+			<string>ProductType</string>
+			<key>Title</key>
+			<string>Product type</string>
 		</dict>
 	</array>
 </dict>

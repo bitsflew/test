@@ -169,39 +169,22 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
     [self addChildViewController:self.stepViewController];
     
     dispatch_block_t addStepViewBlock = ^{
+        self.stepViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
         [self.stepContainerView addSubview:self.stepViewController.view];
-        
-        [self.stepContainerView addConstraint:[NSLayoutConstraint constraintWithItem:self.stepViewController.view
-                                                                           attribute:NSLayoutAttributeLeadingMargin
-                                                                           relatedBy:NSLayoutRelationEqual
-                                                                              toItem:self.stepContainerView
-                                                                           attribute:NSLayoutAttributeLeadingMargin
-                                                                          multiplier:1.f
-                                                                            constant:0.f]];
-        
-        [self.stepContainerView addConstraint:[NSLayoutConstraint constraintWithItem:self.stepViewController.view
-                                                                           attribute:NSLayoutAttributeTopMargin
-                                                                           relatedBy:NSLayoutRelationEqual
-                                                                              toItem:self.stepContainerView
-                                                                           attribute:NSLayoutAttributeTopMargin
-                                                                          multiplier:1.f
-                                                                            constant:0.f]];
 
-        [self.stepContainerView addConstraint:[NSLayoutConstraint constraintWithItem:self.stepViewController.view
-                                                                           attribute:NSLayoutAttributeWidth
-                                                                           relatedBy:NSLayoutRelationEqual
-                                                                              toItem:self.stepContainerView
-                                                                           attribute:NSLayoutAttributeWidth
-                                                                          multiplier:1.f
-                                                                            constant:0.f]];
-        
-        [self.stepContainerView addConstraint:[NSLayoutConstraint constraintWithItem:self.stepViewController.view
-                                                                           attribute:NSLayoutAttributeHeight
-                                                                           relatedBy:NSLayoutRelationEqual
-                                                                              toItem:self.stepContainerView
-                                                                           attribute:NSLayoutAttributeHeight
-                                                                          multiplier:1.f
-                                                                            constant:0.f]];
+        for (NSNumber *attribute in @[ @(NSLayoutAttributeLeft),
+                                       @(NSLayoutAttributeTop),
+                                       @(NSLayoutAttributeWidth),
+                                       @(NSLayoutAttributeHeight)
+                                       ]) {
+            [self.stepContainerView addConstraint:[NSLayoutConstraint constraintWithItem:self.stepViewController.view
+                                                             attribute:attribute.integerValue
+                                                             relatedBy:NSLayoutRelationEqual
+                                                                toItem:self.stepContainerView
+                                                             attribute:attribute.integerValue
+                                                            multiplier:1.f
+                                                              constant:0.f]];
+        }
     };
 
     self.titleLabel.text = step.title;
