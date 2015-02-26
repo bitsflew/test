@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreGraphics/CoreGraphics.h>
 
 @interface CMProductSpecificationSimpleNamedAttribute : NSObject // provides hash and equals: implementations
 
@@ -40,6 +41,9 @@
 @property (nonatomic, retain) NSArray *additives; // <CMProductSpecificationAdditive>
 @property (nonatomic, retain) NSArray *resins;    // <CMProductSpecificationResin>
 @property (nonatomic, retain) CMProductSpecificationProductType *productType;
+
+@property (nonatomic) CGFloat temperatureInCentrigrade;
+@property (nonatomic) CGFloat thicknessInMillimeters;
 
 - (void)setValue:(id)value forAdditionalQuestionKey:(NSString*)key;
 - (id)valueForAdditionalQuestionKey:(NSString*)key;

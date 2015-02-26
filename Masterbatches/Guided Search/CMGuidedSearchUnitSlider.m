@@ -123,12 +123,23 @@
     [self updateLayersAnimated:NO];
 }
 
+- (void)setMinimumValue:(CGFloat)minimumValue
+{
+    _minimumValue = minimumValue;
+    self.value = fmaxf(self.value, minimumValue);
+}
+
+- (void)setMaximumValue:(CGFloat)maximumValue
+{
+    _maximumValue = maximumValue;
+    self.value = fminf(self.value, _maximumValue);
+}
+
 - (void)setValue:(CGFloat)value
 {
     _value = fmaxf(fminf(value, self.maximumValue), self.minimumValue);
 
     [self updateLabel];
-
     [self updateLayersAnimated:NO];
 }
 
@@ -153,8 +164,10 @@
                                              (CGRectGetHeight(self.thumbContainerView.frame) - thumbHeight*2.f)
                                             );
             self.value = self.minimumValue + fractionalValue * (self.maximumValue - self.minimumValue);
-        }
+
+            [self sendActionsForControlEvents:UIControlEventValueChanged];
             break;
+        }
         case UIGestureRecognizerStateEnded:
             break;
         default:

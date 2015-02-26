@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CMGuidedSearchUnitSlider : UIView
+@interface CMGuidedSearchUnitSlider : UIControl
 
 @property (nonatomic, weak) IBOutlet UIView *thumbContainerView;
 @property (nonatomic, weak) IBOutlet UILabel *valueLabel;
