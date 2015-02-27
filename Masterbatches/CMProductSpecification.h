@@ -21,31 +21,47 @@
 
 @interface CMProductSpecificationAdditive : CMProductSpecificationSimpleNamedAttribute
 
-+ (instancetype)attributeWithName:(NSString*)name;
-
 @end
 
 @interface CMProductSpecificationResin : CMProductSpecificationSimpleNamedAttribute
-
-+ (instancetype)attributeWithName:(NSString*)name;
 
 @end
 
 @interface CMProductSpecificationProductType : CMProductSpecificationSimpleNamedAttribute
 
-+ (instancetype)attributeWithName:(NSString*)name;
-
 @end
 
 @interface CMProductSpecificationRegulatoryType : CMProductSpecificationSimpleNamedAttribute
-
-+ (instancetype)regulatoryTypeWithName:(NSString*)name;
 
 @end
 
 @interface CMProductSpecificationIndustryType : CMProductSpecificationSimpleNamedAttribute
 
-+ (instancetype)industryTypeWithName:(NSString*)name;
+@end
+
+@interface CMProductSpecificationLightSource : CMProductSpecificationSimpleNamedAttribute
+
+@end
+
+@interface CMProductSpecificationMatchAccuracy : CMProductSpecificationSimpleNamedAttribute
+
+@property (nonatomic) BOOL isColorCoding;
+
+@end
+
+@interface CMProductSpecificationPhysicalForm : CMProductSpecificationSimpleNamedAttribute
+
+@end
+
+@interface CMProductSpecificationOpacity : CMProductSpecificationSimpleNamedAttribute
+
+@end
+
+@interface CMProductSpecificationPartFinish : CMProductSpecificationSimpleNamedAttribute
+
+@end
+
+@interface CMProductSpecificationExposure : CMProductSpecificationSimpleNamedAttribute
 
 @end
 

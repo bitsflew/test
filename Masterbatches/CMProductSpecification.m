@@ -64,6 +64,37 @@
 
 @end
 
+@implementation CMProductSpecificationLightSource
+
+@end
+
+@implementation CMProductSpecificationMatchAccuracy
+
++ (instancetype)attributeWithName:(NSString *)name isColorCoding:(BOOL)isColorCoding
+{
+    CMProductSpecificationMatchAccuracy *matchAccuracy = [super attributeWithName:name];
+    matchAccuracy.isColorCoding = isColorCoding;
+    return matchAccuracy;
+}
+
+@end
+
+@implementation CMProductSpecificationPhysicalForm
+
+@end
+
+@implementation CMProductSpecificationOpacity
+
+@end
+
+@implementation CMProductSpecificationPartFinish
+
+@end
+
+@implementation CMProductSpecificationExposure
+
+@end
+
 @interface CMProductSpecification ()
 
 @property (nonatomic, retain) NSMutableDictionary *additionalQuestionValues;
