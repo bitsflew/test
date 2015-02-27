@@ -58,6 +58,7 @@
 		44B16D381AA07F8D009BD8A7 /* CMGuidedSearchColorQuestionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44B16D361AA07F8D009BD8A7 /* CMGuidedSearchColorQuestionsViewController.xib */; };
 		44B16D3A1AA0A1F3009BD8A7 /* ic_checkmark_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 44B16D391AA0A1F3009BD8A7 /* ic_checkmark_blue.png */; };
 		44B16D3C1AA0A1FB009BD8A7 /* ic_checkmark_blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44B16D3B1AA0A1FB009BD8A7 /* ic_checkmark_blue@2x.png */; };
+		44B16D3F1AA0B046009BD8A7 /* CMProductSpecification+ChecklistItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B16D3E1AA0B046009BD8A7 /* CMProductSpecification+ChecklistItem.m */; };
 		44B4BD671A9B759400158D90 /* CMGuidedSearchAdditiveFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B4BD661A9B759400158D90 /* CMGuidedSearchAdditiveFlowViewController.m */; };
 		44B4BD6A1A9B763A00158D90 /* CMGuidedSearchColorFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B4BD691A9B763A00158D90 /* CMGuidedSearchColorFlowViewController.m */; };
 		44B4BD6E1A9B768400158D90 /* AdditiveGuidedSearchFlow.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44B4BD6B1A9B768400158D90 /* AdditiveGuidedSearchFlow.plist */; };
@@ -188,6 +189,8 @@
 		44B16D361AA07F8D009BD8A7 /* CMGuidedSearchColorQuestionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMGuidedSearchColorQuestionsViewController.xib; sourceTree = "<group>"; };
 		44B16D391AA0A1F3009BD8A7 /* ic_checkmark_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_checkmark_blue.png; sourceTree = "<group>"; };
 		44B16D3B1AA0A1FB009BD8A7 /* ic_checkmark_blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_checkmark_blue@2x.png"; sourceTree = "<group>"; };
+		44B16D3D1AA0B046009BD8A7 /* CMProductSpecification+ChecklistItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CMProductSpecification+ChecklistItem.h"; sourceTree = "<group>"; };
+		44B16D3E1AA0B046009BD8A7 /* CMProductSpecification+ChecklistItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CMProductSpecification+ChecklistItem.m"; sourceTree = "<group>"; };
 		44B4BD651A9B759400158D90 /* CMGuidedSearchAdditiveFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMGuidedSearchAdditiveFlowViewController.h; path = "Flow subclasses/CMGuidedSearchAdditiveFlowViewController.h"; sourceTree = "<group>"; };
 		44B4BD661A9B759400158D90 /* CMGuidedSearchAdditiveFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMGuidedSearchAdditiveFlowViewController.m; path = "Flow subclasses/CMGuidedSearchAdditiveFlowViewController.m"; sourceTree = "<group>"; };
 		44B4BD681A9B763A00158D90 /* CMGuidedSearchColorFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMGuidedSearchColorFlowViewController.h; path = "Flow subclasses/CMGuidedSearchColorFlowViewController.h"; sourceTree = "<group>"; };
@@ -385,6 +388,8 @@
 				443366D11A923BE0002DD5F5 /* CMProductSpecification.m */,
 				44B16D2E1AA074E3009BD8A7 /* CMProductSpecification+GridItem.h */,
 				44B16D2F1AA074E3009BD8A7 /* CMProductSpecification+GridItem.m */,
+				44B16D3D1AA0B046009BD8A7 /* CMProductSpecification+ChecklistItem.h */,
+				44B16D3E1AA0B046009BD8A7 /* CMProductSpecification+ChecklistItem.m */,
 				44053E0E1A9CBCC900AFEBC6 /* CMProjectRequest.h */,
 				44053E0F1A9CBCC900AFEBC6 /* CMProjectRequest.m */,
 				44E9E53D1A95E58F0028B01F /* CMGuidedSearchFlow.h */,
@@ -768,6 +773,7 @@
 				44B4BD671A9B759400158D90 /* CMGuidedSearchAdditiveFlowViewController.m in Sources */,
 				4457F4891A94A963002FF4F5 /* TOMSMorphingLabel.m in Sources */,
 				44053E101A9CBCC900AFEBC6 /* CMProjectRequest.m in Sources */,
+				44B16D3F1AA0B046009BD8A7 /* CMProductSpecification+ChecklistItem.m in Sources */,
 				443366A61A923349002DD5F5 /* Masterbatches.xcdatamodeld in Sources */,
 				443366D21A923BE0002DD5F5 /* CMProductSpecification.m in Sources */,
 			);

@@ -74,6 +74,8 @@ static const CGFloat kCMChecklistButtonCheckScale = 0.5f;
 
 - (void)setItem:(id<CMChecklistItem>)item
 {
+    _item = item;
+
     self.label.text = [item title];
 }
 
@@ -138,8 +140,17 @@ static const CGFloat kCMChecklistButtonCheckScale = 0.5f;
     [self updateViews];
 }
 
+- (void)checkItem:(id<CMChecklistItem>)item
+{
+    [self checkItems:item ? @[ item ] : @[]];
+}
+
 - (void)checkItems:(NSArray *)items
 {
+    if (!items) {
+        items = @[];
+    }
+
     for (CMChecklistButton *button in self.buttons) {
         button.checked = [items containsObject:button.item];
     }

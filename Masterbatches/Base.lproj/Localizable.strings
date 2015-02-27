@@ -13,7 +13,7 @@
 "MustSpecifyProductType" = "Choose a product type from the grid.";
 "Close" = "Close";
 "Overview" = "Overview";
-"SeeProjectRequest" = "See project request overview";
-"ShowNoResults" = "No results – tap for project request";
-"ShowSingleResult" = "Show one result";
-"ShowPluralResultsFormat" = "Show %d results";
+"SeeProjectRequest" = "open project overview";
+"ShowNoResults" = "no results – tap for project request";
+"ShowSingleResult" = "show one result";
+"ShowPluralResultsFormat" = "show %d results";

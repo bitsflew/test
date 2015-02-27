@@ -70,17 +70,7 @@
 
 @implementation CMProductSpecificationMatchAccuracy
 
-+ (instancetype)attributeWithName:(NSString *)name isColorCoding:(BOOL)isColorCoding
-{
-    CMProductSpecificationMatchAccuracy *matchAccuracy = [super attributeWithName:name];
-    matchAccuracy.isColorCoding = isColorCoding;
-    return matchAccuracy;
-}
-
-- (NSUInteger)hash
-{
-    return 31 * self.name.hash + (int)self.isColorCoding;
-}
+// NOTE: Do not implement hash; considered equal when names match
 
 @end
 

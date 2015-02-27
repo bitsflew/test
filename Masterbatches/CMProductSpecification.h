@@ -45,7 +45,7 @@
 
 @interface CMProductSpecificationMatchAccuracy : CMProductSpecificationSimpleNamedAttribute
 
-@property (nonatomic) BOOL isColorCoding;
+@property (nonatomic, copy) NSString *colorCoding;
 
 @end
 
@@ -72,6 +72,13 @@
 @property (nonatomic, retain) CMProductSpecificationProductType *productType;
 @property (nonatomic, retain) CMProductSpecificationIndustryType *industryType;
 @property (nonatomic, retain) NSArray *regulatoryTypes;
+@property (nonatomic, retain) NSArray *exposures; // <CMProductSpecificationExposure>
+@property (nonatomic, retain) NSArray *lightSources; // <CMProductSpecificationLightSource>
+
+@property (nonatomic, retain) CMProductSpecificationOpacity *opacity;
+@property (nonatomic, retain) CMProductSpecificationPartFinish *partFinish;
+@property (nonatomic, retain) CMProductSpecificationPhysicalForm *physicalForm;
+@property (nonatomic, retain) CMProductSpecificationMatchAccuracy *matchAccuracy;
 
 @property (nonatomic) CGFloat temperatureInCentrigrade;
 @property (nonatomic) CGFloat thicknessInMillimeters;

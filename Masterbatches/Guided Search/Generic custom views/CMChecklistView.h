@@ -26,6 +26,7 @@
 @property (nonatomic, retain) NSArray *items;
 @property (nonatomic, readonly) NSArray *checkedItems;
 
+- (void)checkItem:(id<CMChecklistItem>)item;
 - (void)checkItems:(NSArray*)items;
 
 @end
