@@ -63,6 +63,8 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 - (void)setFlow:(CMGuidedSearchFlow*)flow
 {
     _flow = flow;
+    
+    self.title = flow.title;
 
     if (self.isViewLoaded) {
         [self presentStep:flow.firstStep];

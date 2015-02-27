@@ -25,6 +25,9 @@
     [[UINavigationBar appearance] setBackgroundImage:[UIImage new]
                        forBarPosition:UIBarPositionAny
                            barMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{ NSFontAttributeName: [UIFont fontWithName:@"Gotham-Book" size:16.f] }];
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{ NSFontAttributeName: [UIFont fontWithName:@"Gotham-Book" size:16.f] }
+                                                forState:UIControlStateNormal];
 
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"3cdb31a9f9a51d026f539c6fb7e271f5"];
     [[BITHockeyManager sharedHockeyManager] startManager];
