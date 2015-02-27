@@ -40,6 +40,10 @@
 
 @end
 
+@interface CMProductSpecificationApplicationProcess : CMProductSpecificationSimpleNamedAttribute
+
+@end
+
 @interface CMProductSpecificationLightSource : CMProductSpecificationSimpleNamedAttribute
 
 @end
@@ -89,6 +93,7 @@
 @property (nonatomic, retain) CMProductSpecificationPhysicalForm *physicalForm;
 @property (nonatomic, retain) CMProductSpecificationMatchAccuracy *matchAccuracy;
 @property (nonatomic, retain) CMProductSpecificationColor *color; // colour :-(
+@property (nonatomic, retain) CMProductSpecificationApplicationProcess *applicationProcess;
 
 @property (nonatomic) CGFloat temperatureInCentrigrade;
 @property (nonatomic) CGFloat thicknessInMillimeters;

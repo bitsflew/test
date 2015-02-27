@@ -14,12 +14,6 @@
 		</dict>
 		<dict>
 			<key>Class</key>
-			<string>ColorQuestions</string>
-			<key>Title</key>
-			<string>A few color questions</string>
-		</dict>
-		<dict>
-			<key>Class</key>
 			<string>ProductRegulatoryIndustry</string>
 			<key>Title</key>
 			<string>Select product, regulatory and industry types</string>
@@ -29,6 +23,18 @@
 			<string>TemperatureThickness</string>
 			<key>Title</key>
 			<string>Temperature and thickness</string>
+		</dict>
+		<dict>
+			<key>Class</key>
+			<string>ApplicationProcess</string>
+			<key>Title</key>
+			<string>What is the application/process?</string>
+		</dict>
+		<dict>
+			<key>Class</key>
+			<string>ColorQuestions</string>
+			<key>Title</key>
+			<string>A few color questions</string>
 		</dict>
 	</array>
 </dict>

@@ -64,6 +64,10 @@
 
 @end
 
+@implementation CMProductSpecificationApplicationProcess
+
+@end
+
 @implementation CMProductSpecificationLightSource
 
 @end
