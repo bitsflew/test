@@ -9,8 +9,6 @@
             <string>Gotham-Book</string>
             <string>Gotham-Book</string>
             <string>Gotham-Book</string>
-            <string>Gotham-Book</string>
-            <string>Gotham-Book</string>
         </mutableArray>
         <mutableArray key="Mercury_Text_G1_Roman.ttf">
             <string>MercuryTextG1-Roman</string>
@@ -107,10 +105,14 @@
                         <action selector="tappedOverviewToggle:" destination="-1" eventType="touchUpInside" id="6Vd-gf-fvd"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4N-V8-SJB">
-                    <rect key="frame" x="35" y="180" width="100" height="29"/>
-                    <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="15"/>
-                    <state key="normal" title="previous step">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4N-V8-SJB">
+                    <rect key="frame" x="35" y="180" width="132" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="132" id="8Qg-TA-tcf"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="previous step" image="ic_arrow_left.png">
                         <color key="titleColor" red="0.50165504217147827" green="0.50964659452438354" blue="0.52206969261169434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -125,10 +127,15 @@
                         <constraint firstAttribute="width" constant="120" id="l37-oJ-juW"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0s3-dU-3c6">
-                    <rect key="frame" x="496" y="180" width="69" height="29"/>
-                    <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="15"/>
-                    <state key="normal" title="next step">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0s3-dU-3c6">
+                    <rect key="frame" x="461" y="180" width="104" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="104" id="PFh-63-Ysi"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <inset key="titleEdgeInsets" minX="-15" minY="0.0" maxX="15" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="90" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="next step" image="ic_arrow_right.png">
                         <color key="titleColor" red="0.50165504217147827" green="0.50964659452438354" blue="0.52206969261169434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -145,7 +152,7 @@
                     </constraints>
                     <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="11"/>
                     <inset key="titleEdgeInsets" minX="-28" minY="30" maxX="0.0" maxY="0.0"/>
-                    <inset key="imageEdgeInsets" minX="68" minY="-20" maxX="2" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="72" minY="-20" maxX="0.0" maxY="0.0"/>
                     <state key="normal" title="back to solution finder" image="ic_circle_up.png">
                         <color key="titleColor" red="0.50165504217147827" green="0.50964659452438354" blue="0.52206969261169434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -208,6 +215,7 @@
                 <constraint firstAttribute="trailing" secondItem="xW9-OW-XJO" secondAttribute="trailing" id="D5o-iP-8Lx"/>
                 <constraint firstItem="VWH-Un-ZpZ" firstAttribute="trailing" secondItem="0s3-dU-3c6" secondAttribute="trailing" constant="35" id="Ent-jW-bLV"/>
                 <constraint firstItem="xW9-OW-XJO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="EqA-gq-27J"/>
+                <constraint firstItem="QXi-dr-Szf" firstAttribute="bottom" secondItem="ddT-Y6-SV0" secondAttribute="bottom" constant="30" id="GOI-Nz-gbg"/>
                 <constraint firstAttribute="trailing" secondItem="VWH-Un-ZpZ" secondAttribute="trailing" id="GaP-UE-Ohb"/>
                 <constraint firstItem="QXi-dr-Szf" firstAttribute="bottom" secondItem="OP0-YV-2dE" secondAttribute="bottom" constant="27" id="Ibr-0n-GzJ"/>
                 <constraint firstItem="QXi-dr-Szf" firstAttribute="top" secondItem="Htg-xM-6NX" secondAttribute="bottom" constant="-25" id="JCJ-Jh-OcJ"/>
@@ -216,6 +224,7 @@
                 <constraint firstItem="wRK-Kl-oOk" firstAttribute="leading" secondItem="VWH-Un-ZpZ" secondAttribute="leading" constant="35" id="Mv7-UJ-H7e"/>
                 <constraint firstAttribute="centerX" secondItem="OP0-YV-2dE" secondAttribute="centerX" id="OWl-3o-Vxc"/>
                 <constraint firstItem="Uiy-dh-BtW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="PxV-he-kSc"/>
+                <constraint firstItem="Q1d-J0-WaX" firstAttribute="bottom" secondItem="ddT-Y6-SV0" secondAttribute="bottom" constant="-28" id="TGN-t0-DY9"/>
                 <constraint firstItem="B4N-V8-SJB" firstAttribute="top" secondItem="VWH-Un-ZpZ" secondAttribute="top" constant="-30" id="a8q-yK-XJu"/>
                 <constraint firstAttribute="bottom" secondItem="VWH-Un-ZpZ" secondAttribute="bottom" id="cQq-hG-7M8"/>
                 <constraint firstAttribute="trailing" secondItem="wRK-Kl-oOk" secondAttribute="trailing" constant="35" id="coo-HD-Fzd"/>
@@ -245,14 +254,18 @@
                 <mask key="constraints">
                     <exclude reference="LFL-gN-XyT"/>
                     <exclude reference="pSK-wy-UI0"/>
+                    <exclude reference="1iG-qV-i8n"/>
                     <exclude reference="uF9-Fv-tCu"/>
                     <exclude reference="Avu-Yl-hdh"/>
+                    <exclude reference="GOI-Nz-gbg"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="409" y="485"/>
         </view>
     </objects>
     <resources>
+        <image name="ic_arrow_left.png" width="11" height="19"/>
+        <image name="ic_arrow_right.png" width="11" height="19"/>
         <image name="ic_circle_down.png" width="23" height="24"/>
         <image name="ic_circle_up.png" width="23" height="24"/>
         <image name="img_logo_actionbar.png" width="226" height="54"/>

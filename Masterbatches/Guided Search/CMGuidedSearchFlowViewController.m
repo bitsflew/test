@@ -476,5 +476,4 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
                      }];
 }
 
-
 @end
