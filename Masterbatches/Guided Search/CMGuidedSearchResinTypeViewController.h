@@ -7,9 +7,9 @@
 //
 
 #import "CMGuidedSearchStepViewController.h"
-#import "CMGuidedSearchGridViewController.h"
+#import "CMGridViewController.h"
 
-@interface CMGuidedSearchResinTypeViewController : CMGuidedSearchGridViewController <CMGuidedSearchStepViewController>
+@interface CMGuidedSearchResinTypeViewController : CMGridViewController <CMGuidedSearchStepViewController>
 
 @property (nonatomic, strong) CMGuidedSearchFlowStep *step;
 @property (nonatomic, weak) id<CMGuidedSearchStepViewControllerDelegate> stepDelegate;

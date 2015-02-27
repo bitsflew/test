@@ -7,19 +7,7 @@
 //
 
 #import "CMGuidedSearchResinTypeViewController.h"
-
-@interface CMProductSpecificationResin (Item) <CMGuidedSearchGridItem>
-
-@end
-
-@implementation CMProductSpecificationResin (Item)
-
-- (NSString*)title
-{
-    return self.name;
-}
-
-@end
+#import "CMProductSpecification+GridItem.h"
 
 @interface CMGuidedSearchResinTypeViewController ()
 
@@ -66,13 +54,13 @@
 
 #pragma mark -
 
-- (void)guidedSearchGrid:(CMGuidedSearchGrid*)guidedSearchGrid didSelectItem:(id<CMGuidedSearchGridItem>)item
+- (void)gridView:(CMGridView*)gridView didSelectItem:(id<CMGridItem>)item
 {
     self.step.productSpecification.resins = self.grid.selectedItems;
     [self.stepDelegate stepViewControllerDidChangeProductSpecification:self];
 }
 
-- (void)guidedSearchGrid:(CMGuidedSearchGrid*)guidedSearchGrid didDeselectItem:(id<CMGuidedSearchGridItem>)item
+- (void)gridView:(CMGridView *)gridView didDeselectItem:(id<CMGridItem>)item
 {
     self.step.productSpecification.resins = self.grid.selectedItems;
     [self.stepDelegate stepViewControllerDidChangeProductSpecification:self];

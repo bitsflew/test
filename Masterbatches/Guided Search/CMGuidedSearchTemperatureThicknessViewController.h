@@ -7,12 +7,12 @@
 //
 
 #import "CMGuidedSearchStepViewController.h"
-#import "CMGuidedSearchUnitSlider.h"
+#import "CMUnitSlider.h"
 
 @interface CMGuidedSearchTemperatureThicknessViewController : UIViewController <CMGuidedSearchStepViewController>
 
-@property (nonatomic, weak) IBOutlet CMGuidedSearchUnitSlider *temperatureSlider;
-@property (nonatomic, weak) IBOutlet CMGuidedSearchUnitSlider *thicknessSlider;
+@property (nonatomic, weak) IBOutlet CMUnitSlider *temperatureSlider;
+@property (nonatomic, weak) IBOutlet CMUnitSlider *thicknessSlider;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *topConstraint;
 
 @property (nonatomic, strong) CMGuidedSearchFlowStep *step;

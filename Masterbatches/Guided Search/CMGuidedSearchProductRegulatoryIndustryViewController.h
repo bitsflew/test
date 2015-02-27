@@ -8,19 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import "CMGuidedSearchStepViewController.h"
-#import "CMGuidedSearchGrid.h"
+#import "CMGridView.h"
 
-@interface CMGuidedSearchProductRegulatoryIndustryViewController : UIViewController <CMGuidedSearchStepViewController, CMGuidedSearchGridSelectionDelegate>
+@interface CMGuidedSearchProductRegulatoryIndustryViewController : UIViewController <CMGuidedSearchStepViewController, CMGridViewSelectionDelegate>
 
 @property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
 
-@property (nonatomic, weak) IBOutlet CMGuidedSearchGrid *productGrid;
+@property (nonatomic, weak) IBOutlet CMGridView *productGrid;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *productGridHeightConstraint;
 
-@property (nonatomic, weak) IBOutlet CMGuidedSearchGrid *industryGrid;
+@property (nonatomic, weak) IBOutlet CMGridView *industryGrid;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *industryGridHeightConstraint;
 
-@property (nonatomic, weak) IBOutlet CMGuidedSearchGrid *regulatoryGrid;
+@property (nonatomic, weak) IBOutlet CMGridView *regulatoryGrid;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *regulatoryGridHeightConstraint;
 
 @property (nonatomic, strong) CMGuidedSearchFlowStep *step;

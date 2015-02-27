@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Clariant. All rights reserved.
 //
 
-#import "CMGuidedSearchGrid.h"
+#import "CMGridView.h"
 
 static NSString *CMGuidedSearchGridSelectionItemRoundedCellIdentifier = @"CMGuidedSearchGridSelectionItemRoundedCell";
 static NSUInteger CMGuidedSearchGridSelectionItemCellTitleTag = 100;
@@ -65,11 +65,11 @@ static NSUInteger CMGuidedSearchGridSelectionItemCellTitleTag = 100;
 
 @end
 
-@interface CMGuidedSearchGrid () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface CMGridView () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @end
 
-@implementation CMGuidedSearchGrid
+@implementation CMGridView
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -173,7 +173,7 @@ static NSUInteger CMGuidedSearchGridSelectionItemCellTitleTag = 100;
     [collectionView dequeueReusableCellWithReuseIdentifier:CMGuidedSearchGridSelectionItemRoundedCellIdentifier
                                               forIndexPath:indexPath];
 
-    id<CMGuidedSearchGridItem> item = self.items[indexPath.row];
+    id<CMGridItem> item = self.items[indexPath.row];
 
     ((UILabel*)[cell viewWithTag:CMGuidedSearchGridSelectionItemCellTitleTag]).text = [item title];
     
@@ -182,14 +182,14 @@ static NSUInteger CMGuidedSearchGridSelectionItemCellTitleTag = 100;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    id<CMGuidedSearchGridItem> item = self.items[indexPath.row];
-    [self.selectionDelegate guidedSearchGrid:self didSelectItem:item];
+    id<CMGridItem> item = self.items[indexPath.row];
+    [self.selectionDelegate gridView:self didSelectItem:item];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    id<CMGuidedSearchGridItem> item = self.items[indexPath.row];
-    [self.selectionDelegate guidedSearchGrid:self didDeselectItem:item];
+    id<CMGridItem> item = self.items[indexPath.row];
+    [self.selectionDelegate gridView:self didDeselectItem:item];
 }
 
 @end

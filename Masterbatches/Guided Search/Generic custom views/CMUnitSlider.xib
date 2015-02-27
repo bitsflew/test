@@ -9,7 +9,7 @@
         </mutableArray>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CMGuidedSearchUnitSlider">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CMUnitSlider">
             <connections>
                 <outlet property="thumbContainerView" destination="5UR-5h-ygo" id="s5O-c5-CUK"/>
                 <outlet property="unitSegmentedControl" destination="7BB-mJ-Qvf" id="aeQ-fA-bi7"/>

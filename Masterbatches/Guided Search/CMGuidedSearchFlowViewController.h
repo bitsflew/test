@@ -10,7 +10,7 @@
 
 #import "CMGuidedSearchStepViewController.h"
 #import "CMProductSpecification.h"
-#import "CMGuidedSearchFlowProgressView.h"
+#import "CMSteppedProgressView.h"
 #import "CMGuidedSearchFlow.h"
 #import "CMProjectRequest.h"
 
@@ -24,7 +24,7 @@
 @property (nonatomic, weak) IBOutlet UIView *stepOverlayView;
 @property (nonatomic, weak) IBOutlet UIButton *previousButton;
 @property (nonatomic, weak) IBOutlet UIButton *nextButton;
-@property (nonatomic, weak) IBOutlet CMGuidedSearchFlowProgressView *flowProgressView;
+@property (nonatomic, weak) IBOutlet CMSteppedProgressView *flowProgressView;
 
 // The overview pulls down from the top and displays information about either search results or the ongoing project request
 @property (nonatomic, weak) IBOutlet UIButton *overviewToggleButton;

@@ -77,6 +77,11 @@
     return matchAccuracy;
 }
 
+- (NSUInteger)hash
+{
+    return 31 * self.name.hash + (int)self.isColorCoding;
+}
+
 @end
 
 @implementation CMProductSpecificationPhysicalForm

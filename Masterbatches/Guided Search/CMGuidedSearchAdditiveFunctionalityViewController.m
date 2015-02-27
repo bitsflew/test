@@ -7,19 +7,7 @@
 //
 
 #import "CMGuidedSearchAdditiveFunctionalityViewController.h"
-
-@interface CMProductSpecificationAdditive (Item) <CMGuidedSearchGridItem>
-
-@end
-
-@implementation CMProductSpecificationAdditive (Item)
-
-- (NSString*)title
-{
-    return self.name;
-}
-
-@end
+#import "CMProductSpecification+GridItem.h"
 
 @interface CMGuidedSearchAdditiveFunctionalityViewController ()
 
@@ -83,13 +71,13 @@
 
 #pragma mark -
 
-- (void)guidedSearchGrid:(CMGuidedSearchGrid*)guidedSearchGrid didSelectItem:(id<CMGuidedSearchGridItem>)item
+- (void)gridView:(CMGridView*)gridView didSelectItem:(id<CMGridItem>)item
 {
     self.step.productSpecification.additives = self.grid.selectedItems;
     [self.stepDelegate stepViewControllerDidChangeProductSpecification:self];
 }
 
-- (void)guidedSearchGrid:(CMGuidedSearchGrid*)guidedSearchGrid didDeselectItem:(id<CMGuidedSearchGridItem>)item
+- (void)gridView:(CMGridView *)gridView didDeselectItem:(id<CMGridItem>)item
 {
     self.step.productSpecification.additives = self.grid.selectedItems;
     [self.stepDelegate stepViewControllerDidChangeProductSpecification:self];

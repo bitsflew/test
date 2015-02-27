@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Clariant. All rights reserved.
 //
 
-#import "CMGuidedSearchUnitSlider.h"
+#import "CMUnitSlider.h"
 
 @interface CMGuidedSearchUnitSliderUnit : NSObject
 
@@ -26,7 +26,7 @@
 
 @end
 
-@interface CMGuidedSearchUnitSlider ()
+@interface CMUnitSlider ()
 
 @property (nonatomic, retain) NSMutableArray *units;
 @property (nonatomic, retain) CALayer *thumbLayer;
@@ -35,7 +35,7 @@
 
 @end
 
-@implementation CMGuidedSearchUnitSlider
+@implementation CMUnitSlider
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {

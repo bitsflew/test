@@ -7,19 +7,7 @@
 //
 
 #import "CMGuidedSearchProductTypeViewController.h"
-
-@interface CMProductSpecificationProductType (Item) <CMGuidedSearchGridItem>
-
-@end
-
-@implementation CMProductSpecificationProductType (Item)
-
-- (NSString*)title
-{
-    return self.name;
-}
-
-@end
+#import "CMProductSpecification+GridItem.h"
 
 @interface CMGuidedSearchProductTypeViewController ()
 
@@ -56,13 +44,13 @@
 
 #pragma mark -
 
-- (void)guidedSearchGrid:(CMGuidedSearchGrid*)guidedSearchGrid didSelectItem:(id<CMGuidedSearchGridItem>)item
+- (void)gridView:(CMGridView*)gridView didSelectItem:(id<CMGridItem>)item
 {
     self.step.productSpecification.productType = self.grid.selectedItems.firstObject;
     [self.stepDelegate stepViewControllerDidChangeProductSpecification:self];
 }
 
-- (void)guidedSearchGrid:(CMGuidedSearchGrid*)guidedSearchGrid didDeselectItem:(id<CMGuidedSearchGridItem>)item
+- (void)gridView:(CMGridView *)gridView didDeselectItem:(id<CMGridItem>)item
 {
     self.step.productSpecification.productType = nil;
     [self.stepDelegate stepViewControllerDidChangeProductSpecification:self];

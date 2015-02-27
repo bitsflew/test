@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Clariant. All rights reserved.
 //
 
-#import "CMGuidedSearchFlowProgressView.h"
+#import "CMSteppedProgressView.h"
 
 @interface CMStepLayer : CALayer
 
@@ -18,14 +18,14 @@
 
 @end
 
-@interface CMGuidedSearchFlowProgressView ()
+@interface CMSteppedProgressView ()
 
 @property (nonatomic, retain) CAGradientLayer *trackLayer;
 @property (nonatomic, retain) CALayer *stepsLayer;
 
 @end
 
-@implementation CMGuidedSearchFlowProgressView
+@implementation CMSteppedProgressView
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {

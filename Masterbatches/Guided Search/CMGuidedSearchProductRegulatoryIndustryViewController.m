@@ -7,23 +7,9 @@
 //
 
 #import "CMGuidedSearchProductRegulatoryIndustryViewController.h"
+#import "CMProductSpecification+GridItem.h"
 
 @interface CMGuidedSearchProductRegulatoryIndustryViewController ()
-
-@end
-
-@interface CMProductSpecificationSimpleNamedAttribute (Grid)
-
-- (NSString*)title;
-
-@end
-
-@implementation CMProductSpecificationSimpleNamedAttribute (Grid)
-
-- (NSString*)title
-{
-    return self.name;
-}
 
 @end
 
@@ -80,15 +66,15 @@
 
 #pragma mark -
 
-- (void)guidedSearchGrid:(CMGuidedSearchGrid*)guidedSearchGrid didSelectItem:(id<CMGuidedSearchGridItem>)item
+- (void)gridView:(CMGridView*)gridView didSelectItem:(id<CMGridItem>)item
 {
-    if (guidedSearchGrid == self.productGrid) {
+    if (gridView == self.productGrid) {
         self.step.productSpecification.productType = item;
     } else
-        if (guidedSearchGrid == self.regulatoryGrid) {
-            self.step.productSpecification.regulatoryTypes = guidedSearchGrid.selectedItems;
+        if (gridView == self.regulatoryGrid) {
+            self.step.productSpecification.regulatoryTypes = gridView.selectedItems;
         } else
-        if (guidedSearchGrid == self.industryGrid) {
+        if (gridView == self.industryGrid) {
             self.step.productSpecification.industryType = item;
         } else {
             return;
@@ -97,10 +83,10 @@
     [self.stepDelegate stepViewControllerDidChangeProductSpecification:self];
 }
 
-- (void)guidedSearchGrid:(CMGuidedSearchGrid*)guidedSearchGrid didDeselectItem:(id<CMGuidedSearchGridItem>)item
+- (void)gridView:(CMGridView*)gridView didDeselectItem:(id<CMGridItem>)item
 {
-    if (guidedSearchGrid == self.regulatoryGrid) {
-        self.step.productSpecification.regulatoryTypes = guidedSearchGrid.selectedItems;
+    if (gridView == self.regulatoryGrid) {
+        self.step.productSpecification.regulatoryTypes = gridView.selectedItems;
     } else {
         return;
     }
