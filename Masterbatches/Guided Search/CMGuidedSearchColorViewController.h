@@ -7,8 +7,11 @@
 //
 
 #import "CMGuidedSearchStepViewController.h"
+#import "CMGridView.h"
 
 @interface CMGuidedSearchColorViewController : UIViewController <CMGuidedSearchStepViewController>
+
+@property (nonatomic, weak) IBOutlet CMGridView *colorGridView;
 
 @property (nonatomic, strong) CMGuidedSearchFlowStep *step;
 @property (nonatomic, weak) id<CMGuidedSearchStepViewControllerDelegate> stepDelegate;

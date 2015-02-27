@@ -189,7 +189,7 @@
         [UIView animateWithDuration:[info[UIKeyboardAnimationDurationUserInfoKey] doubleValue]
                          animations:^{
                              [self.scrollView scrollRectToVisible:self.matchAccuracyColorCodingTextField.frame
-                                                         animated:NO];                             
+                                                         animated:NO];
                          }];
     }
 }

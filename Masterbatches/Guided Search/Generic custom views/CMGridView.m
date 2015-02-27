@@ -9,13 +9,50 @@
 #import "CMGridView.h"
 
 static NSString *CMGuidedSearchGridSelectionItemRoundedCellIdentifier = @"CMGuidedSearchGridSelectionItemRoundedCell";
-static NSUInteger CMGuidedSearchGridSelectionItemCellTitleTag = 100;
 
 @interface CMGuidedSearchGridCollectionViewCell : UICollectionViewCell
+
+@property (nonatomic, weak) IBOutlet UIView *fillView;
+@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *titleCenterYConstraint;
+@property (nonatomic, weak) id<CMGridItem> lastAppliedItem;
+
 
 @end
 
 @implementation CMGuidedSearchGridCollectionViewCell
+
+- (void)awakeFromNib
+{
+    self.fillView.layer.backgroundColor = [UIColor whiteColor].CGColor;
+    self.fillView.layer.borderWidth = 1.f;
+    self.fillView.layer.masksToBounds = YES;
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    self.fillView.layer.cornerRadius = CGRectGetHeight(self.fillView.frame)/2.f;
+}
+
+- (void)applyItem:(id<CMGridItem>)item
+{
+    self.lastAppliedItem = item;
+
+    self.titleLabel.text = [item title];
+    
+    if ([item respondsToSelector:@selector(fillColor)]) {
+        self.fillView.layer.backgroundColor = [[item fillColor] CGColor];
+    }
+
+    if ([item respondsToSelector:@selector(titleColor)]) {
+        self.titleLabel.textColor = [item titleColor];
+    }
+
+    if ([item respondsToSelector:@selector(centerTitle)] && [item centerTitle]) {
+        self.titleCenterYConstraint.constant = 0.f;
+    }
+}
 
 - (void)applyLayoutAttributes:(UICollectionViewLayoutAttributes *)layoutAttributes
 {
@@ -26,6 +63,7 @@ static NSUInteger CMGuidedSearchGridSelectionItemCellTitleTag = 100;
 - (void)prepareForReuse
 {
     [super prepareForReuse];
+
     [self updateAlpha];
 }
 
@@ -43,7 +81,15 @@ static NSUInteger CMGuidedSearchGridSelectionItemCellTitleTag = 100;
 
 - (void)updateAlpha
 {
-    self.alpha = (self.isHighlighted || self.isSelected) ? 1.f : 0.3f;
+    if (![self.lastAppliedItem respondsToSelector:@selector(backgroundColor)]) {
+        self.fillView.layer.borderColor = (self.isSelected ? [UIColor colorWithWhite:0.1f alpha:1.f] : [UIColor lightGrayColor]).CGColor;
+    }
+    
+    self.alpha = self.isHighlighted ? 0.5f : 1.f;
+    
+    if (![self.lastAppliedItem respondsToSelector:@selector(titleColor)]) {
+        self.titleLabel.textColor = self.isSelected ? [UIColor colorWithWhite:0.1f alpha:1.f] : [UIColor colorWithWhite:0.3f alpha:1.f];
+    }
 }
 
 @end
@@ -174,14 +220,14 @@ static NSUInteger CMGuidedSearchGridSelectionItemCellTitleTag = 100;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell =
-    [collectionView dequeueReusableCellWithReuseIdentifier:CMGuidedSearchGridSelectionItemRoundedCellIdentifier
-                                              forIndexPath:indexPath];
+    CMGuidedSearchGridCollectionViewCell *cell =
+      [collectionView dequeueReusableCellWithReuseIdentifier:CMGuidedSearchGridSelectionItemRoundedCellIdentifier
+                                                forIndexPath:indexPath];
 
     id<CMGridItem> item = self.items[indexPath.row];
 
-    ((UILabel*)[cell viewWithTag:CMGuidedSearchGridSelectionItemCellTitleTag]).text = [item title];
-    
+    [cell applyItem:item];
+
     return cell;
 }
 

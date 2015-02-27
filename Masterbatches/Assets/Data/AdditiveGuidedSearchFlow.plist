@@ -20,9 +20,9 @@
 		</dict>
 		<dict>
 			<key>Class</key>
-			<string>ProductType</string>
+			<string>ProductRegulatoryIndustry</string>
 			<key>Title</key>
-			<string>Product type</string>
+			<string>Select product, regulatory and industry types</string>
 		</dict>
 		<dict>
 			<key>Class</key>

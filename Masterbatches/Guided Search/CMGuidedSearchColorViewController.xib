@@ -3,9 +3,15 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Gotham-Bold.otf">
+            <string>Gotham-Bold</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CMGuidedSearchColorViewController">
             <connections>
+                <outlet property="colorGridView" destination="3cm-lu-psH" id="4Mg-qu-9rs"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,19 +20,61 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By resin" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7l-1g-v1e">
-                    <rect key="frame" x="8" y="8" width="62" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F60-hp-Htk">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BY COLOR" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drF-Ks-kh0">
+                            <rect key="frame" x="50" y="8" width="119.5" height="24.5"/>
+                            <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="22"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="3cm-lu-psH" customClass="CMGridView">
+                            <rect key="frame" x="50" y="53" width="500" height="416"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="416" id="ebm-vr-Kyq"/>
+                            </constraints>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jSF-IH-QLH">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="3cm-lu-psH" secondAttribute="width" constant="100" id="4yi-X5-E3J"/>
+                        <constraint firstItem="drF-Ks-kh0" firstAttribute="top" secondItem="F60-hp-Htk" secondAttribute="top" constant="8" id="LK8-GF-2FV"/>
+                        <constraint firstItem="drF-Ks-kh0" firstAttribute="leading" secondItem="3cm-lu-psH" secondAttribute="leading" id="QdB-FI-X0j"/>
+                        <constraint firstAttribute="trailing" secondItem="3cm-lu-psH" secondAttribute="trailing" constant="50" id="Qts-1W-ja1"/>
+                        <constraint firstAttribute="trailing" secondItem="3cm-lu-psH" secondAttribute="trailing" constant="134" id="Yjc-x3-Rp0"/>
+                        <constraint firstItem="drF-Ks-kh0" firstAttribute="leading" secondItem="F60-hp-Htk" secondAttribute="leading" constant="50" id="dNa-eh-sRE"/>
+                        <constraint firstItem="3cm-lu-psH" firstAttribute="top" secondItem="drF-Ks-kh0" secondAttribute="bottom" constant="20" id="lfo-Os-HDN"/>
+                        <constraint firstAttribute="bottom" secondItem="3cm-lu-psH" secondAttribute="bottom" constant="40" id="vQG-AX-G5S"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Yjc-x3-Rp0"/>
+                        </mask>
+                    </variation>
+                </scrollView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="h7l-1g-v1e" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="Zz2-I9-zoZ"/>
-                <constraint firstItem="h7l-1g-v1e" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="qzx-n6-BnN"/>
+                <constraint firstItem="F60-hp-Htk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="NME-SX-bfA"/>
+                <constraint firstItem="F60-hp-Htk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="WJn-Rd-Vvo"/>
+                <constraint firstAttribute="bottom" secondItem="F60-hp-Htk" secondAttribute="bottom" id="cgZ-20-jj6"/>
+                <constraint firstItem="F60-hp-Htk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="oMh-4z-nTP"/>
+                <constraint firstAttribute="trailing" secondItem="F60-hp-Htk" secondAttribute="trailing" id="yxH-98-JR6"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="NME-SX-bfA"/>
+                </mask>
+            </variation>
         </view>
     </objects>
 </document>

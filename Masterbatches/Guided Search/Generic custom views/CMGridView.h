@@ -11,6 +11,9 @@
 @protocol CMGridItem <NSObject>
 @optional
 - (NSString*)title;
+- (UIColor*)fillColor;
+- (UIColor*)titleColor;
+- (BOOL)centerTitle;
 @end
 
 @class CMGridView;

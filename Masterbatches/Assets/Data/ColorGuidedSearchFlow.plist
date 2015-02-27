@@ -8,6 +8,12 @@
 	<array>
 		<dict>
 			<key>Class</key>
+			<string>Color</string>
+			<key>Title</key>
+			<string>Search color</string>
+		</dict>
+		<dict>
+			<key>Class</key>
 			<string>ColorQuestions</string>
 			<key>Title</key>
 			<string>A few color questions</string>
@@ -23,12 +29,6 @@
 			<string>TemperatureThickness</string>
 			<key>Title</key>
 			<string>Temperature and thickness</string>
-		</dict>
-		<dict>
-			<key>Class</key>
-			<string>ProductType</string>
-			<key>Title</key>
-			<string>Product type</string>
 		</dict>
 	</array>
 </dict>

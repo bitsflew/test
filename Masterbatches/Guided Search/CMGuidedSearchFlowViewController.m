@@ -273,10 +273,6 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
     [self presentNextStep];
 }
 
-- (IBAction)showMenu:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 #pragma mark -
 
 - (void)setOverviewPosition:(CGFloat)overviewPosition

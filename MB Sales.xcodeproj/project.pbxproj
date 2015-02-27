@@ -63,6 +63,8 @@
 		44B16D451AA0B44E009BD8A7 /* ic_arrow_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44B16D411AA0B44E009BD8A7 /* ic_arrow_left@2x.png */; };
 		44B16D461AA0B44E009BD8A7 /* ic_arrow_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 44B16D421AA0B44E009BD8A7 /* ic_arrow_right.png */; };
 		44B16D471AA0B44E009BD8A7 /* ic_arrow_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44B16D431AA0B44E009BD8A7 /* ic_arrow_right@2x.png */; };
+		44B16D4A1AA0BCE8009BD8A7 /* img_molmenu_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 44B16D481AA0BCE8009BD8A7 /* img_molmenu_active.png */; };
+		44B16D4B1AA0BCE8009BD8A7 /* img_molmenu_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44B16D491AA0BCE8009BD8A7 /* img_molmenu_active@2x.png */; };
 		44B4BD671A9B759400158D90 /* CMGuidedSearchAdditiveFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B4BD661A9B759400158D90 /* CMGuidedSearchAdditiveFlowViewController.m */; };
 		44B4BD6A1A9B763A00158D90 /* CMGuidedSearchColorFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B4BD691A9B763A00158D90 /* CMGuidedSearchColorFlowViewController.m */; };
 		44B4BD6E1A9B768400158D90 /* AdditiveGuidedSearchFlow.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44B4BD6B1A9B768400158D90 /* AdditiveGuidedSearchFlow.plist */; };
@@ -137,7 +139,7 @@
 		441470B51A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchTemperatureThicknessViewController.h; sourceTree = "<group>"; };
 		441470B61A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchTemperatureThicknessViewController.m; sourceTree = "<group>"; };
 		441470B71A93514500131077 /* CMGuidedSearchTemperatureThicknessViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMGuidedSearchTemperatureThicknessViewController.xib; sourceTree = "<group>"; };
-		441470BE1A93599100131077 /* CMGuidedSearchGridSelectionItemRoundedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMGuidedSearchGridSelectionItemRoundedCell.xib; sourceTree = "<group>"; };
+		441470BE1A93599100131077 /* CMGuidedSearchGridSelectionItemRoundedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CMGuidedSearchGridSelectionItemRoundedCell.xib; path = ../CMGuidedSearchGridSelectionItemRoundedCell.xib; sourceTree = "<group>"; };
 		4425494F1A9C91D600C38557 /* clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clear.png; sourceTree = "<group>"; };
 		442549571A9CA9C600C38557 /* CMGuidedSearchResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchResultsViewController.h; sourceTree = "<group>"; };
 		442549581A9CA9C600C38557 /* CMGuidedSearchResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchResultsViewController.m; sourceTree = "<group>"; };
@@ -199,6 +201,8 @@
 		44B16D411AA0B44E009BD8A7 /* ic_arrow_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_arrow_left@2x.png"; sourceTree = "<group>"; };
 		44B16D421AA0B44E009BD8A7 /* ic_arrow_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_arrow_right.png; sourceTree = "<group>"; };
 		44B16D431AA0B44E009BD8A7 /* ic_arrow_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_arrow_right@2x.png"; sourceTree = "<group>"; };
+		44B16D481AA0BCE8009BD8A7 /* img_molmenu_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_molmenu_active.png; sourceTree = "<group>"; };
+		44B16D491AA0BCE8009BD8A7 /* img_molmenu_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_molmenu_active@2x.png"; sourceTree = "<group>"; };
 		44B4BD651A9B759400158D90 /* CMGuidedSearchAdditiveFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMGuidedSearchAdditiveFlowViewController.h; path = "Flow subclasses/CMGuidedSearchAdditiveFlowViewController.h"; sourceTree = "<group>"; };
 		44B4BD661A9B759400158D90 /* CMGuidedSearchAdditiveFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMGuidedSearchAdditiveFlowViewController.m; path = "Flow subclasses/CMGuidedSearchAdditiveFlowViewController.m"; sourceTree = "<group>"; };
 		44B4BD681A9B763A00158D90 /* CMGuidedSearchColorFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMGuidedSearchColorFlowViewController.h; path = "Flow subclasses/CMGuidedSearchColorFlowViewController.h"; sourceTree = "<group>"; };
@@ -289,6 +293,8 @@
 			isa = PBXGroup;
 			children = (
 				4425494F1A9C91D600C38557 /* clear.png */,
+				44B16D481AA0BCE8009BD8A7 /* img_molmenu_active.png */,
+				44B16D491AA0BCE8009BD8A7 /* img_molmenu_active@2x.png */,
 				44B16D401AA0B44E009BD8A7 /* ic_arrow_left.png */,
 				44B16D411AA0B44E009BD8A7 /* ic_arrow_left@2x.png */,
 				44B16D421AA0B44E009BD8A7 /* ic_arrow_right.png */,
@@ -409,7 +415,6 @@
 				443366CA1A9239CE002DD5F5 /* CMGuidedSearchFlowViewController.h */,
 				443366CB1A9239CE002DD5F5 /* CMGuidedSearchFlowViewController.m */,
 				443366CC1A9239CE002DD5F5 /* CMGuidedSearchFlowViewController.xib */,
-				441470BE1A93599100131077 /* CMGuidedSearchGridSelectionItemRoundedCell.xib */,
 				442549571A9CA9C600C38557 /* CMGuidedSearchResultsViewController.h */,
 				442549581A9CA9C600C38557 /* CMGuidedSearchResultsViewController.m */,
 				442549591A9CA9C600C38557 /* CMGuidedSearchResultsViewController.xib */,
@@ -486,6 +491,7 @@
 				44B16D1E1AA0731B009BD8A7 /* CMSteppedProgressView.m */,
 				44B16D1F1AA0731B009BD8A7 /* CMGridView.h */,
 				44B16D201AA0731B009BD8A7 /* CMGridView.m */,
+				441470BE1A93599100131077 /* CMGuidedSearchGridSelectionItemRoundedCell.xib */,
 				44B16D211AA0731B009BD8A7 /* CMGridViewController.h */,
 				44B16D221AA0731B009BD8A7 /* CMGridViewController.m */,
 				44B16D231AA0731B009BD8A7 /* CMUnitSlider.h */,
@@ -685,10 +691,12 @@
 				442549601A9CAA6700C38557 /* CMGuidedSearchProjectRequestViewController.xib in Resources */,
 				4402E5EF1A9F5BD90087AFE4 /* CMGuidedSearchProductRegulatoryIndustryViewController.xib in Resources */,
 				4425495B1A9CA9C600C38557 /* CMGuidedSearchResultsViewController.xib in Resources */,
+				44B16D4B1AA0BCE8009BD8A7 /* img_molmenu_active@2x.png in Resources */,
 				44B4BD6E1A9B768400158D90 /* AdditiveGuidedSearchFlow.plist in Resources */,
 				4B24D7841A9B44AB001487B7 /* tap-smallest.aif in Resources */,
 				44107DB31A937719004053A2 /* Gotham-Bold.otf in Resources */,
 				4B7AA9631A96320500AD81EF /* gradient.png in Resources */,
+				44B16D4A1AA0BCE8009BD8A7 /* img_molmenu_active.png in Resources */,
 				441470BF1A93599100131077 /* CMGuidedSearchGridSelectionItemRoundedCell.xib in Resources */,
 				443366E61A92499C002DD5F5 /* CMGuidedSearchColorViewController.xib in Resources */,
 				44B16D461AA0B44E009BD8A7 /* ic_arrow_right.png in Resources */,

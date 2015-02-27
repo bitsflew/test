@@ -19,7 +19,6 @@
             <connections>
                 <outlet property="closeOverviewButton" destination="ddT-Y6-SV0" id="gnk-Ph-nc6"/>
                 <outlet property="flowProgressView" destination="Q1d-J0-WaX" id="PYZ-SB-feA"/>
-                <outlet property="menuButton" destination="SSU-VL-LVr" id="qgo-YP-ezH"/>
                 <outlet property="nextButton" destination="0s3-dU-3c6" id="ine-cL-lzY"/>
                 <outlet property="overviewActivityContainerView" destination="OP0-YV-2dE" id="nUt-Dk-Ng1"/>
                 <outlet property="overviewActivityIndicator" destination="xv7-RX-Uks" id="DPd-46-qkW"/>
@@ -169,15 +168,6 @@
                         <constraint firstAttribute="height" constant="22" id="kOG-8Z-Ofe"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SSU-VL-LVr">
-                    <rect key="frame" x="544" y="557" width="45" height="30"/>
-                    <state key="normal" title="MENU">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="showMenu:" destination="-1" eventType="touchUpInside" id="Wq6-hZ-fFp"/>
-                    </connections>
-                </button>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OP0-YV-2dE">
                     <rect key="frame" x="288" y="184" width="24" height="24"/>
                     <subviews>
@@ -220,7 +210,6 @@
                 <constraint firstItem="QXi-dr-Szf" firstAttribute="bottom" secondItem="OP0-YV-2dE" secondAttribute="bottom" constant="27" id="Ibr-0n-GzJ"/>
                 <constraint firstItem="QXi-dr-Szf" firstAttribute="top" secondItem="Htg-xM-6NX" secondAttribute="bottom" constant="-25" id="JCJ-Jh-OcJ"/>
                 <constraint firstItem="Htg-xM-6NX" firstAttribute="bottom" secondItem="VWH-Un-ZpZ" secondAttribute="bottom" constant="-383" id="LFL-gN-XyT"/>
-                <constraint firstAttribute="trailing" secondItem="SSU-VL-LVr" secondAttribute="trailing" constant="11" id="LOz-A0-ym7"/>
                 <constraint firstItem="wRK-Kl-oOk" firstAttribute="leading" secondItem="VWH-Un-ZpZ" secondAttribute="leading" constant="35" id="Mv7-UJ-H7e"/>
                 <constraint firstAttribute="centerX" secondItem="OP0-YV-2dE" secondAttribute="centerX" id="OWl-3o-Vxc"/>
                 <constraint firstItem="Uiy-dh-BtW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="PxV-he-kSc"/>
@@ -230,7 +219,6 @@
                 <constraint firstAttribute="trailing" secondItem="wRK-Kl-oOk" secondAttribute="trailing" constant="35" id="coo-HD-Fzd"/>
                 <constraint firstAttribute="trailing" secondItem="Htg-xM-6NX" secondAttribute="trailing" id="gZA-yk-Wlg"/>
                 <constraint firstItem="Q1d-J0-WaX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="159" id="iM0-ah-AYc"/>
-                <constraint firstAttribute="bottom" secondItem="SSU-VL-LVr" secondAttribute="bottom" constant="13" id="iNP-qT-mUO"/>
                 <constraint firstAttribute="centerX" secondItem="Q1d-J0-WaX" secondAttribute="centerX" id="iu2-v6-mfq"/>
                 <constraint firstItem="VWH-Un-ZpZ" firstAttribute="top" secondItem="r3d-3f-BtS" secondAttribute="top" id="kdC-tW-tDV"/>
                 <constraint firstItem="Htg-xM-6NX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="mIy-2Z-FdC"/>

@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,31 +13,34 @@
                 <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mIb-4n-i9x">
+                        <rect key="frame" x="25" y="16" width="100" height="100"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="IYm-eu-mQg"/>
+                            <constraint firstAttribute="height" constant="100" id="TXQ-MV-4b3"/>
+                        </constraints>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1B-oM-v1O">
                         <rect key="frame" x="57" y="125" width="35.5" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.23404696583747864" green="0.23403996229171753" blue="0.23404392600059509" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rounded-cell-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="Elg-d8-yS4">
-                        <rect key="frame" x="25" y="8" width="100" height="100"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="Elg-d8-yS4" secondAttribute="height" multiplier="1:1" id="Cww-4n-jzG"/>
-                        </constraints>
-                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
+                <constraint firstItem="mIb-4n-i9x" firstAttribute="top" secondItem="gE3-vA-wNJ" secondAttribute="top" constant="16" id="7Ju-Jh-opW"/>
                 <constraint firstAttribute="centerX" secondItem="h1B-oM-v1O" secondAttribute="centerX" id="D9M-lL-fgA"/>
-                <constraint firstItem="h1B-oM-v1O" firstAttribute="top" secondItem="Elg-d8-yS4" secondAttribute="bottom" constant="17" id="H8R-ZX-9WW"/>
-                <constraint firstAttribute="bottom" secondItem="h1B-oM-v1O" secondAttribute="bottom" constant="8" id="P9X-oW-9GW"/>
-                <constraint firstItem="Elg-d8-yS4" firstAttribute="leading" secondItem="gE3-vA-wNJ" secondAttribute="leading" constant="25" id="UAd-5W-nEm"/>
-                <constraint firstAttribute="trailing" secondItem="Elg-d8-yS4" secondAttribute="trailing" constant="25" id="UuR-NV-xIE"/>
+                <constraint firstAttribute="centerX" secondItem="mIb-4n-i9x" secondAttribute="centerX" id="Rru-BR-Ffd"/>
+                <constraint firstItem="h1B-oM-v1O" firstAttribute="centerY" secondItem="mIb-4n-i9x" secondAttribute="centerY" constant="68" id="eoL-t7-n1Y"/>
             </constraints>
+            <connections>
+                <outlet property="fillView" destination="mIb-4n-i9x" id="L6R-PB-jrG"/>
+                <outlet property="titleCenterYConstraint" destination="eoL-t7-n1Y" id="SUG-hZ-p4e"/>
+                <outlet property="titleLabel" destination="h1B-oM-v1O" id="Oo1-fB-7x3"/>
+            </connections>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="rounded-cell-background.png" width="150" height="150"/>
-    </resources>
 </document>

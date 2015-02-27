@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
+#import <UIKit/UIKit.h>
 
 @interface CMProductSpecificationSimpleNamedAttribute : NSObject // provides hash and equals: implementations
 
@@ -65,6 +66,14 @@
 
 @end
 
+@interface CMProductSpecificationColor : CMProductSpecificationSimpleNamedAttribute
+
+@property (nonatomic, retain) UIColor *color;
+
++ (instancetype)attributeWithName:(NSString *)name color:(UIColor*)uiColor;
+
+@end
+
 @interface CMProductSpecification : NSObject
 
 @property (nonatomic, retain) NSArray *additives; // <CMProductSpecificationAdditive>
@@ -79,6 +88,7 @@
 @property (nonatomic, retain) CMProductSpecificationPartFinish *partFinish;
 @property (nonatomic, retain) CMProductSpecificationPhysicalForm *physicalForm;
 @property (nonatomic, retain) CMProductSpecificationMatchAccuracy *matchAccuracy;
+@property (nonatomic, retain) CMProductSpecificationColor *color; // colour :-(
 
 @property (nonatomic) CGFloat temperatureInCentrigrade;
 @property (nonatomic) CGFloat thicknessInMillimeters;

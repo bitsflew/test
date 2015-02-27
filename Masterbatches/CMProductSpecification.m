@@ -90,6 +90,17 @@
 
 @end
 
+@implementation CMProductSpecificationColor
+
++ (instancetype)attributeWithName:(NSString *)name color:(UIColor*)uiColor
+{
+    CMProductSpecificationColor *color = [super attributeWithName:name];
+    color.color = uiColor;
+    return color;
+}
+
+@end
+
 @interface CMProductSpecification ()
 
 @property (nonatomic, retain) NSMutableDictionary *additionalQuestionValues;
