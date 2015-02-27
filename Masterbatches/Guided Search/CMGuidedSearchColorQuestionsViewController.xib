@@ -25,6 +25,7 @@
                 <outlet property="partFinishChecklist" destination="UwL-fz-zHT" id="kni-za-qL1"/>
                 <outlet property="physicalFormChecklist" destination="lOO-Wn-H7P" id="mKE-Er-6fB"/>
                 <outlet property="scrollView" destination="AF3-Tu-yx5" id="Fmk-Jw-3Yl"/>
+                <outlet property="scrollViewBottomConstraint" destination="9Ct-Kg-54C" id="go6-iJ-YRD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -135,10 +136,10 @@
                                 <action selector="checklistValueChanged:" destination="-1" eventType="valueChanged" id="XBF-gi-max"/>
                             </connections>
                         </view>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BOd-4K-XBc">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="BOd-4K-XBc">
                             <rect key="frame" x="180" y="417" width="320" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done"/>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="8NO-3B-hUz"/>
                             </connections>

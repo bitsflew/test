@@ -20,6 +20,7 @@
 @property (nonatomic, weak) IBOutlet CMChecklistView *matchAccuracyColorCodingChecklist;
 @property (nonatomic, weak) IBOutlet CMChecklistView *matchAccuracyChecklist;
 @property (nonatomic, weak) IBOutlet UITextField *matchAccuracyColorCodingTextField;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollViewBottomConstraint;
 
 @property (nonatomic, weak) id<CMGuidedSearchStepViewControllerDelegate> stepDelegate;
 @property (nonatomic, retain) CMGuidedSearchFlowStep *step;

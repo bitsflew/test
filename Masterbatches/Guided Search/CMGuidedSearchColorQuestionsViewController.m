@@ -50,6 +50,16 @@
     if (self.step) {
         [self updateSelections];
     }
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(notifiedKeyboardDidShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(notifiedKeyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
 }
 
 - (void)setStep:(CMGuidedSearchFlowStep *)step
@@ -152,6 +162,42 @@
     NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
     self.step.productSpecification.matchAccuracy.colorCoding = text;
     return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return NO;
+}
+
+#pragma mark -
+
+- (void)notifiedKeyboardDidShow:(NSNotification*)notification
+{
+    // See: https://developer.apple.com/library/ios/documentation/StringsTextFonts/Conceptual/TextAndWebiPhoneOS/KeyboardManagement/KeyboardManagement.html#//apple_ref/doc/uid/TP40009542-CH5-SW7
+
+    NSDictionary* info = [notification userInfo];
+    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    keyboardSize.height += 10.f; // extra space
+
+    self.scrollView.contentInset = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0);
+    self.scrollView.scrollIndicatorInsets = self.scrollView.contentInset;
+
+    CGRect frame = self.view.frame;
+    frame.size.height -= keyboardSize.height;
+    if (!CGRectContainsPoint(frame, self.matchAccuracyColorCodingTextField.frame.origin) ) {
+        [UIView animateWithDuration:[info[UIKeyboardAnimationDurationUserInfoKey] doubleValue]
+                         animations:^{
+                             [self.scrollView scrollRectToVisible:self.matchAccuracyColorCodingTextField.frame
+                                                         animated:NO];                             
+                         }];
+    }
+}
+
+- (void)notifiedKeyboardWillHide:(NSNotification*)notification
+{
+    self.scrollView.contentInset = [self.stepDelegate edgeInsetsForStepViewController:self];
+    self.scrollView.scrollIndicatorInsets = self.scrollView.contentInset;
 }
 
 
