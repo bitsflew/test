@@ -54,14 +54,12 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [self.view layoutIfNeeded];
-
-    [UIView animateWithDuration:0.3f animations:^{
+    // Despicably, dispatch seems the only way out of this sizing problem
+    dispatch_async(dispatch_get_main_queue(), ^{
         self.productGridHeightConstraint.constant = self.productGrid.contentSize.height;
         self.industryGridHeightConstraint.constant = self.industryGrid.contentSize.height;
         self.regulatoryGridHeightConstraint.constant = self.regulatoryGrid.contentSize.height;
-                [self.view layoutIfNeeded];
-    }];
+    });
 }
 
 #pragma mark -

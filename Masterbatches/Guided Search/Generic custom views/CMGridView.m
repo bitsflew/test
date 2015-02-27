@@ -71,6 +71,11 @@ static NSUInteger CMGuidedSearchGridSelectionItemCellTitleTag = 100;
 
 @implementation CMGridView
 
++ (BOOL)requiresConstraintBasedLayout
+{
+    return YES;
+}
+
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if (!(self = [super initWithCoder:aDecoder])) {

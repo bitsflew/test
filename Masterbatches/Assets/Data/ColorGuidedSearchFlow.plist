@@ -8,6 +8,12 @@
 	<array>
 		<dict>
 			<key>Class</key>
+			<string>ColorQuestions</string>
+			<key>Title</key>
+			<string>A few color questions</string>
+		</dict>
+		<dict>
+			<key>Class</key>
 			<string>ProductRegulatoryIndustry</string>
 			<key>Title</key>
 			<string>Select product, regulatory and industry types</string>

@@ -53,6 +53,11 @@
 		44B16D291AA0731B009BD8A7 /* CMUnitSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B16D241AA0731B009BD8A7 /* CMUnitSlider.m */; };
 		44B16D2A1AA0731B009BD8A7 /* CMUnitSlider.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44B16D251AA0731B009BD8A7 /* CMUnitSlider.xib */; };
 		44B16D301AA074E3009BD8A7 /* CMProductSpecification+GridItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B16D2F1AA074E3009BD8A7 /* CMProductSpecification+GridItem.m */; };
+		44B16D331AA07883009BD8A7 /* CMChecklistView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B16D321AA07883009BD8A7 /* CMChecklistView.m */; };
+		44B16D371AA07F8D009BD8A7 /* CMGuidedSearchColorQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B16D351AA07F8D009BD8A7 /* CMGuidedSearchColorQuestionsViewController.m */; };
+		44B16D381AA07F8D009BD8A7 /* CMGuidedSearchColorQuestionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44B16D361AA07F8D009BD8A7 /* CMGuidedSearchColorQuestionsViewController.xib */; };
+		44B16D3A1AA0A1F3009BD8A7 /* ic_checkmark_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 44B16D391AA0A1F3009BD8A7 /* ic_checkmark_blue.png */; };
+		44B16D3C1AA0A1FB009BD8A7 /* ic_checkmark_blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44B16D3B1AA0A1FB009BD8A7 /* ic_checkmark_blue@2x.png */; };
 		44B4BD671A9B759400158D90 /* CMGuidedSearchAdditiveFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B4BD661A9B759400158D90 /* CMGuidedSearchAdditiveFlowViewController.m */; };
 		44B4BD6A1A9B763A00158D90 /* CMGuidedSearchColorFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B4BD691A9B763A00158D90 /* CMGuidedSearchColorFlowViewController.m */; };
 		44B4BD6E1A9B768400158D90 /* AdditiveGuidedSearchFlow.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44B4BD6B1A9B768400158D90 /* AdditiveGuidedSearchFlow.plist */; };
@@ -176,6 +181,13 @@
 		44B16D251AA0731B009BD8A7 /* CMUnitSlider.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMUnitSlider.xib; sourceTree = "<group>"; };
 		44B16D2E1AA074E3009BD8A7 /* CMProductSpecification+GridItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CMProductSpecification+GridItem.h"; sourceTree = "<group>"; };
 		44B16D2F1AA074E3009BD8A7 /* CMProductSpecification+GridItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CMProductSpecification+GridItem.m"; sourceTree = "<group>"; };
+		44B16D311AA07883009BD8A7 /* CMChecklistView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMChecklistView.h; sourceTree = "<group>"; };
+		44B16D321AA07883009BD8A7 /* CMChecklistView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMChecklistView.m; sourceTree = "<group>"; };
+		44B16D341AA07F8D009BD8A7 /* CMGuidedSearchColorQuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchColorQuestionsViewController.h; sourceTree = "<group>"; };
+		44B16D351AA07F8D009BD8A7 /* CMGuidedSearchColorQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchColorQuestionsViewController.m; sourceTree = "<group>"; };
+		44B16D361AA07F8D009BD8A7 /* CMGuidedSearchColorQuestionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMGuidedSearchColorQuestionsViewController.xib; sourceTree = "<group>"; };
+		44B16D391AA0A1F3009BD8A7 /* ic_checkmark_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_checkmark_blue.png; sourceTree = "<group>"; };
+		44B16D3B1AA0A1FB009BD8A7 /* ic_checkmark_blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_checkmark_blue@2x.png"; sourceTree = "<group>"; };
 		44B4BD651A9B759400158D90 /* CMGuidedSearchAdditiveFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMGuidedSearchAdditiveFlowViewController.h; path = "Flow subclasses/CMGuidedSearchAdditiveFlowViewController.h"; sourceTree = "<group>"; };
 		44B4BD661A9B759400158D90 /* CMGuidedSearchAdditiveFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMGuidedSearchAdditiveFlowViewController.m; path = "Flow subclasses/CMGuidedSearchAdditiveFlowViewController.m"; sourceTree = "<group>"; };
 		44B4BD681A9B763A00158D90 /* CMGuidedSearchColorFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMGuidedSearchColorFlowViewController.h; path = "Flow subclasses/CMGuidedSearchColorFlowViewController.h"; sourceTree = "<group>"; };
@@ -266,6 +278,8 @@
 			isa = PBXGroup;
 			children = (
 				4425494F1A9C91D600C38557 /* clear.png */,
+				44B16D391AA0A1F3009BD8A7 /* ic_checkmark_blue.png */,
+				44B16D3B1AA0A1FB009BD8A7 /* ic_checkmark_blue@2x.png */,
 				44E9E5581A974FB00028B01F /* ic_close_black.png */,
 				44E9E5591A974FB00028B01F /* ic_close_black@2x.png */,
 				44053E111A9CCCC900AFEBC6 /* ic_circle_down.png */,
@@ -401,6 +415,9 @@
 				443366E21A92499C002DD5F5 /* CMGuidedSearchColorViewController.h */,
 				443366E31A92499C002DD5F5 /* CMGuidedSearchColorViewController.m */,
 				443366E41A92499C002DD5F5 /* CMGuidedSearchColorViewController.xib */,
+				44B16D341AA07F8D009BD8A7 /* CMGuidedSearchColorQuestionsViewController.h */,
+				44B16D351AA07F8D009BD8A7 /* CMGuidedSearchColorQuestionsViewController.m */,
+				44B16D361AA07F8D009BD8A7 /* CMGuidedSearchColorQuestionsViewController.xib */,
 				441470B01A9346FC00131077 /* CMGuidedSearchProductTypeViewController.h */,
 				441470B11A9346FC00131077 /* CMGuidedSearchProductTypeViewController.m */,
 				4402E5EB1A9F5BD90087AFE4 /* CMGuidedSearchProductRegulatoryIndustryViewController.h */,
@@ -457,6 +474,8 @@
 				44B16D231AA0731B009BD8A7 /* CMUnitSlider.h */,
 				44B16D241AA0731B009BD8A7 /* CMUnitSlider.m */,
 				44B16D251AA0731B009BD8A7 /* CMUnitSlider.xib */,
+				44B16D311AA07883009BD8A7 /* CMChecklistView.h */,
+				44B16D321AA07883009BD8A7 /* CMChecklistView.m */,
 			);
 			path = "Generic custom views";
 			sourceTree = "<group>";
@@ -639,6 +658,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44B16D381AA07F8D009BD8A7 /* CMGuidedSearchColorQuestionsViewController.xib in Resources */,
 				44107DB11A937488004053A2 /* Mercury_Text_G1_Roman.ttf in Resources */,
 				442549501A9C91D600C38557 /* clear.png in Resources */,
 				44E9E5511A96410B0028B01F /* img_guided_search_tab@2x.png in Resources */,
@@ -664,6 +684,7 @@
 				44107DAE1A9361AA004053A2 /* rounded-cell-background@2x.png in Resources */,
 				443366CE1A9239CE002DD5F5 /* CMGuidedSearchFlowViewController.xib in Resources */,
 				44B16D2A1AA0731B009BD8A7 /* CMUnitSlider.xib in Resources */,
+				44B16D3A1AA0A1F3009BD8A7 /* ic_checkmark_blue.png in Resources */,
 				44053E181A9CCCC900AFEBC6 /* ic_circle_up@2x.png in Resources */,
 				4457F4801A94A744002FF4F5 /* ic_pagination_checkmark_light.png in Resources */,
 				44053E171A9CCCC900AFEBC6 /* ic_circle_up.png in Resources */,
@@ -675,6 +696,7 @@
 				44B4BD751A9B76B800158D90 /* Menu.plist in Resources */,
 				44E9E54B1A9623790028B01F /* LaunchScreen.xib in Resources */,
 				44053E161A9CCCC900AFEBC6 /* ic_circle_down@2x.png in Resources */,
+				44B16D3C1AA0A1FB009BD8A7 /* ic_checkmark_blue@2x.png in Resources */,
 				44B4BD6F1A9B768400158D90 /* BothGuidedSearchFlow.plist in Resources */,
 				4B24D7861A9B4599001487B7 /* slide-metal.aif in Resources */,
 				443366AE1A923349002DD5F5 /* Images.xcassets in Resources */,
@@ -712,6 +734,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				441470AE1A93465200131077 /* CMGuidedSearchResinTypeViewController.m in Sources */,
+				44B16D331AA07883009BD8A7 /* CMChecklistView.m in Sources */,
 				44000BBE1A9B46D80032B747 /* CMGuidedSearchAdditionalQuestionTextFieldViewController.m in Sources */,
 				44B16D281AA0731B009BD8A7 /* CMGridViewController.m in Sources */,
 				443366CD1A9239CE002DD5F5 /* CMGuidedSearchFlowViewController.m in Sources */,
@@ -737,6 +760,7 @@
 				4B2EDFA81A93994F007E0493 /* MenuModel.m in Sources */,
 				44B16D291AA0731B009BD8A7 /* CMUnitSlider.m in Sources */,
 				44B16D271AA0731B009BD8A7 /* CMGridView.m in Sources */,
+				44B16D371AA07F8D009BD8A7 /* CMGuidedSearchColorQuestionsViewController.m in Sources */,
 				4B7AA9691A963DFB00AD81EF /* ClariantColors.m in Sources */,
 				44E9E55F1A9770ED0028B01F /* CMSearchDAO.m in Sources */,
 				443366E51A92499C002DD5F5 /* CMGuidedSearchColorViewController.m in Sources */,
