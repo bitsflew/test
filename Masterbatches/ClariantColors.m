@@ -42,5 +42,9 @@
     return [UIColor colorWithWhite:0.4 alpha:1];
 }
 
++ (UIColor*)silver20Color {
+    return [UIColor colorWithRed:0.819 green:0.823 blue:0.831 alpha:1];
+}
+
 
 @end

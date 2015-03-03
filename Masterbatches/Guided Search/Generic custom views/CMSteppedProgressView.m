@@ -7,8 +7,9 @@
 //
 
 #import "CMSteppedProgressView.h"
+#import "ClariantColors.h"
 
-@interface CMStepLayer : CALayer
+@interface CMStepLayer : CAGradientLayer
 
 @property (nonatomic, retain) CALayer *completeLayer;
 
@@ -20,7 +21,8 @@
 
 @interface CMSteppedProgressView ()
 
-@property (nonatomic, retain) CAGradientLayer *trackLayer;
+@property (nonatomic, retain) CAGradientLayer *trackUntilActiveLayer;
+@property (nonatomic, retain) CALayer *trackFromActiveLayer;
 @property (nonatomic, retain) CALayer *stepsLayer;
 
 @end
@@ -52,7 +54,7 @@
 
 - (void)setCompletedCount:(NSUInteger)completedCount
 {
-    _completedCount = completedCount;
+    _completedCount = MIN(completedCount, self.stepCount);
     [self setNeedsLayout];
 }
 
@@ -81,12 +83,13 @@
 {
     static const CGFloat borderWidth = 2.f;
     static const CGFloat stepIncompleteScale = 0.8f;
-    static const CGFloat stepIncompleteContentScale = 0.1f;
+    static const CGFloat stepIncompleteContentScale = 0.01f;
     static const CGFloat animationSpeed = 0.2f;
 
     if (self.stepCount == 0) {
         self.stepsLayer.opacity = 0.f;
-        self.trackLayer.opacity = 0.f;
+        self.trackUntilActiveLayer.opacity = 0.f;
+        self.trackFromActiveLayer.opacity = 0.f;
         return;
     }
 
@@ -114,24 +117,41 @@
                                 CGRectGetHeight(bounds));
         }
 
+    CGFloat stepSize = CGRectGetHeight(self.bounds);
+
     CGFloat stepWidth = (CGRectGetWidth(bounds)/(CGFloat)self.stepCount);
 
-    if (!self.trackLayer) {
-        self.trackLayer = [CAGradientLayer layer];
-        self.trackLayer.colors = @[ (id)[UIColor colorWithRed:0.396 green:0.811 blue:0.913 alpha:1].CGColor,
+    if (!self.trackUntilActiveLayer) {
+        self.trackUntilActiveLayer = [CAGradientLayer layer];
+        self.trackUntilActiveLayer.colors = @[ (id)[UIColor colorWithRed:0.396 green:0.811 blue:0.913 alpha:1].CGColor,
                                     (id)[UIColor colorWithRed:0.458 green:0.721 blue:0.286 alpha:1].CGColor ];
-        self.trackLayer.startPoint = CGPointMake(0.f, 0.5f);
-        self.trackLayer.endPoint = CGPointMake(1.f, 0.5f);
-        [self.layer addSublayer:self.trackLayer];
+        self.trackUntilActiveLayer.startPoint = CGPointMake(0.f, 0.5f);
+        self.trackUntilActiveLayer.endPoint = CGPointMake(1.f, 0.5f);
+        self.trackUntilActiveLayer.anchorPoint = CGPointMake(0.f, 0.5f);
+        [self.layer addSublayer:self.trackUntilActiveLayer];
     } else {
-        self.trackLayer.opacity = 1.f;
+        self.trackUntilActiveLayer.opacity = 1.f;
+    }
+    
+    if (!self.trackFromActiveLayer) {
+        self.trackFromActiveLayer = [CALayer layer];
+        self.trackFromActiveLayer.backgroundColor = [ClariantColors silver20Color].CGColor;
+        self.trackFromActiveLayer.anchorPoint = CGPointMake(1.f, 0.5f);
+        [self.layer addSublayer:self.trackFromActiveLayer];
+    } else {
+        self.trackFromActiveLayer.opacity = 1.f;
     }
 
-    CGFloat trackHeight = CGRectGetHeight(bounds) / 10.f;
-    self.trackLayer.bounds = CGRectMake(0.f, 0.f, CGRectGetWidth(bounds) - stepWidth, trackHeight);
-    self.trackLayer.position = CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
-    self.trackLayer.cornerRadius = trackHeight/2.f;
+    CGFloat trackHeight = CGRectGetHeight(bounds) / 5.f;
+
+    self.trackUntilActiveLayer.bounds = CGRectMake(0.f, 0.f, fminf((CGFloat)self.completedCount, -1.f+(CGFloat)self.stepCount)*stepWidth, trackHeight);
+    self.trackUntilActiveLayer.position = CGPointMake(CGRectGetMinX(bounds) + stepWidth/2.f, CGRectGetMidY(bounds));
+    self.trackUntilActiveLayer.cornerRadius = trackHeight/2.f;
+    self.trackUntilActiveLayer.endPoint = CGPointMake(fminf(1.f / ((CGFloat)self.completedCount/(CGFloat)self.stepCount), 100.f), 0.5f);
     
+    self.trackFromActiveLayer.bounds = CGRectMake(0.f, 0.f, fmaxf((self.stepCount-self.completedCount)*stepWidth - stepWidth, 0.f), trackHeight/2.f);
+    self.trackFromActiveLayer.position = CGPointMake(CGRectGetMaxX(bounds) - stepWidth/2.f, CGRectGetMidY(bounds));
+
     if (!self.stepsLayer) {
         self.stepsLayer = [CALayer layer];
         [self.layer addSublayer:self.stepsLayer];
@@ -161,21 +181,42 @@
 
         BOOL stepCompleted = (self.completedCount > i);
         BOOL stepActive = (i == self.completedCount);
-        CGFloat stepSize = CGRectGetHeight(bounds) * ((stepCompleted || stepActive) ? 1.f : stepIncompleteScale);
+        
+        stepLayer.cornerRadius = stepSize/2.f;
 
-        stepLayer.backgroundColor = (stepCompleted ? [UIColor colorWithRed:0.38 green:0.803 blue:0.909 alpha:1] : [UIColor whiteColor]).CGColor;\
-        stepLayer.borderWidth = (stepCompleted || stepActive) ? borderWidth : (borderWidth/2.f);
-        stepLayer.borderColor = ((stepCompleted || stepActive) ? [UIColor colorWithRed:0.38 green:0.803 blue:0.909 alpha:1] : [UIColor lightGrayColor]).CGColor;
         stepLayer.bounds = CGRectMake(0.f, 0.f, stepSize, stepSize);
         stepLayer.position = CGPointMake(
                                 CGRectGetMinX(bounds) + stepWidth*i + stepWidth/2.f,
                                 CGRectGetHeight(bounds)/2.f);
-        stepLayer.cornerRadius = stepSize/2.f;
+
+        if (stepCompleted || stepActive) {
+            CGRect stepFrame = [self.layer convertRect:stepLayer.bounds fromLayer:stepLayer];
+            CGRect trackFrame = CGRectUnion([self.layer convertRect:self.trackUntilActiveLayer.bounds fromLayer:self.trackUntilActiveLayer],
+                                            [self.layer convertRect:self.trackFromActiveLayer.bounds fromLayer:self.trackFromActiveLayer]);
+
+            CGFloat unitsLeft  = (CGRectGetMinX(stepFrame)-CGRectGetMinX(trackFrame)) / CGRectGetWidth(stepFrame);
+            CGFloat unitsRight = (CGRectGetMaxX(trackFrame)-CGRectGetMaxX(stepFrame)) / CGRectGetWidth(stepFrame);
+
+            stepLayer.colors = self.trackUntilActiveLayer.colors;
+            stepLayer.startPoint = CGPointMake(-unitsLeft, 0.5f);
+            stepLayer.endPoint = CGPointMake(1.f+unitsRight, 0.5f);
+        } else {
+            stepLayer.colors = @[ (id)[ClariantColors silver20Color].CGColor, (id)[ClariantColors silver20Color].CGColor, ];
+        }
+
+        stepLayer.completeLayer.backgroundColor = (stepCompleted
+                                                   ? [UIColor clearColor]
+                                                   : (stepActive ? [UIColor whiteColor] : [ClariantColors silver20Color])).CGColor;
         
         stepLayer.completeLayer.bounds = CGRectInset(stepLayer.bounds, borderWidth, borderWidth);
+        stepLayer.completeLayer.cornerRadius = CGRectGetHeight(stepLayer.completeLayer.bounds)/2.f;
         stepLayer.completeLayer.position = CGPointMake(CGRectGetMidX(stepLayer.bounds), CGRectGetMidY(stepLayer.bounds));
-        CGFloat contentScale = stepCompleted ? 1.f : stepIncompleteContentScale;
-        stepLayer.completeLayer.transform = CATransform3DMakeScale(contentScale, contentScale, contentScale);
+
+        CGFloat contentScale = (stepCompleted || stepActive) ? 1.f : stepIncompleteContentScale;
+        stepLayer.completeLayer.transform = CATransform3DMakeScale(contentScale, contentScale, 1.f);
+
+        CGFloat stepScale = (stepCompleted || stepActive) ? 1.f : stepIncompleteScale;
+        stepLayer.transform = CATransform3DMakeScale(stepScale, stepScale, 1.f);
     }
     
     while (self.stepsLayer.sublayers.count > self.stepCount) {

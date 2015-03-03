@@ -22,4 +22,6 @@
 + (UIColor *)menuBackFontColor;
 + (UIColor *)menuDefaultFontColor;
 
++ (UIColor*)silver20Color;
+
 @end
