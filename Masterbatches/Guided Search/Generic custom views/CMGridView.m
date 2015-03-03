@@ -122,6 +122,11 @@ static NSString *CMGuidedSearchGridSelectionItemRoundedCellIdentifier = @"CMGuid
     return YES;
 }
 
+- (CGSize)intrinsicContentSize
+{
+    return CGSizeMake(UIViewNoIntrinsicMetric, self.contentSize.height);
+}
+
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if (!(self = [super initWithCoder:aDecoder])) {
