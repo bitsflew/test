@@ -211,7 +211,7 @@ static NSString *CMGuidedSearchGridSelectionItemRoundedCellIdentifier = @"CMGuid
             continue;
         }
         [self selectItemAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]
-                           animated:NO
+                           animated:animated
                      scrollPosition:UICollectionViewScrollPositionNone];
     }
 }

@@ -47,8 +47,7 @@ static const CGFloat CMGuidedSearchAdditionalQuestionTextFieldViewVerticalPaddin
 {
     _additionalQuestion = additionalQuestion;
 
-    ((CMGuidedSearchAdditionalQuestionTextFieldView*)self.view).text =
-      [additionalQuestion.productSpecification valueForAdditionalQuestionKey:additionalQuestion.key];
+    ((CMGuidedSearchAdditionalQuestionTextFieldView*)self.view).text = self.additionalQuestion.value;
 }
 
 #pragma mark -
@@ -57,7 +56,7 @@ static const CGFloat CMGuidedSearchAdditionalQuestionTextFieldViewVerticalPaddin
 {
     NSMutableString *text = [textField.text mutableCopy];
     [text replaceCharactersInRange:range withString:string];
-    [self.additionalQuestion.productSpecification setValue:text forAdditionalQuestionKey:self.additionalQuestion.key];
+    self.additionalQuestion.value = text;
     return YES;
 }
 

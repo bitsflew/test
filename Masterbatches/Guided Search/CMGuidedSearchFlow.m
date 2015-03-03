@@ -9,6 +9,12 @@
 #import "CMGuidedSearchFlow.h"
 #import "CMProductSpecification.h"
 
+@interface CMGuidedSearchFlowAdditionalQuestion ()
+
+@property (nonatomic, retain) NSString *key;
+
+@end
+
 @implementation CMGuidedSearchFlowAdditionalQuestion
 
 - (id)initWithDictionary:(NSDictionary*)dictionary productSpecification:(CMProductSpecification*)productSpecification
@@ -30,6 +36,16 @@
     self.productSpecification = productSpecification;
 
     return self;
+}
+
+- (id)value
+{
+    return [self.productSpecification valueForAdditionalQuestionKey:self.key];
+}
+
+- (void)setValue:(id)value
+{
+    [self.productSpecification setValue:value forAdditionalQuestionKey:self.key];
 }
 
 @end

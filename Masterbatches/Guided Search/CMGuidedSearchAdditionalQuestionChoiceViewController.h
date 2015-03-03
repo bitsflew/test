@@ -10,6 +10,7 @@
 
 @interface CMGuidedSearchAdditionalQuestionChoiceViewController : UITableViewController <CMGuidedSearchAdditionalQuestionViewController>
 
+// Supported attributes: Choices (array of strings)
 @property (nonatomic, retain) CMGuidedSearchFlowAdditionalQuestion* additionalQuestion;
 
 @end

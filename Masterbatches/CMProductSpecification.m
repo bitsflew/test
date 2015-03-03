@@ -124,12 +124,26 @@
 
 - (void)setValue:(id)value forAdditionalQuestionKey:(NSString*)key
 {
+    if (!value) {
+        [self.additionalQuestionValues removeObjectForKey:key];
+        return;
+    }
     self.additionalQuestionValues[key] = value;
+}
+
+- (void)removeAllAdditionalQuestionValues
+{
+    [self.additionalQuestionValues removeAllObjects];
 }
 
 - (id)valueForAdditionalQuestionKey:(NSString*)key
 {
     return self.additionalQuestionValues[key];
+}
+
+- (BOOL)hasAdditionalQuestionValues
+{
+    return self.additionalQuestionValues.count != 0;
 }
 
 @end

@@ -58,9 +58,9 @@ static NSString *CMChoiceCellIdentifier = @"cell";
 
     [self.tableView reloadData];
     [self.tableView invalidateIntrinsicContentSize];
-    
-    id selected = [additionalQuestion.productSpecification valueForAdditionalQuestionKey:additionalQuestion.key];
-    
+
+    id selected = additionalQuestion.value;
+
     NSUInteger selectedIndex = [[self choices] indexOfObject:selected];
     
     if (selectedIndex != NSNotFound) {
@@ -93,9 +93,8 @@ static NSString *CMChoiceCellIdentifier = @"cell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     id selected = [self choices][indexPath.row];
-
-    [self.additionalQuestion.productSpecification setValue:selected
-                                  forAdditionalQuestionKey:self.additionalQuestion.key];
+    
+    [self.additionalQuestion setValue:selected];
 }
 
 @end

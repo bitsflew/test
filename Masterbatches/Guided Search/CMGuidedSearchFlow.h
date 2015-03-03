@@ -28,7 +28,9 @@
 @interface CMGuidedSearchFlowAdditionalQuestion : CMGuidedSearchFlowStep
 
 @property (nonatomic, retain) NSDictionary *attributes; // used to configure view controller
-@property (nonatomic, retain) NSString *key;
+
+@property (nonatomic, readonly) id value;
+- (void)setValue:(id)value;
 
 @end
 

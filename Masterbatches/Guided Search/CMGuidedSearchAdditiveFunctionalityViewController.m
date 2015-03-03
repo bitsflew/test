@@ -9,7 +9,7 @@
 #import "CMGuidedSearchAdditiveFunctionalityViewController.h"
 #import "CMProductSpecification+GridItem.h"
 
-@interface CMGuidedSearchAdditiveFunctionalityViewController ()
+@interface CMGuidedSearchAdditiveFunctionalityViewController () <UIAlertViewDelegate>
 
 @end
 
@@ -73,14 +73,39 @@
 
 - (void)gridView:(CMGridView*)gridView didSelectItem:(id<CMGridItem>)item
 {
+    if ([self.step.productSpecification hasAdditionalQuestionValues]) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Additive questions"
+                                                            message:@"You've already filled in information for the previously selected additive functionality. Are you sure you want to discard your answers?"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Cancel"
+                                                  otherButtonTitles:@"Discard", nil];
+        [alertView show];
+        return;
+    }
+
+    [self setStepSelection];
+}
+
+#pragma mark -
+
+- (void)setStepSelection
+{
+    [self.step.productSpecification removeAllAdditionalQuestionValues];
     self.step.productSpecification.additives = self.grid.selectedItems;
     [self.stepDelegate stepViewControllerDidChangeProductSpecification:self];
 }
 
-- (void)gridView:(CMGridView *)gridView didDeselectItem:(id<CMGridItem>)item
+#pragma mark -
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    self.step.productSpecification.additives = self.grid.selectedItems;
-    [self.stepDelegate stepViewControllerDidChangeProductSpecification:self];
+    if (buttonIndex == [alertView cancelButtonIndex]) {
+        [self.grid selectItems:self.step.productSpecification.additives animated:YES];
+        return;
+    }
+
+    [self setStepSelection];
 }
+
 
 @end

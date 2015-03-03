@@ -98,6 +98,9 @@
 @property (nonatomic) CGFloat temperatureInCentrigrade;
 @property (nonatomic) CGFloat thicknessInMillimeters;
 
+- (void)removeAllAdditionalQuestionValues;
+- (BOOL)hasAdditionalQuestionValues;
+
 - (void)setValue:(id)value forAdditionalQuestionKey:(NSString*)key;
 - (id)valueForAdditionalQuestionKey:(NSString*)key;
 
