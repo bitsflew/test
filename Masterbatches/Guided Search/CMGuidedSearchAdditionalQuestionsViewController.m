@@ -58,7 +58,7 @@ static CGFloat kCMGuidedSearchAdditionalQuestionsViewControllerTitleMarginBottom
     titleLabel.font = self.questionTitleTemplateLabel.font;
     titleLabel.textColor = self.questionTitleTemplateLabel.textColor;
     titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    titleLabel.text = question.title;
+    titleLabel.text = [question.title uppercaseString];
 
     [self.questionsScrollView addSubview:titleLabel];
 

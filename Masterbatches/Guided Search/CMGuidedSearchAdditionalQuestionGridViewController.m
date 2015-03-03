@@ -20,6 +20,8 @@
 
 @interface CMGuidedSearchAdditionalQuestionGridViewController ()
 
+@property (nonatomic) BOOL multiSelect;
+
 @end
 
 @implementation CMGuidedSearchAdditionalQuestionGridViewController
@@ -36,6 +38,8 @@
 - (void)setAdditionalQuestion:(CMGuidedSearchFlowAdditionalQuestion *)additionalQuestion
 {
     _additionalQuestion = additionalQuestion;
+
+    self.multiSelect = [additionalQuestion.attributes[@"MultiSelect"] boolValue];
  
     if (self.isViewLoaded) {
         [self updateItems];
@@ -45,23 +49,23 @@
 - (void)updateItems
 {
     NSMutableArray *items = [NSMutableArray new];
-    
-    CMGuidedSearchAdditionalQuestionGridItem *selectedItem = nil;
+    NSMutableArray *selectedItems = [NSMutableArray new];
 
     for (NSString *stringItem in self.additionalQuestion.attributes[@"Items"]) {
         CMGuidedSearchAdditionalQuestionGridItem *gridItem = [CMGuidedSearchAdditionalQuestionGridItem new];
-        if ([self.additionalQuestion.value isEqual:stringItem]) {
-            selectedItem = gridItem;
-        }
         gridItem.title = stringItem;
         [items addObject:gridItem];
+
+        if ((self.multiSelect && [self.additionalQuestion.value containsObject:stringItem]) ||
+            (!self.multiSelect && [self.additionalQuestion.value isEqual:stringItem])) {
+            [selectedItems addObject:gridItem];
+        }
     }
 
+    self.grid.allowsMultipleSelection = self.multiSelect;
     self.grid.items = items;
-    
-    if (selectedItem) {
-        [self.grid selectItems:@[ selectedItem ] animated:YES];
-    }
+
+    [self.grid selectItems:selectedItems animated:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -73,12 +77,20 @@
 
 - (void)gridView:(CMGridView*)gridView didSelectItem:(id<CMGridItem>)item
 {
-    self.additionalQuestion.value = [item title];
+    if (self.multiSelect) {
+        self.additionalQuestion.value = [gridView.selectedItems valueForKey:@"title"];
+    } else {
+        self.additionalQuestion.value = [item title];
+    }
 }
 
 - (void)gridView:(CMGridView*)gridView didDeselectItem:(id<CMGridItem>)item
 {
-    self.additionalQuestion.value = nil;
+    if (self.multiSelect) {
+        self.additionalQuestion.value = [gridView.selectedItems valueForKey:@"title"];
+    } else {
+        self.additionalQuestion.value = nil;
+    }
 }
 
 

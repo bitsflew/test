@@ -8,19 +8,39 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>Targets</string>
+			<string>What types of microbes are to be targeted?</string>
 			<key>Class</key>
 			<string>Grid</string>
 			<key>Key</key>
 			<string>targets</string>
 			<key>Attributes</key>
 			<dict>
+				<key>MultiSelect</key>
+				<true/>
 				<key>Items</key>
 				<array>
 					<string>Algae</string>
 					<string>Fungi (Mold/mildew)</string>
 					<string>Bacteria</string>
 					<string>Bio-slime</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>What physical property is most important?</string>
+			<key>Class</key>
+			<string>Grid</string>
+			<key>Key</key>
+			<string>important_property</string>
+			<key>Attributes</key>
+			<dict>
+				<key>Items</key>
+				<array>
+					<string>Elongation</string>
+					<string>Impact strength</string>
+					<string>Tear strength</string>
+					<string>Tensile strength</string>
 				</array>
 			</dict>
 		</dict>
