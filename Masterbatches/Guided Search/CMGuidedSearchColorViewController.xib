@@ -29,11 +29,11 @@
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="3cm-lu-psH" customClass="CMGridView">
-                            <rect key="frame" x="50" y="53" width="500" height="416"/>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="3cm-lu-psH" customClass="CMGridView">
+                            <rect key="frame" x="50" y="53" width="500" height="440"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="416" id="ebm-vr-Kyq"/>
+                                <constraint firstAttribute="height" constant="440" id="ebm-vr-Kyq"/>
                             </constraints>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jSF-IH-QLH">
                                 <size key="itemSize" width="50" height="50"/>
