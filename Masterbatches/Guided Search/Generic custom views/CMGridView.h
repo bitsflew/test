@@ -20,9 +20,6 @@
 
 @protocol CMGridViewSelectionDelegate <NSObject>
 
-//- (void)guidedSearchGrid:(CMGuidedSearchGrid*)guidedSearchGrid didSelectItem:(id<CMGuidedSearchGridItem>)item
-//- (void)guidedSearchGrid:(CMGridView*)guidedSearchGrid didSelectItem:(id<CMGridItem>)item;
-
 - (void)gridView:(CMGridView*)gridView didSelectItem:(id<CMGridItem>)item;
 - (void)gridView:(CMGridView*)gridView didDeselectItem:(id<CMGridItem>)item;
 

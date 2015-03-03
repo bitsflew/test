@@ -8,7 +8,7 @@
 
 #import "CMGuidedSearchColorViewController.h"
 
-@interface CMGuidedSearchColorViewController ()
+@interface CMGuidedSearchColorViewController () <CMGridViewSelectionDelegate>
 
 @end
 
@@ -27,9 +27,6 @@
 {
     CGFloat hue, saturation, brightness;
     if ([self.fillColor getHue:&hue saturation:&saturation brightness:&brightness alpha:NULL]) {
-        
-        NSLog(@"%f : %f : %f", hue, saturation, brightness);
-        
         if (((brightness > 0.9f) && (saturation < 0.1f)) || ((brightness > 0.9f) && (hue > 0.1f) && (hue < 1.f)) || (((brightness > 0.7f) && (hue > 0.12f)) && !((brightness > 0.9f) && (saturation > 0.9f)))) {
             return [UIColor blackColor];
         }
@@ -76,6 +73,29 @@
                                                                            color:[UIColor colorWithRed:0.937 green:0.803 blue:0 alpha:1]],
                                   [CMProductSpecificationColor attributeWithName:@"Copper"
                                                                            color:[UIColor colorWithRed:0.725 green:0.541 blue:0 alpha:1]] ];
+    
+    if (self.step.productSpecification.color) {
+        [self.colorGridView selectItems:@[ self.step.productSpecification.color ] animated:YES];
+    }
 }
+
+#pragma mark -
+
+- (void)gridView:(CMGridView*)gridView didSelectItem:(id<CMGridItem>)item
+{
+    if (gridView == self.colorGridView) {
+        self.step.productSpecification.color = item;
+    }
+}
+
+- (void)gridView:(CMGridView*)gridView didDeselectItem:(id<CMGridItem>)item
+{
+    if (gridView == self.colorGridView) {
+        self.step.productSpecification.color = nil;
+    }
+    
+    
+}
+
 
 @end
