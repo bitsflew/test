@@ -14,12 +14,6 @@
 		</dict>
 		<dict>
 			<key>Class</key>
-			<string>AdditionalQuestions</string>
-			<key>Title</key>
-			<string>Additional questions</string>
-		</dict>
-		<dict>
-			<key>Class</key>
 			<string>ResinType</string>
 			<key>Title</key>
 			<string>What is your resin type?</string>
@@ -35,6 +29,12 @@
 			<string>TemperatureThickness</string>
 			<key>Title</key>
 			<string>Temperature and thickness</string>
+		</dict>
+		<dict>
+			<key>Class</key>
+			<string>AdditionalQuestions</string>
+			<key>Title</key>
+			<string>Additional questions</string>
 		</dict>
 	</array>
 </dict>
