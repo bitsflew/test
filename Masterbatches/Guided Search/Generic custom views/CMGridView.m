@@ -82,8 +82,10 @@ static NSString *CMGuidedSearchGridSelectionItemRoundedCellIdentifier = @"CMGuid
 - (void)updateAlpha
 {
     if (![self.lastAppliedItem respondsToSelector:@selector(backgroundColor)]) {
-        self.fillView.layer.borderColor = (self.isSelected ? [UIColor colorWithWhite:0.1f alpha:1.f] : [UIColor lightGrayColor]).CGColor;
+        self.fillView.layer.borderColor = (self.isSelected ? [UIColor colorWithRed:0.388 green:0.764 blue:0.874 alpha:1] : [UIColor lightGrayColor]).CGColor;
     }
+    
+    self.fillView.layer.borderWidth = self.isSelected ? 2.f : 1.f;
     
     self.alpha = self.isHighlighted ? 0.5f : 1.f;
     
