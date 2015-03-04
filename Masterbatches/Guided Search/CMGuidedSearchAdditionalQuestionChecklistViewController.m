@@ -9,14 +9,6 @@
 #import "CMGuidedSearchAdditionalQuestionChecklistViewController.h"
 #import "CMChecklistView.h"
 
-@interface CMGuidedSearchAdditionalQuestionChecklistViewController ()
-
-@property (nonatomic, weak) CMChecklistView *checklist;
-@property (nonatomic) BOOL multiSelect;
-@property (nonatomic) BOOL layoutVertically;
-
-@end
-
 @interface CMGuidedSearchAdditionalQuestionChecklistItem : NSObject <CMChecklistItem>
 
 @property (nonatomic, copy) NSString *title;
@@ -24,6 +16,14 @@
 @end
 
 @implementation CMGuidedSearchAdditionalQuestionChecklistItem
+
+@end
+
+@interface CMGuidedSearchAdditionalQuestionChecklistViewController ()
+
+@property (nonatomic, weak) CMChecklistView *checklist;
+@property (nonatomic) BOOL multiSelect;
+@property (nonatomic) BOOL layoutVertically;
 
 @end
 

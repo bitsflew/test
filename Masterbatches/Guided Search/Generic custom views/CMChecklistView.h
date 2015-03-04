@@ -14,7 +14,13 @@ typedef NS_ENUM(NSInteger, CMChecklistOrientation) {
 };
 
 @protocol CMChecklistItem <NSObject>
+
 - (NSString*)title;
+
+@optional
+- (UIView*)accessoryView; // for example, a text field
+- (void)setEnabled:(BOOL)enabled forAccessoryView:(UIView*)accessoryView;
+
 @end
 
 @interface CMSimpleChecklistItem : NSObject

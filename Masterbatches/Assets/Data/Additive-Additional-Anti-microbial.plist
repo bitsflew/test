@@ -7,12 +7,12 @@
 	<key>Questions</key>
 	<array>
 		<dict>
+			<key>Key</key>
+			<string>targets</string>
 			<key>Title</key>
 			<string>What types of microbes are to be targeted?</string>
 			<key>Class</key>
 			<string>Checklist</string>
-			<key>Key</key>
-			<string>targets</string>
 			<key>Attributes</key>
 			<dict>
 				<key>MultiSelect</key>
@@ -27,12 +27,12 @@
 			</dict>
 		</dict>
 		<dict>
+			<key>Key</key>
+			<string>important_property</string>
 			<key>Title</key>
 			<string>What physical property is most important?</string>
 			<key>Class</key>
 			<string>Grid</string>
-			<key>Key</key>
-			<string>important_property</string>
 			<key>Attributes</key>
 			<dict>
 				<key>Items</key>
@@ -41,6 +41,52 @@
 					<string>Impact strength</string>
 					<string>Tear strength</string>
 					<string>Tensile strength</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>Key</key>
+			<string>additives_pigments_fillers</string>
+			<key>Title</key>
+			<string>What other additives or pigments are being used in the finished part?</string>
+			<key>Class</key>
+			<string>TextFieldChecklist</string>
+			<key>Attributes</key>
+			<dict>
+				<key>MultiSelect</key>
+				<true/>
+				<key>Items</key>
+				<array>
+					<dict>
+						<key>Key</key>
+						<string>pigments</string>
+						<key>Title</key>
+						<string>Pigments</string>
+						<key>TextFieldHidden</key>
+						<false/>
+						<key>Prompt</key>
+						<string>Comma-separated items</string>
+					</dict>
+					<dict>
+						<key>Key</key>
+						<string>additives</string>
+						<key>Title</key>
+						<string>Additives</string>
+						<key>TextFieldHidden</key>
+						<false/>
+						<key>Prompt</key>
+						<string>Comma-separated items</string>
+					</dict>
+					<dict>
+						<key>Key</key>
+						<string>fillers</string>
+						<key>Title</key>
+						<string>Fillers</string>
+						<key>TextFieldHidden</key>
+						<false/>
+						<key>Prompt</key>
+						<string>Comma-separated items</string>
+					</dict>
 				</array>
 			</dict>
 		</dict>

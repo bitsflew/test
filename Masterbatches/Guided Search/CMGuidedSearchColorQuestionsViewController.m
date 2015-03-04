@@ -62,6 +62,11 @@
                                                object:nil];
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)setStep:(CMGuidedSearchFlowStep *)step
 {
     _step = step;

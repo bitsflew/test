@@ -16,6 +16,7 @@
 @property (nonatomic, retain) id<CMChecklistItem> item;
 @property (nonatomic, retain) UILabel *label;
 @property (nonatomic, strong) CALayer *checkLayer;
+@property (nonatomic, retain) UIView *accessoryView;
 
 @end
 
@@ -77,6 +78,7 @@ static const CGFloat kCMChecklistButtonCheckScale = 0.5f;
     _item = item;
 
     self.label.text = [item title];
+    self.accessoryView  = [item respondsToSelector:@selector(accessoryView)] ? [item accessoryView] : nil;
 }
 
 - (void)setChecked:(BOOL)checked
@@ -206,7 +208,10 @@ static const CGFloat kCMChecklistButtonCheckScale = 0.5f;
 - (void)updateViews
 {
     CMChecklistButton *previousButton = nil;
+    CGFloat maximumLabelWidth = 0.f;
 
+    NSMutableArray *buttonsWithAddedAccessoryViews = [NSMutableArray new];
+    
     for (int i=0; i<self.items.count; i++) {
         CMChecklistButton *button;
         if (i < self.buttons.count) {
@@ -216,6 +221,13 @@ static const CGFloat kCMChecklistButtonCheckScale = 0.5f;
             [self.buttons addObject:button];
             [self addSubview:button];
             [self addSubview:button.label];
+
+            button.item = self.items[i];
+
+            if (button.accessoryView) {
+                [self addSubview:button.accessoryView];
+                [buttonsWithAddedAccessoryViews addObject:button]; // for setting constraints
+            }
 
             switch (self.orientation) {
                 case CMChecklistOrientationHorizontal:
@@ -327,14 +339,19 @@ static const CGFloat kCMChecklistButtonCheckScale = 0.5f;
                                                                      attribute:NSLayoutAttributeBottom
                                                                     multiplier:1.f
                                                                       constant:0.f]];
-                    
-                    [self addConstraint:[NSLayoutConstraint constraintWithItem:button.label
-                                                                     attribute:NSLayoutAttributeTrailing
-                                                                     relatedBy:NSLayoutRelationEqual
-                                                                        toItem:self
-                                                                     attribute:NSLayoutAttributeTrailing
-                                                                    multiplier:1.f
-                                                                      constant:0.f]];
+
+                    if (!button.accessoryView) {
+                        [self addConstraint:[NSLayoutConstraint constraintWithItem:button.label
+                                                                         attribute:NSLayoutAttributeTrailing
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:self
+                                                                         attribute:NSLayoutAttributeTrailing
+                                                                        multiplier:1.f
+                                                                          constant:0.f]];
+                    } else {
+                        // Accessory views are aligned to the longest label; therefore we rely on label autosizing
+                        maximumLabelWidth = fmaxf(maximumLabelWidth, [button.label intrinsicContentSize].width);
+                    }
                     
                     if (previousButton) {
                         [self addConstraint:[NSLayoutConstraint constraintWithItem:button
@@ -353,19 +370,44 @@ static const CGFloat kCMChecklistButtonCheckScale = 0.5f;
                                                                         multiplier:1.f
                                                                           constant:0.f]];
                     }
+
+                    [self addConstraint:[NSLayoutConstraint constraintWithItem:button.accessoryView
+                                                                     attribute:NSLayoutAttributeCenterY
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:button
+                                                                     attribute:NSLayoutAttributeCenterY
+                                                                    multiplier:1.f
+                                                                      constant:0.f]];
+
+                    
                     break;
             }
         }
 
-        button.item = self.items[i];
         button.useRadioStyle = !self.allowsMultipleSelection;
 
         previousButton = button;
     }
+    
+    for (CMChecklistButton *button in buttonsWithAddedAccessoryViews) {
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:button.accessoryView
+                                                         attribute:NSLayoutAttributeLeft
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeLeft
+                                                        multiplier:1.f
+                                                          constant:kCMChecklistButtonSize + kCMChecklistButtonSpacing*2.f + maximumLabelWidth]];
+
+        if ([button.item respondsToSelector:@selector(setEnabled:forAccessoryView:)]) {
+            [button.item setEnabled:button.checked forAccessoryView:button.accessoryView];
+        }
+    }
 
     while (self.buttons.count > self.items.count) {
-        [[self.buttons.lastObject label] removeFromSuperview];
-        [self.buttons.lastObject removeFromSuperview];
+        id button = self.buttons.lastObject;
+        [[button accessoryView] removeFromSuperview];
+        [[button label] removeFromSuperview];
+        [button removeFromSuperview];
     }
 
     [self invalidateIntrinsicContentSize];
@@ -406,6 +448,9 @@ static const CGFloat kCMChecklistButtonCheckScale = 0.5f;
 
     if (touchedButton.highlighted) {
         touchedButton.checked = !touchedButton.checked;
+        if ([touchedButton.item respondsToSelector:@selector(setEnabled:forAccessoryView:)]) {
+            [touchedButton.item setEnabled:touchedButton.checked forAccessoryView:touchedButton.accessoryView];
+        }
         valueChanged = YES;
     }
 
@@ -414,6 +459,9 @@ static const CGFloat kCMChecklistButtonCheckScale = 0.5f;
         if ((touchedButton!=button) && touchedButton.checked && button.checked && !self.allowsMultipleSelection) {
             button.checked = NO;
             valueChanged = YES;
+            if ([touchedButton.item respondsToSelector:@selector(setEnabled:forAccessoryView:)]) {
+                [touchedButton.item setEnabled:NO forAccessoryView:touchedButton.accessoryView];
+            }
         }
     }
     

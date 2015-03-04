@@ -43,6 +43,20 @@ static CGFloat kCMGuidedSearchAdditionalQuestionsViewControllerTitleMarginBottom
             [self addAdditionalQuestionViewControllerFor:question];
         }
     }
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(notifiedKeyboardDidShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(notifiedKeyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)addAdditionalQuestionViewControllerFor:(CMGuidedSearchFlowAdditionalQuestion*)question
@@ -129,6 +143,36 @@ static CGFloat kCMGuidedSearchAdditionalQuestionsViewControllerTitleMarginBottom
     self.lastQuestionView = viewController.view;
 
     [self.questionsScrollView layoutSubviews];
+}
+
+#pragma mark -
+
+- (void)notifiedKeyboardDidShow:(NSNotification*)notification
+{
+    // See: https://developer.apple.com/library/ios/documentation/StringsTextFonts/Conceptual/TextAndWebiPhoneOS/KeyboardManagement/KeyboardManagement.html#//apple_ref/doc/uid/TP40009542-CH5-SW7
+    
+    NSDictionary* info = [notification userInfo];
+    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    keyboardSize.height += 10.f; // extra space
+    
+    self.questionsScrollView.contentInset = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0);
+    self.questionsScrollView.scrollIndicatorInsets = self.questionsScrollView.contentInset;
+    
+//    CGRect frame = self.view.frame;
+//    frame.size.height -= keyboardSize.height;
+//    if (!CGRectContainsPoint(frame, self.matchAccuracyColorCodingTextField.frame.origin) ) {
+//        [UIView animateWithDuration:[info[UIKeyboardAnimationDurationUserInfoKey] doubleValue]
+//                         animations:^{
+//                             [self.scrollView scrollRectToVisible:self.matchAccuracyColorCodingTextField.frame
+//                                                         animated:NO];
+//                         }];
+//    }
+}
+
+- (void)notifiedKeyboardWillHide:(NSNotification*)notification
+{
+    self.questionsScrollView.contentInset = [self.stepDelegate edgeInsetsForStepViewController:self];
+    self.questionsScrollView.scrollIndicatorInsets = self.questionsScrollView.contentInset;
 }
 
 @end
