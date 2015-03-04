@@ -34,6 +34,8 @@
 
 - (void)setAdditionalQuestion:(CMGuidedSearchFlowAdditionalQuestion *)additionalQuestion
 {
+    _additionalQuestion = additionalQuestion;
+
     if (self.isViewLoaded) {
         [self updateSwitch];
     }
