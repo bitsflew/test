@@ -11,7 +11,7 @@
 
 @interface CMGuidedSearchAdditionalQuestionChecklistViewController : UIViewController <CMGuidedSearchAdditionalQuestionViewController>
 
-// Supported attributes: Items (array of strings), MultiSelect (boolean)
+// Supported attributes: Items (array of strings, required), MultiSelect (boolean, optional), Vertical (boolean, optional)
 @property (nonatomic, retain) CMGuidedSearchFlowAdditionalQuestion *additionalQuestion;
 
 @end

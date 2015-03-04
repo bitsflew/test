@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, CMChecklistOrientation) {
+    CMChecklistOrientationVertical = 0,
+    CMChecklistOrientationHorizontal
+};
+
 @protocol CMChecklistItem <NSObject>
 - (NSString*)title;
 @end
@@ -25,6 +30,7 @@
 @property (nonatomic) BOOL allowsMultipleSelection;
 @property (nonatomic, retain) NSArray *items;
 @property (nonatomic, readonly) NSArray *checkedItems;
+@property (nonatomic) CMChecklistOrientation orientation;
 
 - (void)checkItem:(id<CMChecklistItem>)item;
 - (void)checkItems:(NSArray*)items;

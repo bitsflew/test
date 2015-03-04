@@ -13,6 +13,7 @@
 
 @property (nonatomic, weak) CMChecklistView *checklist;
 @property (nonatomic) BOOL multiSelect;
+@property (nonatomic) BOOL layoutVertically;
 
 @end
 
@@ -58,6 +59,8 @@
     _additionalQuestion = additionalQuestion;
 
     self.multiSelect = [additionalQuestion.attributes[@"MultiSelect"] boolValue];
+    self.layoutVertically = [additionalQuestion.attributes[@"Vertical"] boolValue];
+
     if (self.isViewLoaded) {
         [self updateChecklist];
     }
@@ -79,6 +82,7 @@
         }
     }
 
+    self.checklist.orientation = self.layoutVertically ? CMChecklistOrientationVertical : CMChecklistOrientationHorizontal;
     self.checklist.allowsMultipleSelection = self.multiSelect;
     self.checklist.items = items;
 

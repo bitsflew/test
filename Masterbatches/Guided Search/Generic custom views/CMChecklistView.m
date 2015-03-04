@@ -103,6 +103,11 @@ static const CGFloat kCMChecklistButtonCheckScale = 0.5f;
     self.layer.cornerRadius = useRadioStyle ? kCMChecklistButtonSize/2.f : 0.f;
 }
 
+- (CGSize)intrinsicContentSize
+{
+    return CGSizeMake(kCMChecklistButtonSize, kCMChecklistButtonSize);
+}
+
 @end
 
 @interface CMChecklistView ()
@@ -163,6 +168,16 @@ static const CGFloat kCMChecklistButtonCheckScale = 0.5f;
     [self updateViews];
 }
 
+- (void)setOrientation:(CMChecklistOrientation)orientation
+{
+    [self.buttons makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self.buttons removeAllObjects];
+
+    _orientation = orientation;
+
+    [self updateViews];
+}
+
 - (NSArray*)checkedItems
 {
     NSMutableArray *checkedItems = [NSMutableArray new];
@@ -182,14 +197,15 @@ static const CGFloat kCMChecklistButtonCheckScale = 0.5f;
     for (CMChecklistButton *button in self.buttons) {
         buttonFrames = CGRectUnion(buttonFrames, button.frame);
     }
-    return CGSizeMake(UIViewNoIntrinsicMetric, CGRectGetMaxY(buttonFrames));
+
+    return CGSizeMake(CGRectGetMaxX(buttonFrames), CGRectGetMaxY(buttonFrames));
 }
 
 #pragma mark -
 
 - (void)updateViews
 {
-    CMChecklistButton *buttonAbove = nil;
+    CMChecklistButton *previousButton = nil;
 
     for (int i=0; i<self.items.count; i++) {
         CMChecklistButton *button;
@@ -197,88 +213,154 @@ static const CGFloat kCMChecklistButtonCheckScale = 0.5f;
             button = self.buttons[i];
         } else {
             button = [CMChecklistButton new];
-            [button addConstraint:[NSLayoutConstraint constraintWithItem:button
-                                                               attribute:NSLayoutAttributeWidth
-                                                               relatedBy:NSLayoutRelationEqual
-                                                                  toItem:nil
-                                                               attribute:NSLayoutAttributeNotAnAttribute
-                                                              multiplier:1.f
-                                                                constant:kCMChecklistButtonSize]];
-            [button addConstraint:[NSLayoutConstraint constraintWithItem:button
-                                                               attribute:NSLayoutAttributeHeight
-                                                               relatedBy:NSLayoutRelationEqual
-                                                                  toItem:button
-                                                               attribute:NSLayoutAttributeWidth
-                                                              multiplier:1.f
-                                                                constant:0.f]];
             [self.buttons addObject:button];
-
             [self addSubview:button];
             [self addSubview:button.label];
 
-            [self addConstraint:[NSLayoutConstraint constraintWithItem:button
-                                                             attribute:NSLayoutAttributeLeading
-                                                             relatedBy:NSLayoutRelationEqual
-                                                                toItem:self
-                                                             attribute:NSLayoutAttributeLeading
-                                                            multiplier:1.f
-                                                              constant:0.f]];
-            
-            [self addConstraint:[NSLayoutConstraint constraintWithItem:button.label
-                                                             attribute:NSLayoutAttributeLeft
-                                                             relatedBy:NSLayoutRelationEqual
-                                                                toItem:button
-                                                             attribute:NSLayoutAttributeRight
-                                                            multiplier:1.f
-                                                              constant:kCMChecklistButtonSpacing]];
-            
-            [self addConstraint:[NSLayoutConstraint constraintWithItem:button.label
-                                                             attribute:NSLayoutAttributeTop
-                                                             relatedBy:NSLayoutRelationEqual
-                                                                toItem:button
-                                                             attribute:NSLayoutAttributeTop
-                                                            multiplier:1.f
-                                                              constant:0.f]];
+            switch (self.orientation) {
+                case CMChecklistOrientationHorizontal:
+                    [self addConstraint:[NSLayoutConstraint constraintWithItem:button
+                                                                     attribute:NSLayoutAttributeTop
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:self
+                                                                     attribute:NSLayoutAttributeTop
+                                                                    multiplier:1.f
+                                                                      constant:0.f]];
 
-            [self addConstraint:[NSLayoutConstraint constraintWithItem:button.label
-                                                             attribute:NSLayoutAttributeBottom
-                                                             relatedBy:NSLayoutRelationGreaterThanOrEqual
-                                                                toItem:button
-                                                             attribute:NSLayoutAttributeBottom
-                                                            multiplier:1.f
-                                                              constant:0.f]];
-            
-            [self addConstraint:[NSLayoutConstraint constraintWithItem:button.label
-                                                             attribute:NSLayoutAttributeTrailing
-                                                             relatedBy:NSLayoutRelationEqual
-                                                                toItem:self
-                                                             attribute:NSLayoutAttributeTrailing
-                                                            multiplier:1.f
-                                                              constant:0.f]];
+                    [self addConstraint:[NSLayoutConstraint constraintWithItem:button
+                                                                     attribute:NSLayoutAttributeHeight
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:nil
+                                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                                    multiplier:1.f
+                                                                      constant:kCMChecklistButtonSize]];
+                    
+                    [self addConstraint:[NSLayoutConstraint constraintWithItem:button.label
+                                                                     attribute:NSLayoutAttributeLeft
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:button
+                                                                     attribute:NSLayoutAttributeRight
+                                                                    multiplier:1.f
+                                                                      constant:kCMChecklistButtonSpacing]];
+                    
+                    [self addConstraint:[NSLayoutConstraint constraintWithItem:button.label
+                                                                     attribute:NSLayoutAttributeTop
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:button
+                                                                     attribute:NSLayoutAttributeTop
+                                                                    multiplier:1.f
+                                                                      constant:0.f]];
+                    
+                    [self addConstraint:[NSLayoutConstraint constraintWithItem:button.label
+                                                                     attribute:NSLayoutAttributeBottom
+                                                                     relatedBy:NSLayoutRelationGreaterThanOrEqual
+                                                                        toItem:button
+                                                                     attribute:NSLayoutAttributeBottom
+                                                                    multiplier:1.f
+                                                                      constant:0.f]];
 
-            if (buttonAbove) {
-                [self addConstraint:[NSLayoutConstraint constraintWithItem:button
-                                                                 attribute:NSLayoutAttributeTop
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:buttonAbove.label
-                                                                 attribute:NSLayoutAttributeBottom
-                                                                multiplier:1.f
-                                                                  constant:kCMChecklistButtonSpacing]];
-            } else {
-                [self addConstraint:[NSLayoutConstraint constraintWithItem:button
-                                                                 attribute:NSLayoutAttributeTop
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:self
-                                                                 attribute:NSLayoutAttributeTop
-                                                                multiplier:1.f
-                                                                  constant:0.f]];
+                    if (previousButton) {
+                        [self addConstraint:[NSLayoutConstraint constraintWithItem:button
+                                                                         attribute:NSLayoutAttributeLeft
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:previousButton.label
+                                                                         attribute:NSLayoutAttributeRight
+                                                                        multiplier:1.f
+                                                                          constant:kCMChecklistButtonSpacing*2.f]];
+                        
+                    } else {
+                        [self addConstraint:[NSLayoutConstraint constraintWithItem:button
+                                                                         attribute:NSLayoutAttributeLeading
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:self
+                                                                         attribute:NSLayoutAttributeLeading
+                                                                        multiplier:1.f
+                                                                          constant:0.f]];
+                    }
+                    
+                    [self addConstraint:[NSLayoutConstraint constraintWithItem:button
+                                                                     attribute:NSLayoutAttributeWidth
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:nil
+                                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                                    multiplier:1.f
+                                                                      constant:kCMChecklistButtonSize]];
+
+                    break;
+                default:
+                    [self addConstraint:[NSLayoutConstraint constraintWithItem:button
+                                                                     attribute:NSLayoutAttributeLeading
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:self
+                                                                     attribute:NSLayoutAttributeLeading
+                                                                    multiplier:1.f
+                                                                      constant:0.f]];
+                    
+                    [self addConstraint:[NSLayoutConstraint constraintWithItem:button
+                                                                     attribute:NSLayoutAttributeWidth
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:nil
+                                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                                    multiplier:1.f
+                                                                      constant:kCMChecklistButtonSize]];
+                    
+                    [self addConstraint:[NSLayoutConstraint constraintWithItem:button.label
+                                                                     attribute:NSLayoutAttributeLeft
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:button
+                                                                     attribute:NSLayoutAttributeRight
+                                                                    multiplier:1.f
+                                                                      constant:kCMChecklistButtonSpacing]];
+                    
+                    [self addConstraint:[NSLayoutConstraint constraintWithItem:button.label
+                                                                     attribute:NSLayoutAttributeTop
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:button
+                                                                     attribute:NSLayoutAttributeTop
+                                                                    multiplier:1.f
+                                                                      constant:0.f]];
+                    
+                    [self addConstraint:[NSLayoutConstraint constraintWithItem:button.label
+                                                                     attribute:NSLayoutAttributeBottom
+                                                                     relatedBy:NSLayoutRelationGreaterThanOrEqual
+                                                                        toItem:button
+                                                                     attribute:NSLayoutAttributeBottom
+                                                                    multiplier:1.f
+                                                                      constant:0.f]];
+                    
+                    [self addConstraint:[NSLayoutConstraint constraintWithItem:button.label
+                                                                     attribute:NSLayoutAttributeTrailing
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:self
+                                                                     attribute:NSLayoutAttributeTrailing
+                                                                    multiplier:1.f
+                                                                      constant:0.f]];
+                    
+                    if (previousButton) {
+                        [self addConstraint:[NSLayoutConstraint constraintWithItem:button
+                                                                         attribute:NSLayoutAttributeTop
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:previousButton.label
+                                                                         attribute:NSLayoutAttributeBottom
+                                                                        multiplier:1.f
+                                                                          constant:kCMChecklistButtonSpacing]];
+                    } else {
+                        [self addConstraint:[NSLayoutConstraint constraintWithItem:button
+                                                                         attribute:NSLayoutAttributeTop
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:self
+                                                                         attribute:NSLayoutAttributeTop
+                                                                        multiplier:1.f
+                                                                          constant:0.f]];
+                    }
+                    break;
             }
         }
 
         button.item = self.items[i];
         button.useRadioStyle = !self.allowsMultipleSelection;
 
-        buttonAbove = button;
+        previousButton = button;
     }
 
     while (self.buttons.count > self.items.count) {
