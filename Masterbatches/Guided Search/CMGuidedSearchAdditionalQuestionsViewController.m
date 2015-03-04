@@ -147,6 +147,20 @@ static CGFloat kCMGuidedSearchAdditionalQuestionsViewControllerTitleMarginBottom
 
 #pragma mark -
 
+- (UIView*)findFirstResponderInSubviewsOf:(UIView*)view
+{
+    for (UIView *subview in view.subviews) {
+        if ([subview isFirstResponder]) {
+            return subview;
+        }
+        UIView *responder = [self findFirstResponderInSubviewsOf:subview];
+        if (responder) {
+            return responder;
+        }
+    }
+    return nil;
+}
+
 - (void)notifiedKeyboardDidShow:(NSNotification*)notification
 {
     // See: https://developer.apple.com/library/ios/documentation/StringsTextFonts/Conceptual/TextAndWebiPhoneOS/KeyboardManagement/KeyboardManagement.html#//apple_ref/doc/uid/TP40009542-CH5-SW7
@@ -158,15 +172,21 @@ static CGFloat kCMGuidedSearchAdditionalQuestionsViewControllerTitleMarginBottom
     self.questionsScrollView.contentInset = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0);
     self.questionsScrollView.scrollIndicatorInsets = self.questionsScrollView.contentInset;
     
-//    CGRect frame = self.view.frame;
-//    frame.size.height -= keyboardSize.height;
-//    if (!CGRectContainsPoint(frame, self.matchAccuracyColorCodingTextField.frame.origin) ) {
-//        [UIView animateWithDuration:[info[UIKeyboardAnimationDurationUserInfoKey] doubleValue]
-//                         animations:^{
-//                             [self.scrollView scrollRectToVisible:self.matchAccuracyColorCodingTextField.frame
-//                                                         animated:NO];
-//                         }];
-//    }
+    UIView *responder = [self findFirstResponderInSubviewsOf:self.questionsScrollView];
+
+    if (responder) {
+        CGRect frame = self.questionsScrollView.frame;
+        frame.origin = CGPointZero;
+        frame.size.height -= keyboardSize.height;
+        CGRect responderFrame = [responder.superview convertRect:responder.frame toView:self.questionsScrollView];
+        if (!CGRectContainsPoint(frame, responderFrame.origin) ) {
+            [UIView animateWithDuration:[info[UIKeyboardAnimationDurationUserInfoKey] doubleValue]
+                             animations:^{
+                                 [self.questionsScrollView scrollRectToVisible:responderFrame
+                                                             animated:NO];
+                             }];
+        }
+    }
 }
 
 - (void)notifiedKeyboardWillHide:(NSNotification*)notification

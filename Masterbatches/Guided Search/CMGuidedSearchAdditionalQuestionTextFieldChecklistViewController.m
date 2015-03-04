@@ -47,6 +47,8 @@
         _textField.translatesAutoresizingMaskIntoConstraints = NO;
         _textField.borderStyle = UITextBorderStyleRoundedRect;
         _textField.placeholder = self.prompt;
+        _textField.autocorrectionType = UITextAutocorrectionTypeNo;
+        _textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
         _textField.keyboardAppearance = UIKeyboardAppearanceDark;
     }
     return _textField;
@@ -55,6 +57,7 @@
 - (void)setEnabled:(BOOL)enabled forAccessoryView:(UIView*)accessoryView fromUser:(BOOL)fromUser
 {
     self.textField.enabled = enabled;
+    self.textField.hidden = !enabled;
     
     if (enabled && fromUser) {
         [self.textField becomeFirstResponder];
