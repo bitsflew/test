@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7D609EE7-FADE-4772-BDAE-C12E10DBFCAA</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MB Sales</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8696EE71973D40C0B86B476A58D4AD1A829DA84C</key>
+		<string>https://github.com/Xaton/Clariant-Masterbatches.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MB Sales.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8696EE71973D40C0B86B476A58D4AD1A829DA84C</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Xaton/Clariant-Masterbatches.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8696EE71973D40C0B86B476A58D4AD1A829DA84C</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8696EE71973D40C0B86B476A58D4AD1A829DA84C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Clariant-Masterbatches</string>
+		</dict>
+	</array>
+</dict>
+</plist>
