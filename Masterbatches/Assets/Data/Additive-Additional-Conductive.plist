@@ -18,12 +18,12 @@
 			<key>Title</key>
 			<string>How conductive should it be?</string>
 			<key>Class</key>
-			<string>Choice</string>
+			<string>Grid</string>
 			<key>Key</key>
 			<string>conductivity</string>
 			<key>Attributes</key>
 			<dict>
-				<key>Choices</key>
+				<key>Items</key>
 				<array>
 					<string>Not very conductive</string>
 					<string>Quite conductive</string>

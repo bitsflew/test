@@ -10,7 +10,7 @@
 			<key>Title</key>
 			<string>What types of microbes are to be targeted?</string>
 			<key>Class</key>
-			<string>Grid</string>
+			<string>Checklist</string>
 			<key>Key</key>
 			<string>targets</string>
 			<key>Attributes</key>
