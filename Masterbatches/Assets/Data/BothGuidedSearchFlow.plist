@@ -26,9 +26,15 @@
 		</dict>
 		<dict>
 			<key>Class</key>
-			<string>ProductType</string>
+			<string>ProductRegulatoryIndustry</string>
 			<key>Title</key>
-			<string>Product type</string>
+			<string>Select product, regulatory and industry types</string>
+		</dict>
+		<dict>
+			<key>Class</key>
+			<string>ColorQuestions</string>
+			<key>Title</key>
+			<string>A few color questions</string>
 		</dict>
 		<dict>
 			<key>Class</key>
