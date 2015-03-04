@@ -84,7 +84,7 @@
     static const CGFloat borderWidth = 2.f;
     static const CGFloat stepIncompleteScale = 0.8f;
     static const CGFloat stepIncompleteContentScale = 0.01f;
-    static const CGFloat animationSpeed = 0.2f;
+    static const CGFloat animationSpeed = 0.3f;
 
     if (self.stepCount == 0) {
         self.stepsLayer.opacity = 0.f;
@@ -206,7 +206,7 @@
 
         stepLayer.completeLayer.backgroundColor = (stepCompleted
                                                    ? [UIColor clearColor]
-                                                   : (stepActive ? [UIColor whiteColor] : [ClariantColors silver20Color])).CGColor;
+                                                   : (stepActive ? [UIColor whiteColor] : [UIColor whiteColor])).CGColor;
         
         stepLayer.completeLayer.bounds = CGRectInset(stepLayer.bounds, borderWidth, borderWidth);
         stepLayer.completeLayer.cornerRadius = CGRectGetHeight(stepLayer.completeLayer.bounds)/2.f;
