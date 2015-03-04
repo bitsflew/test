@@ -160,6 +160,10 @@ static const CGFloat kCMChecklistButtonCheckScale = 0.5f;
 
     for (CMChecklistButton *button in self.buttons) {
         button.checked = [items containsObject:button.item];
+
+        if ([button.item respondsToSelector:@selector(setEnabled:forAccessoryView:fromUser:)]) {
+            [button.item setEnabled:button.checked forAccessoryView:button.accessoryView fromUser:NO];
+        }
     }
 }
 
@@ -398,8 +402,8 @@ static const CGFloat kCMChecklistButtonCheckScale = 0.5f;
                                                         multiplier:1.f
                                                           constant:kCMChecklistButtonSize + kCMChecklistButtonSpacing*2.f + maximumLabelWidth]];
 
-        if ([button.item respondsToSelector:@selector(setEnabled:forAccessoryView:)]) {
-            [button.item setEnabled:button.checked forAccessoryView:button.accessoryView];
+        if ([button.item respondsToSelector:@selector(setEnabled:forAccessoryView:fromUser:)]) {
+            [button.item setEnabled:button.checked forAccessoryView:button.accessoryView fromUser:NO];
         }
     }
 
@@ -448,8 +452,8 @@ static const CGFloat kCMChecklistButtonCheckScale = 0.5f;
 
     if (touchedButton.highlighted) {
         touchedButton.checked = !touchedButton.checked;
-        if ([touchedButton.item respondsToSelector:@selector(setEnabled:forAccessoryView:)]) {
-            [touchedButton.item setEnabled:touchedButton.checked forAccessoryView:touchedButton.accessoryView];
+        if ([touchedButton.item respondsToSelector:@selector(setEnabled:forAccessoryView:fromUser:)]) {
+            [touchedButton.item setEnabled:touchedButton.checked forAccessoryView:touchedButton.accessoryView fromUser:YES];
         }
         valueChanged = YES;
     }
@@ -459,12 +463,12 @@ static const CGFloat kCMChecklistButtonCheckScale = 0.5f;
         if ((touchedButton!=button) && touchedButton.checked && button.checked && !self.allowsMultipleSelection) {
             button.checked = NO;
             valueChanged = YES;
-            if ([touchedButton.item respondsToSelector:@selector(setEnabled:forAccessoryView:)]) {
-                [touchedButton.item setEnabled:NO forAccessoryView:touchedButton.accessoryView];
+            if ([touchedButton.item respondsToSelector:@selector(setEnabled:forAccessoryView:fromUser:)]) {
+                [touchedButton.item setEnabled:NO forAccessoryView:touchedButton.accessoryView fromUser:YES];
             }
         }
     }
-    
+
     if (valueChanged) {
         [self sendActionsForControlEvents:UIControlEventValueChanged];
     }

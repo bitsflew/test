@@ -19,7 +19,7 @@ typedef NS_ENUM(NSInteger, CMChecklistOrientation) {
 
 @optional
 - (UIView*)accessoryView; // for example, a text field
-- (void)setEnabled:(BOOL)enabled forAccessoryView:(UIView*)accessoryView;
+- (void)setEnabled:(BOOL)enabled forAccessoryView:(UIView*)accessoryView fromUser:(BOOL)fromUser;
 
 @end
 

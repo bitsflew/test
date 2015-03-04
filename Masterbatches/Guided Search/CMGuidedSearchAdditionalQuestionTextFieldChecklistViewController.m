@@ -27,33 +27,43 @@
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *key;
 @property (nonatomic, copy) NSString *prompt;
-@property (nonatomic, retain) CMGuidedSearchAdditionalQuestionTextFieldChecklistTextField *textField;
+@property (nonatomic, readonly, retain) CMGuidedSearchAdditionalQuestionTextFieldChecklistTextField *textField;
 
 @end
 
 @implementation CMGuidedSearchAdditionalQuestionTextFieldChecklistItem
+@synthesize textField=_textField;
 
 - (UIView*)accessoryView
 {
-    if (!self.textField) {
-        self.textField = [[CMGuidedSearchAdditionalQuestionTextFieldChecklistTextField alloc]
-                          initWithFrame:CGRectZero];
-        self.textField.translatesAutoresizingMaskIntoConstraints = NO;
-        self.textField.borderStyle = UITextBorderStyleRoundedRect;
-        self.textField.placeholder = self.prompt;
-        self.textField.keyboardAppearance = UIKeyboardAppearanceDark;
-    }
     return self.textField;
 }
 
-- (void)setEnabled:(BOOL)enabled forAccessoryView:(UIView*)accessoryView
+- (UITextField*)textField
+{
+    if (!_textField) {
+        _textField = [[CMGuidedSearchAdditionalQuestionTextFieldChecklistTextField alloc]
+                          initWithFrame:CGRectZero];
+        _textField.translatesAutoresizingMaskIntoConstraints = NO;
+        _textField.borderStyle = UITextBorderStyleRoundedRect;
+        _textField.placeholder = self.prompt;
+        _textField.keyboardAppearance = UIKeyboardAppearanceDark;
+    }
+    return _textField;
+}
+
+- (void)setEnabled:(BOOL)enabled forAccessoryView:(UIView*)accessoryView fromUser:(BOOL)fromUser
 {
     self.textField.enabled = enabled;
+    
+    if (enabled && fromUser) {
+        [self.textField becomeFirstResponder];
+    }
 }
 
 @end
 
-@interface CMGuidedSearchAdditionalQuestionTextFieldChecklistViewController ()
+@interface CMGuidedSearchAdditionalQuestionTextFieldChecklistViewController () <UITextFieldDelegate>
 
 @property (nonatomic, weak) CMChecklistView *checklist;
 @property (nonatomic) BOOL multiSelect;
@@ -109,12 +119,17 @@
         item.title = dictionaryItem[@"Title"];
         item.key = dictionaryItem[@"Key"];
         item.prompt = dictionaryItem[@"Prompt"];
-        [items addObject:item];
 
-//        if ((self.multiSelect && [self.additionalQuestion.value containsObject:stringItem]) ||
-//            (!self.multiSelect && [self.additionalQuestion.value isEqual:stringItem])) {
-//            [selectedItems addObject:checklistItem];
-//        }
+        NSString *value = [self.additionalQuestion.value objectForKey:item.key];
+
+        if (value) {
+            item.textField.text = value;
+            [selectedItems addObject:item];
+        }
+
+        [item.textField setDelegate:self];
+
+        [items addObject:item];
     }
 
     self.checklist.allowsMultipleSelection = self.multiSelect;
@@ -124,11 +139,41 @@
 
 - (void)checklistValueDidChange:(id)sender
 {
-//    if (self.multiSelect) {
-//        self.additionalQuestion.value = [self.checklist.checkedItems valueForKey:@"title"];
-//    } else {
-//        self.additionalQuestion.value = [self.checklist.checkedItems.lastObject title];
-//    }
+    NSMutableDictionary *value = [NSMutableDictionary new];
+    
+    for (CMGuidedSearchAdditionalQuestionTextFieldChecklistItem *item in self.checklist.checkedItems) {
+        value[item.key] = item.textField.text;
+    }
+
+    self.additionalQuestion.value = value;
 }
+
+#pragma mark -
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    CMGuidedSearchAdditionalQuestionTextFieldChecklistItem *changedItem = nil;
+
+    for (CMGuidedSearchAdditionalQuestionTextFieldChecklistItem *item in self.checklist.items) {
+        if (item.accessoryView == textField) {
+            changedItem = item;
+            break;
+        }
+    }
+
+    if (!changedItem) {
+        return NO;
+    }
+
+    NSMutableString *text = [textField.text mutableCopy];
+    [text replaceCharactersInRange:range withString:string];
+
+    NSMutableDictionary *value = [self.additionalQuestion.value mutableCopy];
+    value[changedItem.key] = text;
+    self.additionalQuestion.value = value;
+    
+    return YES;
+}
+
 
 @end
