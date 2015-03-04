@@ -10,6 +10,8 @@
 
 @interface CMGuidedSearchAdditionalQuestionTextFieldViewController : UIViewController <CMGuidedSearchAdditionalQuestionViewController>
 
+// Supported attributes: Numeric (optional, boolean – whether to show numeric keypad)
+
 @property (nonatomic, retain) CMGuidedSearchFlowAdditionalQuestion* additionalQuestion;
 
 @end

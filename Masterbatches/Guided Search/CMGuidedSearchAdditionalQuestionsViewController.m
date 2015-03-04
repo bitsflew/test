@@ -155,15 +155,16 @@ static CGFloat kCMGuidedSearchAdditionalQuestionsViewControllerTitleMarginBottom
                                   attribute:NSLayoutAttributeLeft
                                  multiplier:1
                                    constant:0]];
-
-    [self.questionsScrollView addConstraint:
-     [NSLayoutConstraint constraintWithItem:viewController.view
-                                  attribute:NSLayoutAttributeRight
-                                  relatedBy:NSLayoutRelationEqual
-                                     toItem:titleLabel
-                                  attribute:NSLayoutAttributeRight
-                                 multiplier:1
-                                   constant:0]];
+    
+    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:viewController.view
+                                                                       attribute:NSLayoutAttributeRight
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:titleLabel
+                                                                       attribute:NSLayoutAttributeRight
+                                                                      multiplier:1
+                                                                        constant:0];
+    rightConstraint.priority = UILayoutPriorityDefaultLow;
+    [self.questionsScrollView addConstraint:rightConstraint];
 
     self.lastQuestionView = viewController.view;
 

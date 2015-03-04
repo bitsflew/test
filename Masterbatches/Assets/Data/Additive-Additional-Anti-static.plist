@@ -21,6 +21,11 @@
 			<string>What humidity will the application operate in? [15% ~ 60%]</string>
 			<key>Class</key>
 			<string>TextField</string>
+			<key>Attributes</key>
+			<dict>
+				<key>Numeric</key>
+				<true/>
+			</dict>
 		</dict>
 		<dict>
 			<key>Key</key>
@@ -35,11 +40,10 @@
 				<false/>
 				<key>Items</key>
 				<array>
-					<string>Explosion prone environments</string>
+					<string>Explosion-prone</string>
 					<string>Computer rooms</string>
 					<string>Electrical codes</string>
 					<string>Dust control</string>
-					<string></string>
 				</array>
 			</dict>
 		</dict>
@@ -50,6 +54,11 @@
 			<string>What surfaced resistivity is required?</string>
 			<key>Class</key>
 			<string>TextField</string>
+			<key>Attributes</key>
+			<dict>
+				<key>Numeric</key>
+				<true/>
+			</dict>
 		</dict>
 	</array>
 </dict>

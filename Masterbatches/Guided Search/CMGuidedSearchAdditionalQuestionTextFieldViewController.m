@@ -8,10 +8,25 @@
 
 #import "CMGuidedSearchAdditionalQuestionTextFieldViewController.h"
 
-static const CGFloat CMGuidedSearchAdditionalQuestionTextFieldViewHorizontalPadding = 15.f;
-static const CGFloat CMGuidedSearchAdditionalQuestionTextFieldViewVerticalPadding = 10.f;
+@interface CMGuidedSearchAdditionalQuestionTextFieldViewControllerTextField : UITextField
+
+@end
+
+@implementation CMGuidedSearchAdditionalQuestionTextFieldViewControllerTextField
+
+- (CGSize)intrinsicContentSize
+{
+    if (self.keyboardType == UIKeyboardTypeNumberPad) {
+        return CGSizeMake(100.f, [super intrinsicContentSize].height);
+    }
+    return CGSizeMake(500.f, [super intrinsicContentSize].height);
+}
+
+@end
 
 @interface CMGuidedSearchAdditionalQuestionTextFieldViewController () <UITextFieldDelegate>
+
+@property (nonatomic, weak) UITextField *textField;
 
 @end
 
@@ -19,15 +34,38 @@ static const CGFloat CMGuidedSearchAdditionalQuestionTextFieldViewVerticalPaddin
 
 - (void)loadView
 {
-    self.view = [UITextField new];
-    ((UITextField*)self.view).borderStyle = UITextBorderStyleRoundedRect;
-    ((UITextField*)self.view).delegate = self;
+    self.view = [CMGuidedSearchAdditionalQuestionTextFieldViewControllerTextField new];
+    self.textField = (UITextField*)self.view;
+    self.textField.translatesAutoresizingMaskIntoConstraints = NO;
+
+    self.textField.borderStyle = UITextBorderStyleRoundedRect;
+    self.textField.delegate = self;
 }
 
 - (void)setAdditionalQuestion:(CMGuidedSearchFlowAdditionalQuestion *)additionalQuestion
 {
     _additionalQuestion = additionalQuestion;
-    ((UITextField*)self.view).text = self.additionalQuestion.value;
+    if (self.isViewLoaded) {
+        [self updateTextField];
+    }
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    if (self.additionalQuestion) {
+        [self updateTextField];
+    }
+}
+
+- (void)updateTextField
+{
+    self.textField.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.textField.keyboardAppearance = UIKeyboardAppearanceDark;
+    self.textField.keyboardType = [self.additionalQuestion.attributes[@"Numeric"] boolValue]
+      ? UIKeyboardTypeNumberPad
+      : UIKeyboardTypeAlphabet;
+    self.textField.text = self.additionalQuestion.value;
 }
 
 #pragma mark -
