@@ -9,18 +9,38 @@
 #import "CMGuidedSearchAdditionalQuestionsViewController.h"
 #import "CMGuidedSearchAdditionalQuestionViewController.h"
 
-static CGFloat kCMGuidedSearchAdditionalQuestionsViewControllerSpacing = 10.f;
+static CGFloat kCMGuidedSearchAdditionalQuestionsViewControllerSpacing = 40.f;
 static CGFloat kCMGuidedSearchAdditionalQuestionsViewControllerTitleMarginLeft = 15.f;
 static CGFloat kCMGuidedSearchAdditionalQuestionsViewControllerTitleMarginRight = 15.f;
-static CGFloat kCMGuidedSearchAdditionalQuestionsViewControllerTitleMarginBottom = 10.f;
+static CGFloat kCMGuidedSearchAdditionalQuestionsViewControllerTitleMarginBottom = 15.f;
 
 @interface CMGuidedSearchAdditionalQuestionsViewController ()
 
 @property (nonatomic, weak) UIView *lastQuestionView;
 
++ (NSArray*)pathsToAdditionalQuestionsForAdditives:(NSArray*)additives;
+
 @end
 
 @implementation CMGuidedSearchAdditionalQuestionsViewController
+
++ (BOOL)applicableToFlow:(CMGuidedSearchFlow*)flow
+{
+    return [self pathsToAdditionalQuestionsForAdditives:flow.productSpecification.additives].count != 0;
+}
+
++ (NSArray*)pathsToAdditionalQuestionsForAdditives:(NSArray*)additives
+{
+    NSMutableArray *paths = [NSMutableArray new];
+    for (CMProductSpecificationAdditive *additive in additives) {
+        NSString *name = [NSString stringWithFormat:@"Additive-Additional-%@.plist", additive.name];
+        NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:nil];
+        if (path) {
+            [paths addObject:path];
+        }
+    }
+    return paths;
+}
 
 - (void)viewDidLoad
 {
@@ -31,10 +51,8 @@ static CGFloat kCMGuidedSearchAdditionalQuestionsViewControllerTitleMarginBottom
     
     CMGuidedSearchFlow *flow = [self.stepDelegate flowForStepViewController:self];
 
-    for (CMProductSpecificationAdditive *additive in self.step.productSpecification.additives) {
-        NSString *name = [NSString stringWithFormat:@"Additive-Additional-%@", additive.name];
-
-        NSArray *questions = [flow additionalQuestionsNamed:name];
+    for (NSString *path in [[self class] pathsToAdditionalQuestionsForAdditives:self.step.productSpecification.additives]) {
+        NSArray *questions = [flow additionalQuestionsWithContentsOfFile:path];
         if (!questions) {
             continue;
         }

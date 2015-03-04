@@ -8,6 +8,7 @@
 
 #import "CMGuidedSearchFlow.h"
 #import "CMProductSpecification.h"
+#import "CMGuidedSearchStepViewController.h"
 
 @interface CMGuidedSearchFlowAdditionalQuestion ()
 
@@ -117,7 +118,7 @@
 
 - (NSArray*)additionalQuestionsNamed:(NSString*)name
 {
-    if (![name hasPrefix:@".plist"]) {
+    if (![name hasSuffix:@".plist"]) {
         name = [name stringByAppendingString:@".plist"];
     }
     return [self additionalQuestionsWithContentsOfFile:
@@ -160,7 +161,7 @@
 
 - (NSUInteger)stepCount
 {
-    return self.steps.count;
+    return [self numberOfStepsBefore:[self lastStep]] + 1;
 }
 
 - (NSUInteger)numberOfStepsBefore:(CMGuidedSearchFlowStep*)finishStep
@@ -183,20 +184,50 @@
 
 - (CMGuidedSearchFlowStep*)firstStep
 {
-    return self.steps.firstObject;
+    return [self nextStepAfter:nil];
+}
+
+- (CMGuidedSearchFlowStep*)lastStep
+{
+    return [self previousStepBefore:nil];
 }
 
 - (CMGuidedSearchFlowStep*)nextStepAfter:(CMGuidedSearchFlowStep *)step
 {
-    // TODO: This can incorporate logic for search request properties, for example in additive steps
-    NSUInteger index = [self.steps indexOfObjectIdenticalTo:step];
-    return ((index != NSNotFound) && (index < self.steps.count-1)) ? self.steps[index+1] : nil;
+    CMGuidedSearchFlowStep *nextStep;
+    
+    if (step) {
+        NSUInteger index = [self.steps indexOfObjectIdenticalTo:step];
+        nextStep = ((index != NSNotFound) && (index < self.steps.count-1)) ? self.steps[index+1] : nil;
+    } else {
+        nextStep = self.steps.firstObject;
+    }
+
+    if ([((id)nextStep.viewControllerClass) respondsToSelector:@selector(applicableToFlow:)] &&
+        ![((id)nextStep.viewControllerClass) applicableToFlow:self]) {
+        return [self nextStepAfter:nextStep];
+    }
+
+    return nextStep;
 }
 
 - (CMGuidedSearchFlowStep*)previousStepBefore:(CMGuidedSearchFlowStep*)step
 {
-    NSUInteger index = [self.steps indexOfObjectIdenticalTo:step];
-    return (index == 0) ? nil : self.steps[index-1];
+    CMGuidedSearchFlowStep *previousStep;
+
+    if (step) {
+        NSUInteger index = [self.steps indexOfObjectIdenticalTo:step];
+        previousStep = (index == 0) ? nil : self.steps[index-1];
+    } else {
+        previousStep = self.steps.lastObject;
+    }
+
+    if ([((id)previousStep.viewControllerClass) respondsToSelector:@selector(applicableToFlow:)] &&
+        ![((id)previousStep.viewControllerClass) applicableToFlow:self]) {
+        return [self previousStepBefore:previousStep];
+    }
+
+    return previousStep;
 }
 
 @end

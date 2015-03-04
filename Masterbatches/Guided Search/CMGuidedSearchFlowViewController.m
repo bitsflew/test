@@ -191,8 +191,7 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 
     self.titleLabel.text = step.title;
     
-    self.flowProgressView.stepCount = self.flow.stepCount;
-    self.flowProgressView.completedCount = [self.flow numberOfStepsBefore:step];
+    [self updateFlowProgressView];
 
     self.previousButton.hidden = self.flowProgressView.completedCount == 0;
     self.nextButton.hidden = self.flowProgressView.completedCount >= self.flowProgressView.stepCount;
@@ -407,6 +406,12 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
     }
 }
 
+- (void)updateFlowProgressView
+{
+    self.flowProgressView.stepCount = self.flow.stepCount;
+    self.flowProgressView.completedCount = [self.flow numberOfStepsBefore:[self.stepViewController step]];
+}
+
 #pragma mark - Step view controller delegate
 
 - (void)stepViewControllerDidCompleteStep:(id<CMGuidedSearchStepViewController>)stepViewController
@@ -416,6 +421,8 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 
 - (void)stepViewControllerDidChangeProductSpecification:(id<CMGuidedSearchStepViewController>)stepViewController
 {
+    [self updateFlowProgressView];
+
     [NSRunLoop cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateSearchResults) object:nil];
     [self performSelector:@selector(updateSearchResults) withObject:nil afterDelay:kCMGuidedSearchFlowViewControllerSearchThrottleDelay];
 }

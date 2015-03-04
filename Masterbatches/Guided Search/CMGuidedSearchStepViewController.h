@@ -21,12 +21,14 @@
 
 @protocol CMGuidedSearchStepViewController <NSObject>
 
+@optional
++ (BOOL)applicableToFlow:(CMGuidedSearchFlow*)flow;
+- (BOOL)completeStepWithValidationError:(NSString**)errorDescription;
+
+@required
 - (void)setStepDelegate:(id<CMGuidedSearchStepViewControllerDelegate>)stepDelegate;
 
 - (CMGuidedSearchFlowStep*)step;
 - (void)setStep:(CMGuidedSearchFlowStep*)step;
-
-@optional
-- (BOOL)completeStepWithValidationError:(NSString**)errorDescription;
 
 @end
