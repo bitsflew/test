@@ -29,8 +29,8 @@
 
 @property (nonatomic, retain) NSDictionary *attributes; // used to configure view controller
 
-@property (nonatomic, readonly) id value;
-- (void)setValue:(id)value;
+@property (nonatomic, readonly) id value; // shortcut to productSpecification's value for additional question key
+- (void)setValue:(id)value; // shortcut to setter for productSpecification's value for additional question key
 
 @end
 
@@ -55,7 +55,7 @@
 - (CMGuidedSearchFlowStep*)nextStepAfter:(CMGuidedSearchFlowStep*)step;
 - (CMGuidedSearchFlowStep*)previousStepBefore:(CMGuidedSearchFlowStep*)step;
 
-- (NSArray*)additionalQuestionsNamed:(NSString*)name;
 - (NSArray*)additionalQuestionsWithContentsOfFile:(NSString*)path;
+- (NSArray*)additionalQuestionsWithContentsOfFile:(NSString*)path title:(NSString**)title;
 
 @end

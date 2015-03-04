@@ -116,20 +116,20 @@
     return self;
 }
 
-- (NSArray*)additionalQuestionsNamed:(NSString*)name
+- (NSArray*)additionalQuestionsWithContentsOfFile:(NSString*)path
 {
-    if (![name hasSuffix:@".plist"]) {
-        name = [name stringByAppendingString:@".plist"];
-    }
-    return [self additionalQuestionsWithContentsOfFile:
-            [[NSBundle mainBundle] pathForResource:name ofType:nil]];
+    return [self additionalQuestionsWithContentsOfFile:path title:NULL];
 }
 
-- (NSArray*)additionalQuestionsWithContentsOfFile:(NSString*)path
+- (NSArray*)additionalQuestionsWithContentsOfFile:(NSString*)path title:(NSString**)title
 {
     NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:path];
     if (!dictionary) {
         return @[];
+    }
+    
+    if (title) {
+        *title = dictionary[@"Title"];
     }
 
     NSMutableArray *questions = [NSMutableArray new];

@@ -187,10 +187,10 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
                                                             multiplier:1.f
                                                               constant:0.f]];
         }
+
+        self.titleLabel.text = self.stepViewController.step.title;
     };
 
-    self.titleLabel.text = step.title;
-    
     [self updateFlowProgressView];
 
     self.previousButton.hidden = self.flowProgressView.completedCount == 0;

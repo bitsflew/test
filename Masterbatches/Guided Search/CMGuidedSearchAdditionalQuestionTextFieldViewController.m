@@ -11,25 +11,6 @@
 static const CGFloat CMGuidedSearchAdditionalQuestionTextFieldViewHorizontalPadding = 15.f;
 static const CGFloat CMGuidedSearchAdditionalQuestionTextFieldViewVerticalPadding = 10.f;
 
-@interface CMGuidedSearchAdditionalQuestionTextFieldView : UITextField
-
-@end
-
-@implementation CMGuidedSearchAdditionalQuestionTextFieldView
-
-- (CGRect)textRectForBounds:(CGRect)bounds {
-    return CGRectMake(CGRectGetMinX(bounds) + CMGuidedSearchAdditionalQuestionTextFieldViewHorizontalPadding,
-                      CGRectGetMinY(bounds) + CMGuidedSearchAdditionalQuestionTextFieldViewVerticalPadding,
-                      CGRectGetWidth(bounds) - CMGuidedSearchAdditionalQuestionTextFieldViewHorizontalPadding*2.f,
-                      CGRectGetHeight(bounds) - CMGuidedSearchAdditionalQuestionTextFieldViewVerticalPadding*2.f);
-}
-
-- (CGRect)editingRectForBounds:(CGRect)bounds {
-    return [self textRectForBounds:bounds];
-}
-
-@end
-
 @interface CMGuidedSearchAdditionalQuestionTextFieldViewController () <UITextFieldDelegate>
 
 @end
@@ -38,16 +19,15 @@ static const CGFloat CMGuidedSearchAdditionalQuestionTextFieldViewVerticalPaddin
 
 - (void)loadView
 {
-    self.view = [CMGuidedSearchAdditionalQuestionTextFieldView new];
-    self.view.backgroundColor = [UIColor whiteColor];
-    ((CMGuidedSearchAdditionalQuestionTextFieldView*)self.view).delegate = self;
+    self.view = [UITextField new];
+    ((UITextField*)self.view).borderStyle = UITextBorderStyleRoundedRect;
+    ((UITextField*)self.view).delegate = self;
 }
 
 - (void)setAdditionalQuestion:(CMGuidedSearchFlowAdditionalQuestion *)additionalQuestion
 {
     _additionalQuestion = additionalQuestion;
-
-    ((CMGuidedSearchAdditionalQuestionTextFieldView*)self.view).text = self.additionalQuestion.value;
+    ((UITextField*)self.view).text = self.additionalQuestion.value;
 }
 
 #pragma mark -

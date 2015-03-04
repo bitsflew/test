@@ -48,6 +48,8 @@
 		443BD8BC1AA5CD9D0020CACA /* Additive-Additional-Anti-microbial.plist in Resources */ = {isa = PBXBuildFile; fileRef = 443BD8BB1AA5CD9D0020CACA /* Additive-Additional-Anti-microbial.plist */; };
 		4457CF981AA7148E004B827A /* CMGuidedSearchAdditionalQuestionChecklistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4457CF971AA7148E004B827A /* CMGuidedSearchAdditionalQuestionChecklistViewController.m */; };
 		4457CF9E1AA721BF004B827A /* CMGuidedSearchAdditionalQuestionTextFieldChecklistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4457CF9D1AA721BF004B827A /* CMGuidedSearchAdditionalQuestionTextFieldChecklistViewController.m */; };
+		4457CFA01AA7465F004B827A /* Additive-Additional-Anti-static.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4457CF9F1AA7465F004B827A /* Additive-Additional-Anti-static.plist */; };
+		4457CFA31AA74727004B827A /* CMGuidedSearchAdditionalQuestionSwitchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4457CFA21AA74727004B827A /* CMGuidedSearchAdditionalQuestionSwitchViewController.m */; };
 		4457F4801A94A744002FF4F5 /* ic_pagination_checkmark_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 4457F47F1A94A744002FF4F5 /* ic_pagination_checkmark_light.png */; };
 		4457F4881A94A963002FF4F5 /* NSString+Morphing.m in Sources */ = {isa = PBXBuildFile; fileRef = 4457F4851A94A963002FF4F5 /* NSString+Morphing.m */; };
 		4457F4891A94A963002FF4F5 /* TOMSMorphingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4457F4871A94A963002FF4F5 /* TOMSMorphingLabel.m */; };
@@ -185,6 +187,9 @@
 		4457CF971AA7148E004B827A /* CMGuidedSearchAdditionalQuestionChecklistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchAdditionalQuestionChecklistViewController.m; sourceTree = "<group>"; };
 		4457CF9C1AA721BF004B827A /* CMGuidedSearchAdditionalQuestionTextFieldChecklistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchAdditionalQuestionTextFieldChecklistViewController.h; sourceTree = "<group>"; };
 		4457CF9D1AA721BF004B827A /* CMGuidedSearchAdditionalQuestionTextFieldChecklistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchAdditionalQuestionTextFieldChecklistViewController.m; sourceTree = "<group>"; };
+		4457CF9F1AA7465F004B827A /* Additive-Additional-Anti-static.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Additive-Additional-Anti-static.plist"; sourceTree = "<group>"; };
+		4457CFA11AA74727004B827A /* CMGuidedSearchAdditionalQuestionSwitchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchAdditionalQuestionSwitchViewController.h; sourceTree = "<group>"; };
+		4457CFA21AA74727004B827A /* CMGuidedSearchAdditionalQuestionSwitchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchAdditionalQuestionSwitchViewController.m; sourceTree = "<group>"; };
 		4457F47F1A94A744002FF4F5 /* ic_pagination_checkmark_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_pagination_checkmark_light.png; sourceTree = "<group>"; };
 		4457F4841A94A963002FF4F5 /* NSString+Morphing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Morphing.h"; sourceTree = "<group>"; };
 		4457F4851A94A963002FF4F5 /* NSString+Morphing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Morphing.m"; sourceTree = "<group>"; };
@@ -545,6 +550,7 @@
 				44B4BD6D1A9B768400158D90 /* ColorGuidedSearchFlow.plist */,
 				44E9E5601A9777DF0028B01F /* Additive-Additional-Conductive.plist */,
 				443BD8BB1AA5CD9D0020CACA /* Additive-Additional-Anti-microbial.plist */,
+				4457CF9F1AA7465F004B827A /* Additive-Additional-Anti-static.plist */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -570,6 +576,8 @@
 				4457CF971AA7148E004B827A /* CMGuidedSearchAdditionalQuestionChecklistViewController.m */,
 				4457CF9C1AA721BF004B827A /* CMGuidedSearchAdditionalQuestionTextFieldChecklistViewController.h */,
 				4457CF9D1AA721BF004B827A /* CMGuidedSearchAdditionalQuestionTextFieldChecklistViewController.m */,
+				4457CFA11AA74727004B827A /* CMGuidedSearchAdditionalQuestionSwitchViewController.h */,
+				4457CFA21AA74727004B827A /* CMGuidedSearchAdditionalQuestionSwitchViewController.m */,
 			);
 			name = "Additional questions";
 			sourceTree = "<group>";
@@ -748,6 +756,7 @@
 				44E9E5681A9780C50028B01F /* CMGuidedSearchAdditionalQuestionsViewController.xib in Resources */,
 				44E9E54D1A9623A80028B01F /* Main.storyboard in Resources */,
 				44E9E5611A9777DF0028B01F /* Additive-Additional-Conductive.plist in Resources */,
+				4457CFA01AA7465F004B827A /* Additive-Additional-Anti-static.plist in Resources */,
 				44E9E5501A96410B0028B01F /* img_guided_search_tab.png in Resources */,
 				44E9E5531A9642180028B01F /* Gotham-Book.otf in Resources */,
 				44107DB81A937946004053A2 /* img_logo_actionbar.png in Resources */,
@@ -854,6 +863,7 @@
 				44B4BD731A9B769900158D90 /* CMGuidedSearchBothFlowViewController.m in Sources */,
 				443366A01A923349002DD5F5 /* main.m in Sources */,
 				44B4BD6A1A9B763A00158D90 /* CMGuidedSearchColorFlowViewController.m in Sources */,
+				4457CFA31AA74727004B827A /* CMGuidedSearchAdditionalQuestionSwitchViewController.m in Sources */,
 				4B2EDFAB1A939FAB007E0493 /* MenuView.m in Sources */,
 				4B7AA9661A963D0B00AD81EF /* UIView+Polarcoordinates.m in Sources */,
 				44B16D301AA074E3009BD8A7 /* CMProductSpecification+GridItem.m in Sources */,

@@ -50,9 +50,11 @@ static CGFloat kCMGuidedSearchAdditionalQuestionsViewControllerTitleMarginBottom
     self.questionsScrollView.translatesAutoresizingMaskIntoConstraints = NO;
     
     CMGuidedSearchFlow *flow = [self.stepDelegate flowForStepViewController:self];
+    
+    NSString *title = nil;
 
     for (NSString *path in [[self class] pathsToAdditionalQuestionsForAdditives:self.step.productSpecification.additives]) {
-        NSArray *questions = [flow additionalQuestionsWithContentsOfFile:path];
+        NSArray *questions = [flow additionalQuestionsWithContentsOfFile:path title:&title];
         if (!questions) {
             continue;
         }
@@ -61,6 +63,11 @@ static CGFloat kCMGuidedSearchAdditionalQuestionsViewControllerTitleMarginBottom
             [self addAdditionalQuestionViewControllerFor:question];
         }
     }
+    
+    if (title) {
+        self.step.title = title;
+    }
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(notifiedKeyboardDidShow:)
                                                  name:UIKeyboardWillShowNotification
