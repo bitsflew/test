@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Title</key>
+	<string>Flame retardant questions</string>
+	<key>Questions</key>
+	<array>
+		<dict>
+			<key>Key</key>
+			<string>fr_system</string>
+			<key>Title</key>
+			<string>What type of FR system is allowed?</string>
+			<key>Class</key>
+			<string>Grid</string>
+			<key>Attributes</key>
+			<dict>
+				<key>MultiSelect</key>
+				<false/>
+				<key>Items</key>
+				<array>
+					<string>Halogen</string>
+					<string>Low-halogen</string>
+					<string>Non-Halogen</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>Key</key>
+			<string>standards</string>
+			<key>Title</key>
+			<string>What standards must be met?</string>
+			<key>Class</key>
+			<string>TextFieldChecklist</string>
+			<key>Attributes</key>
+			<dict>
+				<key>MultiSelect</key>
+				<false/>
+				<key>Items</key>
+				<array>
+					<dict>
+						<key>Title</key>
+						<string>CA TB 133</string>
+						<key>TextFieldHidden</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>Title</key>
+						<string>UL 94 HB</string>
+						<key>TextFieldHidden</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>Title</key>
+						<string>UL 94 V-0</string>
+						<key>TextFieldHidden</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>Title</key>
+						<string>UL 94 V-1</string>
+						<key>TextFieldHidden</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>Title</key>
+						<string>UL 94 V-2</string>
+						<key>TextFieldHidden</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>Title</key>
+						<string>MVSS 302</string>
+						<key>TextFieldHidden</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>Title</key>
+						<string>CA TB 133</string>
+						<key>TextFieldHidden</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>Title</key>
+						<string>ASTM E84</string>
+						<key>TextFieldHidden</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>Title</key>
+						<string>UL VW-1</string>
+						<key>TextFieldHidden</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>Title</key>
+						<string>NFPA 701</string>
+						<key>TextFieldHidden</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>Title</key>
+						<string>DIN 4102</string>
+						<key>TextFieldHidden</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>Title</key>
+						<string>Other</string>
+						<key>TextFieldHidden</key>
+						<false/>
+					</dict>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>Key</key>
+			<string>important_property</string>
+			<key>Title</key>
+			<string>What physical property is most important?</string>
+			<key>Class</key>
+			<string>Grid</string>
+			<key>Attributes</key>
+			<dict>
+				<key>Items</key>
+				<array>
+					<string>Elongation</string>
+					<string>Impact strength</string>
+					<string>Tear strength</string>
+					<string>Tensile strength</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>Key</key>
+			<string>exposure</string>
+			<key>Title</key>
+			<string>Will the product be exposed to indoor or outdoor environment?</string>
+			<key>Class</key>
+			<string>Grid</string>
+			<key>Attributes</key>
+			<dict>
+				<key>Items</key>
+				<array>
+					<string>Indoor</string>
+					<string>Outdoor</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

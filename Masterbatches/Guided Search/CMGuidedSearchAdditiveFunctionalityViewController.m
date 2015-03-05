@@ -38,7 +38,7 @@
            [CMProductSpecificationAdditive attributeWithName:@"Corrosion protection"],
            [CMProductSpecificationAdditive attributeWithName:@"Drying agent"],
            [CMProductSpecificationAdditive attributeWithName:@"Filler"],
-           [CMProductSpecificationAdditive attributeWithName:@"Flame retardent"],
+           [CMProductSpecificationAdditive attributeWithName:@"Flame retardant"],
            [CMProductSpecificationAdditive attributeWithName:@"Laser marking"],
            [CMProductSpecificationAdditive attributeWithName:@"Light stabilizer"],
            [CMProductSpecificationAdditive attributeWithName:@"Lubricant"],

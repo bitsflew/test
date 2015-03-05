@@ -131,7 +131,7 @@
     for (NSDictionary *dictionaryItem in self.additionalQuestion.attributes[@"Items"]) {
         CMGuidedSearchAdditionalQuestionTextFieldChecklistItem *item = [CMGuidedSearchAdditionalQuestionTextFieldChecklistItem new];
         item.title = dictionaryItem[@"Title"];
-        item.key = dictionaryItem[@"Key"];
+        item.key = dictionaryItem[@"Key"] ?: item.title;
         item.textFieldPrompt = dictionaryItem[@"TextFieldPrompt"];
         item.textFieldNumeric = [dictionaryItem[@"TextFieldNumeric"] boolValue];
         item.textFieldHidden = [dictionaryItem[@"TextFieldHidden"] boolValue];

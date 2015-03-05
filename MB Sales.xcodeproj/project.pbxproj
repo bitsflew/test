@@ -80,6 +80,7 @@
 		44B4BD731A9B769900158D90 /* CMGuidedSearchBothFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B4BD721A9B769900158D90 /* CMGuidedSearchBothFlowViewController.m */; };
 		44B4BD751A9B76B800158D90 /* Menu.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44B4BD741A9B76B800158D90 /* Menu.plist */; };
 		44C54FBF1AA85F9000EF3E72 /* Additive-Additional-Compatibilizer.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44C54FBE1AA85F9000EF3E72 /* Additive-Additional-Compatibilizer.plist */; };
+		44C54FC31AA86B0B00EF3E72 /* Additive-Additional-Flame_retardant.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44C54FC21AA86B0B00EF3E72 /* Additive-Additional-Flame_retardant.plist */; };
 		44E9E53F1A95E58F0028B01F /* CMGuidedSearchFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E9E53E1A95E58F0028B01F /* CMGuidedSearchFlow.m */; };
 		44E9E54B1A9623790028B01F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 443366AF1A923349002DD5F5 /* LaunchScreen.xib */; };
 		44E9E54C1A9623920028B01F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 443366DC1A923DE9002DD5F5 /* Localizable.strings */; };
@@ -235,6 +236,7 @@
 		44B4BD721A9B769900158D90 /* CMGuidedSearchBothFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMGuidedSearchBothFlowViewController.m; path = "Flow subclasses/CMGuidedSearchBothFlowViewController.m"; sourceTree = "<group>"; };
 		44B4BD741A9B76B800158D90 /* Menu.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Menu.plist; sourceTree = "<group>"; };
 		44C54FBE1AA85F9000EF3E72 /* Additive-Additional-Compatibilizer.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Additive-Additional-Compatibilizer.plist"; sourceTree = "<group>"; };
+		44C54FC21AA86B0B00EF3E72 /* Additive-Additional-Flame_retardant.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Additive-Additional-Flame_retardant.plist"; sourceTree = "<group>"; };
 		44E9E53D1A95E58F0028B01F /* CMGuidedSearchFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchFlow.h; sourceTree = "<group>"; };
 		44E9E53E1A95E58F0028B01F /* CMGuidedSearchFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchFlow.m; sourceTree = "<group>"; };
 		44E9E5461A9616880028B01F /* CMGuidedSearchStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchStepViewController.h; sourceTree = "<group>"; };
@@ -554,6 +556,7 @@
 				443BD8BB1AA5CD9D0020CACA /* Additive-Additional-Anti-microbial.plist */,
 				4457CF9F1AA7465F004B827A /* Additive-Additional-Anti-static.plist */,
 				44C54FBE1AA85F9000EF3E72 /* Additive-Additional-Compatibilizer.plist */,
+				44C54FC21AA86B0B00EF3E72 /* Additive-Additional-Flame_retardant.plist */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -757,6 +760,7 @@
 				44B16D461AA0B44E009BD8A7 /* ic_arrow_right.png in Resources */,
 				44B4BD701A9B768400158D90 /* ColorGuidedSearchFlow.plist in Resources */,
 				44E9E5681A9780C50028B01F /* CMGuidedSearchAdditionalQuestionsViewController.xib in Resources */,
+				44C54FC31AA86B0B00EF3E72 /* Additive-Additional-Flame_retardant.plist in Resources */,
 				44E9E54D1A9623A80028B01F /* Main.storyboard in Resources */,
 				44E9E5611A9777DF0028B01F /* Additive-Additional-Conductive.plist in Resources */,
 				4457CFA01AA7465F004B827A /* Additive-Additional-Anti-static.plist in Resources */,

@@ -33,7 +33,8 @@ static CGFloat kCMGuidedSearchAdditionalQuestionsViewControllerTitleMarginBottom
 {
     NSMutableArray *paths = [NSMutableArray new];
     for (CMProductSpecificationAdditive *additive in additives) {
-        NSString *name = [NSString stringWithFormat:@"Additive-Additional-%@.plist", additive.name];
+        NSString *name = [NSString stringWithFormat:@"Additive-Additional-%@.plist",
+                          [additive.name stringByReplacingOccurrencesOfString:@" " withString:@"_"]];
         NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:nil];
         if (path) {
             [paths addObject:path];

@@ -15,8 +15,8 @@
     Supported attributes:
 
     Items (array of dictionaries, required), where each item has:
-      Key (string, required)
       Title (string, required)
+      Key (string, optional – defaults to Title)
       TextFieldPrompt (string, optional)
       TextFieldHidden (boolean, optional)
       TextFieldNumeric (boolean, optional) 
