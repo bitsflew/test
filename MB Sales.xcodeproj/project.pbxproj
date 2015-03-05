@@ -81,6 +81,7 @@
 		44B4BD751A9B76B800158D90 /* Menu.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44B4BD741A9B76B800158D90 /* Menu.plist */; };
 		44C54FBF1AA85F9000EF3E72 /* Additive-Additional-Compatibilizer.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44C54FBE1AA85F9000EF3E72 /* Additive-Additional-Compatibilizer.plist */; };
 		44C54FC31AA86B0B00EF3E72 /* Additive-Additional-Flame_retardant.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44C54FC21AA86B0B00EF3E72 /* Additive-Additional-Flame_retardant.plist */; };
+		44C54FC51AA86D2200EF3E72 /* Additive-Additional-Light_stabilizer.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44C54FC41AA86D2200EF3E72 /* Additive-Additional-Light_stabilizer.plist */; };
 		44E9E53F1A95E58F0028B01F /* CMGuidedSearchFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E9E53E1A95E58F0028B01F /* CMGuidedSearchFlow.m */; };
 		44E9E54B1A9623790028B01F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 443366AF1A923349002DD5F5 /* LaunchScreen.xib */; };
 		44E9E54C1A9623920028B01F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 443366DC1A923DE9002DD5F5 /* Localizable.strings */; };
@@ -91,7 +92,6 @@
 		44E9E55A1A974FB00028B01F /* ic_close_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 44E9E5581A974FB00028B01F /* ic_close_black.png */; };
 		44E9E55B1A974FB00028B01F /* ic_close_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44E9E5591A974FB00028B01F /* ic_close_black@2x.png */; };
 		44E9E55F1A9770ED0028B01F /* CMSearchDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E9E55E1A9770ED0028B01F /* CMSearchDAO.m */; };
-		44E9E5611A9777DF0028B01F /* Additive-Additional-Conductive.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44E9E5601A9777DF0028B01F /* Additive-Additional-Conductive.plist */; };
 		44E9E5671A9780C50028B01F /* CMGuidedSearchAdditionalQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E9E5651A9780C50028B01F /* CMGuidedSearchAdditionalQuestionsViewController.m */; };
 		44E9E5681A9780C50028B01F /* CMGuidedSearchAdditionalQuestionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44E9E5661A9780C50028B01F /* CMGuidedSearchAdditionalQuestionsViewController.xib */; };
 		4B24D7841A9B44AB001487B7 /* tap-smallest.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4B24D7821A9B44AB001487B7 /* tap-smallest.aif */; };
@@ -237,6 +237,7 @@
 		44B4BD741A9B76B800158D90 /* Menu.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Menu.plist; sourceTree = "<group>"; };
 		44C54FBE1AA85F9000EF3E72 /* Additive-Additional-Compatibilizer.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Additive-Additional-Compatibilizer.plist"; sourceTree = "<group>"; };
 		44C54FC21AA86B0B00EF3E72 /* Additive-Additional-Flame_retardant.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Additive-Additional-Flame_retardant.plist"; sourceTree = "<group>"; };
+		44C54FC41AA86D2200EF3E72 /* Additive-Additional-Light_stabilizer.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Additive-Additional-Light_stabilizer.plist"; sourceTree = "<group>"; };
 		44E9E53D1A95E58F0028B01F /* CMGuidedSearchFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchFlow.h; sourceTree = "<group>"; };
 		44E9E53E1A95E58F0028B01F /* CMGuidedSearchFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchFlow.m; sourceTree = "<group>"; };
 		44E9E5461A9616880028B01F /* CMGuidedSearchStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchStepViewController.h; sourceTree = "<group>"; };
@@ -247,7 +248,6 @@
 		44E9E5591A974FB00028B01F /* ic_close_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_close_black@2x.png"; sourceTree = "<group>"; };
 		44E9E55D1A9770ED0028B01F /* CMSearchDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMSearchDAO.h; path = DAO/CMSearchDAO.h; sourceTree = "<group>"; };
 		44E9E55E1A9770ED0028B01F /* CMSearchDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMSearchDAO.m; path = DAO/CMSearchDAO.m; sourceTree = "<group>"; };
-		44E9E5601A9777DF0028B01F /* Additive-Additional-Conductive.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Additive-Additional-Conductive.plist"; sourceTree = "<group>"; };
 		44E9E5641A9780C50028B01F /* CMGuidedSearchAdditionalQuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGuidedSearchAdditionalQuestionsViewController.h; sourceTree = "<group>"; };
 		44E9E5651A9780C50028B01F /* CMGuidedSearchAdditionalQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMGuidedSearchAdditionalQuestionsViewController.m; sourceTree = "<group>"; };
 		44E9E5661A9780C50028B01F /* CMGuidedSearchAdditionalQuestionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMGuidedSearchAdditionalQuestionsViewController.xib; sourceTree = "<group>"; };
@@ -552,11 +552,11 @@
 				44B4BD6B1A9B768400158D90 /* AdditiveGuidedSearchFlow.plist */,
 				44B4BD6C1A9B768400158D90 /* BothGuidedSearchFlow.plist */,
 				44B4BD6D1A9B768400158D90 /* ColorGuidedSearchFlow.plist */,
-				44E9E5601A9777DF0028B01F /* Additive-Additional-Conductive.plist */,
 				443BD8BB1AA5CD9D0020CACA /* Additive-Additional-Anti-microbial.plist */,
 				4457CF9F1AA7465F004B827A /* Additive-Additional-Anti-static.plist */,
 				44C54FBE1AA85F9000EF3E72 /* Additive-Additional-Compatibilizer.plist */,
 				44C54FC21AA86B0B00EF3E72 /* Additive-Additional-Flame_retardant.plist */,
+				44C54FC41AA86D2200EF3E72 /* Additive-Additional-Light_stabilizer.plist */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -762,7 +762,6 @@
 				44E9E5681A9780C50028B01F /* CMGuidedSearchAdditionalQuestionsViewController.xib in Resources */,
 				44C54FC31AA86B0B00EF3E72 /* Additive-Additional-Flame_retardant.plist in Resources */,
 				44E9E54D1A9623A80028B01F /* Main.storyboard in Resources */,
-				44E9E5611A9777DF0028B01F /* Additive-Additional-Conductive.plist in Resources */,
 				4457CFA01AA7465F004B827A /* Additive-Additional-Anti-static.plist in Resources */,
 				44E9E5501A96410B0028B01F /* img_guided_search_tab.png in Resources */,
 				44E9E5531A9642180028B01F /* Gotham-Book.otf in Resources */,
@@ -790,6 +789,7 @@
 				44C54FBF1AA85F9000EF3E72 /* Additive-Additional-Compatibilizer.plist in Resources */,
 				44B4BD6F1A9B768400158D90 /* BothGuidedSearchFlow.plist in Resources */,
 				4B24D7861A9B4599001487B7 /* slide-metal.aif in Resources */,
+				44C54FC51AA86D2200EF3E72 /* Additive-Additional-Light_stabilizer.plist in Resources */,
 				443366AE1A923349002DD5F5 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

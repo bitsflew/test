@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Title</key>
+	<string>Light stabilizer questions</string>
+	<key>Questions</key>
+	<array>
+		<dict>
+			<key>Key</key>
+			<string>protection</string>
+			<key>Title</key>
+			<string>What type of protection?</string>
+			<key>Class</key>
+			<string>Grid</string>
+			<key>Attributes</key>
+			<dict>
+				<key>MultiSelect</key>
+				<false/>
+				<key>Items</key>
+				<array>
+					<string>Content (for packaging)</string>
+					<string>Indoor</string>
+					<string>Outdoor</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>Key</key>
+			<string>natural_or_colored</string>
+			<key>Title</key>
+			<string>Is part natural or colored?</string>
+			<key>Class</key>
+			<string>Grid</string>
+			<key>Attributes</key>
+			<dict>
+				<key>MultiSelect</key>
+				<false/>
+				<key>Items</key>
+				<array>
+					<string>Natural</string>
+					<string>Colored</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>Key</key>
+			<string>expected_lifetime_years</string>
+			<key>Title</key>
+			<string>What is the expected life of the part, in years?</string>
+			<key>Class</key>
+			<string>TextField</string>
+			<key>Attributes</key>
+			<dict>
+				<key>Numeric</key>
+				<true/>
+			</dict>
+		</dict>
+		<dict>
+			<key>Key</key>
+			<string>wavelength_range</string>
+			<key>Title</key>
+			<string>What wavelength range is needed?</string>
+			<key>Class</key>
+			<string>TextField</string>
+			<key>Attributes</key>
+			<dict>
+				<key>Numeric</key>
+				<true/>
+			</dict>
+		</dict>
+		<dict>
+			<key>Key</key>
+			<string>labeled</string>
+			<key>Title</key>
+			<string>Is package being labeled?</string>
+			<key>Class</key>
+			<string>Switch</string>
+		</dict>
+		<dict>
+			<key>Key</key>
+			<string>label_coverage</string>
+			<key>Title</key>
+			<string>If yes, then what is the percentage of coverage?</string>
+			<key>Class</key>
+			<string>TextField</string>
+			<key>Attributes</key>
+			<dict>
+				<key>Numeric</key>
+				<true/>
+			</dict>
+		</dict>
+		<dict>
+			<key>Key</key>
+			<string>color_important</string>
+			<key>Title</key>
+			<string>Is color important?</string>
+			<key>Class</key>
+			<string>Switch</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Any other light stabiliser applications?</string>
+			<key>Key</key>
+			<string>other_light_stabiliser_applications</string>
+			<key>Class</key>
+			<string>TextField</string>
+			<key>Attributes</key>
+			<dict>
+				<key>Prompt</key>
+				<string>Comma-separated list</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
