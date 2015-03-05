@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Title</key>
+	<string>Compatibilizer questions</string>
+	<key>Questions</key>
+	<array>
+		<dict>
+			<key>Key</key>
+			<string>starting_resin_viscosity</string>
+			<key>Title</key>
+			<string>Starting resin viscosity: IV or RV + value?</string>
+			<key>Class</key>
+			<string>TextFieldChecklist</string>
+			<key>Attributes</key>
+			<dict>
+				<key>MultiSelect</key>
+				<false/>
+				<key>Items</key>
+				<array>
+					<dict>
+						<key>Key</key>
+						<string>iv</string>
+						<key>Title</key>
+						<string>IV</string>
+						<key>TextFieldHidden</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>Key</key>
+						<string>rv</string>
+						<key>Title</key>
+						<string>RV</string>
+						<key>TextFieldHidden</key>
+						<false/>
+						<key>TextFieldNumeric</key>
+						<true/>
+						<key>TextFieldPrompt</key>
+						<string>Enter value here</string>
+					</dict>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>Key</key>
+			<string>clarity</string>
+			<key>Title</key>
+			<string>What is the clarity requirement?</string>
+			<key>Class</key>
+			<string>Grid</string>
+			<key>Attributes</key>
+			<dict>
+				<key>Items</key>
+				<array>
+					<string>Clear</string>
+					<string>Translucent</string>
+					<string>Opaque</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>Key</key>
+			<string>recycled-polymer-present</string>
+			<key>Title</key>
+			<string>Is recycled polymer present?</string>
+			<key>Class</key>
+			<string>Switch</string>
+		</dict>
+		<dict>
+			<key>Key</key>
+			<string>recycled-polymer-percentage</string>
+			<key>Title</key>
+			<string>If so, what is the percentage of recycled polymer?</string>
+			<key>Class</key>
+			<string>TextField</string>
+			<key>Attributes</key>
+			<dict>
+				<key>Numeric</key>
+				<true/>
+			</dict>
+		</dict>
+		<dict>
+			<key>Key</key>
+			<string>important_property</string>
+			<key>Title</key>
+			<string>What physical property is most important?</string>
+			<key>Class</key>
+			<string>Grid</string>
+			<key>Attributes</key>
+			<dict>
+				<key>Items</key>
+				<array>
+					<string>Elongation</string>
+					<string>Impact strength</string>
+					<string>Tear strength</string>
+					<string>Tensile strength</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

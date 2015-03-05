@@ -64,6 +64,15 @@ static CGFloat kCMGuidedSearchAdditionalQuestionsViewControllerTitleMarginBottom
         }
     }
     
+    // Scroll view bottom constraint controls content size
+    [self.questionsScrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.questionsScrollView
+                                                                         attribute:NSLayoutAttributeBottom
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:self.lastQuestionView
+                                                                         attribute:NSLayoutAttributeBottom
+                                                                        multiplier:1.f
+                                                                          constant:kCMGuidedSearchAdditionalQuestionsViewControllerSpacing]];
+    
     if (title) {
         self.step.title = title;
     }

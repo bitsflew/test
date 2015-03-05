@@ -26,7 +26,9 @@
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *key;
-@property (nonatomic, copy) NSString *prompt;
+@property (nonatomic, copy) NSString *textFieldPrompt;
+@property (nonatomic) BOOL textFieldHidden;
+@property (nonatomic) BOOL textFieldNumeric;
 @property (nonatomic, readonly, retain) CMGuidedSearchAdditionalQuestionTextFieldChecklistTextField *textField;
 
 @end
@@ -41,15 +43,24 @@
 
 - (UITextField*)textField
 {
+    if (self.textFieldHidden) {
+        return nil;
+    }
+
     if (!_textField) {
         _textField = [[CMGuidedSearchAdditionalQuestionTextFieldChecklistTextField alloc]
                           initWithFrame:CGRectZero];
+        _textField.returnKeyType = UIReturnKeyDone;
         _textField.translatesAutoresizingMaskIntoConstraints = NO;
         _textField.borderStyle = UITextBorderStyleRoundedRect;
-        _textField.placeholder = self.prompt;
+        _textField.placeholder = self.textFieldPrompt;
         _textField.autocorrectionType = UITextAutocorrectionTypeNo;
         _textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
         _textField.keyboardAppearance = UIKeyboardAppearanceDark;
+        _textField.keyboardType = self.textFieldNumeric
+          ? UIKeyboardTypeNumberPad
+          : UIKeyboardTypeAlphabet;
+
     }
     return _textField;
 }
@@ -121,7 +132,9 @@
         CMGuidedSearchAdditionalQuestionTextFieldChecklistItem *item = [CMGuidedSearchAdditionalQuestionTextFieldChecklistItem new];
         item.title = dictionaryItem[@"Title"];
         item.key = dictionaryItem[@"Key"];
-        item.prompt = dictionaryItem[@"Prompt"];
+        item.textFieldPrompt = dictionaryItem[@"TextFieldPrompt"];
+        item.textFieldNumeric = [dictionaryItem[@"TextFieldNumeric"] boolValue];
+        item.textFieldHidden = [dictionaryItem[@"TextFieldHidden"] boolValue];
 
         NSString *value = [self.additionalQuestion.value objectForKey:item.key];
 
@@ -145,7 +158,7 @@
     NSMutableDictionary *value = [NSMutableDictionary new];
     
     for (CMGuidedSearchAdditionalQuestionTextFieldChecklistItem *item in self.checklist.checkedItems) {
-        value[item.key] = item.textField.text;
+        value[item.key] = item.textField.text ?: @"";
     }
 
     self.additionalQuestion.value = value;
@@ -178,5 +191,10 @@
     return YES;
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField endEditing:NO];
+    return NO;
+}
 
 @end

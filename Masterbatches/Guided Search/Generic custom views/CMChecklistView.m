@@ -78,7 +78,7 @@ static const CGFloat kCMChecklistButtonCheckScale = 0.5f;
     _item = item;
 
     self.label.text = [item title];
-    self.accessoryView  = [item respondsToSelector:@selector(accessoryView)] ? [item accessoryView] : nil;
+    self.accessoryView = [item respondsToSelector:@selector(accessoryView)] ? [item accessoryView] : nil;
 }
 
 - (void)setChecked:(BOOL)checked
@@ -375,13 +375,15 @@ static const CGFloat kCMChecklistButtonCheckScale = 0.5f;
                                                                           constant:0.f]];
                     }
 
-                    [self addConstraint:[NSLayoutConstraint constraintWithItem:button.accessoryView
-                                                                     attribute:NSLayoutAttributeCenterY
-                                                                     relatedBy:NSLayoutRelationEqual
-                                                                        toItem:button
-                                                                     attribute:NSLayoutAttributeCenterY
-                                                                    multiplier:1.f
-                                                                      constant:0.f]];
+                    if (button.accessoryView) {
+                        [self addConstraint:[NSLayoutConstraint constraintWithItem:button.accessoryView
+                                                                         attribute:NSLayoutAttributeCenterY
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:button
+                                                                         attribute:NSLayoutAttributeCenterY
+                                                                        multiplier:1.f
+                                                                          constant:0.f]];
+                    }
 
                     
                     break;
@@ -460,11 +462,11 @@ static const CGFloat kCMChecklistButtonCheckScale = 0.5f;
 
     for (CMChecklistButton *button in self.buttons) {
         button.highlighted = NO;
-        if ((touchedButton!=button) && touchedButton.checked && button.checked && !self.allowsMultipleSelection) {
+        if ((touchedButton!=button) && !self.allowsMultipleSelection && touchedButton.checked && button.checked) {
             button.checked = NO;
             valueChanged = YES;
-            if ([touchedButton.item respondsToSelector:@selector(setEnabled:forAccessoryView:fromUser:)]) {
-                [touchedButton.item setEnabled:NO forAccessoryView:touchedButton.accessoryView fromUser:YES];
+            if ([button.item respondsToSelector:@selector(setEnabled:forAccessoryView:fromUser:)]) {
+                [button.item setEnabled:NO forAccessoryView:button.accessoryView fromUser:YES];
             }
         }
     }

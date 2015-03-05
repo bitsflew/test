@@ -64,7 +64,7 @@
 						<string>Pigments</string>
 						<key>TextFieldHidden</key>
 						<false/>
-						<key>Prompt</key>
+						<key>TextFieldPrompt</key>
 						<string>Comma-separated items</string>
 					</dict>
 					<dict>
@@ -74,7 +74,7 @@
 						<string>Additives</string>
 						<key>TextFieldHidden</key>
 						<false/>
-						<key>Prompt</key>
+						<key>TextFieldPrompt</key>
 						<string>Comma-separated items</string>
 					</dict>
 					<dict>
@@ -84,7 +84,7 @@
 						<string>Fillers</string>
 						<key>TextFieldHidden</key>
 						<false/>
-						<key>Prompt</key>
+						<key>TextFieldPrompt</key>
 						<string>Comma-separated items</string>
 					</dict>
 				</array>

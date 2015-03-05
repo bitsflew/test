@@ -17,8 +17,9 @@
     Items (array of dictionaries, required), where each item has:
       Key (string, required)
       Title (string, required)
-      Prompt (string, optional)
+      TextFieldPrompt (string, optional)
       TextFieldHidden (boolean, optional)
+      TextFieldNumeric (boolean, optional) 
 
     MultiSelect (boolean, optional)
  */

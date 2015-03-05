@@ -37,7 +37,7 @@
     self.view = [CMGuidedSearchAdditionalQuestionTextFieldViewControllerTextField new];
     self.textField = (UITextField*)self.view;
     self.textField.translatesAutoresizingMaskIntoConstraints = NO;
-
+    self.textField.returnKeyType = UIReturnKeyDone;
     self.textField.borderStyle = UITextBorderStyleRoundedRect;
     self.textField.delegate = self;
 }
@@ -65,6 +65,7 @@
     self.textField.keyboardType = [self.additionalQuestion.attributes[@"Numeric"] boolValue]
       ? UIKeyboardTypeNumberPad
       : UIKeyboardTypeAlphabet;
+    self.textField.placeholder = self.additionalQuestion.attributes[@"Prompt"];
     self.textField.text = self.additionalQuestion.value;
 }
 
@@ -76,6 +77,12 @@
     [text replaceCharactersInRange:range withString:string];
     self.additionalQuestion.value = text;
     return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField endEditing:NO];
+    return NO;
 }
 
 @end
