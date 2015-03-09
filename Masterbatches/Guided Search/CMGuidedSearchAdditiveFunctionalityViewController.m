@@ -30,8 +30,6 @@
            [CMProductSpecificationAdditive attributeWithName:@"Anti-oxidant"],
            [CMProductSpecificationAdditive attributeWithName:@"Anti-slip"],
            [CMProductSpecificationAdditive attributeWithName:@"Anti-static"],
-           [CMProductSpecificationAdditive attributeWithName:@"Biodegradable"],
-           [CMProductSpecificationAdditive attributeWithName:@"Blowing agent"],
            [CMProductSpecificationAdditive attributeWithName:@"Cleaning agent"],
            [CMProductSpecificationAdditive attributeWithName:@"Compatibilizer"],
            [CMProductSpecificationAdditive attributeWithName:@"Conductive"],
@@ -43,13 +41,13 @@
            [CMProductSpecificationAdditive attributeWithName:@"Light stabilizer"],
            [CMProductSpecificationAdditive attributeWithName:@"Lubricant"],
            [CMProductSpecificationAdditive attributeWithName:@"Matting agent"],
-           [CMProductSpecificationAdditive attributeWithName:@"Mould release"],
+           [CMProductSpecificationAdditive attributeWithName:@"Mold release"],
            [CMProductSpecificationAdditive attributeWithName:@"Nucleating"],
            [CMProductSpecificationAdditive attributeWithName:@"Opacifier"],
            [CMProductSpecificationAdditive attributeWithName:@"Optical brightner"],
            [CMProductSpecificationAdditive attributeWithName:@"Other"],
            [CMProductSpecificationAdditive attributeWithName:@"Photo degradable"],
-           [CMProductSpecificationAdditive attributeWithName:@"Process support"],
+           [CMProductSpecificationAdditive attributeWithName:@"Processing aid"],
            [CMProductSpecificationAdditive attributeWithName:@"PV-stabilizer"] ];
 
     [self.grid selectItems:self.step.productSpecification.additives animated:YES];

@@ -53,6 +53,7 @@
 		4457F4801A94A744002FF4F5 /* ic_pagination_checkmark_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 4457F47F1A94A744002FF4F5 /* ic_pagination_checkmark_light.png */; };
 		4457F4881A94A963002FF4F5 /* NSString+Morphing.m in Sources */ = {isa = PBXBuildFile; fileRef = 4457F4851A94A963002FF4F5 /* NSString+Morphing.m */; };
 		4457F4891A94A963002FF4F5 /* TOMSMorphingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4457F4871A94A963002FF4F5 /* TOMSMorphingLabel.m */; };
+		446E9F371AADEA5B00ACCE26 /* Additive-Additional-Compatibilizer.plist in Resources */ = {isa = PBXBuildFile; fileRef = 446E9F361AADEA5B00ACCE26 /* Additive-Additional-Compatibilizer.plist */; };
 		44B16D261AA0731B009BD8A7 /* CMSteppedProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B16D1E1AA0731B009BD8A7 /* CMSteppedProgressView.m */; };
 		44B16D271AA0731B009BD8A7 /* CMGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B16D201AA0731B009BD8A7 /* CMGridView.m */; };
 		44B16D281AA0731B009BD8A7 /* CMGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B16D221AA0731B009BD8A7 /* CMGridViewController.m */; };
@@ -79,7 +80,6 @@
 		44B4BD701A9B768400158D90 /* ColorGuidedSearchFlow.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44B4BD6D1A9B768400158D90 /* ColorGuidedSearchFlow.plist */; };
 		44B4BD731A9B769900158D90 /* CMGuidedSearchBothFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B4BD721A9B769900158D90 /* CMGuidedSearchBothFlowViewController.m */; };
 		44B4BD751A9B76B800158D90 /* Menu.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44B4BD741A9B76B800158D90 /* Menu.plist */; };
-		44C54FBF1AA85F9000EF3E72 /* Additive-Additional-Compatibilizer.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44C54FBE1AA85F9000EF3E72 /* Additive-Additional-Compatibilizer.plist */; };
 		44C54FC31AA86B0B00EF3E72 /* Additive-Additional-Flame_retardant.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44C54FC21AA86B0B00EF3E72 /* Additive-Additional-Flame_retardant.plist */; };
 		44C54FC51AA86D2200EF3E72 /* Additive-Additional-Light_stabilizer.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44C54FC41AA86D2200EF3E72 /* Additive-Additional-Light_stabilizer.plist */; };
 		44C54FC91AA871F800EF3E72 /* Additive-Additional-Anti-oxidant.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44C54FC81AA871F800EF3E72 /* Additive-Additional-Anti-oxidant.plist */; };
@@ -198,6 +198,7 @@
 		4457F4851A94A963002FF4F5 /* NSString+Morphing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Morphing.m"; sourceTree = "<group>"; };
 		4457F4861A94A963002FF4F5 /* TOMSMorphingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOMSMorphingLabel.h; sourceTree = "<group>"; };
 		4457F4871A94A963002FF4F5 /* TOMSMorphingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOMSMorphingLabel.m; sourceTree = "<group>"; };
+		446E9F361AADEA5B00ACCE26 /* Additive-Additional-Compatibilizer.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Additive-Additional-Compatibilizer.plist"; sourceTree = "<group>"; };
 		44B16D1D1AA0731B009BD8A7 /* CMSteppedProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMSteppedProgressView.h; sourceTree = "<group>"; };
 		44B16D1E1AA0731B009BD8A7 /* CMSteppedProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMSteppedProgressView.m; sourceTree = "<group>"; };
 		44B16D1F1AA0731B009BD8A7 /* CMGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGridView.h; sourceTree = "<group>"; };
@@ -236,7 +237,6 @@
 		44B4BD711A9B769900158D90 /* CMGuidedSearchBothFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMGuidedSearchBothFlowViewController.h; path = "Flow subclasses/CMGuidedSearchBothFlowViewController.h"; sourceTree = "<group>"; };
 		44B4BD721A9B769900158D90 /* CMGuidedSearchBothFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMGuidedSearchBothFlowViewController.m; path = "Flow subclasses/CMGuidedSearchBothFlowViewController.m"; sourceTree = "<group>"; };
 		44B4BD741A9B76B800158D90 /* Menu.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Menu.plist; sourceTree = "<group>"; };
-		44C54FBE1AA85F9000EF3E72 /* Additive-Additional-Compatibilizer.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Additive-Additional-Compatibilizer.plist"; sourceTree = "<group>"; };
 		44C54FC21AA86B0B00EF3E72 /* Additive-Additional-Flame_retardant.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Additive-Additional-Flame_retardant.plist"; sourceTree = "<group>"; };
 		44C54FC41AA86D2200EF3E72 /* Additive-Additional-Light_stabilizer.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Additive-Additional-Light_stabilizer.plist"; sourceTree = "<group>"; };
 		44C54FC81AA871F800EF3E72 /* Additive-Additional-Anti-oxidant.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Additive-Additional-Anti-oxidant.plist"; sourceTree = "<group>"; };
@@ -556,7 +556,7 @@
 				44B4BD6D1A9B768400158D90 /* ColorGuidedSearchFlow.plist */,
 				443BD8BB1AA5CD9D0020CACA /* Additive-Additional-Anti-microbial.plist */,
 				4457CF9F1AA7465F004B827A /* Additive-Additional-Anti-static.plist */,
-				44C54FBE1AA85F9000EF3E72 /* Additive-Additional-Compatibilizer.plist */,
+				446E9F361AADEA5B00ACCE26 /* Additive-Additional-Compatibilizer.plist */,
 				44C54FC21AA86B0B00EF3E72 /* Additive-Additional-Flame_retardant.plist */,
 				44C54FC41AA86D2200EF3E72 /* Additive-Additional-Light_stabilizer.plist */,
 				44C54FC81AA871F800EF3E72 /* Additive-Additional-Anti-oxidant.plist */,
@@ -752,6 +752,7 @@
 				442549601A9CAA6700C38557 /* CMGuidedSearchProjectRequestViewController.xib in Resources */,
 				4402E5EF1A9F5BD90087AFE4 /* CMGuidedSearchProductRegulatoryIndustryViewController.xib in Resources */,
 				4425495B1A9CA9C600C38557 /* CMGuidedSearchResultsViewController.xib in Resources */,
+				446E9F371AADEA5B00ACCE26 /* Additive-Additional-Compatibilizer.plist in Resources */,
 				44B16D4B1AA0BCE8009BD8A7 /* img_molmenu_active@2x.png in Resources */,
 				44B4BD6E1A9B768400158D90 /* AdditiveGuidedSearchFlow.plist in Resources */,
 				4B24D7841A9B44AB001487B7 /* tap-smallest.aif in Resources */,
@@ -790,7 +791,6 @@
 				44053E161A9CCCC900AFEBC6 /* ic_circle_down@2x.png in Resources */,
 				44C54FC91AA871F800EF3E72 /* Additive-Additional-Anti-oxidant.plist in Resources */,
 				44B16D3C1AA0A1FB009BD8A7 /* ic_checkmark_blue@2x.png in Resources */,
-				44C54FBF1AA85F9000EF3E72 /* Additive-Additional-Compatibilizer.plist in Resources */,
 				44B4BD6F1A9B768400158D90 /* BothGuidedSearchFlow.plist in Resources */,
 				4B24D7861A9B4599001487B7 /* slide-metal.aif in Resources */,
 				44C54FC51AA86D2200EF3E72 /* Additive-Additional-Light_stabilizer.plist in Resources */,
