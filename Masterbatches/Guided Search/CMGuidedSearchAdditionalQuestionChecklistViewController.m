@@ -12,6 +12,7 @@
 @interface CMGuidedSearchAdditionalQuestionChecklistItem : NSObject <CMChecklistItem>
 
 @property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *key;
 
 @end
 
@@ -71,13 +72,14 @@
     NSMutableArray *items = [NSMutableArray new];
     NSMutableArray *selectedItems = [NSMutableArray new];
 
-    for (NSString *stringItem in self.additionalQuestion.attributes[@"Items"]) {
+    for (NSDictionary *dictionaryItem in self.additionalQuestion.attributes[@"Items"]) {
         CMGuidedSearchAdditionalQuestionChecklistItem *checklistItem = [CMGuidedSearchAdditionalQuestionChecklistItem new];
-        checklistItem.title = stringItem;
+        checklistItem.title = dictionaryItem[@"Title"];
+        checklistItem.key = dictionaryItem[@"Key"];
         [items addObject:checklistItem];
-        
-        if ((self.multiSelect && [self.additionalQuestion.value containsObject:stringItem]) ||
-            (!self.multiSelect && [self.additionalQuestion.value isEqual:stringItem])) {
+
+        if ((self.multiSelect && [self.additionalQuestion.value containsObject:checklistItem.key]) ||
+            (!self.multiSelect && [self.additionalQuestion.value isEqual:checklistItem.key])) {
             [selectedItems addObject:checklistItem];
         }
     }
@@ -92,9 +94,9 @@
 - (void)checklistValueDidChange:(id)sender
 {
     if (self.multiSelect) {
-        self.additionalQuestion.value = [self.checklist.checkedItems valueForKey:@"title"];
+        self.additionalQuestion.value = [self.checklist.checkedItems valueForKey:@"key"];
     } else {
-        self.additionalQuestion.value = [self.checklist.checkedItems.lastObject title];
+        self.additionalQuestion.value = [self.checklist.checkedItems.lastObject key];
     }
 }
 

@@ -32,8 +32,6 @@
 						<string>rv</string>
 						<key>Title</key>
 						<string>RV</string>
-						<key>TextFieldHidden</key>
-						<false/>
 						<key>TextFieldNumeric</key>
 						<true/>
 						<key>TextFieldPrompt</key>
@@ -53,15 +51,30 @@
 			<dict>
 				<key>Items</key>
 				<array>
-					<string>Clear</string>
-					<string>Translucent</string>
-					<string>Opaque</string>
+					<dict>
+						<key>Title</key>
+						<string>Clear</string>
+						<key>Key</key>
+						<string>clear</string>
+					</dict>
+					<dict>
+						<key>Title</key>
+						<string>Translucent</string>
+						<key>Key</key>
+						<string>translucent</string>
+					</dict>
+					<dict>
+						<key>Title</key>
+						<string>Opaque</string>
+						<key>Key</key>
+						<string>opaque</string>
+					</dict>
 				</array>
 			</dict>
 		</dict>
 		<dict>
 			<key>Key</key>
-			<string>recycled-polymer-present</string>
+			<string>recycled_polymer_present</string>
 			<key>Title</key>
 			<string>Is recycled polymer present?</string>
 			<key>Class</key>
@@ -69,7 +82,7 @@
 		</dict>
 		<dict>
 			<key>Key</key>
-			<string>recycled-polymer-percentage</string>
+			<string>recycled_polymer_percentage</string>
 			<key>Title</key>
 			<string>If so, what is the percentage of recycled polymer?</string>
 			<key>Class</key>
@@ -82,7 +95,7 @@
 		</dict>
 		<dict>
 			<key>Key</key>
-			<string>important_property</string>
+			<string>physical_property</string>
 			<key>Title</key>
 			<string>What physical property is most important?</string>
 			<key>Class</key>
@@ -91,10 +104,30 @@
 			<dict>
 				<key>Items</key>
 				<array>
-					<string>Elongation</string>
-					<string>Impact strength</string>
-					<string>Tear strength</string>
-					<string>Tensile strength</string>
+					<dict>
+						<key>Title</key>
+						<string>Elongation</string>
+						<key>Key</key>
+						<string>elongation</string>
+					</dict>
+					<dict>
+						<key>Title</key>
+						<string>Impact strength</string>
+						<key>Key</key>
+						<string>impact_strength</string>
+					</dict>
+					<dict>
+						<key>Title</key>
+						<string>Tear strength</string>
+						<key>Key</key>
+						<string>tear_strength</string>
+					</dict>
+					<dict>
+						<key>Title</key>
+						<string>Tensile strength</string>
+						<key>Key</key>
+						<string>tensile_strength</string>
+					</dict>
 				</array>
 			</dict>
 		</dict>

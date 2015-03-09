@@ -17,7 +17,7 @@
 - (CGSize)intrinsicContentSize
 {
     if (self.keyboardType == UIKeyboardTypeNumberPad) {
-        return CGSizeMake(100.f, [super intrinsicContentSize].height);
+        return CGSizeMake(200.f, [super intrinsicContentSize].height);
     }
     return CGSizeMake(500.f, [super intrinsicContentSize].height);
 }

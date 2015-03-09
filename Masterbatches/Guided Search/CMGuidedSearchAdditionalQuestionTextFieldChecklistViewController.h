@@ -18,7 +18,7 @@
       Title (string, required)
       Key (string, optional – defaults to Title)
       TextFieldPrompt (string, optional)
-      TextFieldHidden (boolean, optional)
+      TextFieldHidden (boolean, optional – when YES, a boolean for checked/unchecked is written to Key instead of a string)
       TextFieldNumeric (boolean, optional) 
 
     MultiSelect (boolean, optional)

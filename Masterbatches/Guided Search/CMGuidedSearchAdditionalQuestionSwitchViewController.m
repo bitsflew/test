@@ -50,7 +50,7 @@
 
 - (void)switchValueChanged:(id)sender
 {
-    self.additionalQuestion.value = @(self.switchView.isOn);
+    self.additionalQuestion.value = [NSNumber numberWithBool:self.switchView.isOn];
 }
 
 @end

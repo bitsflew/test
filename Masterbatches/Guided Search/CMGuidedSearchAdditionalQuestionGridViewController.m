@@ -11,6 +11,7 @@
 @interface CMGuidedSearchAdditionalQuestionGridItem : NSObject <CMGridItem>
 
 @property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *key;
 
 @end
 
@@ -51,13 +52,14 @@
     NSMutableArray *items = [NSMutableArray new];
     NSMutableArray *selectedItems = [NSMutableArray new];
 
-    for (NSString *stringItem in self.additionalQuestion.attributes[@"Items"]) {
+    for (NSDictionary *dictionaryItem in self.additionalQuestion.attributes[@"Items"]) {
         CMGuidedSearchAdditionalQuestionGridItem *gridItem = [CMGuidedSearchAdditionalQuestionGridItem new];
-        gridItem.title = stringItem;
+        gridItem.title = dictionaryItem[@"Title"];
+        gridItem.key = dictionaryItem[@"Key"];
         [items addObject:gridItem];
 
-        if ((self.multiSelect && [self.additionalQuestion.value containsObject:stringItem]) ||
-            (!self.multiSelect && [self.additionalQuestion.value isEqual:stringItem])) {
+        if ((self.multiSelect && [self.additionalQuestion.value containsObject:gridItem.key]) ||
+            (!self.multiSelect && [self.additionalQuestion.value isEqual:gridItem.key])) {
             [selectedItems addObject:gridItem];
         }
     }
@@ -78,16 +80,17 @@
 - (void)gridView:(CMGridView*)gridView didSelectItem:(id<CMGridItem>)item
 {
     if (self.multiSelect) {
-        self.additionalQuestion.value = [gridView.selectedItems valueForKey:@"title"];
-    } else {
-        self.additionalQuestion.value = [item title];
-    }
+        self.additionalQuestion.value = [gridView.selectedItems valueForKey:@"key"];
+    } else
+        if ([item isKindOfClass:[CMGuidedSearchAdditionalQuestionGridItem class]]) {
+            self.additionalQuestion.value = ((CMGuidedSearchAdditionalQuestionGridItem*)item).key;
+        }
 }
 
 - (void)gridView:(CMGridView*)gridView didDeselectItem:(id<CMGridItem>)item
 {
     if (self.multiSelect) {
-        self.additionalQuestion.value = [gridView.selectedItems valueForKey:@"title"];
+        self.additionalQuestion.value = [gridView.selectedItems valueForKey:@"key"];
     } else {
         self.additionalQuestion.value = nil;
     }

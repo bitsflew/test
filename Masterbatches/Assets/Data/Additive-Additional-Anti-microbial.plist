@@ -8,7 +8,7 @@
 	<array>
 		<dict>
 			<key>Key</key>
-			<string>targets</string>
+			<string>target_microbes</string>
 			<key>Title</key>
 			<string>What types of microbes are to be targeted?</string>
 			<key>Class</key>
@@ -19,16 +19,36 @@
 				<true/>
 				<key>Items</key>
 				<array>
-					<string>Algae</string>
-					<string>Fungi (Mold/mildew)</string>
-					<string>Bacteria</string>
-					<string>Bio-slime</string>
+					<dict>
+						<key>Title</key>
+						<string>Algae</string>
+						<key>Key</key>
+						<string>algae</string>
+					</dict>
+					<dict>
+						<key>Title</key>
+						<string>Fungi (mold/mildew)</string>
+						<key>Key</key>
+						<string>fungi</string>
+					</dict>
+					<dict>
+						<key>Title</key>
+						<string>Bacteria</string>
+						<key>Key</key>
+						<string>bacteria</string>
+					</dict>
+					<dict>
+						<key>Title</key>
+						<string>Bio-slime</string>
+						<key>Key</key>
+						<string>bio_slime</string>
+					</dict>
 				</array>
 			</dict>
 		</dict>
 		<dict>
 			<key>Key</key>
-			<string>important_property</string>
+			<string>physical_property</string>
 			<key>Title</key>
 			<string>What physical property is most important?</string>
 			<key>Class</key>
@@ -37,16 +57,36 @@
 			<dict>
 				<key>Items</key>
 				<array>
-					<string>Elongation</string>
-					<string>Impact strength</string>
-					<string>Tear strength</string>
-					<string>Tensile strength</string>
+					<dict>
+						<key>Title</key>
+						<string>Elongation</string>
+						<key>Key</key>
+						<string>elongation</string>
+					</dict>
+					<dict>
+						<key>Title</key>
+						<string>Impact strength</string>
+						<key>Key</key>
+						<string>impact_strength</string>
+					</dict>
+					<dict>
+						<key>Title</key>
+						<string>Tear strength</string>
+						<key>Key</key>
+						<string>tear_strength</string>
+					</dict>
+					<dict>
+						<key>Title</key>
+						<string>Tensile strength</string>
+						<key>Key</key>
+						<string>tensile_strength</string>
+					</dict>
 				</array>
 			</dict>
 		</dict>
 		<dict>
 			<key>Key</key>
-			<string>additives_pigments_fillers</string>
+			<string>other_additives</string>
 			<key>Title</key>
 			<string>What other additives or pigments are being used in the finished part?</string>
 			<key>Class</key>

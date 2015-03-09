@@ -43,9 +43,15 @@ static CGFloat kCMGuidedSearchAdditionalQuestionsViewControllerTitleMarginBottom
     return paths;
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewDidLoad
 {
-    self.questionTitleTemplateLabel.hidden = YES;
+    [self.questionTitleTemplateLabel removeFromSuperview];
+
     self.questionsScrollView.contentInset = [self.stepDelegate edgeInsetsForStepViewController:self];
     self.questionsScrollView.scrollIndicatorInsets = self.questionsScrollView.contentInset;
     self.questionsScrollView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -89,11 +95,6 @@ static CGFloat kCMGuidedSearchAdditionalQuestionsViewControllerTitleMarginBottom
                                                object:nil];
 }
 
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 - (void)addAdditionalQuestionViewControllerFor:(CMGuidedSearchFlowAdditionalQuestion*)question
 {
     UIViewController<CMGuidedSearchAdditionalQuestionViewController> *viewController
@@ -104,11 +105,11 @@ static CGFloat kCMGuidedSearchAdditionalQuestionsViewControllerTitleMarginBottom
     [self addChildViewController:viewController];
     
     UILabel *titleLabel = [UILabel new];
+    titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     titleLabel.font = self.questionTitleTemplateLabel.font;
     titleLabel.textColor = self.questionTitleTemplateLabel.textColor;
-    titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     titleLabel.text = [question.title uppercaseString];
-
+    
     [self.questionsScrollView addSubview:titleLabel];
 
     UIView *viewToAlignTitleLabelTo = self.lastQuestionView ?: self.questionsScrollView;

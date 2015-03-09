@@ -8,23 +8,15 @@
 	<array>
 		<dict>
 			<key>Key</key>
-			<string>protection_type</string>
+			<string>product_exposure</string>
 			<key>Title</key>
-			<string>What type of protection?</string>
+			<string>Will the product be exposed to indoor or outdoor environment?</string>
 			<key>Class</key>
 			<string>Grid</string>
 			<key>Attributes</key>
 			<dict>
-				<key>MultiSelect</key>
-				<false/>
 				<key>Items</key>
 				<array>
-					<dict>
-						<key>Key</key>
-						<string>content</string>
-						<key>Title</key>
-						<string>Content (for packaging)</string>
-					</dict>
 					<dict>
 						<key>Key</key>
 						<string>indoor</string>
@@ -35,7 +27,7 @@
 						<key>Key</key>
 						<string>outdoor</string>
 						<key>Title</key>
-						<string>Ondoor</string>
+						<string>Outdoor</string>
 					</dict>
 				</array>
 			</dict>
@@ -78,71 +70,19 @@
 		</dict>
 		<dict>
 			<key>Key</key>
-			<string>expected_lifetime</string>
+			<string>processing_or_lhta</string>
 			<key>Title</key>
-			<string>What is the expected life of the part, in years?</string>
-			<key>Class</key>
-			<string>TextField</string>
-			<key>Attributes</key>
-			<dict>
-				<key>Numeric</key>
-				<true/>
-			</dict>
-		</dict>
-		<dict>
-			<key>Key</key>
-			<string>wavelength_range</string>
-			<key>Title</key>
-			<string>What wavelength range is needed?</string>
-			<key>Class</key>
-			<string>TextField</string>
-			<key>Attributes</key>
-			<dict>
-				<key>Numeric</key>
-				<true/>
-			</dict>
-		</dict>
-		<dict>
-			<key>Key</key>
-			<string>package_labeled</string>
-			<key>Title</key>
-			<string>Is package being labeled?</string>
+			<string>Is the AO being used for Processing or LHTA (LTTS)?</string>
 			<key>Class</key>
 			<string>Switch</string>
 		</dict>
 		<dict>
 			<key>Key</key>
-			<string>package_label_coverage</string>
+			<string>gels_or_black_speck_reduction_needed</string>
 			<key>Title</key>
-			<string>If yes, then what is the percentage of coverage?</string>
-			<key>Class</key>
-			<string>TextField</string>
-			<key>Attributes</key>
-			<dict>
-				<key>Numeric</key>
-				<true/>
-			</dict>
-		</dict>
-		<dict>
-			<key>Key</key>
-			<string>color_important</string>
-			<key>Title</key>
-			<string>Is color important?</string>
+			<string>Are gels or black speck reduction needed?</string>
 			<key>Class</key>
 			<string>Switch</string>
-		</dict>
-		<dict>
-			<key>Title</key>
-			<string>Any other light stabiliser applications?</string>
-			<key>Key</key>
-			<string>other_light_stabiliser_applications</string>
-			<key>Class</key>
-			<string>TextField</string>
-			<key>Attributes</key>
-			<dict>
-				<key>Prompt</key>
-				<string>Separate with commas</string>
-			</dict>
 		</dict>
 	</array>
 </dict>

@@ -75,6 +75,17 @@
     }
 }
 
+- (BOOL)isEqual:(id)object
+{
+    return [object isKindOfClass:[self class]] &&
+           [object hash] == [self hash];
+}
+
+- (NSUInteger)hash
+{
+    return self.key.hash;
+}
+
 @end
 
 @interface CMGuidedSearchAdditionalQuestionTextFieldChecklistViewController () <UITextFieldDelegate>
@@ -136,10 +147,14 @@
         item.textFieldNumeric = [dictionaryItem[@"TextFieldNumeric"] boolValue];
         item.textFieldHidden = [dictionaryItem[@"TextFieldHidden"] boolValue];
 
-        NSString *value = [self.additionalQuestion.value objectForKey:item.key];
+        id value = [self.additionalQuestion.value objectForKey:item.key];
 
-        if (value) {
-            item.textField.text = value;
+        BOOL checked = [value isKindOfClass:[NSString class]] || (item.textFieldHidden && [value boolValue]);
+
+        if (checked) {
+            if ([value isKindOfClass:[NSString class]]) {
+                item.textField.text = value;
+            }
             [selectedItems addObject:item];
         }
 
@@ -156,9 +171,15 @@
 - (void)checklistValueDidChange:(id)sender
 {
     NSMutableDictionary *value = [NSMutableDictionary new];
-    
-    for (CMGuidedSearchAdditionalQuestionTextFieldChecklistItem *item in self.checklist.checkedItems) {
-        value[item.key] = item.textField.text ?: @"";
+
+    NSArray *checkedItems = self.checklist.checkedItems;
+
+    for (CMGuidedSearchAdditionalQuestionTextFieldChecklistItem *item in self.checklist.items) {
+        if ([checkedItems containsObject:item]) {
+            value[item.key] = item.textFieldHidden ? [NSNumber numberWithBool:YES] : (item.textField.text ?: @"");
+        } else {
+            value[item.key] = item.textFieldHidden ? [NSNumber numberWithBool:NO] : [NSNull null];
+        }
     }
 
     self.additionalQuestion.value = value;

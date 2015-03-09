@@ -8,7 +8,7 @@
 	<array>
 		<dict>
 			<key>Key</key>
-			<string>blooming-a-concern</string>
+			<string>blooming_concern</string>
 			<key>Title</key>
 			<string>Is blooming for post-conversion processes a concern?</string>
 			<key>Class</key>
@@ -40,22 +40,72 @@
 				<false/>
 				<key>Items</key>
 				<array>
-					<string>Explosion-prone</string>
-					<string>Computer rooms</string>
-					<string>Electrical codes</string>
-					<string>Dust control</string>
+					<dict>
+						<key>Title</key>
+						<string>Explosion-prone</string>
+						<key>Key</key>
+						<string>explosion_prone</string>
+					</dict>
+					<dict>
+						<key>Title</key>
+						<string>Computer rooms</string>
+						<key>Key</key>
+						<string>computer_rooms</string>
+					</dict>
+					<dict>
+						<key>Title</key>
+						<string>Electrical codes</string>
+						<key>Key</key>
+						<string>electrical_codes</string>
+					</dict>
+					<dict>
+						<key>Title</key>
+						<string>Dust control</string>
+						<key>Key</key>
+						<string>dust_control</string>
+					</dict>
 				</array>
 			</dict>
 		</dict>
 		<dict>
 			<key>Key</key>
-			<string>surfaced-resistivity</string>
+			<string>surfaced_resistivity</string>
 			<key>Title</key>
 			<string>What surfaced resistivity is required?</string>
 			<key>Class</key>
 			<string>TextField</string>
 			<key>Attributes</key>
 			<dict>
+				<key>Numeric</key>
+				<true/>
+			</dict>
+		</dict>
+		<dict>
+			<key>Key</key>
+			<string>static_decay_time</string>
+			<key>Title</key>
+			<string>Static decay requirement</string>
+			<key>Class</key>
+			<string>TextField</string>
+			<key>Attributes</key>
+			<dict>
+				<key>Prompt</key>
+				<string>seconds</string>
+				<key>Numeric</key>
+				<true/>
+			</dict>
+		</dict>
+		<dict>
+			<key>Key</key>
+			<string>static_decay_humidity</string>
+			<key>Title</key>
+			<string>...at relative humidity</string>
+			<key>Class</key>
+			<string>TextField</string>
+			<key>Attributes</key>
+			<dict>
+				<key>Prompt</key>
+				<string>percentage</string>
 				<key>Numeric</key>
 				<true/>
 			</dict>
