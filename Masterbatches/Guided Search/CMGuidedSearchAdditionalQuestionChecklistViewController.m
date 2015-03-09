@@ -60,7 +60,7 @@
     _additionalQuestion = additionalQuestion;
 
     self.multiSelect = [additionalQuestion.attributes[@"MultiSelect"] boolValue];
-    self.layoutVertically = [additionalQuestion.attributes[@"Vertical"] boolValue];
+    self.layoutVertically = YES;// [additionalQuestion.attributes[@"Vertical"] boolValue];
 
     if (self.isViewLoaded) {
         [self updateChecklist];

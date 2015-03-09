@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "ClariantColors.h"
 #import "CMGuidedSearchFlowViewController.h"
 #import "MenuViewController.h"
 #import <HockeySDK/HockeySDK.h>
@@ -21,10 +21,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    [[UISwitch appearance] setOnTintColor:[ClariantColors blueColor]];
     [[UINavigationBar appearance] setShadowImage:[UIImage new]];
     [[UINavigationBar appearance] setBackgroundImage:[UIImage new]
                        forBarPosition:UIBarPositionAny
                            barMetrics:UIBarMetricsDefault];
+    [[UIBarButtonItem appearance] setTintColor:[UIColor grayColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:@{ NSFontAttributeName: [UIFont fontWithName:@"Gotham-Book" size:16.f] }];
     [[UIBarButtonItem appearance] setTitleTextAttributes:@{ NSFontAttributeName: [UIFont fontWithName:@"Gotham-Book" size:16.f] }
                                                 forState:UIControlStateNormal];

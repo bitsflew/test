@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Title</key>
-	<string>Light stabilizer questions</string>
+	<string>Anti-oxidant questions</string>
 	<key>Questions</key>
 	<array>
 		<dict>
@@ -12,7 +12,7 @@
 			<key>Title</key>
 			<string>Will the product be exposed to indoor or outdoor environment?</string>
 			<key>Class</key>
-			<string>Grid</string>
+			<string>Checklist</string>
 			<key>Attributes</key>
 			<dict>
 				<key>Items</key>
@@ -38,7 +38,7 @@
 			<key>Title</key>
 			<string>Is the part natural or colored?</string>
 			<key>Class</key>
-			<string>Grid</string>
+			<string>Checklist</string>
 			<key>Attributes</key>
 			<dict>
 				<key>MultiSelect</key>

@@ -33,7 +33,7 @@
 			<key>Title</key>
 			<string>What specific environment is being targeted?</string>
 			<key>Class</key>
-			<string>Grid</string>
+			<string>Checklist</string>
 			<key>Attributes</key>
 			<dict>
 				<key>MultiSelect</key>

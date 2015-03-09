@@ -105,7 +105,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4N-V8-SJB">
-                    <rect key="frame" x="35" y="180" width="132" height="20"/>
+                    <rect key="frame" x="11" y="180" width="132" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="132" id="8Qg-TA-tcf"/>
                     </constraints>
@@ -127,7 +127,7 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0s3-dU-3c6">
-                    <rect key="frame" x="461" y="180" width="104" height="20"/>
+                    <rect key="frame" x="485" y="180" width="104" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="104" id="PFh-63-Ysi"/>
                     </constraints>
@@ -203,7 +203,7 @@
                 <constraint firstItem="xW9-OW-XJO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8Ii-VU-POi"/>
                 <constraint firstItem="QXi-dr-Szf" firstAttribute="top" secondItem="VWH-Un-ZpZ" secondAttribute="top" id="Avu-Yl-hdh"/>
                 <constraint firstAttribute="trailing" secondItem="xW9-OW-XJO" secondAttribute="trailing" id="D5o-iP-8Lx"/>
-                <constraint firstItem="VWH-Un-ZpZ" firstAttribute="trailing" secondItem="0s3-dU-3c6" secondAttribute="trailing" constant="35" id="Ent-jW-bLV"/>
+                <constraint firstItem="VWH-Un-ZpZ" firstAttribute="trailing" secondItem="0s3-dU-3c6" secondAttribute="trailing" constant="11" id="Ent-jW-bLV"/>
                 <constraint firstItem="xW9-OW-XJO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="EqA-gq-27J"/>
                 <constraint firstItem="QXi-dr-Szf" firstAttribute="bottom" secondItem="ddT-Y6-SV0" secondAttribute="bottom" constant="30" id="GOI-Nz-gbg"/>
                 <constraint firstAttribute="trailing" secondItem="VWH-Un-ZpZ" secondAttribute="trailing" id="GaP-UE-Ohb"/>
@@ -233,7 +233,7 @@
                 <constraint firstItem="VWH-Un-ZpZ" firstAttribute="top" secondItem="Q1d-J0-WaX" secondAttribute="bottom" constant="29" id="uF9-Fv-tCu"/>
                 <constraint firstItem="wRK-Kl-oOk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="90" id="uVt-Cw-P9e"/>
                 <constraint firstAttribute="centerX" secondItem="QXi-dr-Szf" secondAttribute="centerX" id="vrM-cS-22L"/>
-                <constraint firstItem="B4N-V8-SJB" firstAttribute="leading" secondItem="VWH-Un-ZpZ" secondAttribute="leading" constant="35" id="wm5-hp-wGf"/>
+                <constraint firstItem="B4N-V8-SJB" firstAttribute="leading" secondItem="VWH-Un-ZpZ" secondAttribute="leading" constant="11" id="wm5-hp-wGf"/>
                 <constraint firstAttribute="centerX" secondItem="ddT-Y6-SV0" secondAttribute="centerX" id="zBe-4D-gCO"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>

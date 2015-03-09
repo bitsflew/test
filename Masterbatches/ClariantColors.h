@@ -23,5 +23,6 @@
 + (UIColor *)menuDefaultFontColor;
 
 + (UIColor*)silver20Color;
++ (UIColor*)blueColor;
 
 @end

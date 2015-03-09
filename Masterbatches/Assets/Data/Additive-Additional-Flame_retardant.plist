@@ -12,7 +12,7 @@
 			<key>Title</key>
 			<string>What type of FR system is allowed?</string>
 			<key>Class</key>
-			<string>Grid</string>
+			<string>Checklist</string>
 			<key>Attributes</key>
 			<dict>
 				<key>MultiSelect</key>
@@ -128,7 +128,7 @@
 			<key>Title</key>
 			<string>What physical property is most important?</string>
 			<key>Class</key>
-			<string>Grid</string>
+			<string>Checklist</string>
 			<key>Attributes</key>
 			<dict>
 				<key>Items</key>
@@ -166,7 +166,7 @@
 			<key>Title</key>
 			<string>Will the product be exposed to indoor or outdoor environment?</string>
 			<key>Class</key>
-			<string>Grid</string>
+			<string>Checklist</string>
 			<key>Attributes</key>
 			<dict>
 				<key>Items</key>

@@ -12,7 +12,7 @@
 			<key>Title</key>
 			<string>What type of protection?</string>
 			<key>Class</key>
-			<string>Grid</string>
+			<string>Checklist</string>
 			<key>Attributes</key>
 			<dict>
 				<key>MultiSelect</key>
@@ -46,7 +46,7 @@
 			<key>Title</key>
 			<string>Is the part natural or colored?</string>
 			<key>Class</key>
-			<string>Grid</string>
+			<string>Checklist</string>
 			<key>Attributes</key>
 			<dict>
 				<key>MultiSelect</key>

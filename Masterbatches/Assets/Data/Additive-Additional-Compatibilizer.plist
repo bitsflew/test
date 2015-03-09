@@ -46,7 +46,7 @@
 			<key>Title</key>
 			<string>What is the clarity requirement?</string>
 			<key>Class</key>
-			<string>Grid</string>
+			<string>Checklist</string>
 			<key>Attributes</key>
 			<dict>
 				<key>Items</key>
@@ -99,7 +99,7 @@
 			<key>Title</key>
 			<string>What physical property is most important?</string>
 			<key>Class</key>
-			<string>Grid</string>
+			<string>Checklist</string>
 			<key>Attributes</key>
 			<dict>
 				<key>Items</key>
