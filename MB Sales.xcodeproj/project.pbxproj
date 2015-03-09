@@ -53,6 +53,7 @@
 		4457F4801A94A744002FF4F5 /* ic_pagination_checkmark_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 4457F47F1A94A744002FF4F5 /* ic_pagination_checkmark_light.png */; };
 		4457F4881A94A963002FF4F5 /* NSString+Morphing.m in Sources */ = {isa = PBXBuildFile; fileRef = 4457F4851A94A963002FF4F5 /* NSString+Morphing.m */; };
 		4457F4891A94A963002FF4F5 /* TOMSMorphingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4457F4871A94A963002FF4F5 /* TOMSMorphingLabel.m */; };
+		446E631D1AAE4F6B00096D99 /* ConnectorsLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 446E631C1AAE4F6B00096D99 /* ConnectorsLayer.m */; };
 		446E9F371AADEA5B00ACCE26 /* Additive-Additional-Compatibilizer.plist in Resources */ = {isa = PBXBuildFile; fileRef = 446E9F361AADEA5B00ACCE26 /* Additive-Additional-Compatibilizer.plist */; };
 		44B16D261AA0731B009BD8A7 /* CMSteppedProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B16D1E1AA0731B009BD8A7 /* CMSteppedProgressView.m */; };
 		44B16D271AA0731B009BD8A7 /* CMGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B16D201AA0731B009BD8A7 /* CMGridView.m */; };
@@ -198,6 +199,8 @@
 		4457F4851A94A963002FF4F5 /* NSString+Morphing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Morphing.m"; sourceTree = "<group>"; };
 		4457F4861A94A963002FF4F5 /* TOMSMorphingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOMSMorphingLabel.h; sourceTree = "<group>"; };
 		4457F4871A94A963002FF4F5 /* TOMSMorphingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOMSMorphingLabel.m; sourceTree = "<group>"; };
+		446E631B1AAE4F6B00096D99 /* ConnectorsLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectorsLayer.h; sourceTree = "<group>"; };
+		446E631C1AAE4F6B00096D99 /* ConnectorsLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectorsLayer.m; sourceTree = "<group>"; };
 		446E9F361AADEA5B00ACCE26 /* Additive-Additional-Compatibilizer.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Additive-Additional-Compatibilizer.plist"; sourceTree = "<group>"; };
 		44B16D1D1AA0731B009BD8A7 /* CMSteppedProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMSteppedProgressView.h; sourceTree = "<group>"; };
 		44B16D1E1AA0731B009BD8A7 /* CMSteppedProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMSteppedProgressView.m; sourceTree = "<group>"; };
@@ -601,6 +604,8 @@
 				4B2EDFA71A93994F007E0493 /* MenuModel.m */,
 				4B2EDFA91A939FAB007E0493 /* MenuView.h */,
 				4B2EDFAA1A939FAB007E0493 /* MenuView.m */,
+				446E631B1AAE4F6B00096D99 /* ConnectorsLayer.h */,
+				446E631C1AAE4F6B00096D99 /* ConnectorsLayer.m */,
 				4B2EDFAC1A93A9B7007E0493 /* MenuViewController.h */,
 				4B2EDFAD1A93A9B7007E0493 /* MenuViewController.m */,
 				4B7AA9641A963D0B00AD81EF /* UIView+Polarcoordinates.h */,
@@ -899,6 +904,7 @@
 				44B16D3F1AA0B046009BD8A7 /* CMProductSpecification+ChecklistItem.m in Sources */,
 				443BD8BA1AA5CD130020CACA /* CMGuidedSearchAdditionalQuestionGridViewController.m in Sources */,
 				443366A61A923349002DD5F5 /* Masterbatches.xcdatamodeld in Sources */,
+				446E631D1AAE4F6B00096D99 /* ConnectorsLayer.m in Sources */,
 				443366D21A923BE0002DD5F5 /* CMProductSpecification.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

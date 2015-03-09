@@ -11,6 +11,7 @@
 #import "UIView+Polarcoordinates.h"
 #import "ClariantColors.h"
 #import <AudioToolbox/AudioServices.h>
+#import "ConnectorsLayer.h"
 
 @class MenuItemView;
 
@@ -39,6 +40,7 @@ static SystemSoundID audioEffectMenuSelect = 0;
 @property (nonatomic, strong) MenuItemSelectHandler menuItemSelectHandler;
 @property (nonatomic, assign) MenuItemDisplayMode displayMode;
 @property (nonatomic, strong) NSMutableDictionary *subItems;
+@property (nonatomic, weak) CALayer *connectorLayer;
 @end
 
 @implementation MenuItemView
@@ -177,6 +179,7 @@ static SystemSoundID audioEffectMenuSelect = 0;
 
 - (void)layoutSubviews {
     self.label.center = [self convertPoint:self.center fromView:self.superview];
+
     // Fix off-pixel alignment
     self.label.frame = CGRectIntegral(self.label.frame);
     self.layer.cornerRadius = self.frame.size.width / 2;
@@ -228,8 +231,8 @@ static SystemSoundID audioEffectMenuSelect = 0;
 @interface MenuView()
 @property (nonatomic, strong) MenuItemView *centerItem;
 @property (nonatomic, strong) MenuItemView *parentItem;
-@property (nonatomic, strong) CADisplayLink *displayLink;
 @property (nonatomic, strong) NSMutableArray *parentStash;
+@property (nonatomic, strong) ConnectorsLayer *connectorsLayer;
 @end
 
 @implementation MenuView
@@ -293,17 +296,15 @@ static UIMotionEffectGroup *subItemMotionEffect = nil;
 
 - (void)setup {
     self.parentStash = [NSMutableArray new];
+
+    self.connectorsLayer = [ConnectorsLayer layer];
+    [self.layer addSublayer:self.connectorsLayer];
     
     [self createSubviews];
-    
-    self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(setNeedsDisplay)];
-    [self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
 }
 
 - (void)createSubviews {
     // Stop the drawRect: while new items are being added and not yet layed-out
-    self.displayLink.paused = YES;
-    
     if (self.menu == nil) self.menu = [MenuModel readMenuFromFile];
 
     if (self.centerItem == nil) {
@@ -323,7 +324,11 @@ static UIMotionEffectGroup *subItemMotionEffect = nil;
             [itemView setIntegralPolarCoordinate:PolarCoordinateZero withCenter:self.centerItem.center];
             self.centerItem.subItems[@(item.identifier)] = itemView;
         }
-        
+
+        if (![self.connectorsLayer layerConnecting:self.centerItem.layer to:itemView.layer]) {
+            [self.connectorsLayer addLayerConnecting:self.centerItem.layer to:itemView.layer];
+        }
+
         itemView.motionEffects = @[subItemMotionEffect];
         
         [self insertSubview:itemView belowSubview:self.centerItem];
@@ -412,8 +417,9 @@ static UIMotionEffectGroup *subItemMotionEffect = nil;
     self.centerItem.displayMode = MenuItemDisplayModeMain;
     self.parentItem.displayMode = MenuItemDisplayModeBack;
     
+    [self.connectorsLayer updateConnectorsAnimated:NO];
+    
     [UIView animateWithDuration:AnimationDuration animations:^{
-
         self.centerItem.center = self.center;
         
         if (self.parentItem) {
@@ -433,13 +439,21 @@ static UIMotionEffectGroup *subItemMotionEffect = nil;
             item.transform = CGTransformScale;
         }
     } completion:^(BOOL finished) {
+        for (UIView *oldSubMenuItem in oldSubMenuItems) {
+            [[self.connectorsLayer layerConnecting:oldCenterItem.layer to:oldSubMenuItem.layer] removeFromSuperlayer];
+        }
         [oldSubMenuItems makeObjectsPerformSelector:@selector(removeFromSuperview)];
     }];
+    
+    [self.connectorsLayer updateConnectorsAnimated:YES];
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    self.displayLink.paused = NO;
+    
+    if (!CGRectEqualToRect(self.connectorsLayer.frame, self.bounds)) {
+        self.connectorsLayer.frame = self.bounds;
+    }
 
     self.centerItem.center = self.center;
     
@@ -452,24 +466,26 @@ static UIMotionEffectGroup *subItemMotionEffect = nil;
         MenuModel *menuItem = subMenuItem.menuItem;
         [subMenuItem setIntegralPolarCoordinate:PolarCoordinateMake(menuItem.distance, menuItem.angle) withCenter:self.center];
     }
+    
+    [self.connectorsLayer layoutSublayers];
 }
 
-- (void)drawRect:(CGRect)rect {
-    CGContextRef context = UIGraphicsGetCurrentContext();
-        
-    [[ClariantColors menuLineColor] set];
-    
-    CGContextSetLineWidth(context, 1);
-    
-    for (UIView *view in self.subviews) {
-        if ([view isKindOfClass:[MenuItemView class]]) {
-            MenuItemView *itemView = (MenuItemView *)view;
-            [itemView drawLinesToSubItemsInContext:context];
-        }
-    }
-    
-    CGContextStrokePath(context);
-}
+//- (void)drawRect:(CGRect)rect {
+//    CGContextRef context = UIGraphicsGetCurrentContext();
+//        
+//    [[ClariantColors menuLineColor] set];
+//    
+//    CGContextSetLineWidth(context, 1);
+//    
+//    for (UIView *view in self.subviews) {
+//        if ([view isKindOfClass:[MenuItemView class]]) {
+//            MenuItemView *itemView = (MenuItemView *)view;
+//            [itemView drawLinesToSubItemsInContext:context];
+//        }
+//    }
+//    
+//    CGContextStrokePath(context);
+//}
 
 
 
