@@ -142,6 +142,8 @@ static CGFloat kCMGuidedSearchFlowViewControllerSearchThrottleDelay = 1.f;
 
 - (void)presentStep:(CMGuidedSearchFlowStep*)step
 {
+    [self.view.window endEditing:YES];
+
     dispatch_block_t animateOutStepViewBlock = NULL;
     dispatch_block_t removeStepViewBlock = NULL;
     CGRect bounds = self.view.bounds;
