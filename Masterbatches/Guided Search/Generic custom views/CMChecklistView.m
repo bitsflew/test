@@ -199,12 +199,15 @@ static const CGFloat kCMChecklistButtonCheckScale = 0.5f;
 
 - (CGSize)intrinsicContentSize
 {
-    CGRect buttonFrames = CGRectZero;
+    CGRect frames = CGRectZero;
     for (CMChecklistButton *button in self.buttons) {
-        buttonFrames = CGRectUnion(buttonFrames, button.frame);
+        frames = CGRectUnion(CGRectUnion(frames, button.frame), button.label.frame);
+        if (button.accessoryView) {
+            frames = CGRectUnion(frames, button.accessoryView.frame);
+        }
     }
 
-    return CGSizeMake(CGRectGetMaxX(buttonFrames), CGRectGetMaxY(buttonFrames));
+    return CGSizeMake(CGRectGetMaxX(frames), CGRectGetMaxY(frames));
 }
 
 #pragma mark -
