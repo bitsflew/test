@@ -7,6 +7,7 @@
 //
 
 #import "CMGridView.h"
+#import "ClariantColors.h"
 
 static NSString *CMGuidedSearchGridSelectionItemRoundedCellIdentifier = @"CMGuidedSearchGridSelectionItemRoundedCell";
 
@@ -40,18 +41,12 @@ static NSString *CMGuidedSearchGridSelectionItemRoundedCellIdentifier = @"CMGuid
     self.lastAppliedItem = item;
 
     self.titleLabel.text = [item title];
-    
-    if ([item respondsToSelector:@selector(fillColor)]) {
-        self.fillView.layer.backgroundColor = [[item fillColor] CGColor];
-    }
-
-    if ([item respondsToSelector:@selector(titleColor)]) {
-        self.titleLabel.textColor = [item titleColor];
-    }
 
     if ([item respondsToSelector:@selector(centerTitle)] && [item centerTitle]) {
         self.titleCenterYConstraint.constant = 0.f;
     }
+    
+    [self updateAlpha];
 }
 
 - (void)applyLayoutAttributes:(UICollectionViewLayoutAttributes *)layoutAttributes
@@ -81,16 +76,34 @@ static NSString *CMGuidedSearchGridSelectionItemRoundedCellIdentifier = @"CMGuid
 
 - (void)updateAlpha
 {
-    if (![self.lastAppliedItem respondsToSelector:@selector(backgroundColor)]) {
-        self.fillView.layer.borderColor = (self.isSelected ? [UIColor colorWithRed:0.388 green:0.764 blue:0.874 alpha:1] : [UIColor lightGrayColor]).CGColor;
+    UIControlState controlState = UIControlStateNormal;
+    if (self.isHighlighted) {
+        controlState = controlState | UIControlStateHighlighted;
     }
-    
+    if (self.isSelected) {
+        controlState = controlState | UIControlStateSelected;
+    }
+
+    if ([self.lastAppliedItem respondsToSelector:@selector(borderColorForState:)]) {
+        self.fillView.layer.borderColor = [self.lastAppliedItem borderColorForState:controlState].CGColor;
+    } else {
+        self.fillView.layer.borderColor = (self.isSelected ? [ClariantColors blueColor] : [ClariantColors silver20Color]).CGColor;
+    }
+
     self.fillView.layer.borderWidth = self.isSelected ? 2.f : 1.f;
     
     self.alpha = self.isHighlighted ? 0.5f : 1.f;
     
-    if (![self.lastAppliedItem respondsToSelector:@selector(titleColor)]) {
+    if (![self.lastAppliedItem respondsToSelector:@selector(titleColorForState:)]) {
         self.titleLabel.textColor = self.isSelected ? [UIColor colorWithWhite:0.1f alpha:1.f] : [UIColor colorWithWhite:0.3f alpha:1.f];
+    }
+    
+    if ([self.lastAppliedItem respondsToSelector:@selector(fillColorForState:)]) {
+        self.fillView.layer.backgroundColor = [[self.lastAppliedItem fillColorForState:controlState] CGColor];
+    }
+
+    if ([self.lastAppliedItem respondsToSelector:@selector(titleColorForState:)]) {
+        self.titleLabel.textColor = [self.lastAppliedItem titleColorForState:controlState];
     }
 }
 

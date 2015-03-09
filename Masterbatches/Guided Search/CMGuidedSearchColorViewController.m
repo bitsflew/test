@@ -7,6 +7,7 @@
 //
 
 #import "CMGuidedSearchColorViewController.h"
+#import "ClariantColors.h"
 
 @interface CMGuidedSearchColorViewController () <CMGridViewSelectionDelegate>
 
@@ -18,15 +19,31 @@
 
 @implementation CMProductSpecificationColor (GridItem)
 
-- (UIColor*)fillColor
+- (UIColor*)borderColorForState:(UIControlState)state
 {
+    if ((state & UIControlStateSelected) && [self.color isEqual:[UIColor whiteColor]]) {
+        return [ClariantColors blueColor];
+    }
     return self.color;
 }
 
-- (UIColor*)titleColor
+- (UIColor*)fillColorForState:(UIControlState)state
 {
+    if (state & UIControlStateSelected) {
+        return self.color;
+    }
+    
+    return [UIColor whiteColor];
+}
+
+- (UIColor*)titleColorForState:(UIControlState)state
+{
+    if (!(state & UIControlStateSelected)) {
+        return [UIColor blackColor];
+    }
+
     CGFloat hue, saturation, brightness;
-    if ([self.fillColor getHue:&hue saturation:&saturation brightness:&brightness alpha:NULL]) {
+    if ([self.color getHue:&hue saturation:&saturation brightness:&brightness alpha:NULL]) {
         if (((brightness > 0.9f) && (saturation < 0.1f)) || ((brightness > 0.9f) && (hue > 0.1f) && (hue < 1.f)) || (((brightness > 0.7f) && (hue > 0.12f)) && !((brightness > 0.9f) && (saturation > 0.9f)))) {
             return [UIColor blackColor];
         }
@@ -54,7 +71,7 @@
                                   [CMProductSpecificationColor attributeWithName:@"Black"
                                                                            color:[UIColor blackColor]],
                                   [CMProductSpecificationColor attributeWithName:@"Yellow"
-                                                                           color:[UIColor yellowColor]],
+                                                                           color:[UIColor colorWithRed:0.996 green:0.937 blue:0.207 alpha:1]],
                                   [CMProductSpecificationColor attributeWithName:@"Orange"
                                                                            color:[UIColor orangeColor]],
                                   [CMProductSpecificationColor attributeWithName:@"Red"
@@ -64,7 +81,7 @@
                                   [CMProductSpecificationColor attributeWithName:@"Blue"
                                                                            color:[UIColor colorWithRed:0.396 green:0.811 blue:0.913 alpha:1]],
                                   [CMProductSpecificationColor attributeWithName:@"Green"
-                                                                           color:[UIColor greenColor]],
+                                                                           color:[UIColor colorWithRed:0.431 green:0.729 blue:0.25 alpha:1]],
                                   [CMProductSpecificationColor attributeWithName:@"Brown"
                                                                            color:[UIColor brownColor]],
                                   [CMProductSpecificationColor attributeWithName:@"Bronze"
