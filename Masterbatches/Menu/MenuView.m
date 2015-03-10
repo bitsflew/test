@@ -15,6 +15,13 @@
 
 @class MenuItemView;
 
+@interface MenuView ()
+@property (nonatomic, strong) MenuItemView *centerItem;
+@property (nonatomic, strong) MenuItemView *parentItem;
+@property (nonatomic, strong) NSMutableArray *parentStash;
+@property (nonatomic, strong) ConnectorsLayer *connectorsLayer;
+@end
+
 typedef void (^MenuItemSelectHandler)(MenuItemView *);
 
 typedef NS_ENUM(NSInteger, MenuItemDisplayMode) {
@@ -209,30 +216,34 @@ static SystemSoundID audioEffectMenuSelect = 0;
     return [other.menuItem isEqual:self.menuItem];
 }
 
-- (void)drawLinesToSubItemsInContext:(CGContextRef)context {
-    if (self.subItems.count == 0) return;
-    
-    CALayer *centerItemLayer = (CALayer *)self.layer.presentationLayer;
+- (void)animateKeyPathsToValues:(NSDictionary*)keyPathsAndValues
+{
+    __block CAAnimation *animation = nil;
 
-    for (MenuItemView *subItem in self.subItems.allValues) {
-        CALayer *itemLayer = (CALayer *)subItem.layer.presentationLayer;
-
-        if (subItem.window == nil) continue;
-        if (itemLayer.opacity < 0.3) continue;
-        
-        CGContextMoveToPoint(context, centerItemLayer.position.x, centerItemLayer.position.y);
-        CGContextAddLineToPoint(context, itemLayer.position.x, itemLayer.position.y);
+    if (keyPathsAndValues.count > 1) {
+        animation = [CAAnimationGroup animation];
     }
+
+    [keyPathsAndValues enumerateKeysAndObjectsUsingBlock:^(NSString *keyPath, id value, BOOL *stop) {
+        CABasicAnimation *innerAnimation = [CABasicAnimation animationWithKeyPath:keyPath];
+        innerAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        innerAnimation.fillMode = kCAFillModeForwards;
+        innerAnimation.removedOnCompletion = NO;
+        innerAnimation.duration = AnimationDuration;
+        innerAnimation.fromValue = [self.layer valueForKeyPath:keyPath];
+        innerAnimation.toValue = value;
+        [self.layer setValue:value forKey:keyPath];
+        if ([animation isKindOfClass:[CAAnimationGroup class]]) {
+            ((CAAnimationGroup*)animation).animations = [(((CAAnimationGroup*)animation).animations ?: @[])
+                                                         arrayByAddingObject:innerAnimation];
+        } else {
+            animation = innerAnimation;
+        }
+    }];
+
+    [self.layer addAnimation:animation forKey:@"animation"];
 }
 
-@end
-
-
-@interface MenuView()
-@property (nonatomic, strong) MenuItemView *centerItem;
-@property (nonatomic, strong) MenuItemView *parentItem;
-@property (nonatomic, strong) NSMutableArray *parentStash;
-@property (nonatomic, strong) ConnectorsLayer *connectorsLayer;
 @end
 
 @implementation MenuView
@@ -416,45 +427,52 @@ static UIMotionEffectGroup *subItemMotionEffect = nil;
 
     self.centerItem.displayMode = MenuItemDisplayModeMain;
     self.parentItem.displayMode = MenuItemDisplayModeBack;
-    
-    [self.connectorsLayer updateConnectorsAnimated:NO];
-    
-    [UIView animateWithDuration:AnimationDuration animations:^{
-        self.centerItem.center = self.center;
-        
-        if (self.parentItem) {
-            [self.parentItem setIntegralPolarCoordinate:PolarCoordinateMake(ParentItemRadius, ParentItemAngle) withCenter:self.center];
-        }
 
-        for (MenuItemView *item in itemView.subItems.allValues) {
-            item.transform = CGAffineTransformIdentity;
-            item.alpha = 1;
-            MenuModel *menuItem = item.menuItem;
-            [item setIntegralPolarCoordinate:PolarCoordinateMake(menuItem.distance, menuItem.angle) withCenter:self.center];
-        }
-        
-        for (MenuItemView *item in oldSubMenuItems) {
-            [item setIntegralPolarCoordinate:PolarCoordinateZero withCenter:oldCenterItem.center];
-            item.alpha = 0;
-            item.transform = CGTransformScale;
-        }
-    } completion:^(BOOL finished) {
+    [self.connectorsLayer updateConnectorsAnimated:NO];
+
+    [CATransaction begin];
+    [CATransaction setAnimationDuration:AnimationDuration];
+
+    [CATransaction setCompletionBlock:^{
         for (UIView *oldSubMenuItem in oldSubMenuItems) {
             [[self.connectorsLayer layerConnecting:oldCenterItem.layer to:oldSubMenuItem.layer] removeFromSuperlayer];
         }
+
         [oldSubMenuItems makeObjectsPerformSelector:@selector(removeFromSuperview)];
     }];
+
+    [self.centerItem animateKeyPathsToValues:@{ @"position" : [NSValue valueWithCGPoint:self.center] }];
+    
+    if (self.parentItem) {
+        [self.parentItem animateKeyPathsToValues:@{ @"position" :
+                                                        [NSValue valueWithCGPoint:[self.parentItem positionForPolarCoordinate:PolarCoordinateMake(ParentItemRadius, ParentItemAngle)
+                                                                                                                   withCenter:self.center]] }];
+    }
+
+    for (MenuItemView *item in itemView.subItems.allValues) {
+        item.transform = CGAffineTransformIdentity;
+        item.alpha = 1;
+        MenuModel *menuItem = item.menuItem;        
+        [item animateKeyPathsToValues:@{ @"position" : [NSValue valueWithCGPoint:[item positionForPolarCoordinate:PolarCoordinateMake(menuItem.distance, menuItem.angle)
+                                                                                                       withCenter:self.center]] }];
+    }
+
+    for (MenuItemView *item in oldSubMenuItems) {
+        [item animateKeyPathsToValues:@{ @"position" : [NSValue valueWithCGPoint:[item positionForPolarCoordinate:PolarCoordinateZero
+                                                                                                       withCenter:oldCenterItem.center]],
+                                         @"opacity": @(0.f) }];
+        [self.connectorsLayer updateConnectorFrom:oldCenterItem.layer to:item.layer];
+        item.transform = CGTransformScale;
+    }
     
     [self.connectorsLayer updateConnectorsAnimated:YES];
+
+    [CATransaction commit];
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    if (!CGRectEqualToRect(self.connectorsLayer.frame, self.bounds)) {
-        self.connectorsLayer.frame = self.bounds;
-    }
-
     self.centerItem.center = self.center;
     
     if (self.parentItem) {
@@ -467,7 +485,10 @@ static UIMotionEffectGroup *subItemMotionEffect = nil;
         [subMenuItem setIntegralPolarCoordinate:PolarCoordinateMake(menuItem.distance, menuItem.angle) withCenter:self.center];
     }
     
-    [self.connectorsLayer layoutSublayers];
+    if (!CGRectEqualToRect(self.connectorsLayer.frame, self.bounds)) {
+        self.connectorsLayer.frame = self.bounds;
+        [self.connectorsLayer updateConnectorsAnimated:NO];
+    }
 }
 
 //- (void)drawRect:(CGRect)rect {

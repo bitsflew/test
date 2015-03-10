@@ -38,16 +38,30 @@
     return nil;
 }
 
-- (void)layoutSublayers
+- (void)updateConnectorFrom:(CALayer*)fromLayer to:(CALayer*)toLayer
 {
-    [self updateConnectorsAnimated:NO];
+    LineConnectorLayer *layer = [self layerConnecting:fromLayer to:toLayer];
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPoint fromPoint = [layer.fromLayer.superlayer convertPoint:layer.fromLayer.position toLayer:self];
+    CGPoint toPoint = [layer.toLayer.superlayer convertPoint:layer.toLayer.position toLayer:self];
+    
+    CGPathMoveToPoint(path, NULL, fromPoint.x, fromPoint.y);
+    CGPathAddLineToPoint(path, NULL, toPoint.x, toPoint.y);
+    
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"path"];
+    animation.duration = ConnectorsLayerAnimationDuration;
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    animation.fillMode = kCAFillModeForwards;
+    animation.removedOnCompletion = NO;
+    animation.fromValue = (id)layer.path;
+    animation.toValue = (id)CFBridgingRelease(path);
+    [layer addAnimation:animation forKey:@"path"];
 }
 
 - (void)updateConnectorsAnimated:(BOOL)animated
 {
-    [CATransaction begin];
-    
     if (!animated) {
+        [CATransaction begin];
         [CATransaction setValue:@(YES) forKey:kCATransactionDisableActions];
     }
     
@@ -73,7 +87,9 @@
         }
     }
 
-    [CATransaction commit];
+    if (!animated) {
+        [CATransaction commit];
+    }
 }
 
 

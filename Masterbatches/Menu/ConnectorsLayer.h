@@ -20,6 +20,8 @@
 - (LineConnectorLayer*)addLayerConnecting:(CALayer*)fromLayer to:(CALayer*)toLayer;
 - (LineConnectorLayer*)layerConnecting:(CALayer*)fromLayer to:(CALayer*)toLayer;
 
+- (void)updateConnectorFrom:(CALayer*)fromLayer to:(CALayer*)toLayer;
+
 - (void)updateConnectorsAnimated:(BOOL)animated;
 
 @end
